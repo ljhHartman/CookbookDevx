@@ -1,62 +1,54 @@
-﻿Imports DevExpress.Skins
-Imports DevExpress.XtraBars
-Imports DevExpress.XtraBars.Ribbon
+﻿Imports DevExpress.XtraBars.Ribbon
 
+Public Class RibbonForm2
+    Public Sub New()
+        InitializeComponent()
 
-
-Public Class RibbonForm1
-
-
-    Dim statusBarSwitch As Boolean = False
-
-
-
-    Private Sub RibbonForm1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Set top Bar to Minimized
+        RibbonControl.Minimized = True
 
 #Region "Init Settings"
 
         Me.Text = "Window Title"
+        Me.Size = New Point(1200, 650)
 
-        ' Int Style Template
-        RibbonControl.RibbonStyle = RibbonControlStyle.Office2013
         ' Set top Bar to Minimized
         RibbonControl.Minimized = True
-
-
+        ' Remove Shadow
+        RibbonControl.RibbonStyle = BorderStyle.None
+        'RibbonControl.RibbonStyle = 
 
         ' Hide Quick Access Toolbar
         RibbonControl.ToolbarLocation = RibbonQuickAccessToolbarLocation.Hidden
-
-
 
         ' Hide StatusBar.ShowSizeGrip
         RibbonStatusBar.ShowSizeGrip = False
         ' Hide StatusBar
         RibbonStatusBar.Visible = False
-        'Status Bar Color
-        Dim element As SkinElement = SkinManager.GetSkinElement(SkinProductId.Ribbon, DevExpress.LookAndFeel.UserLookAndFeel.Default, "StatusBarFormBackground")
-        element.Color.SolidImageCenterColor = Color.Green
+
+        'Skin
+        DevExpress.UserSkins.BonusSkins.Register()
+        DevExpress.Skins.SkinManager.EnableFormSkins()
 
 #End Region
-
 
 #Region "Events"
 
         ' RibbonStyle Events
         AddHandler btnOffice2007.ItemClick, AddressOf StyleOffice2007
-        AddHandler btnOffice2010.ItemClick, AddressOf StyleOffice2010
-        AddHandler btnOffice2013.ItemClick, AddressOf StyleOffice2013
-        AddHandler btnMacOffice.ItemClick, AddressOf StyleMacOffice
-        AddHandler btnTabletOffice.ItemClick, AddressOf StyleTabletOffice
-        AddHandler btnOfficeUniversal.ItemClick, AddressOf StyleOfficeUniversal
+        'AddHandler btnOffice2010.ItemClick, AddressOf StyleOffice2010
+        'AddHandler btnOffice2013.ItemClick, AddressOf StyleOffice2013
+        'AddHandler btnMacOffice.ItemClick, AddressOf StyleMacOffice
+        'AddHandler btnTabletOffice.ItemClick, AddressOf StyleTabletOffice
+        'AddHandler btnOfficeUniversal.ItemClick, AddressOf StyleOfficeUniversal
 
         AddHandler btnShowStatusBar.ItemClick, AddressOf ShowStatusBar
 
 #End Region
 
-
     End Sub
 
+    Dim statusBarSwitch As Boolean = False
     Private Sub ShowStatusBar()
         If statusBarSwitch = False Then
             statusBarSwitch = True
@@ -66,6 +58,7 @@ Public Class RibbonForm1
 
         ' Hide StatusBar.ShowSizeGrip
         RibbonStatusBar.ShowSizeGrip = statusBarSwitch
+
         ' Hide StatusBar
         RibbonStatusBar.Visible = statusBarSwitch
     End Sub

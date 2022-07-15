@@ -139,6 +139,12 @@
   <data name="RibbonFromToolStripMenuItem.Text" xml:space="preserve">
     <value>Ribbon From</value>
   </data>
+  <data name="XtraDialogArgsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="XtraDialogArgsToolStripMenuItem.Text" xml:space="preserve">
+    <value>Xtra Dialog Args</value>
+  </data>
   <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -253,6 +259,12 @@
     <value>RibbonFromToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;RibbonFromToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;XtraDialogArgsToolStripMenuItem.Name" xml:space="preserve">
+    <value>XtraDialogArgsToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;XtraDialogArgsToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
