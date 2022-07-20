@@ -91,10 +91,10 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DevExpress\RibbonForm2.Designer.vb">
+    <Compile Include="Forms\RibbonForm2.Designer.vb">
       <DependentUpon>RibbonForm2.vb</DependentUpon>
     </Compile>
-    <Compile Include="DevExpress\RibbonForm2.vb">
+    <Compile Include="Forms\RibbonForm2.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\XtraDialogArgs1.Designer.vb">
@@ -103,10 +103,10 @@
     <Compile Include="Forms\XtraDialogArgs1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="GridControlFooter.Designer.vb">
+    <Compile Include="Forms\GridControlFooter.Designer.vb">
       <DependentUpon>GridControlFooter.vb</DependentUpon>
     </Compile>
-    <Compile Include="GridControlFooter.vb">
+    <Compile Include="Forms\GridControlFooter.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.vb">
@@ -116,10 +116,10 @@
       <DependentUpon>Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DevExpress\GridConrolForm.Designer.vb">
+    <Compile Include="Forms\GridConrolForm.Designer.vb">
       <DependentUpon>GridConrolForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="DevExpress\GridConrolForm.vb">
+    <Compile Include="Forms\GridConrolForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -174,16 +174,16 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="DevExpress\GridConrolForm.resx">
+    <EmbeddedResource Include="Forms\GridConrolForm.resx">
       <DependentUpon>GridConrolForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DevExpress\RibbonForm2.resx">
+    <EmbeddedResource Include="Forms\RibbonForm2.resx">
       <DependentUpon>RibbonForm2.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\XtraDialogArgs1.resx">
       <DependentUpon>XtraDialogArgs1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="GridControlFooter.resx">
+    <EmbeddedResource Include="Forms\GridControlFooter.resx">
       <DependentUpon>GridControlFooter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">

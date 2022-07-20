@@ -14,6 +14,7 @@ Imports DevExpress.XtraGrid.Views.Grid
 
 Public Class GridControlFooter
     Dim SUMSelection As Double
+    Dim SelectedRows As Integer
 
 
     Public Sub New()
@@ -50,10 +51,12 @@ Public Class GridControlFooter
         Dim view As GridView = TryCast(sender, GridView)
 
         Dim sum As Double = 0D
+        Dim tot As Integer = 0
         For Each row In view.GetSelectedRows ' iterate each selected row
             sum += view.GetRowCellValue(row, view.Columns("Cost")) 'add up all selected cost values
         Next
 
+        SelectedRows = GridView1.SelectedRowsCount
         SUMSelection = sum
         GridView1.UpdateSummary()
     End Sub
@@ -65,7 +68,7 @@ Public Class GridControlFooter
             Case DevExpress.Data.CustomSummaryProcess.Start
                 e.TotalValue = 0
             Case DevExpress.Data.CustomSummaryProcess.Calculate
-                e.TotalValue = SUMSelection
+                e.TotalValue = $"{SelectedRows} Selected, Total Cost: {SUMSelection}"
             Case DevExpress.Data.CustomSummaryProcess.Finalize
                 e.TotalValueReady = True
         End Select
