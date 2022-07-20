@@ -28,8 +28,10 @@ Partial Class Main
         Me.XtraDialogToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GridControlToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.RibbonFromToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.XtraDialogArgsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.XtraDialogReturnTableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.GridControlFooterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -42,7 +44,7 @@ Partial Class Main
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem})
         resources.ApplyResources(Me.ToolStripDropDownButton1, "ToolStripDropDownButton1")
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
         '
@@ -61,15 +63,25 @@ Partial Class Main
         Me.RibbonFromToolStripMenuItem.Name = "RibbonFromToolStripMenuItem"
         resources.ApplyResources(Me.RibbonFromToolStripMenuItem, "RibbonFromToolStripMenuItem")
         '
+        'XtraDialogArgsToolStripMenuItem
+        '
+        Me.XtraDialogArgsToolStripMenuItem.Name = "XtraDialogArgsToolStripMenuItem"
+        resources.ApplyResources(Me.XtraDialogArgsToolStripMenuItem, "XtraDialogArgsToolStripMenuItem")
+        '
+        'XtraDialogReturnTableToolStripMenuItem
+        '
+        Me.XtraDialogReturnTableToolStripMenuItem.Name = "XtraDialogReturnTableToolStripMenuItem"
+        resources.ApplyResources(Me.XtraDialogReturnTableToolStripMenuItem, "XtraDialogReturnTableToolStripMenuItem")
+        '
         'ToolStrip2
         '
         resources.ApplyResources(Me.ToolStrip2, "ToolStrip2")
         Me.ToolStrip2.Name = "ToolStrip2"
         '
-        'XtraDialogArgsToolStripMenuItem
+        'GridControlFooterToolStripMenuItem
         '
-        Me.XtraDialogArgsToolStripMenuItem.Name = "XtraDialogArgsToolStripMenuItem"
-        resources.ApplyResources(Me.XtraDialogArgsToolStripMenuItem, "XtraDialogArgsToolStripMenuItem")
+        Me.GridControlFooterToolStripMenuItem.Name = "GridControlFooterToolStripMenuItem"
+        resources.ApplyResources(Me.GridControlFooterToolStripMenuItem, "GridControlFooterToolStripMenuItem")
         '
         'Main
         '
@@ -92,4 +104,6 @@ Partial Class Main
     Friend WithEvents GridControlToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RibbonFromToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents XtraDialogArgsToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents XtraDialogReturnTableToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GridControlFooterToolStripMenuItem As ToolStripMenuItem
 End Class

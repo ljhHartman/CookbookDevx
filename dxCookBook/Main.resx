@@ -122,28 +122,40 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="XtraDialogToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="XtraDialogToolStripMenuItem.Text" xml:space="preserve">
     <value>Xtra Dialog</value>
   </data>
   <data name="GridControlToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="GridControlToolStripMenuItem.Text" xml:space="preserve">
-    <value>Grid Control</value>
+    <value>Grid Control Select</value>
   </data>
   <data name="RibbonFromToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="RibbonFromToolStripMenuItem.Text" xml:space="preserve">
     <value>Ribbon From</value>
   </data>
   <data name="XtraDialogArgsToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>197, 22</value>
   </data>
   <data name="XtraDialogArgsToolStripMenuItem.Text" xml:space="preserve">
     <value>Xtra Dialog Args</value>
+  </data>
+  <data name="XtraDialogReturnTableToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
+  </data>
+  <data name="XtraDialogReturnTableToolStripMenuItem.Text" xml:space="preserve">
+    <value>XtraDialog Return Table</value>
+  </data>
+  <data name="GridControlFooterToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
+  </data>
+  <data name="GridControlFooterToolStripMenuItem.Text" xml:space="preserve">
+    <value>GridControl Footer</value>
   </data>
   <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -265,6 +277,18 @@
     <value>XtraDialogArgsToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;XtraDialogArgsToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;XtraDialogReturnTableToolStripMenuItem.Name" xml:space="preserve">
+    <value>XtraDialogReturnTableToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;XtraDialogReturnTableToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;GridControlFooterToolStripMenuItem.Name" xml:space="preserve">
+    <value>GridControlFooterToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;GridControlFooterToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

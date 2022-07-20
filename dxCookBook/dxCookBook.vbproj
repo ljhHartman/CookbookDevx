@@ -49,6 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DevExpress.BonusSkins.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.Charts.v16.2.Core, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Dashboard.v16.2.Core, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -57,6 +58,9 @@
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v16.2.UI, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraCharts.v16.2.Wizard, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraEditors.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraGrid.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -99,6 +103,12 @@
     <Compile Include="Forms\XtraDialogArgs1.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="GridControlFooter.Designer.vb">
+      <DependentUpon>GridControlFooter.vb</DependentUpon>
+    </Compile>
+    <Compile Include="GridControlFooter.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +142,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ucTableReturn.Designer.vb">
+      <DependentUpon>ucTableReturn.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucTableReturn.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControls\ucArg.Designer.vb">
       <DependentUpon>ucArg.vb</DependentUpon>
     </Compile>
@@ -150,6 +166,12 @@
     <Compile Include="Forms\XtraDialog2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\XtraDialogArgsTable.Designer.vb">
+      <DependentUpon>XtraDialogArgsTable.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\XtraDialogArgsTable.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="DevExpress\GridConrolForm.resx">
@@ -160,6 +182,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\XtraDialogArgs1.resx">
       <DependentUpon>XtraDialogArgs1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GridControlFooter.resx">
+      <DependentUpon>GridControlFooter.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
@@ -179,6 +204,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\XtraDialog2.resx">
       <DependentUpon>XtraDialog2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\XtraDialogArgsTable.resx">
+      <DependentUpon>XtraDialogArgsTable.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucTableReturn.resx">
+      <DependentUpon>ucTableReturn.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
