@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="dsIncomingInvoiceLines" targetNamespace="http://tempuri.org/dsIncomingInvoiceLines.xsd" xmlns:mstns="http://tempuri.org/dsIncomingInvoiceLines.xsd" xmlns="http://tempuri.org/dsIncomingInvoiceLines.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SSLTESTConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SSLTESTConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.dxCookBook.My.MySettings.GlobalReference.Default.SSLTESTConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="vwIncomingInvoiceLinesTableAdapter" GeneratorDataComponentClassName="vwIncomingInvoiceLinesTableAdapter" Name="vwIncomingInvoiceLines" UserDataComponentName="vwIncomingInvoiceLinesTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="SSLTESTConnectionString (MySettings)" DbObjectName="SSLTEST.dbo.vwIncomingInvoiceLines" DbObjectType="View" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="false">
+                    <CommandText>SELECT IFACTUURREGELNUMMER, BTWBEDRAG, FACTUURNUMMER, REGELNUMMER, KOSTCODE, DOSSIERNUMMER, OMSCHRIJVING, RELATIE, PRIJS, AANTAL, BEDRAG, VALUTA, BTWCODE, WISSELKOERS, BEDRAGEURO, PERIODE, GROOTBOEKNUMMER FROM dbo.vwIncomingInvoiceLines</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IFACTUURREGELNUMMER" DataSetColumn="IFACTUURREGELNUMMER" />
+              <Mapping SourceColumn="BTWBEDRAG" DataSetColumn="BTWBEDRAG" />
+              <Mapping SourceColumn="FACTUURNUMMER" DataSetColumn="FACTUURNUMMER" />
+              <Mapping SourceColumn="REGELNUMMER" DataSetColumn="REGELNUMMER" />
+              <Mapping SourceColumn="KOSTCODE" DataSetColumn="KOSTCODE" />
+              <Mapping SourceColumn="DOSSIERNUMMER" DataSetColumn="DOSSIERNUMMER" />
+              <Mapping SourceColumn="OMSCHRIJVING" DataSetColumn="OMSCHRIJVING" />
+              <Mapping SourceColumn="RELATIE" DataSetColumn="RELATIE" />
+              <Mapping SourceColumn="PRIJS" DataSetColumn="PRIJS" />
+              <Mapping SourceColumn="AANTAL" DataSetColumn="AANTAL" />
+              <Mapping SourceColumn="BEDRAG" DataSetColumn="BEDRAG" />
+              <Mapping SourceColumn="VALUTA" DataSetColumn="VALUTA" />
+              <Mapping SourceColumn="BTWCODE" DataSetColumn="BTWCODE" />
+              <Mapping SourceColumn="WISSELKOERS" DataSetColumn="WISSELKOERS" />
+              <Mapping SourceColumn="BEDRAGEURO" DataSetColumn="BEDRAGEURO" />
+              <Mapping SourceColumn="PERIODE" DataSetColumn="PERIODE" />
+              <Mapping SourceColumn="GROOTBOEKNUMMER" DataSetColumn="GROOTBOEKNUMMER" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="dsIncomingInvoiceLines" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsIncomingInvoiceLines" msprop:Generator_UserDSName="dsIncomingInvoiceLines">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="vwIncomingInvoiceLines" msprop:Generator_TableClassName="vwIncomingInvoiceLinesDataTable" msprop:Generator_TableVarName="tablevwIncomingInvoiceLines" msprop:Generator_TablePropName="vwIncomingInvoiceLines" msprop:Generator_RowDeletingName="vwIncomingInvoiceLinesRowDeleting" msprop:Generator_RowChangingName="vwIncomingInvoiceLinesRowChanging" msprop:Generator_RowEvHandlerName="vwIncomingInvoiceLinesRowChangeEventHandler" msprop:Generator_RowDeletedName="vwIncomingInvoiceLinesRowDeleted" msprop:Generator_UserTableName="vwIncomingInvoiceLines" msprop:Generator_RowChangedName="vwIncomingInvoiceLinesRowChanged" msprop:Generator_RowEvArgName="vwIncomingInvoiceLinesRowChangeEvent" msprop:Generator_RowClassName="vwIncomingInvoiceLinesRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IFACTUURREGELNUMMER" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnIFACTUURREGELNUMMER" msprop:Generator_ColumnPropNameInRow="IFACTUURREGELNUMMER" msprop:Generator_ColumnPropNameInTable="IFACTUURREGELNUMMERColumn" msprop:Generator_UserColumnName="IFACTUURREGELNUMMER" type="xs:int" />
+              <xs:element name="BTWBEDRAG" msprop:Generator_ColumnVarNameInTable="columnBTWBEDRAG" msprop:Generator_ColumnPropNameInRow="BTWBEDRAG" msprop:Generator_ColumnPropNameInTable="BTWBEDRAGColumn" msprop:Generator_UserColumnName="BTWBEDRAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="FACTUURNUMMER" msprop:Generator_ColumnVarNameInTable="columnFACTUURNUMMER" msprop:Generator_ColumnPropNameInRow="FACTUURNUMMER" msprop:Generator_ColumnPropNameInTable="FACTUURNUMMERColumn" msprop:Generator_UserColumnName="FACTUURNUMMER" type="xs:int" minOccurs="0" />
+              <xs:element name="REGELNUMMER" msprop:Generator_ColumnVarNameInTable="columnREGELNUMMER" msprop:Generator_ColumnPropNameInRow="REGELNUMMER" msprop:Generator_ColumnPropNameInTable="REGELNUMMERColumn" msprop:Generator_UserColumnName="REGELNUMMER" type="xs:int" minOccurs="0" />
+              <xs:element name="KOSTCODE" msprop:Generator_ColumnVarNameInTable="columnKOSTCODE" msprop:Generator_ColumnPropNameInRow="KOSTCODE" msprop:Generator_ColumnPropNameInTable="KOSTCODEColumn" msprop:Generator_UserColumnName="KOSTCODE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DOSSIERNUMMER" msprop:Generator_ColumnVarNameInTable="columnDOSSIERNUMMER" msprop:Generator_ColumnPropNameInRow="DOSSIERNUMMER" msprop:Generator_ColumnPropNameInTable="DOSSIERNUMMERColumn" msprop:Generator_UserColumnName="DOSSIERNUMMER" type="xs:int" minOccurs="0" />
+              <xs:element name="OMSCHRIJVING" msprop:Generator_ColumnVarNameInTable="columnOMSCHRIJVING" msprop:Generator_ColumnPropNameInRow="OMSCHRIJVING" msprop:Generator_ColumnPropNameInTable="OMSCHRIJVINGColumn" msprop:Generator_UserColumnName="OMSCHRIJVING" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="RELATIE" msprop:Generator_ColumnVarNameInTable="columnRELATIE" msprop:Generator_ColumnPropNameInRow="RELATIE" msprop:Generator_ColumnPropNameInTable="RELATIEColumn" msprop:Generator_UserColumnName="RELATIE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PRIJS" msprop:Generator_ColumnVarNameInTable="columnPRIJS" msprop:Generator_ColumnPropNameInRow="PRIJS" msprop:Generator_ColumnPropNameInTable="PRIJSColumn" msprop:Generator_UserColumnName="PRIJS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="AANTAL" msprop:Generator_ColumnVarNameInTable="columnAANTAL" msprop:Generator_ColumnPropNameInRow="AANTAL" msprop:Generator_ColumnPropNameInTable="AANTALColumn" msprop:Generator_UserColumnName="AANTAL" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BEDRAG" msprop:Generator_ColumnVarNameInTable="columnBEDRAG" msprop:Generator_ColumnPropNameInRow="BEDRAG" msprop:Generator_ColumnPropNameInTable="BEDRAGColumn" msprop:Generator_UserColumnName="BEDRAG" type="xs:decimal" minOccurs="0" />
+              <xs:element name="VALUTA" msprop:Generator_ColumnVarNameInTable="columnVALUTA" msprop:Generator_ColumnPropNameInRow="VALUTA" msprop:Generator_ColumnPropNameInTable="VALUTAColumn" msprop:Generator_UserColumnName="VALUTA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="8" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="BTWCODE" msprop:Generator_ColumnVarNameInTable="columnBTWCODE" msprop:Generator_ColumnPropNameInRow="BTWCODE" msprop:Generator_ColumnPropNameInTable="BTWCODEColumn" msprop:Generator_UserColumnName="BTWCODE" type="xs:int" minOccurs="0" />
+              <xs:element name="WISSELKOERS" msprop:Generator_ColumnVarNameInTable="columnWISSELKOERS" msprop:Generator_ColumnPropNameInRow="WISSELKOERS" msprop:Generator_ColumnPropNameInTable="WISSELKOERSColumn" msprop:Generator_UserColumnName="WISSELKOERS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BEDRAGEURO" msprop:Generator_ColumnVarNameInTable="columnBEDRAGEURO" msprop:Generator_ColumnPropNameInRow="BEDRAGEURO" msprop:Generator_ColumnPropNameInTable="BEDRAGEUROColumn" msprop:Generator_UserColumnName="BEDRAGEURO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PERIODE" msprop:Generator_ColumnVarNameInTable="columnPERIODE" msprop:Generator_ColumnPropNameInRow="PERIODE" msprop:Generator_ColumnPropNameInTable="PERIODEColumn" msprop:Generator_UserColumnName="PERIODE" type="xs:int" minOccurs="0" />
+              <xs:element name="GROOTBOEKNUMMER" msprop:Generator_ColumnVarNameInTable="columnGROOTBOEKNUMMER" msprop:Generator_ColumnPropNameInRow="GROOTBOEKNUMMER" msprop:Generator_ColumnPropNameInTable="GROOTBOEKNUMMERColumn" msprop:Generator_UserColumnName="GROOTBOEKNUMMER" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:vwIncomingInvoiceLines" />
+      <xs:field xpath="mstns:IFACTUURREGELNUMMER" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

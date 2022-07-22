@@ -157,6 +157,12 @@
   <data name="GridControlFooterToolStripMenuItem.Text" xml:space="preserve">
     <value>GridControl Footer</value>
   </data>
+  <data name="ViewDataSetGridToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>197, 22</value>
+  </data>
+  <data name="ViewDataSetGridToolStripMenuItem.Text" xml:space="preserve">
+    <value>ViewDataSetGrid</value>
+  </data>
   <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -289,6 +295,12 @@
     <value>GridControlFooterToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;GridControlFooterToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;ViewDataSetGridToolStripMenuItem.Name" xml:space="preserve">
+    <value>ViewDataSetGridToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ViewDataSetGridToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

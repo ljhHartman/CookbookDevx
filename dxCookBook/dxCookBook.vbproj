@@ -53,6 +53,7 @@
     <Reference Include="DevExpress.Dashboard.v16.2.Core, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Data.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.EasyTest.WinAdapter.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Images.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -66,10 +67,18 @@
     <Reference Include="DevExpress.XtraLayout.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraNavBar.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Data.Schema.UnitTesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTesting, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.TestManagement.Client, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.TeamFoundation.TestManagement.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -91,6 +100,25 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataSets\dsCostRevenue.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCostRevenue.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsCostRevenue.vb">
+      <DependentUpon>dsCostRevenue.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsIncomingInvoiceLines.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Grid2Grid.Designer.vb">
+      <DependentUpon>Grid2Grid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Grid2Grid.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\RibbonForm2.Designer.vb">
       <DependentUpon>RibbonForm2.vb</DependentUpon>
     </Compile>
@@ -142,6 +170,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="UnitTests\Tests.vb" />
     <Compile Include="UserControls\ucTableReturn.Designer.vb">
       <DependentUpon>ucTableReturn.vb</DependentUpon>
     </Compile>
@@ -174,6 +203,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\Grid2Grid.resx">
+      <DependentUpon>Grid2Grid.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\GridConrolForm.resx">
       <DependentUpon>GridConrolForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -213,6 +245,28 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DataSets\dsCostRevenue.xsc">
+      <DependentUpon>dsCostRevenue.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsCostRevenue.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCostRevenue.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsCostRevenue.xss">
+      <DependentUpon>dsCostRevenue.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsIncomingInvoiceLines.xsc">
+      <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsIncomingInvoiceLines.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsIncomingInvoiceLines.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsIncomingInvoiceLines.xss">
+      <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
