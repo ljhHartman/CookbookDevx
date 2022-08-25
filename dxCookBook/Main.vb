@@ -38,4 +38,12 @@
     Private Sub CloseTabControleActionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseTabControleActionToolStripMenuItem.Click
         CloseTabControleAction.Show()
     End Sub
+
+    Private Sub DXErrorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DXErrorToolStripMenuItem.Click
+        DXError.Show()
+    End Sub
+
+    Private Sub DXErrorNumberToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DXErrorNumberToolStripMenuItem.Click
+        DXErrorNummers.Show()
+    End Sub
 End Class

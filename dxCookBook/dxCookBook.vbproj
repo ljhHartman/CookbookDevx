@@ -113,40 +113,52 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CloseTabControleAction.Designer.vb">
+    <Compile Include="Forms\UI\CloseTabControleAction.Designer.vb">
       <DependentUpon>CloseTabControleAction.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\CloseTabControleAction.vb">
+    <Compile Include="Forms\UI\CloseTabControleAction.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Grid2Grid.Designer.vb">
+    <Compile Include="Forms\Util\DXError.Designer.vb">
+      <DependentUpon>DXError.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Util\DXError.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\UI\Grid2Grid.Designer.vb">
       <DependentUpon>Grid2Grid.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Grid2Grid.vb">
+    <Compile Include="Forms\UI\Grid2Grid.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\RibbonForm2.Designer.vb">
+    <Compile Include="Forms\UI\RibbonForm2.Designer.vb">
       <DependentUpon>RibbonForm2.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\RibbonForm2.vb">
+    <Compile Include="Forms\UI\RibbonForm2.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SampleForm.Designer.vb">
+    <Compile Include="Forms\UI\SampleForm.Designer.vb">
       <DependentUpon>SampleForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SampleForm.vb">
+    <Compile Include="Forms\UI\SampleForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\XtraDialogArgs1.Designer.vb">
+    <Compile Include="Forms\UI\XtraDialogArgs1.Designer.vb">
       <DependentUpon>XtraDialogArgs1.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\XtraDialogArgs1.vb">
+    <Compile Include="Forms\UI\XtraDialogArgs1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GridControlFooter.Designer.vb">
+    <Compile Include="Forms\UI\GridControlFooter.Designer.vb">
       <DependentUpon>GridControlFooter.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GridControlFooter.vb">
+    <Compile Include="Forms\UI\GridControlFooter.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Util\DXErrorNummers.Designer.vb">
+      <DependentUpon>DXErrorNummers.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Util\DXErrorNummers.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Main.vb">
@@ -156,10 +168,10 @@
       <DependentUpon>Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\GridConrolForm.Designer.vb">
+    <Compile Include="Forms\UI\GridConrolForm.Designer.vb">
       <DependentUpon>GridConrolForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\GridConrolForm.vb">
+    <Compile Include="Forms\UI\GridConrolForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -201,40 +213,46 @@
     <Compile Include="UserControls\ucExample.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\XtraDialog2.Designer.vb">
+    <Compile Include="Forms\UI\XtraDialog2.Designer.vb">
       <DependentUpon>XtraDialog2.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\XtraDialog2.vb">
+    <Compile Include="Forms\UI\XtraDialog2.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\XtraDialogArgsTable.Designer.vb">
+    <Compile Include="Forms\UI\XtraDialogArgsTable.Designer.vb">
       <DependentUpon>XtraDialogArgsTable.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\XtraDialogArgsTable.vb">
+    <Compile Include="Forms\UI\XtraDialogArgsTable.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\CloseTabControleAction.resx">
+    <EmbeddedResource Include="Forms\UI\CloseTabControleAction.resx">
       <DependentUpon>CloseTabControleAction.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Grid2Grid.resx">
+    <EmbeddedResource Include="Forms\UI\Grid2Grid.resx">
       <DependentUpon>Grid2Grid.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GridConrolForm.resx">
+    <EmbeddedResource Include="Forms\UI\GridConrolForm.resx">
       <DependentUpon>GridConrolForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\RibbonForm2.resx">
+    <EmbeddedResource Include="Forms\UI\RibbonForm2.resx">
       <DependentUpon>RibbonForm2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SampleForm.resx">
+    <EmbeddedResource Include="Forms\UI\SampleForm.resx">
       <DependentUpon>SampleForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\XtraDialogArgs1.resx">
+    <EmbeddedResource Include="Forms\UI\XtraDialogArgs1.resx">
       <DependentUpon>XtraDialogArgs1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\GridControlFooter.resx">
+    <EmbeddedResource Include="Forms\UI\GridControlFooter.resx">
       <DependentUpon>GridControlFooter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Util\DXError.resx">
+      <DependentUpon>DXError.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Util\DXErrorNummers.resx">
+      <DependentUpon>DXErrorNummers.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
@@ -252,10 +270,10 @@
     <EmbeddedResource Include="UserControls\ucExample.resx">
       <DependentUpon>ucExample.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\XtraDialog2.resx">
+    <EmbeddedResource Include="Forms\UI\XtraDialog2.resx">
       <DependentUpon>XtraDialog2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\XtraDialogArgsTable.resx">
+    <EmbeddedResource Include="Forms\UI\XtraDialogArgsTable.resx">
       <DependentUpon>XtraDialogArgsTable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucTableReturn.resx">
