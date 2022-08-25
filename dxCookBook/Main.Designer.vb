@@ -34,8 +34,9 @@ Partial Class Main
         Me.ViewDataSetGridToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CloseTabControleActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DXErrorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.DXErrorNumberToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.MessageBoxErrorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -48,7 +49,7 @@ Partial Class Main
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem, Me.ViewDataSetGridToolStripMenuItem, Me.CloseTabControleActionToolStripMenuItem, Me.DXErrorToolStripMenuItem, Me.DXErrorNumberToolStripMenuItem})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem, Me.ViewDataSetGridToolStripMenuItem, Me.CloseTabControleActionToolStripMenuItem, Me.DXErrorToolStripMenuItem, Me.DXErrorNumberToolStripMenuItem, Me.MessageBoxErrorToolStripMenuItem})
         resources.ApplyResources(Me.ToolStripDropDownButton1, "ToolStripDropDownButton1")
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
         '
@@ -97,15 +98,20 @@ Partial Class Main
         Me.DXErrorToolStripMenuItem.Name = "DXErrorToolStripMenuItem"
         resources.ApplyResources(Me.DXErrorToolStripMenuItem, "DXErrorToolStripMenuItem")
         '
+        'DXErrorNumberToolStripMenuItem
+        '
+        Me.DXErrorNumberToolStripMenuItem.Name = "DXErrorNumberToolStripMenuItem"
+        resources.ApplyResources(Me.DXErrorNumberToolStripMenuItem, "DXErrorNumberToolStripMenuItem")
+        '
         'ToolStrip2
         '
         resources.ApplyResources(Me.ToolStrip2, "ToolStrip2")
         Me.ToolStrip2.Name = "ToolStrip2"
         '
-        'DXErrorNumberToolStripMenuItem
+        'MessageBoxErrorToolStripMenuItem
         '
-        Me.DXErrorNumberToolStripMenuItem.Name = "DXErrorNumberToolStripMenuItem"
-        resources.ApplyResources(Me.DXErrorNumberToolStripMenuItem, "DXErrorNumberToolStripMenuItem")
+        Me.MessageBoxErrorToolStripMenuItem.Name = "MessageBoxErrorToolStripMenuItem"
+        resources.ApplyResources(Me.MessageBoxErrorToolStripMenuItem, "MessageBoxErrorToolStripMenuItem")
         '
         'Main
         '
@@ -134,4 +140,5 @@ Partial Class Main
     Friend WithEvents CloseTabControleActionToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DXErrorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DXErrorNumberToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MessageBoxErrorToolStripMenuItem As ToolStripMenuItem
 End Class

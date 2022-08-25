@@ -22,15 +22,15 @@ Public Class DXErrorNummers
         Dim intVar As Integer
         If Integer.TryParse(TextEdit1.Text, intVar) Then 'Try to parse user inpt to Integer variable 
             If intVar < 0 Or intVar > 100 Then
-                ' Show Icon
-                DxErrorProvider1.SetError(TextEdit1, "Must be between 0 and 100", ErrorType.User1)
+                ' Show Custom Icon
+                DxErrorProvider1.SetError(TextEdit1, $"{Label1.Text} must be between 0 and 100", ErrorType.User1)
             Else
                 ' Don't show Icon
                 DxErrorProvider1.SetError(TextEdit1, Nothing, Nothing)
             End If
         Else
-            ' Show Icon
-            DxErrorProvider1.SetError(TextEdit1, "Field is empty", ErrorType.User1)
+            ' Show Warning Icon
+            DxErrorProvider1.SetError(TextEdit1, $"{Label1.Text} field is empty", ErrorType.Warning)
         End If
 
 

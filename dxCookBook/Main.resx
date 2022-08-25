@@ -181,6 +181,12 @@
   <data name="DXErrorNumberToolStripMenuItem.Text" xml:space="preserve">
     <value>DXError Number</value>
   </data>
+  <data name="MessageBoxErrorToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="MessageBoxErrorToolStripMenuItem.Text" xml:space="preserve">
+    <value>MessageBoxError</value>
+  </data>
   <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -337,6 +343,12 @@
     <value>DXErrorNumberToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;DXErrorNumberToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;MessageBoxErrorToolStripMenuItem.Name" xml:space="preserve">
+    <value>MessageBoxErrorToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;MessageBoxErrorToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

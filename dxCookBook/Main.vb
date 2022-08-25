@@ -46,4 +46,8 @@
     Private Sub DXErrorNumberToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DXErrorNumberToolStripMenuItem.Click
         DXErrorNummers.Show()
     End Sub
+
+    Private Sub MessageBoxErrorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MessageBoxErrorToolStripMenuItem.Click
+        MessageBoxError.Show()
+    End Sub
 End Class

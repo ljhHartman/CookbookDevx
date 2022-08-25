@@ -161,6 +161,12 @@
     <Compile Include="Forms\Util\DXErrorNummers.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Util\MessageBoxError.Designer.vb">
+      <DependentUpon>MessageBoxError.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Util\MessageBoxError.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Main.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -253,6 +259,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Util\DXErrorNummers.resx">
       <DependentUpon>DXErrorNummers.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Util\MessageBoxError.resx">
+      <DependentUpon>MessageBoxError.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.vb</DependentUpon>
