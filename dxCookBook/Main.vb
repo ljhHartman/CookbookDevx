@@ -34,4 +34,8 @@
     Private Sub ViewDataSetGridToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewDataSetGridToolStripMenuItem.Click
         Grid2Grid.Show()
     End Sub
+
+    Private Sub CloseTabControleActionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseTabControleActionToolStripMenuItem.Click
+        CloseTabControleAction.Show()
+    End Sub
 End Class

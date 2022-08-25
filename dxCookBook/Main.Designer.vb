@@ -31,8 +31,9 @@ Partial Class Main
         Me.XtraDialogArgsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.XtraDialogReturnTableToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GridControlFooterToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.ViewDataSetGridToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.CloseTabControleActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -45,7 +46,7 @@ Partial Class Main
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem, Me.ViewDataSetGridToolStripMenuItem})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem, Me.ViewDataSetGridToolStripMenuItem, Me.CloseTabControleActionToolStripMenuItem})
         resources.ApplyResources(Me.ToolStripDropDownButton1, "ToolStripDropDownButton1")
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
         '
@@ -79,15 +80,20 @@ Partial Class Main
         Me.GridControlFooterToolStripMenuItem.Name = "GridControlFooterToolStripMenuItem"
         resources.ApplyResources(Me.GridControlFooterToolStripMenuItem, "GridControlFooterToolStripMenuItem")
         '
+        'ViewDataSetGridToolStripMenuItem
+        '
+        Me.ViewDataSetGridToolStripMenuItem.Name = "ViewDataSetGridToolStripMenuItem"
+        resources.ApplyResources(Me.ViewDataSetGridToolStripMenuItem, "ViewDataSetGridToolStripMenuItem")
+        '
         'ToolStrip2
         '
         resources.ApplyResources(Me.ToolStrip2, "ToolStrip2")
         Me.ToolStrip2.Name = "ToolStrip2"
         '
-        'ViewDataSetGridToolStripMenuItem
+        'CloseTabControleActionToolStripMenuItem
         '
-        Me.ViewDataSetGridToolStripMenuItem.Name = "ViewDataSetGridToolStripMenuItem"
-        resources.ApplyResources(Me.ViewDataSetGridToolStripMenuItem, "ViewDataSetGridToolStripMenuItem")
+        Me.CloseTabControleActionToolStripMenuItem.Name = "CloseTabControleActionToolStripMenuItem"
+        resources.ApplyResources(Me.CloseTabControleActionToolStripMenuItem, "CloseTabControleActionToolStripMenuItem")
         '
         'Main
         '
@@ -113,4 +119,5 @@ Partial Class Main
     Friend WithEvents XtraDialogReturnTableToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents GridControlFooterToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ViewDataSetGridToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents CloseTabControleActionToolStripMenuItem As ToolStripMenuItem
 End Class

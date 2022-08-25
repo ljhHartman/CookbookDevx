@@ -122,7 +122,7 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="XtraDialogToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>197, 22</value>
+    <value>202, 22</value>
   </data>
   <data name="XtraDialogToolStripMenuItem.Text" xml:space="preserve">
     <value>Xtra Dialog</value>
@@ -162,6 +162,12 @@
   </data>
   <data name="ViewDataSetGridToolStripMenuItem.Text" xml:space="preserve">
     <value>ViewDataSetGrid</value>
+  </data>
+  <data name="CloseTabControleActionToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="CloseTabControleActionToolStripMenuItem.Text" xml:space="preserve">
+    <value>CloseTabControleAction</value>
   </data>
   <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -301,6 +307,12 @@
     <value>ViewDataSetGridToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;ViewDataSetGridToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;CloseTabControleActionToolStripMenuItem.Name" xml:space="preserve">
+    <value>CloseTabControleActionToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;CloseTabControleActionToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

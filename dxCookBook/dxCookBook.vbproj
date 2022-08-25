@@ -113,6 +113,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CloseTabControleAction.Designer.vb">
+      <DependentUpon>CloseTabControleAction.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\CloseTabControleAction.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Grid2Grid.Designer.vb">
       <DependentUpon>Grid2Grid.vb</DependentUpon>
     </Compile>
@@ -123,6 +129,12 @@
       <DependentUpon>RibbonForm2.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\RibbonForm2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SampleForm.Designer.vb">
+      <DependentUpon>SampleForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SampleForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\XtraDialogArgs1.Designer.vb">
@@ -203,6 +215,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\CloseTabControleAction.resx">
+      <DependentUpon>CloseTabControleAction.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Grid2Grid.resx">
       <DependentUpon>Grid2Grid.vb</DependentUpon>
     </EmbeddedResource>
@@ -211,6 +226,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\RibbonForm2.resx">
       <DependentUpon>RibbonForm2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SampleForm.resx">
+      <DependentUpon>SampleForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\XtraDialogArgs1.resx">
       <DependentUpon>XtraDialogArgs1.vb</DependentUpon>
