@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.2017
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "dxCookBook", "dxCookBook\dxCookBook.vbproj", "{B93BA5E7-90DC-4C41-83D3-E7BF079B74B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sslDataTextBox", "sslDataTextBox\sslDataTextBox.csproj", "{CABDCBB5-0874-4539-81A2-8E74F777E4ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{B93BA5E7-90DC-4C41-83D3-E7BF079B74B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B93BA5E7-90DC-4C41-83D3-E7BF079B74B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B93BA5E7-90DC-4C41-83D3-E7BF079B74B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CABDCBB5-0874-4539-81A2-8E74F777E4ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CABDCBB5-0874-4539-81A2-8E74F777E4ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CABDCBB5-0874-4539-81A2-8E74F777E4ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CABDCBB5-0874-4539-81A2-8E74F777E4ED}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -22,17 +22,17 @@ Partial Class RibbonForm2
         Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(RibbonForm2))
         Me.RibbonControl = New DevExpress.XtraBars.Ribbon.RibbonControl()
+        Me.btnOffice2007 = New DevExpress.XtraBars.BarButtonItem()
+        Me.btnShowStatusBar = New DevExpress.XtraBars.BarButtonItem()
+        Me.SkinRibbonGalleryBarItem1 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
         Me.RibbonPage1 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup1 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.RibbonPage2 = New DevExpress.XtraBars.Ribbon.RibbonPage()
         Me.RibbonPageGroup2 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
         Me.RibbonPageGroup3 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.btnOffice2007 = New DevExpress.XtraBars.BarButtonItem()
         Me.RibbonPageGroup4 = New DevExpress.XtraBars.Ribbon.RibbonPageGroup()
-        Me.btnShowStatusBar = New DevExpress.XtraBars.BarButtonItem()
+        Me.RibbonStatusBar = New DevExpress.XtraBars.Ribbon.RibbonStatusBar()
         Me.DefaultLookAndFeel1 = New DevExpress.LookAndFeel.DefaultLookAndFeel(Me.components)
-        Me.SkinRibbonGalleryBarItem1 = New DevExpress.XtraBars.SkinRibbonGalleryBarItem()
         CType(Me.RibbonControl, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -41,11 +41,32 @@ Partial Class RibbonForm2
         Me.RibbonControl.ExpandCollapseItem.Id = 0
         Me.RibbonControl.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.RibbonControl.ExpandCollapseItem, Me.btnOffice2007, Me.btnShowStatusBar, Me.SkinRibbonGalleryBarItem1})
         Me.RibbonControl.Location = New System.Drawing.Point(0, 0)
+        Me.RibbonControl.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.RibbonControl.MaxItemId = 4
         Me.RibbonControl.Name = "RibbonControl"
         Me.RibbonControl.Pages.AddRange(New DevExpress.XtraBars.Ribbon.RibbonPage() {Me.RibbonPage1, Me.RibbonPage2})
-        Me.RibbonControl.Size = New System.Drawing.Size(450, 146)
+        Me.RibbonControl.Size = New System.Drawing.Size(525, 185)
         Me.RibbonControl.StatusBar = Me.RibbonStatusBar
+        '
+        'btnOffice2007
+        '
+        Me.btnOffice2007.Caption = "btnOffice2007"
+        Me.btnOffice2007.Id = 1
+        Me.btnOffice2007.ImageOptions.SvgImage = CType(resources.GetObject("btnOffice2007.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnOffice2007.Name = "btnOffice2007"
+        '
+        'btnShowStatusBar
+        '
+        Me.btnShowStatusBar.Caption = "Show Statusbar"
+        Me.btnShowStatusBar.Id = 2
+        Me.btnShowStatusBar.ImageOptions.SvgImage = CType(resources.GetObject("btnShowStatusBar.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
+        Me.btnShowStatusBar.Name = "btnShowStatusBar"
+        '
+        'SkinRibbonGalleryBarItem1
+        '
+        Me.SkinRibbonGalleryBarItem1.Caption = "SkinRibbonGalleryBarItem1"
+        Me.SkinRibbonGalleryBarItem1.Id = 3
+        Me.SkinRibbonGalleryBarItem1.Name = "SkinRibbonGalleryBarItem1"
         '
         'RibbonPage1
         '
@@ -57,13 +78,6 @@ Partial Class RibbonForm2
         '
         Me.RibbonPageGroup1.Name = "RibbonPageGroup1"
         Me.RibbonPageGroup1.Text = "RibbonPageGroup1"
-        '
-        'RibbonStatusBar
-        '
-        Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 428)
-        Me.RibbonStatusBar.Name = "RibbonStatusBar"
-        Me.RibbonStatusBar.Ribbon = Me.RibbonControl
-        Me.RibbonStatusBar.Size = New System.Drawing.Size(450, 21)
         '
         'RibbonPage2
         '
@@ -83,43 +97,32 @@ Partial Class RibbonForm2
         Me.RibbonPageGroup3.Name = "RibbonPageGroup3"
         Me.RibbonPageGroup3.Text = "RibbonPageGroup3"
         '
-        'btnOffice2007
-        '
-        Me.btnOffice2007.Caption = "btnOffice2007"
-        Me.btnOffice2007.Id = 1
-        Me.btnOffice2007.ImageOptions.SvgImage = CType(resources.GetObject("BarButtonItem1.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btnOffice2007.Name = "btnOffice2007"
-        '
         'RibbonPageGroup4
         '
         Me.RibbonPageGroup4.ItemLinks.Add(Me.btnShowStatusBar)
         Me.RibbonPageGroup4.Name = "RibbonPageGroup4"
         Me.RibbonPageGroup4.Text = "RibbonPageGroup4"
         '
-        'btnShowStatusBar
+        'RibbonStatusBar
         '
-        Me.btnShowStatusBar.Caption = "Show Statusbar"
-        Me.btnShowStatusBar.Id = 2
-        Me.btnShowStatusBar.ImageOptions.SvgImage = CType(resources.GetObject("btnShowStatusBar.ImageOptions.SvgImage"), DevExpress.Utils.Svg.SvgImage)
-        Me.btnShowStatusBar.Name = "btnShowStatusBar"
+        Me.RibbonStatusBar.Location = New System.Drawing.Point(0, 525)
+        Me.RibbonStatusBar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.RibbonStatusBar.Name = "RibbonStatusBar"
+        Me.RibbonStatusBar.Ribbon = Me.RibbonControl
+        Me.RibbonStatusBar.Size = New System.Drawing.Size(525, 28)
         '
         'DefaultLookAndFeel1
         '
         Me.DefaultLookAndFeel1.LookAndFeel.SkinName = "Office 2016 Colorful"
         '
-        'SkinRibbonGalleryBarItem1
-        '
-        Me.SkinRibbonGalleryBarItem1.Caption = "SkinRibbonGalleryBarItem1"
-        Me.SkinRibbonGalleryBarItem1.Id = 3
-        Me.SkinRibbonGalleryBarItem1.Name = "SkinRibbonGalleryBarItem1"
-        '
         'RibbonForm2
         '
-        Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
+        Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 16.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(450, 449)
+        Me.ClientSize = New System.Drawing.Size(525, 553)
         Me.Controls.Add(Me.RibbonStatusBar)
         Me.Controls.Add(Me.RibbonControl)
+        Me.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Name = "RibbonForm2"
         Me.Ribbon = Me.RibbonControl
         Me.StatusBar = Me.RibbonStatusBar

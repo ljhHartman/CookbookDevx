@@ -50,4 +50,8 @@
     Private Sub MessageBoxErrorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MessageBoxErrorToolStripMenuItem.Click
         MessageBoxError.Show()
     End Sub
+
+    Private Sub InputBoxAutocompleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InputBoxAutocompleteToolStripMenuItem.Click
+        InputBoxAutocomplete.Show()
+    End Sub
 End Class

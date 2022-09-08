@@ -108,16 +108,33 @@
     <Compile Include="DataSets\dsCostRevenue.vb">
       <DependentUpon>dsCostRevenue.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsDepots.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsDepots.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsIncomingInvoiceLines.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UI\CloseTabControleAction.Designer.vb">
+    <Compile Include="Forms\inputBox\InputBoxAutocomplete.Designer.vb">
+      <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\inputBox\InputBoxAutocomplete.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\tabs\CloseTabControleAction.Designer.vb">
       <DependentUpon>CloseTabControleAction.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UI\CloseTabControleAction.vb">
+    <Compile Include="Forms\tabs\CloseTabControleAction.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\userControl\ucSelectDepotCode.Designer.vb">
+      <DependentUpon>ucSelectDepotCode.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\userControl\ucSelectDepotCode.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\Util\DXError.Designer.vb">
       <DependentUpon>DXError.vb</DependentUpon>
@@ -125,10 +142,10 @@
     <Compile Include="Forms\Util\DXError.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UI\Grid2Grid.Designer.vb">
+    <Compile Include="Forms\gridControl\Grid2Grid.Designer.vb">
       <DependentUpon>Grid2Grid.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UI\Grid2Grid.vb">
+    <Compile Include="Forms\gridControl\Grid2Grid.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\UI\RibbonForm2.Designer.vb">
@@ -143,16 +160,16 @@
     <Compile Include="Forms\UI\SampleForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UI\XtraDialogArgs1.Designer.vb">
+    <Compile Include="Forms\inputBox\XtraDialogArgs1.Designer.vb">
       <DependentUpon>XtraDialogArgs1.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UI\XtraDialogArgs1.vb">
+    <Compile Include="Forms\inputBox\XtraDialogArgs1.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UI\GridControlFooter.Designer.vb">
+    <Compile Include="Forms\gridControl\GridControlFooter.Designer.vb">
       <DependentUpon>GridControlFooter.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UI\GridControlFooter.vb">
+    <Compile Include="Forms\gridControl\GridControlFooter.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\Util\DXErrorNummers.Designer.vb">
@@ -174,10 +191,10 @@
       <DependentUpon>Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UI\GridConrolForm.Designer.vb">
+    <Compile Include="Forms\gridControl\GridConrolForm.Designer.vb">
       <DependentUpon>GridConrolForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UI\GridConrolForm.vb">
+    <Compile Include="Forms\gridControl\GridConrolForm.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -219,27 +236,30 @@
     <Compile Include="UserControls\ucExample.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Forms\UI\XtraDialog2.Designer.vb">
+    <Compile Include="Forms\inputBox\XtraDialog2.Designer.vb">
       <DependentUpon>XtraDialog2.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UI\XtraDialog2.vb">
+    <Compile Include="Forms\inputBox\XtraDialog2.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\UI\XtraDialogArgsTable.Designer.vb">
+    <Compile Include="Forms\inputBox\XtraDialogArgsTable.Designer.vb">
       <DependentUpon>XtraDialogArgsTable.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\UI\XtraDialogArgsTable.vb">
+    <Compile Include="Forms\inputBox\XtraDialogArgsTable.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\UI\CloseTabControleAction.resx">
+    <EmbeddedResource Include="Forms\inputBox\InputBoxAutocomplete.resx">
+      <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\tabs\CloseTabControleAction.resx">
       <DependentUpon>CloseTabControleAction.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UI\Grid2Grid.resx">
+    <EmbeddedResource Include="Forms\gridControl\Grid2Grid.resx">
       <DependentUpon>Grid2Grid.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UI\GridConrolForm.resx">
+    <EmbeddedResource Include="Forms\gridControl\GridConrolForm.resx">
       <DependentUpon>GridConrolForm.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UI\RibbonForm2.resx">
@@ -248,11 +268,14 @@
     <EmbeddedResource Include="Forms\UI\SampleForm.resx">
       <DependentUpon>SampleForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UI\XtraDialogArgs1.resx">
+    <EmbeddedResource Include="Forms\inputBox\XtraDialogArgs1.resx">
       <DependentUpon>XtraDialogArgs1.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UI\GridControlFooter.resx">
+    <EmbeddedResource Include="Forms\gridControl\GridControlFooter.resx">
       <DependentUpon>GridControlFooter.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\userControl\ucSelectDepotCode.resx">
+      <DependentUpon>ucSelectDepotCode.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Util\DXError.resx">
       <DependentUpon>DXError.vb</DependentUpon>
@@ -279,10 +302,10 @@
     <EmbeddedResource Include="UserControls\ucExample.resx">
       <DependentUpon>ucExample.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UI\XtraDialog2.resx">
+    <EmbeddedResource Include="Forms\inputBox\XtraDialog2.resx">
       <DependentUpon>XtraDialog2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\UI\XtraDialogArgsTable.resx">
+    <EmbeddedResource Include="Forms\inputBox\XtraDialogArgsTable.resx">
       <DependentUpon>XtraDialogArgsTable.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucTableReturn.resx">
@@ -300,6 +323,17 @@
     </None>
     <None Include="DataSets\dsCostRevenue.xss">
       <DependentUpon>dsCostRevenue.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsDepots.xsc">
+      <DependentUpon>dsDepots.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsDepots.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDepots.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\dsDepots.xss">
+      <DependentUpon>dsDepots.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsIncomingInvoiceLines.xsc">
       <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
@@ -334,6 +368,11 @@
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\sslDataTextBox\sslDataTextBox.csproj">
+      <Project>{cabdcbb5-0874-4539-81a2-8e74f777e4ed}</Project>
+      <Name>sslDataTextBox</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

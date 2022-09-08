@@ -35,21 +35,24 @@ Partial Class Main
         Me.CloseTabControleActionToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DXErrorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DXErrorNumberToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.MessageBoxErrorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.InputBoxAutocompleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStrip1
         '
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1})
+        Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripButton1})
         resources.ApplyResources(Me.ToolStrip1, "ToolStrip1")
         Me.ToolStrip1.Name = "ToolStrip1"
         '
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem, Me.ViewDataSetGridToolStripMenuItem, Me.CloseTabControleActionToolStripMenuItem, Me.DXErrorToolStripMenuItem, Me.DXErrorNumberToolStripMenuItem, Me.MessageBoxErrorToolStripMenuItem})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem, Me.ViewDataSetGridToolStripMenuItem, Me.CloseTabControleActionToolStripMenuItem, Me.DXErrorToolStripMenuItem, Me.DXErrorNumberToolStripMenuItem, Me.MessageBoxErrorToolStripMenuItem, Me.InputBoxAutocompleteToolStripMenuItem})
         resources.ApplyResources(Me.ToolStripDropDownButton1, "ToolStripDropDownButton1")
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
         '
@@ -103,15 +106,27 @@ Partial Class Main
         Me.DXErrorNumberToolStripMenuItem.Name = "DXErrorNumberToolStripMenuItem"
         resources.ApplyResources(Me.DXErrorNumberToolStripMenuItem, "DXErrorNumberToolStripMenuItem")
         '
-        'ToolStrip2
-        '
-        resources.ApplyResources(Me.ToolStrip2, "ToolStrip2")
-        Me.ToolStrip2.Name = "ToolStrip2"
-        '
         'MessageBoxErrorToolStripMenuItem
         '
         Me.MessageBoxErrorToolStripMenuItem.Name = "MessageBoxErrorToolStripMenuItem"
         resources.ApplyResources(Me.MessageBoxErrorToolStripMenuItem, "MessageBoxErrorToolStripMenuItem")
+        '
+        'ToolStrip2
+        '
+        Me.ToolStrip2.ImageScalingSize = New System.Drawing.Size(20, 20)
+        resources.ApplyResources(Me.ToolStrip2, "ToolStrip2")
+        Me.ToolStrip2.Name = "ToolStrip2"
+        '
+        'ToolStripButton1
+        '
+        Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.ToolStripButton1, "ToolStripButton1")
+        Me.ToolStripButton1.Name = "ToolStripButton1"
+        '
+        'InputBoxAutocompleteToolStripMenuItem
+        '
+        Me.InputBoxAutocompleteToolStripMenuItem.Name = "InputBoxAutocompleteToolStripMenuItem"
+        resources.ApplyResources(Me.InputBoxAutocompleteToolStripMenuItem, "InputBoxAutocompleteToolStripMenuItem")
         '
         'Main
         '
@@ -141,4 +156,6 @@ Partial Class Main
     Friend WithEvents DXErrorToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DXErrorNumberToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MessageBoxErrorToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents InputBoxAutocompleteToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripButton1 As ToolStripButton
 End Class

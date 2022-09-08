@@ -94,6 +94,10 @@ Public Class RibbonForm2
         RibbonControl.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.OfficeUniversal
     End Sub
 
+    Private Sub RibbonControl_Click(sender As Object, e As EventArgs) Handles RibbonControl.Click
+
+    End Sub
+
 #End Region
 
 
