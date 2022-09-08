@@ -118,6 +118,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsRelationDepot.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsRelationDepot.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\dsRelationDepot.vb">
+      <DependentUpon>dsRelationDepot.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\inputBox\InputBoxAutocomplete.Designer.vb">
       <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
     </Compile>
@@ -345,6 +353,17 @@
     </None>
     <None Include="DataSets\dsIncomingInvoiceLines.xss">
       <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsRelationDepot.xsc">
+      <DependentUpon>dsRelationDepot.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsRelationDepot.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsRelationDepot.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\dsRelationDepot.xss">
+      <DependentUpon>dsRelationDepot.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

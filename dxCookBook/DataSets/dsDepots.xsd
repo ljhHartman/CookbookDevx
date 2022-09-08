@@ -4,12 +4,12 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SSLTESTConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SSLTESTConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.dxCookBook.My.MySettings.GlobalReference.Default.SSLTESTConnectionString" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="conSsl" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="conSsl (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.dxCookBook.My.MySettings.GlobalReference.Default.conSsl" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="spDepotTableAdapter" GeneratorDataComponentClassName="spDepotTableAdapter" Name="spDepot" UserDataComponentName="spDepotTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="SSLTESTConnectionString (MySettings)" DbObjectName="SSLTEST.dbo.spDepot" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="conSsl (MySettings)" DbObjectName="SSLTEST.dbo.spDepot" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.spDepot</CommandText>
@@ -31,7 +31,7 @@
               <Mapping SourceColumn="COUNTRY" DataSetColumn="COUNTRY" />
             </Mappings>
             <Sources>
-              <DbSource ConnectionRef="SSLTESTConnectionString (MySettings)" DbObjectName="SSLTEST.dbo.Depot" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillSelect" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillSelect" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillSelect">
+              <DbSource ConnectionRef="conSsl (MySettings)" DbObjectName="SSLTEST.dbo.Depot" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillSelect" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetDataBy" GeneratorSourceName="FillSelect" GetMethodModifier="Public" GetMethodName="GetDataBy" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetDataBy" UserSourceName="FillSelect">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT DEPOTCODE, NAAM
@@ -50,7 +50,7 @@ FROM     Depot</CommandText>
   <xs:element name="dsDepots" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsDepots" msprop:Generator_UserDSName="dsDepots">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="spDepot" msprop:Generator_TableClassName="spDepotDataTable" msprop:Generator_TableVarName="tablespDepot" msprop:Generator_RowChangedName="spDepotRowChanged" msprop:Generator_TablePropName="spDepot" msprop:Generator_RowDeletingName="spDepotRowDeleting" msprop:Generator_RowChangingName="spDepotRowChanging" msprop:Generator_RowEvHandlerName="spDepotRowChangeEventHandler" msprop:Generator_RowDeletedName="spDepotRowDeleted" msprop:Generator_RowClassName="spDepotRow" msprop:Generator_UserTableName="spDepot" msprop:Generator_RowEvArgName="spDepotRowChangeEvent">
+        <xs:element name="spDepot" msprop:Generator_TableClassName="spDepotDataTable" msprop:Generator_TableVarName="tablespDepot" msprop:Generator_TablePropName="spDepot" msprop:Generator_RowDeletingName="spDepotRowDeleting" msprop:Generator_RowChangingName="spDepotRowChanging" msprop:Generator_RowEvHandlerName="spDepotRowChangeEventHandler" msprop:Generator_RowDeletedName="spDepotRowDeleted" msprop:Generator_UserTableName="spDepot" msprop:Generator_RowChangedName="spDepotRowChanged" msprop:Generator_RowEvArgName="spDepotRowChangeEvent" msprop:Generator_RowClassName="spDepotRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="DEPOTCODE" msprop:Generator_ColumnVarNameInTable="columnDEPOTCODE" msprop:Generator_ColumnPropNameInRow="DEPOTCODE" msprop:Generator_ColumnPropNameInTable="DEPOTCODEColumn" msprop:Generator_UserColumnName="DEPOTCODE">

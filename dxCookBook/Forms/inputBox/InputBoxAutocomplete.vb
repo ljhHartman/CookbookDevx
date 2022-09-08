@@ -15,7 +15,7 @@
 
     Private Sub btnXtraDialog_Click(sender As Object, e As EventArgs)
 
-        Dim uc As New ucSelectDepotCode()
+        Dim uc As New ucSelectDepotCode("My_Relation_Code", "Depot")
         DevExpress.XtraEditors.XtraDialog.Show(uc, "Add Depot", MessageBoxButtons.OKCancel)
 
 

@@ -27,9 +27,9 @@ Partial Class DXError
         Me.Label2 = New System.Windows.Forms.Label()
         Me.TextEdit1 = New DevExpress.XtraEditors.TextEdit()
         Me.TextEdit2 = New DevExpress.XtraEditors.TextEdit()
+        Me.Button1 = New System.Windows.Forms.Button()
         Me.DxErrorProvider1 = New DevExpress.XtraEditors.DXErrorProvider.DXErrorProvider()
         Me.BindingSource1 = New System.Windows.Forms.BindingSource()
-        Me.Button1 = New System.Windows.Forms.Button()
         Me.TableLayoutPanel1.SuspendLayout()
         CType(Me.TextEdit1.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.TextEdit2.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -96,10 +96,6 @@ Partial Class DXError
         Me.TextEdit2.Size = New System.Drawing.Size(256, 20)
         Me.TextEdit2.TabIndex = 4
         '
-        'DxErrorProvider1
-        '
-        Me.DxErrorProvider1.ContainerControl = Me
-        '
         'Button1
         '
         Me.Button1.Anchor = System.Windows.Forms.AnchorStyles.None
@@ -109,6 +105,10 @@ Partial Class DXError
         Me.Button1.TabIndex = 5
         Me.Button1.Text = "Check"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'DxErrorProvider1
+        '
+        Me.DxErrorProvider1.ContainerControl = Me
         '
         'DXError
         '

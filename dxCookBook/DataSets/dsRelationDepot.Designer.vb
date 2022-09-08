@@ -20,12 +20,12 @@ Option Explicit On
  Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
  Global.System.ComponentModel.ToolboxItem(true),  _
  Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema"),  _
- Global.System.Xml.Serialization.XmlRootAttribute("dsDepots"),  _
+ Global.System.Xml.Serialization.XmlRootAttribute("dsRelationDepot"),  _
  Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")>  _
-Partial Public Class dsDepots
+Partial Public Class dsRelationDepot
     Inherits Global.System.Data.DataSet
     
-    Private tablespDepot As spDepotDataTable
+    Private tableRelatieDepot As RelatieDepotDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -56,8 +56,8 @@ Partial Public Class dsDepots
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("spDepot")) Is Nothing) Then
-                MyBase.Tables.Add(New spDepotDataTable(ds.Tables("spDepot")))
+            If (Not (ds.Tables("RelatieDepot")) Is Nothing) Then
+                MyBase.Tables.Add(New RelatieDepotDataTable(ds.Tables("RelatieDepot")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -80,9 +80,9 @@ Partial Public Class dsDepots
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property spDepot() As spDepotDataTable
+    Public ReadOnly Property RelatieDepot() As RelatieDepotDataTable
         Get
-            Return Me.tablespDepot
+            Return Me.tableRelatieDepot
         End Get
     End Property
     
@@ -128,7 +128,7 @@ Partial Public Class dsDepots
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Overrides Function Clone() As Global.System.Data.DataSet
-        Dim cln As dsDepots = CType(MyBase.Clone,dsDepots)
+        Dim cln As dsRelationDepot = CType(MyBase.Clone,dsRelationDepot)
         cln.InitVars
         cln.SchemaSerializationMode = Me.SchemaSerializationMode
         Return cln
@@ -153,8 +153,8 @@ Partial Public Class dsDepots
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("spDepot")) Is Nothing) Then
-                MyBase.Tables.Add(New spDepotDataTable(ds.Tables("spDepot")))
+            If (Not (ds.Tables("RelatieDepot")) Is Nothing) Then
+                MyBase.Tables.Add(New RelatieDepotDataTable(ds.Tables("RelatieDepot")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -188,10 +188,10 @@ Partial Public Class dsDepots
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tablespDepot = CType(MyBase.Tables("spDepot"),spDepotDataTable)
+        Me.tableRelatieDepot = CType(MyBase.Tables("RelatieDepot"),RelatieDepotDataTable)
         If (initTable = true) Then
-            If (Not (Me.tablespDepot) Is Nothing) Then
-                Me.tablespDepot.InitVars
+            If (Not (Me.tableRelatieDepot) Is Nothing) Then
+                Me.tableRelatieDepot.InitVars
             End If
         End If
     End Sub
@@ -199,18 +199,18 @@ Partial Public Class dsDepots
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Private Sub InitClass()
-        Me.DataSetName = "dsDepots"
+        Me.DataSetName = "dsRelationDepot"
         Me.Prefix = ""
-        Me.Namespace = "http://tempuri.org/dsDepots.xsd"
+        Me.Namespace = "http://tempuri.org/dsRelationDepot.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tablespDepot = New spDepotDataTable()
-        MyBase.Tables.Add(Me.tablespDepot)
+        Me.tableRelatieDepot = New RelatieDepotDataTable()
+        MyBase.Tables.Add(Me.tableRelatieDepot)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Private Function ShouldSerializespDepot() As Boolean
+    Private Function ShouldSerializeRelatieDepot() As Boolean
         Return false
     End Function
     
@@ -225,7 +225,7 @@ Partial Public Class dsDepots
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
     Public Shared Function GetTypedDataSetSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
-        Dim ds As dsDepots = New dsDepots()
+        Dim ds As dsRelationDepot = New dsRelationDepot()
         Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
         Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
         Dim any As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
@@ -273,35 +273,27 @@ Partial Public Class dsDepots
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Delegate Sub spDepotRowChangeEventHandler(ByVal sender As Object, ByVal e As spDepotRowChangeEvent)
+    Public Delegate Sub RelatieDepotRowChangeEventHandler(ByVal sender As Object, ByVal e As RelatieDepotRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class spDepotDataTable
-        Inherits Global.System.Data.TypedTableBase(Of spDepotRow)
+    Partial Public Class RelatieDepotDataTable
+        Inherits Global.System.Data.TypedTableBase(Of RelatieDepotRow)
+        
+        Private columnID As Global.System.Data.DataColumn
+        
+        Private columnRELATIECODE As Global.System.Data.DataColumn
         
         Private columnDEPOTCODE As Global.System.Data.DataColumn
-        
-        Private columnNAAM As Global.System.Data.DataColumn
-        
-        Private columnSTRAAT As Global.System.Data.DataColumn
-        
-        Private columnPOSTCODE As Global.System.Data.DataColumn
-        
-        Private columnPLAATS As Global.System.Data.DataColumn
-        
-        Private columnLAND As Global.System.Data.DataColumn
-        
-        Private columnCOUNTRY As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "spDepot"
+            Me.TableName = "RelatieDepot"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -334,57 +326,25 @@ Partial Public Class dsDepots
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property IDColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public ReadOnly Property RELATIECODEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnRELATIECODE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public ReadOnly Property DEPOTCODEColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnDEPOTCODE
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property NAAMColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnNAAM
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property STRAATColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnSTRAAT
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property POSTCODEColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPOSTCODE
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property PLAATSColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPLAATS
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property LANDColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnLAND
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property COUNTRYColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnCOUNTRY
             End Get
         End Property
         
@@ -399,50 +359,50 @@ Partial Public Class dsDepots
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As spDepotRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As RelatieDepotRow
             Get
-                Return CType(Me.Rows(index),spDepotRow)
+                Return CType(Me.Rows(index),RelatieDepotRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event spDepotRowChanging As spDepotRowChangeEventHandler
+        Public Event RelatieDepotRowChanging As RelatieDepotRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event spDepotRowChanged As spDepotRowChangeEventHandler
+        Public Event RelatieDepotRowChanged As RelatieDepotRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event spDepotRowDeleting As spDepotRowChangeEventHandler
+        Public Event RelatieDepotRowDeleting As RelatieDepotRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Event spDepotRowDeleted As spDepotRowChangeEventHandler
+        Public Event RelatieDepotRowDeleted As RelatieDepotRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Sub AddspDepotRow(ByVal row As spDepotRow)
+        Public Overloads Sub AddRelatieDepotRow(ByVal row As RelatieDepotRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overloads Function AddspDepotRow(ByVal DEPOTCODE As String, ByVal NAAM As String, ByVal STRAAT As String, ByVal POSTCODE As String, ByVal PLAATS As String, ByVal LAND As String, ByVal COUNTRY As String) As spDepotRow
-            Dim rowspDepotRow As spDepotRow = CType(Me.NewRow,spDepotRow)
-            Dim columnValuesArray() As Object = New Object() {DEPOTCODE, NAAM, STRAAT, POSTCODE, PLAATS, LAND, COUNTRY}
-            rowspDepotRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowspDepotRow)
-            Return rowspDepotRow
+        Public Overloads Function AddRelatieDepotRow(ByVal RELATIECODE As String, ByVal DEPOTCODE As String) As RelatieDepotRow
+            Dim rowRelatieDepotRow As RelatieDepotRow = CType(Me.NewRow,RelatieDepotRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, RELATIECODE, DEPOTCODE}
+            rowRelatieDepotRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowRelatieDepotRow)
+            Return rowRelatieDepotRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function FindByDEPOTCODE(ByVal DEPOTCODE As String) As spDepotRow
-            Return CType(Me.Rows.Find(New Object() {DEPOTCODE}),spDepotRow)
+        Public Function FindByID(ByVal ID As Integer) As RelatieDepotRow
+            Return CType(Me.Rows.Find(New Object() {ID}),RelatieDepotRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As spDepotDataTable = CType(MyBase.Clone,spDepotDataTable)
+            Dim cln As RelatieDepotDataTable = CType(MyBase.Clone,RelatieDepotDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -450,74 +410,63 @@ Partial Public Class dsDepots
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New spDepotDataTable()
+            Return New RelatieDepotDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub InitVars()
+            Me.columnID = MyBase.Columns("ID")
+            Me.columnRELATIECODE = MyBase.Columns("RELATIECODE")
             Me.columnDEPOTCODE = MyBase.Columns("DEPOTCODE")
-            Me.columnNAAM = MyBase.Columns("NAAM")
-            Me.columnSTRAAT = MyBase.Columns("STRAAT")
-            Me.columnPOSTCODE = MyBase.Columns("POSTCODE")
-            Me.columnPLAATS = MyBase.Columns("PLAATS")
-            Me.columnLAND = MyBase.Columns("LAND")
-            Me.columnCOUNTRY = MyBase.Columns("COUNTRY")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Private Sub InitClass()
+            Me.columnID = New Global.System.Data.DataColumn("ID", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID)
+            Me.columnRELATIECODE = New Global.System.Data.DataColumn("RELATIECODE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnRELATIECODE)
             Me.columnDEPOTCODE = New Global.System.Data.DataColumn("DEPOTCODE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDEPOTCODE)
-            Me.columnNAAM = New Global.System.Data.DataColumn("NAAM", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnNAAM)
-            Me.columnSTRAAT = New Global.System.Data.DataColumn("STRAAT", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnSTRAAT)
-            Me.columnPOSTCODE = New Global.System.Data.DataColumn("POSTCODE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPOSTCODE)
-            Me.columnPLAATS = New Global.System.Data.DataColumn("PLAATS", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPLAATS)
-            Me.columnLAND = New Global.System.Data.DataColumn("LAND", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnLAND)
-            Me.columnCOUNTRY = New Global.System.Data.DataColumn("COUNTRY", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnCOUNTRY)
-            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnDEPOTCODE}, true))
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID}, true))
+            Me.columnID.AutoIncrement = true
+            Me.columnID.AutoIncrementSeed = -1
+            Me.columnID.AutoIncrementStep = -1
+            Me.columnID.AllowDBNull = false
+            Me.columnID.ReadOnly = true
+            Me.columnID.Unique = true
+            Me.columnRELATIECODE.AllowDBNull = false
+            Me.columnRELATIECODE.MaxLength = 8
             Me.columnDEPOTCODE.AllowDBNull = false
-            Me.columnDEPOTCODE.Unique = true
             Me.columnDEPOTCODE.MaxLength = 8
-            Me.columnNAAM.MaxLength = 150
-            Me.columnSTRAAT.MaxLength = 50
-            Me.columnPOSTCODE.MaxLength = 50
-            Me.columnPLAATS.MaxLength = 50
-            Me.columnLAND.MaxLength = 25
-            Me.columnCOUNTRY.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function NewspDepotRow() As spDepotRow
-            Return CType(Me.NewRow,spDepotRow)
+        Public Function NewRelatieDepotRow() As RelatieDepotRow
+            Return CType(Me.NewRow,RelatieDepotRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New spDepotRow(builder)
+            Return New RelatieDepotRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(spDepotRow)
+            Return GetType(RelatieDepotRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.spDepotRowChangedEvent) Is Nothing) Then
-                RaiseEvent spDepotRowChanged(Me, New spDepotRowChangeEvent(CType(e.Row,spDepotRow), e.Action))
+            If (Not (Me.RelatieDepotRowChangedEvent) Is Nothing) Then
+                RaiseEvent RelatieDepotRowChanged(Me, New RelatieDepotRowChangeEvent(CType(e.Row,RelatieDepotRow), e.Action))
             End If
         End Sub
         
@@ -525,8 +474,8 @@ Partial Public Class dsDepots
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.spDepotRowChangingEvent) Is Nothing) Then
-                RaiseEvent spDepotRowChanging(Me, New spDepotRowChangeEvent(CType(e.Row,spDepotRow), e.Action))
+            If (Not (Me.RelatieDepotRowChangingEvent) Is Nothing) Then
+                RaiseEvent RelatieDepotRowChanging(Me, New RelatieDepotRowChangeEvent(CType(e.Row,RelatieDepotRow), e.Action))
             End If
         End Sub
         
@@ -534,8 +483,8 @@ Partial Public Class dsDepots
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.spDepotRowDeletedEvent) Is Nothing) Then
-                RaiseEvent spDepotRowDeleted(Me, New spDepotRowChangeEvent(CType(e.Row,spDepotRow), e.Action))
+            If (Not (Me.RelatieDepotRowDeletedEvent) Is Nothing) Then
+                RaiseEvent RelatieDepotRowDeleted(Me, New RelatieDepotRowChangeEvent(CType(e.Row,RelatieDepotRow), e.Action))
             End If
         End Sub
         
@@ -543,14 +492,14 @@ Partial Public Class dsDepots
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.spDepotRowDeletingEvent) Is Nothing) Then
-                RaiseEvent spDepotRowDeleting(Me, New spDepotRowChangeEvent(CType(e.Row,spDepotRow), e.Action))
+            If (Not (Me.RelatieDepotRowDeletingEvent) Is Nothing) Then
+                RaiseEvent RelatieDepotRowDeleting(Me, New RelatieDepotRowChangeEvent(CType(e.Row,RelatieDepotRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub RemovespDepotRow(ByVal row As spDepotRow)
+        Public Sub RemoveRelatieDepotRow(ByVal row As RelatieDepotRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -559,7 +508,7 @@ Partial Public Class dsDepots
         Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
             Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
             Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
-            Dim ds As dsDepots = New dsDepots()
+            Dim ds As dsRelationDepot = New dsRelationDepot()
             Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
             any1.Namespace = "http://www.w3.org/2001/XMLSchema"
             any1.MinOccurs = New Decimal(0)
@@ -577,7 +526,7 @@ Partial Public Class dsDepots
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "spDepotDataTable"
+            attribute2.FixedValue = "RelatieDepotDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -624,206 +573,66 @@ Partial Public Class dsDepots
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class spDepotRow
+    Partial Public Class RelatieDepotRow
         Inherits Global.System.Data.DataRow
         
-        Private tablespDepot As spDepotDataTable
+        Private tableRelatieDepot As RelatieDepotDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tablespDepot = CType(Me.Table,spDepotDataTable)
+            Me.tableRelatieDepot = CType(Me.Table,RelatieDepotDataTable)
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property ID() As Integer
+            Get
+                Return CType(Me(Me.tableRelatieDepot.IDColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableRelatieDepot.IDColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
+        Public Property RELATIECODE() As String
+            Get
+                Return CType(Me(Me.tableRelatieDepot.RELATIECODEColumn),String)
+            End Get
+            Set
+                Me(Me.tableRelatieDepot.RELATIECODEColumn) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
         Public Property DEPOTCODE() As String
             Get
-                Return CType(Me(Me.tablespDepot.DEPOTCODEColumn),String)
+                Return CType(Me(Me.tableRelatieDepot.DEPOTCODEColumn),String)
             End Get
             Set
-                Me(Me.tablespDepot.DEPOTCODEColumn) = value
+                Me(Me.tableRelatieDepot.DEPOTCODEColumn) = value
             End Set
         End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property NAAM() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablespDepot.NAAMColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'NAAM' in table 'spDepot' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablespDepot.NAAMColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property STRAAT() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablespDepot.STRAATColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'STRAAT' in table 'spDepot' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablespDepot.STRAATColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property POSTCODE() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablespDepot.POSTCODEColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'POSTCODE' in table 'spDepot' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablespDepot.POSTCODEColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property PLAATS() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablespDepot.PLAATSColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'PLAATS' in table 'spDepot' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablespDepot.PLAATSColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property LAND() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablespDepot.LANDColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'LAND' in table 'spDepot' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablespDepot.LANDColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Property COUNTRY() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablespDepot.COUNTRYColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'COUNTRY' in table 'spDepot' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablespDepot.COUNTRYColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsNAAMNull() As Boolean
-            Return Me.IsNull(Me.tablespDepot.NAAMColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetNAAMNull()
-            Me(Me.tablespDepot.NAAMColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsSTRAATNull() As Boolean
-            Return Me.IsNull(Me.tablespDepot.STRAATColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetSTRAATNull()
-            Me(Me.tablespDepot.STRAATColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsPOSTCODENull() As Boolean
-            Return Me.IsNull(Me.tablespDepot.POSTCODEColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetPOSTCODENull()
-            Me(Me.tablespDepot.POSTCODEColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsPLAATSNull() As Boolean
-            Return Me.IsNull(Me.tablespDepot.PLAATSColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetPLAATSNull()
-            Me(Me.tablespDepot.PLAATSColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsLANDNull() As Boolean
-            Return Me.IsNull(Me.tablespDepot.LANDColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetLANDNull()
-            Me(Me.tablespDepot.LANDColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Function IsCOUNTRYNull() As Boolean
-            Return Me.IsNull(Me.tablespDepot.COUNTRYColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub SetCOUNTRYNull()
-            Me(Me.tablespDepot.COUNTRYColumn) = Global.System.Convert.DBNull
-        End Sub
     End Class
     
     '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-    Public Class spDepotRowChangeEvent
+    Public Class RelatieDepotRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As spDepotRow
+        Private eventRow As RelatieDepotRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Sub New(ByVal row As spDepotRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As RelatieDepotRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -831,7 +640,7 @@ Partial Public Class dsDepots
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public ReadOnly Property Row() As spDepotRow
+        Public ReadOnly Property Row() As RelatieDepotRow
             Get
                 Return Me.eventRow
             End Get
@@ -847,7 +656,7 @@ Partial Public Class dsDepots
     End Class
 End Class
 
-Namespace dsDepotsTableAdapters
+Namespace dsRelationDepotTableAdapters
     
     '''<summary>
     '''Represents the connection and commands used to retrieve and save data.
@@ -858,7 +667,7 @@ Namespace dsDepotsTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class spDepotTableAdapter
+    Partial Public Class RelatieDepotTableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -975,15 +784,40 @@ Namespace dsDepotsTableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "spDepot"
+            tableMapping.DataSetTable = "RelatieDepot"
+            tableMapping.ColumnMappings.Add("ID", "ID")
+            tableMapping.ColumnMappings.Add("RELATIECODE", "RELATIECODE")
             tableMapping.ColumnMappings.Add("DEPOTCODE", "DEPOTCODE")
-            tableMapping.ColumnMappings.Add("NAAM", "NAAM")
-            tableMapping.ColumnMappings.Add("STRAAT", "STRAAT")
-            tableMapping.ColumnMappings.Add("POSTCODE", "POSTCODE")
-            tableMapping.ColumnMappings.Add("PLAATS", "PLAATS")
-            tableMapping.ColumnMappings.Add("LAND", "LAND")
-            tableMapping.ColumnMappings.Add("COUNTRY", "COUNTRY")
             Me._adapter.TableMappings.Add(tableMapping)
+            Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.DeleteCommand.Connection = Me.Connection
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[RelatieDepot] WHERE (([ID] = @Original_ID) AND ([RELATIECODE] "& _ 
+                "= @Original_RELATIECODE) AND ([DEPOTCODE] = @Original_DEPOTCODE))"
+            Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RELATIECODE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RELATIECODE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DEPOTCODE", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DEPOTCODE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.InsertCommand.Connection = Me.Connection
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[RelatieDepot] ([RELATIECODE], [DEPOTCODE]) VALUES (@RELATIECOD"& _ 
+                "E, @DEPOTCODE);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, RELATIECODE, DEPOTCODE FROM RelatieDepot WHERE (ID ="& _ 
+                " SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RELATIECODE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RELATIECODE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DEPOTCODE", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DEPOTCODE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
+            Me._adapter.UpdateCommand.Connection = Me.Connection
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[RelatieDepot] SET [RELATIECODE] = @RELATIECODE, [DEPOTCODE] = @DEPO"& _ 
+                "TCODE WHERE (([ID] = @Original_ID) AND ([RELATIECODE] = @Original_RELATIECODE) A"& _ 
+                "ND ([DEPOTCODE] = @Original_DEPOTCODE));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, RELATIECODE, DEPOTCODE FROM"& _ 
+                " RelatieDepot WHERE (ID = @ID)"
+            Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RELATIECODE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RELATIECODE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DEPOTCODE", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DEPOTCODE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_RELATIECODE", Global.System.Data.SqlDbType.VarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "RELATIECODE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_DEPOTCODE", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "DEPOTCODE", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -999,27 +833,24 @@ Namespace dsDepotsTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "dbo.spDepot"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DEPOTCODE", Global.System.Data.SqlDbType.NVarChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).CommandText = "SELECT ID, RELATIECODE, DEPOTCODE FROM dbo.RelatieDepot"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT DEPOTCODE, NAAM"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM     Depot"
+            Me._commandCollection(1).CommandText = "INSERT INTO [dbo].[RelatieDepot] ([RELATIECODE], [DEPOTCODE]) VALUES (@RELATIECOD"& _ 
+                "E, @DEPOTCODE);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, RELATIECODE, DEPOTCODE FROM RelatieDepot WHERE (ID ="& _ 
+                " SCOPE_IDENTITY())"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RELATIECODE", Global.System.Data.SqlDbType.VarChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "RELATIECODE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@DEPOTCODE", Global.System.Data.SqlDbType.NVarChar, 8, Global.System.Data.ParameterDirection.Input, 0, 0, "DEPOTCODE", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsDepots.spDepotDataTable, ByVal DEPOTCODE As String) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsRelationDepot.RelatieDepotDataTable) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (DEPOTCODE Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
-            Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(DEPOTCODE,String)
-            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -1031,40 +862,182 @@ Namespace dsDepotsTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData(ByVal DEPOTCODE As String) As dsDepots.spDepotDataTable
+        Public Overloads Overridable Function GetData() As dsRelationDepot.RelatieDepotDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            If (DEPOTCODE Is Nothing) Then
-                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Dim dataTable As dsRelationDepot.RelatieDepotDataTable = New dsRelationDepot.RelatieDepotDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataTable As dsRelationDepot.RelatieDepotDataTable) As Integer
+            Return Me.Adapter.Update(dataTable)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataSet As dsRelationDepot) As Integer
+            Return Me.Adapter.Update(dataSet, "RelatieDepot")
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRow As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(New Global.System.Data.DataRow() {dataRow})
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+        Public Overloads Overridable Function Update(ByVal dataRows() As Global.System.Data.DataRow) As Integer
+            Return Me.Adapter.Update(dataRows)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
+        Public Overloads Overridable Function Delete(ByVal Original_ID As Integer, ByVal Original_RELATIECODE As String, ByVal Original_DEPOTCODE As String) As Integer
+            Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID,Integer)
+            If (Original_RELATIECODE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_RELATIECODE")
             Else
-                Me.Adapter.SelectCommand.Parameters(1).Value = CType(DEPOTCODE,String)
+                Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_RELATIECODE,String)
             End If
-            Dim dataTable As dsDepots.spDepotDataTable = New dsDepots.spDepotDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
+            If (Original_DEPOTCODE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_DEPOTCODE")
+            Else
+                Me.Adapter.DeleteCommand.Parameters(2).Value = CType(Original_DEPOTCODE,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
+            If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.DeleteCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.DeleteCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.DeleteCommand.Connection.Close
+                End If
+            End Try
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
-        Public Overloads Overridable Function FillSelect(ByVal dataTable As dsDepots.spDepotDataTable) As Integer
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            If (Me.ClearBeforeFill = true) Then
-                dataTable.Clear
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
+        Public Overloads Overridable Function Insert(ByVal RELATIECODE As String, ByVal DEPOTCODE As String) As Integer
+            If (RELATIECODE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("RELATIECODE")
+            Else
+                Me.Adapter.InsertCommand.Parameters(0).Value = CType(RELATIECODE,String)
             End If
-            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            If (DEPOTCODE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("DEPOTCODE")
+            Else
+                Me.Adapter.InsertCommand.Parameters(1).Value = CType(DEPOTCODE,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
+            If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.InsertCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.InsertCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.InsertCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal RELATIECODE As String, ByVal DEPOTCODE As String, ByVal Original_ID As Integer, ByVal Original_RELATIECODE As String, ByVal Original_DEPOTCODE As String, ByVal ID As Integer) As Integer
+            If (RELATIECODE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("RELATIECODE")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(0).Value = CType(RELATIECODE,String)
+            End If
+            If (DEPOTCODE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("DEPOTCODE")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(1).Value = CType(DEPOTCODE,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(2).Value = CType(Original_ID,Integer)
+            If (Original_RELATIECODE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_RELATIECODE")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Original_RELATIECODE,String)
+            End If
+            If (Original_DEPOTCODE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("Original_DEPOTCODE")
+            Else
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_DEPOTCODE,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(5).Value = CType(ID,Integer)
+            Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
+            If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                Me.Adapter.UpdateCommand.Connection.Open
+            End If
+            Try 
+                Dim returnValue As Integer = Me.Adapter.UpdateCommand.ExecuteNonQuery
+                Return returnValue
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    Me.Adapter.UpdateCommand.Connection.Close
+                End If
+            End Try
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
+        Public Overloads Overridable Function Update(ByVal RELATIECODE As String, ByVal DEPOTCODE As String, ByVal Original_ID As Integer, ByVal Original_RELATIECODE As String, ByVal Original_DEPOTCODE As String) As Integer
+            Return Me.Update(RELATIECODE, DEPOTCODE, Original_ID, Original_RELATIECODE, Original_DEPOTCODE, Original_ID)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, false)>  _
+        Public Overloads Overridable Function InsertQuery(ByVal RELATIECODE As String, ByVal DEPOTCODE As String) As Integer
+            Dim command As Global.System.Data.SqlClient.SqlCommand = Me.CommandCollection(1)
+            If (RELATIECODE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("RELATIECODE")
+            Else
+                command.Parameters(0).Value = CType(RELATIECODE,String)
+            End If
+            If (DEPOTCODE Is Nothing) Then
+                Throw New Global.System.ArgumentNullException("DEPOTCODE")
+            Else
+                command.Parameters(1).Value = CType(DEPOTCODE,String)
+            End If
+            Dim previousConnectionState As Global.System.Data.ConnectionState = command.Connection.State
+            If ((command.Connection.State And Global.System.Data.ConnectionState.Open)  _
+                        <> Global.System.Data.ConnectionState.Open) Then
+                command.Connection.Open
+            End If
+            Dim returnValue As Integer
+            Try 
+                returnValue = command.ExecuteNonQuery
+            Finally
+                If (previousConnectionState = Global.System.Data.ConnectionState.Closed) Then
+                    command.Connection.Close
+                End If
+            End Try
             Return returnValue
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
-         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
-         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
-        Public Overloads Overridable Function GetDataBy() As dsDepots.spDepotDataTable
-            Me.Adapter.SelectCommand = Me.CommandCollection(1)
-            Dim dataTable As dsDepots.spDepotDataTable = New dsDepots.spDepotDataTable()
-            Me.Adapter.Fill(dataTable)
-            Return dataTable
         End Function
     End Class
     
@@ -1081,6 +1054,8 @@ Namespace dsDepotsTableAdapters
         
         Private _updateOrder As UpdateOrderOption
         
+        Private _relatieDepotTableAdapter As RelatieDepotTableAdapter
+        
         Private _backupDataSetBeforeUpdate As Boolean
         
         Private _connection As Global.System.Data.IDbConnection
@@ -1093,6 +1068,20 @@ Namespace dsDepotsTableAdapters
             End Get
             Set
                 Me._updateOrder = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0"),  _
+         Global.System.ComponentModel.EditorAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterManagerPropertyEditor, Microso"& _ 
+            "ft.VSDesigner, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3"& _ 
+            "a", "System.Drawing.Design.UITypeEditor")>  _
+        Public Property RelatieDepotTableAdapter() As RelatieDepotTableAdapter
+            Get
+                Return Me._relatieDepotTableAdapter
+            End Get
+            Set
+                Me._relatieDepotTableAdapter = value
             End Set
         End Property
         
@@ -1115,6 +1104,10 @@ Namespace dsDepotsTableAdapters
                 If (Not (Me._connection) Is Nothing) Then
                     Return Me._connection
                 End If
+                If ((Not (Me._relatieDepotTableAdapter) Is Nothing)  _
+                            AndAlso (Not (Me._relatieDepotTableAdapter.Connection) Is Nothing)) Then
+                    Return Me._relatieDepotTableAdapter.Connection
+                End If
                 Return Nothing
             End Get
             Set
@@ -1128,6 +1121,9 @@ Namespace dsDepotsTableAdapters
         Public ReadOnly Property TableAdapterInstanceCount() As Integer
             Get
                 Dim count As Integer = 0
+                If (Not (Me._relatieDepotTableAdapter) Is Nothing) Then
+                    count = (count + 1)
+                End If
                 Return count
             End Get
         End Property
@@ -1137,8 +1133,17 @@ Namespace dsDepotsTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Private Function UpdateUpdatedRows(ByVal dataSet As dsDepots, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateUpdatedRows(ByVal dataSet As dsRelationDepot, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow), ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._relatieDepotTableAdapter) Is Nothing) Then
+                Dim updatedRows() As Global.System.Data.DataRow = dataSet.RelatieDepot.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.ModifiedCurrent)
+                updatedRows = Me.GetRealUpdatedRows(updatedRows, allAddedRows)
+                If ((Not (updatedRows) Is Nothing)  _
+                            AndAlso (0 < updatedRows.Length)) Then
+                    result = (result + Me._relatieDepotTableAdapter.Update(updatedRows))
+                    allChangedRows.AddRange(updatedRows)
+                End If
+            End If
             Return result
         End Function
         
@@ -1147,8 +1152,16 @@ Namespace dsDepotsTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Private Function UpdateInsertedRows(ByVal dataSet As dsDepots, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateInsertedRows(ByVal dataSet As dsRelationDepot, ByVal allAddedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._relatieDepotTableAdapter) Is Nothing) Then
+                Dim addedRows() As Global.System.Data.DataRow = dataSet.RelatieDepot.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Added)
+                If ((Not (addedRows) Is Nothing)  _
+                            AndAlso (0 < addedRows.Length)) Then
+                    result = (result + Me._relatieDepotTableAdapter.Update(addedRows))
+                    allAddedRows.AddRange(addedRows)
+                End If
+            End If
             Return result
         End Function
         
@@ -1157,8 +1170,16 @@ Namespace dsDepotsTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Private Function UpdateDeletedRows(ByVal dataSet As dsDepots, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
+        Private Function UpdateDeletedRows(ByVal dataSet As dsRelationDepot, ByVal allChangedRows As Global.System.Collections.Generic.List(Of Global.System.Data.DataRow)) As Integer
             Dim result As Integer = 0
+            If (Not (Me._relatieDepotTableAdapter) Is Nothing) Then
+                Dim deletedRows() As Global.System.Data.DataRow = dataSet.RelatieDepot.Select(Nothing, Nothing, Global.System.Data.DataViewRowState.Deleted)
+                If ((Not (deletedRows) Is Nothing)  _
+                            AndAlso (0 < deletedRows.Length)) Then
+                    result = (result + Me._relatieDepotTableAdapter.Update(deletedRows))
+                    allChangedRows.AddRange(deletedRows)
+                End If
+            End If
             Return result
         End Function
         
@@ -1193,12 +1214,17 @@ Namespace dsDepotsTableAdapters
         '''</summary>
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")>  _
-        Public Overridable Function UpdateAll(ByVal dataSet As dsDepots) As Integer
+        Public Overridable Function UpdateAll(ByVal dataSet As dsRelationDepot) As Integer
             If (dataSet Is Nothing) Then
                 Throw New Global.System.ArgumentNullException("dataSet")
             End If
             If (dataSet.HasChanges = false) Then
                 Return 0
+            End If
+            If ((Not (Me._relatieDepotTableAdapter) Is Nothing)  _
+                        AndAlso (Me.MatchTableAdapterConnection(Me._relatieDepotTableAdapter.Connection) = false)) Then
+                Throw New Global.System.ArgumentException("All TableAdapters managed by a TableAdapterManager must use the same connection s"& _ 
+                        "tring.")
             End If
             Dim workConnection As Global.System.Data.IDbConnection = Me.Connection
             If (workConnection Is Nothing) Then
@@ -1232,6 +1258,15 @@ Namespace dsDepotsTableAdapters
             Try 
                 '---- Prepare for update -----------
                 '
+                If (Not (Me._relatieDepotTableAdapter) Is Nothing) Then
+                    revertConnections.Add(Me._relatieDepotTableAdapter, Me._relatieDepotTableAdapter.Connection)
+                    Me._relatieDepotTableAdapter.Connection = CType(workConnection,Global.System.Data.SqlClient.SqlConnection)
+                    Me._relatieDepotTableAdapter.Transaction = CType(workTransaction,Global.System.Data.SqlClient.SqlTransaction)
+                    If Me._relatieDepotTableAdapter.Adapter.AcceptChangesDuringUpdate Then
+                        Me._relatieDepotTableAdapter.Adapter.AcceptChangesDuringUpdate = false
+                        adaptersWithAcceptChangesDuringUpdate.Add(Me._relatieDepotTableAdapter.Adapter)
+                    End If
+                End If
                 '
                 '---- Perform updates -----------
                 '
@@ -1291,6 +1326,10 @@ Namespace dsDepotsTableAdapters
             Finally
                 If workConnOpened Then
                     workConnection.Close
+                End If
+                If (Not (Me._relatieDepotTableAdapter) Is Nothing) Then
+                    Me._relatieDepotTableAdapter.Connection = CType(revertConnections(Me._relatieDepotTableAdapter),Global.System.Data.SqlClient.SqlConnection)
+                    Me._relatieDepotTableAdapter.Transaction = Nothing
                 End If
                 If (0 < adaptersWithAcceptChangesDuringUpdate.Count) Then
                     Dim adapters((adaptersWithAcceptChangesDuringUpdate.Count) - 1) As Global.System.Data.Common.DataAdapter

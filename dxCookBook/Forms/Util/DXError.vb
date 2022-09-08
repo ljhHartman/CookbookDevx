@@ -71,5 +71,9 @@ Public Class DXError
         DxErrorProvider1.ContainerControl = Me
 
     End Sub
+
+    Private Sub DXError_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class
 

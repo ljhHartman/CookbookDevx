@@ -59,9 +59,9 @@ Namespace My
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
          Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SQLCLUSTER01\BURANDO;Initial Catalog=SSLTEST;Integrated Security=True"& _ 
             "")>  _
-        Public ReadOnly Property SSLTESTConnectionString() As String
+        Public ReadOnly Property conSsl() As String
             Get
-                Return CType(Me("SSLTESTConnectionString"),String)
+                Return CType(Me("conSsl"),String)
             End Get
         End Property
     End Class
