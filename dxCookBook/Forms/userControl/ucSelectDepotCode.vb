@@ -10,16 +10,12 @@ Public Class ucSelectDepotCode
 
 
 
-    Sub New(iRelationCode As String, ByVal iRelationType As String)
-        ' Parameter iRelaitonType = "Depot", "Agent", "Location"
+    Sub New(iRelationCode As String)
         InitializeComponent()
         relationCode = iRelationCode
-        relationType = iRelationType
 
         AddHandler btnAdd.Click, AddressOf btnAdd_Click
         Autocomplete()
-
-        lblDepots.Text = $"{iRelationType}s"
     End Sub
 
 
@@ -38,11 +34,8 @@ Public Class ucSelectDepotCode
     Private Sub Autocomplete()
         Console.WriteLine(vbCrLf & $"--- {MethodBase.GetCurrentMethod().Name} ---")
 
-        Select Case relationType
-            Case "Depot"
-
-                ' This Method Autocomplates the text in the Depot, Agent, Location Textbox
-                blDepots = New BindingList(Of SelectDepots)()
+        ' This Method Autocomplates the text in the Depot, Agent, Location Textbox
+        blDepots = New BindingList(Of SelectDepots)()
 
                 ' Get DepotDataTable
                 Dim dsDepots As New dsDepots.spDepotDataTable
@@ -59,17 +52,13 @@ Public Class ucSelectDepotCode
                 Dim strDepots() As String = blDepots.[Select](Function(s) s.DEPOTCODE & " | " & s.NAAM & " | Tag: " & s.DEPOTCODE).ToArray()
                 ascDepots.AddRange(strDepots)
                 Me.dtbValue.MaskBox.AutoCompleteCustomSource = ascDepots
-            Case "Agent"
-
-            Case "Location"
-
-        End Select
 
     End Sub
 
 
 
     Private Sub InsertRelationType(ByVal relationType As String)
+        Console.WriteLine(vbCrLf & $"--- {MethodBase.GetCurrentMethod().Name} ---")
         Dim code As String = dtbValue.Text
 
         If code.Count < 1 Then
@@ -89,7 +78,7 @@ Public Class ucSelectDepotCode
             cmd.Parameters.Add(New SqlParameter("@SELECT", SqlDbType.NVarChar))
             cmd.Parameters.Add(New SqlParameter("@RELATIECODE", SqlDbType.NVarChar))
             cmd.Parameters.Add(New SqlParameter("@CODE", SqlDbType.NVarChar))
-            cmd.Parameters(0).Value = relationType 'Depot, Agent, Location
+            cmd.Parameters(0).Value = "Depot" 'Depot, Agent, Location
             cmd.Parameters(1).Value = relationCode.ToString
             cmd.Parameters(2).Value = code.ToString 'DataTextBox selection
 
@@ -118,6 +107,7 @@ Public Class ucSelectDepotCode
         Property DEPOTCODE As String
         Property NAAM As String
     End Class
+
 
 #End Region
 

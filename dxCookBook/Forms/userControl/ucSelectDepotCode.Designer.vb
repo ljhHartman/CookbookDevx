@@ -52,7 +52,7 @@ Partial Class ucSelectDepotCode
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 41.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 66.66666!))
-        Me.TableLayoutPanel1.Size = New System.Drawing.Size(391, 54)
+        Me.TableLayoutPanel1.Size = New System.Drawing.Size(391, 55)
         Me.TableLayoutPanel1.TabIndex = 0
         '
         'btnAdd
