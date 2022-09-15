@@ -54,4 +54,8 @@
     Private Sub InputBoxAutocompleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InputBoxAutocompleteToolStripMenuItem.Click
         InputBoxAutocomplete.Show()
     End Sub
+
+    Private Sub ChartControlToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartControlToolStripMenuItem.Click
+        ChartForm.Show()
+    End Sub
 End Class

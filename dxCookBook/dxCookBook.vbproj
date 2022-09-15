@@ -126,6 +126,12 @@
     <Compile Include="DataSets\dsRelationDepot.vb">
       <DependentUpon>dsRelationDepot.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\chartControl\ChartForm.Designer.vb">
+      <DependentUpon>ChartForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\chartControl\ChartForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\inputBox\InputBoxAutocomplete.Designer.vb">
       <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
     </Compile>
@@ -225,6 +231,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="SSLTESTDataSet11.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SSLTESTDataSet11.xsd</DependentUpon>
+    </Compile>
     <Compile Include="UnitTests\Tests.vb" />
     <Compile Include="UserControls\ucTableReturn.Designer.vb">
       <DependentUpon>ucTableReturn.vb</DependentUpon>
@@ -258,6 +269,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\chartControl\ChartForm.resx">
+      <DependentUpon>ChartForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\inputBox\InputBoxAutocomplete.resx">
       <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
     </EmbeddedResource>
@@ -385,6 +399,17 @@
     </None>
     <None Include="SSLTESTDataSet.xss">
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="SSLTESTDataSet11.xsc">
+      <DependentUpon>SSLTESTDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="SSLTESTDataSet11.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SSLTESTDataSet11.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SSLTESTDataSet11.xss">
+      <DependentUpon>SSLTESTDataSet11.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>
