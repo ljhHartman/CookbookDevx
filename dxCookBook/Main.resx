@@ -199,6 +199,12 @@
   <data name="ChartControlToolStripMenuItem.Text" xml:space="preserve">
     <value>ChartControl</value>
   </data>
+  <data name="RowClickToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="RowClickToolStripMenuItem.Text" xml:space="preserve">
+    <value>RowClick</value>
+  </data>
   <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -393,16 +399,22 @@
   <data name="&gt;&gt;InputBoxAutocompleteToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ChartControlToolStripMenuItem.Name" xml:space="preserve">
+    <value>ChartControlToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ChartControlToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ToolStripButton1.Name" xml:space="preserve">
     <value>ToolStripButton1</value>
   </data>
   <data name="&gt;&gt;ToolStripButton1.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;ChartControlToolStripMenuItem.Name" xml:space="preserve">
-    <value>ChartControlToolStripMenuItem</value>
+  <data name="&gt;&gt;RowClickToolStripMenuItem.Name" xml:space="preserve">
+    <value>RowClickToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;ChartControlToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;RowClickToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">

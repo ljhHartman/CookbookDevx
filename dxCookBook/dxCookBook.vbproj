@@ -74,6 +74,12 @@
     <Reference Include="Microsoft.TeamFoundation.TestManagement.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.TestTools.UITest.Extension, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="sslDataGrid">
+      <HintPath>..\sslDataGrid\bin\Debug\sslDataGrid.dll</HintPath>
+    </Reference>
+    <Reference Include="sslTextBox">
+      <HintPath>..\sslTextBox\bin\Debug\sslTextBox.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
@@ -132,10 +138,22 @@
     <Compile Include="Forms\chartControl\ChartForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\inputBox\InputBoxAutocomplete.Designer.vb">
       <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\inputBox\InputBoxAutocomplete.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\rowClick\ClickRow.Designer.vb">
+      <DependentUpon>ClickRow.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\rowClick\ClickRow.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\tabs\CloseTabControleAction.Designer.vb">
@@ -226,15 +244,25 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SSLTESTDataSet.Designer.vb">
+    <Compile Include="DataSets\SSLTESTDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SSLTESTDataSet11.Designer.vb">
+    <Compile Include="DataSets\SSLTESTDataSet11.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet11.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSets\SSLTESTDataSet2.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SSLTESTDataSet2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="SSLTESTDataSet3.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="UnitTests\Tests.vb" />
     <Compile Include="UserControls\ucTableReturn.Designer.vb">
@@ -274,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\inputBox\InputBoxAutocomplete.resx">
       <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\rowClick\ClickRow.resx">
+      <DependentUpon>ClickRow.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\tabs\CloseTabControleAction.resx">
       <DependentUpon>CloseTabControleAction.vb</DependentUpon>
@@ -389,27 +420,49 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="SSLTESTDataSet.xsc">
+    <None Include="DataSets\SSLTESTDataSet.xsc">
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
     </None>
-    <None Include="SSLTESTDataSet.xsd">
+    <None Include="DataSets\SSLTESTDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SSLTESTDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="SSLTESTDataSet.xss">
+    <None Include="DataSets\SSLTESTDataSet.xss">
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
     </None>
-    <None Include="SSLTESTDataSet11.xsc">
+    <None Include="DataSets\SSLTESTDataSet11.xsc">
       <DependentUpon>SSLTESTDataSet11.xsd</DependentUpon>
     </None>
-    <None Include="SSLTESTDataSet11.xsd">
+    <None Include="DataSets\SSLTESTDataSet11.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SSLTESTDataSet11.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="SSLTESTDataSet11.xss">
+    <None Include="DataSets\SSLTESTDataSet11.xss">
       <DependentUpon>SSLTESTDataSet11.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\SSLTESTDataSet2.xsc">
+      <DependentUpon>SSLTESTDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\SSLTESTDataSet2.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SSLTESTDataSet2.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\SSLTESTDataSet2.xss">
+      <DependentUpon>SSLTESTDataSet2.xsd</DependentUpon>
+    </None>
+    <None Include="SSLTESTDataSet3.xsc">
+      <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
+    </None>
+    <None Include="SSLTESTDataSet3.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>SSLTESTDataSet3.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="SSLTESTDataSet3.xss">
+      <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

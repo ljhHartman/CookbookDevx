@@ -58,4 +58,8 @@
     Private Sub ChartControlToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartControlToolStripMenuItem.Click
         ChartForm.Show()
     End Sub
+
+    Private Sub RowClickToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RowClickToolStripMenuItem.Click
+        ClickRow.Show()
+    End Sub
 End Class
