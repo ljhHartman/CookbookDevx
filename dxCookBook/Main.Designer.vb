@@ -38,23 +38,26 @@ Partial Class Main
         Me.MessageBoxErrorToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.InputBoxAutocompleteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ChartControlToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
-        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
         Me.RowClickToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.UploadImageToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.ManualUIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripButton1})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripButton1, Me.ToolStripButton2})
         resources.ApplyResources(Me.ToolStrip1, "ToolStrip1")
         Me.ToolStrip1.Name = "ToolStrip1"
         '
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem, Me.ViewDataSetGridToolStripMenuItem, Me.CloseTabControleActionToolStripMenuItem, Me.DXErrorToolStripMenuItem, Me.DXErrorNumberToolStripMenuItem, Me.MessageBoxErrorToolStripMenuItem, Me.InputBoxAutocompleteToolStripMenuItem, Me.ChartControlToolStripMenuItem, Me.RowClickToolStripMenuItem})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem, Me.ViewDataSetGridToolStripMenuItem, Me.CloseTabControleActionToolStripMenuItem, Me.DXErrorToolStripMenuItem, Me.DXErrorNumberToolStripMenuItem, Me.MessageBoxErrorToolStripMenuItem, Me.InputBoxAutocompleteToolStripMenuItem, Me.ChartControlToolStripMenuItem, Me.RowClickToolStripMenuItem, Me.UploadImageToolStripMenuItem, Me.ManualUIToolStripMenuItem})
         resources.ApplyResources(Me.ToolStripDropDownButton1, "ToolStripDropDownButton1")
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
         '
@@ -123,11 +126,27 @@ Partial Class Main
         Me.ChartControlToolStripMenuItem.Name = "ChartControlToolStripMenuItem"
         resources.ApplyResources(Me.ChartControlToolStripMenuItem, "ChartControlToolStripMenuItem")
         '
+        'RowClickToolStripMenuItem
+        '
+        Me.RowClickToolStripMenuItem.Name = "RowClickToolStripMenuItem"
+        resources.ApplyResources(Me.RowClickToolStripMenuItem, "RowClickToolStripMenuItem")
+        '
+        'UploadImageToolStripMenuItem
+        '
+        Me.UploadImageToolStripMenuItem.Name = "UploadImageToolStripMenuItem"
+        resources.ApplyResources(Me.UploadImageToolStripMenuItem, "UploadImageToolStripMenuItem")
+        '
         'ToolStripButton1
         '
         Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
         resources.ApplyResources(Me.ToolStripButton1, "ToolStripButton1")
         Me.ToolStripButton1.Name = "ToolStripButton1"
+        '
+        'ToolStripButton2
+        '
+        Me.ToolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.ToolStripButton2, "ToolStripButton2")
+        Me.ToolStripButton2.Name = "ToolStripButton2"
         '
         'ToolStrip2
         '
@@ -135,10 +154,10 @@ Partial Class Main
         resources.ApplyResources(Me.ToolStrip2, "ToolStrip2")
         Me.ToolStrip2.Name = "ToolStrip2"
         '
-        'RowClickToolStripMenuItem
+        'ManualUIToolStripMenuItem
         '
-        Me.RowClickToolStripMenuItem.Name = "RowClickToolStripMenuItem"
-        resources.ApplyResources(Me.RowClickToolStripMenuItem, "RowClickToolStripMenuItem")
+        Me.ManualUIToolStripMenuItem.Name = "ManualUIToolStripMenuItem"
+        resources.ApplyResources(Me.ManualUIToolStripMenuItem, "ManualUIToolStripMenuItem")
         '
         'Main
         '
@@ -172,4 +191,7 @@ Partial Class Main
     Friend WithEvents ToolStripButton1 As ToolStripButton
     Friend WithEvents ChartControlToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RowClickToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents UploadImageToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripButton2 As ToolStripButton
+    Friend WithEvents ManualUIToolStripMenuItem As ToolStripMenuItem
 End Class

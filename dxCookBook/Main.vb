@@ -62,4 +62,21 @@
     Private Sub RowClickToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RowClickToolStripMenuItem.Click
         ClickRow.Show()
     End Sub
+
+    Private Sub UploadImageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UploadImageToolStripMenuItem.Click
+        uploadImage.Show()
+    End Sub
+
+    Private Sub ToolStripDropDownButton1_Click(sender As Object, e As EventArgs) Handles ToolStripDropDownButton1.Click
+
+    End Sub
+
+    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
+        AddRowDataGrid.Show()
+    End Sub
+
+    Private Sub ManualUIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManualUIToolStripMenuItem.Click
+        Dim myControl As New ucManual()
+        DevExpress.XtraEditors.XtraDialog.Show(myControl, "Manual", MessageBoxButtons.OK)
+    End Sub
 End Class

@@ -29,10 +29,9 @@ Partial Class ClickRow
         Me.SsltestDataSet1 = New dxCookBook.SSLTESTDataSet()
         Me.SsltestDataSet3 = New dxCookBook.SSLTESTDataSet()
         Me.SslDataGrid1 = New sslDataGrid.sslDataGrid()
-        Me.SslGridView1 = New sslDataGrid.sslGridView()
-        Me.SSLTESTDataSet31 = New dxCookBook.SSLTESTDataSet3()
         Me.AndroidusersBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Android_usersTableAdapter1 = New dxCookBook.SSLTESTDataSet3TableAdapters.android_usersTableAdapter()
+        Me.SSLTESTDataSet31 = New dxCookBook.SSLTESTDataSet3()
+        Me.SslGridView1 = New sslDataGrid.sslGridView()
         Me.colid = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colauthority = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colemail = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -40,14 +39,15 @@ Partial Class ClickRow
         Me.colimage = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colpassword = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colusername = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.Android_usersTableAdapter1 = New dxCookBook.SSLTESTDataSet3TableAdapters.android_usersTableAdapter()
         CType(Me.AndroidusersBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SSLTESTDataSet2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SsltestDataSet1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SsltestDataSet3, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SSLTESTDataSet31, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AndroidusersBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SSLTESTDataSet31, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'AndroidusersBindingSource
@@ -85,6 +85,16 @@ Partial Class ClickRow
         Me.SslDataGrid1.TabIndex = 0
         Me.SslDataGrid1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SslGridView1})
         '
+        'AndroidusersBindingSource1
+        '
+        Me.AndroidusersBindingSource1.DataMember = "android_users"
+        Me.AndroidusersBindingSource1.DataSource = Me.SSLTESTDataSet31
+        '
+        'SSLTESTDataSet31
+        '
+        Me.SSLTESTDataSet31.DataSetName = "SSLTESTDataSet3"
+        Me.SSLTESTDataSet31.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'SslGridView1
         '
         Me.SslGridView1.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.[Default]
@@ -93,20 +103,6 @@ Partial Class ClickRow
         Me.SslGridView1.Name = "SslGridView1"
         Me.SslGridView1.OptionsBehavior.Editable = False
         Me.SslGridView1.SimpleSearch = False
-        '
-        'SSLTESTDataSet31
-        '
-        Me.SSLTESTDataSet31.DataSetName = "SSLTESTDataSet3"
-        Me.SSLTESTDataSet31.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'AndroidusersBindingSource1
-        '
-        Me.AndroidusersBindingSource1.DataMember = "android_users"
-        Me.AndroidusersBindingSource1.DataSource = Me.SSLTESTDataSet31
-        '
-        'Android_usersTableAdapter1
-        '
-        Me.Android_usersTableAdapter1.ClearBeforeFill = True
         '
         'colid
         '
@@ -157,6 +153,10 @@ Partial Class ClickRow
         Me.colusername.Visible = True
         Me.colusername.VisibleIndex = 6
         '
+        'Android_usersTableAdapter1
+        '
+        Me.Android_usersTableAdapter1.ClearBeforeFill = True
+        '
         'ClickRow
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -170,9 +170,9 @@ Partial Class ClickRow
         CType(Me.SsltestDataSet1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SsltestDataSet3, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SSLTESTDataSet31, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AndroidusersBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SSLTESTDataSet31, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

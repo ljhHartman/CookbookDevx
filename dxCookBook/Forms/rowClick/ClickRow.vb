@@ -45,6 +45,10 @@
         MsgBox("id: " & androidUserId)
     End Sub
 
+    Private Sub ClickRow_Load_1(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
 #End Region
 
 End Class
