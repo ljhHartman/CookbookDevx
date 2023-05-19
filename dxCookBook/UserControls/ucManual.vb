@@ -1,13 +1,17 @@
 ﻿
 Public Class ucManual
 
+    ' TableLayout : tlContiner
+    ' NavBarControl : nbcList
+    ' RichTextBox : rtbView
+
     Public Sub New()
         InitializeComponent()
 
         ' RichTextBox Config
-        rtb.ReadOnly = True
-        rtb.Multiline = True
-        rtb.Font = New Font("Georgia", 10)
+        rtbView.ReadOnly = True
+        rtbView.Multiline = True
+        rtbView.Font = New Font("Georgia", 10)
 
         ' Handlers
         AddHandler Me.alpha.LinkClicked, AddressOf Alpha_Click
@@ -25,16 +29,11 @@ Public Class ucManual
 #Region "Methods"
 
     Private Sub LoadText(title As String, text As String)
-        rtb.Clear()
-        rtb.Focus()
-        rtb.Text = title + Environment.NewLine + Environment.NewLine + text
+        rtbView.Clear()
+        rtbView.Focus()
+        rtbView.Text = title + Environment.NewLine + Environment.NewLine + text
     End Sub
 
 #End Region
-
-
-
-
-
 
 End Class

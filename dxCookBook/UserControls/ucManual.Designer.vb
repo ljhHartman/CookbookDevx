@@ -35,11 +35,11 @@ Partial Class ucManual
         Me.NavBarItem2 = New DevExpress.XtraNavBar.NavBarItem()
         Me.NavBarItem3 = New DevExpress.XtraNavBar.NavBarItem()
         Me.DocumentViewer1 = New DevExpress.XtraPrinting.Preview.DocumentViewer()
-        Me.NavBarControl1 = New DevExpress.XtraNavBar.NavBarControl()
+        Me.nbcList = New DevExpress.XtraNavBar.NavBarControl()
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
-        Me.rtb = New System.Windows.Forms.RichTextBox()
+        Me.rtbView = New System.Windows.Forms.RichTextBox()
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.NavBarControl1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.nbcList, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -131,25 +131,25 @@ Partial Class ucManual
         Me.DocumentViewer1.Size = New System.Drawing.Size(574, 405)
         Me.DocumentViewer1.TabIndex = 8
         '
-        'NavBarControl1
+        'nbcList
         '
-        Me.NavBarControl1.ActiveGroup = Me.NavBarGroup1
-        Me.NavBarControl1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.NavBarControl1.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.NavBarGroup1, Me.NavBarGroup2, Me.NavBarGroup3})
-        Me.NavBarControl1.Location = New System.Drawing.Point(3, 3)
-        Me.NavBarControl1.Name = "NavBarControl1"
-        Me.NavBarControl1.OptionsNavPane.ExpandedWidth = 139
-        Me.NavBarControl1.Size = New System.Drawing.Size(139, 405)
-        Me.NavBarControl1.TabIndex = 7
-        Me.NavBarControl1.Text = "NavBarControl1"
+        Me.nbcList.ActiveGroup = Me.NavBarGroup1
+        Me.nbcList.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.nbcList.Groups.AddRange(New DevExpress.XtraNavBar.NavBarGroup() {Me.NavBarGroup1, Me.NavBarGroup2, Me.NavBarGroup3})
+        Me.nbcList.Location = New System.Drawing.Point(3, 3)
+        Me.nbcList.Name = "nbcList"
+        Me.nbcList.OptionsNavPane.ExpandedWidth = 139
+        Me.nbcList.Size = New System.Drawing.Size(139, 405)
+        Me.nbcList.TabIndex = 7
+        Me.nbcList.Text = "NavBarControl1"
         '
         'TableLayoutPanel1
         '
         Me.TableLayoutPanel1.ColumnCount = 2
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20.0!))
         Me.TableLayoutPanel1.ColumnStyles.Add(New System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80.0!))
-        Me.TableLayoutPanel1.Controls.Add(Me.rtb, 0, 0)
-        Me.TableLayoutPanel1.Controls.Add(Me.NavBarControl1, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.rtbView, 0, 0)
+        Me.TableLayoutPanel1.Controls.Add(Me.nbcList, 0, 0)
         Me.TableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.TableLayoutPanel1.Location = New System.Drawing.Point(0, 0)
         Me.TableLayoutPanel1.Name = "TableLayoutPanel1"
@@ -158,14 +158,14 @@ Partial Class ucManual
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(725, 411)
         Me.TableLayoutPanel1.TabIndex = 6
         '
-        'rtb
+        'rtbView
         '
-        Me.rtb.Dock = System.Windows.Forms.DockStyle.Bottom
-        Me.rtb.Location = New System.Drawing.Point(148, 3)
-        Me.rtb.Name = "rtb"
-        Me.rtb.Size = New System.Drawing.Size(574, 405)
-        Me.rtb.TabIndex = 9
-        Me.rtb.Text = ""
+        Me.rtbView.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.rtbView.Location = New System.Drawing.Point(148, 3)
+        Me.rtbView.Name = "rtbView"
+        Me.rtbView.Size = New System.Drawing.Size(574, 405)
+        Me.rtbView.TabIndex = 9
+        Me.rtbView.Text = ""
         '
         'ucManual
         '
@@ -179,7 +179,7 @@ Partial Class ucManual
         Me.Name = "ucManual"
         Me.Size = New System.Drawing.Size(725, 411)
         CType(Me.BarManager1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.NavBarControl1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.nbcList, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -203,7 +203,7 @@ Partial Class ucManual
     Friend WithEvents NavBarItem2 As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents NavBarItem3 As DevExpress.XtraNavBar.NavBarItem
     Friend WithEvents TableLayoutPanel1 As TableLayoutPanel
-    Friend WithEvents rtb As RichTextBox
-    Friend WithEvents NavBarControl1 As DevExpress.XtraNavBar.NavBarControl
+    Friend WithEvents rtbView As RichTextBox
+    Friend WithEvents nbcList As DevExpress.XtraNavBar.NavBarControl
     Friend WithEvents DocumentViewer1 As DevExpress.XtraPrinting.Preview.DocumentViewer
 End Class

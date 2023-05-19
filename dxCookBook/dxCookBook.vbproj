@@ -73,6 +73,7 @@
     <Reference Include="DevExpress.Printing.v16.2.Core, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Sparkline.v16.2.Core, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.Utils.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraBars.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraCharts.v16.2, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.XtraCharts.v16.2.UI, Version=16.2.17.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
@@ -147,16 +148,33 @@
     <Compile Include="DataSets\dsRelationDepot.vb">
       <DependentUpon>dsRelationDepot.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\vwParameters.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>vwParameters.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Forms\chartControl\ChartForm.Designer.vb">
       <DependentUpon>ChartForm.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\chartControl\ChartForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="Forms\DragDrop2\DropFiles.Designer.vb">
+      <DependentUpon>DropFiles.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form1.vb">
+    <Compile Include="Forms\DragDrop2\DropFiles.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DragDrop\FormDragDrop.Designer.vb">
+      <DependentUpon>FormDragDrop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DragDrop\FormDragDrop.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FlyoutPanel\FlyoutPanel.Designer.vb">
+      <DependentUpon>FlyoutPanel.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FlyoutPanel\FlyoutPanel.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\inputBox\InputBoxAutocomplete.Designer.vb">
@@ -298,6 +316,12 @@
       <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="UnitTests\Tests.vb" />
+    <Compile Include="UserControls\ucFile.Designer.vb">
+      <DependentUpon>ucFile.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucFile.vb">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="UserControls\ucManual.Designer.vb">
       <DependentUpon>ucManual.vb</DependentUpon>
     </Compile>
@@ -339,8 +363,14 @@
     <EmbeddedResource Include="Forms\chartControl\ChartForm.resx">
       <DependentUpon>ChartForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\DragDrop2\DropFiles.resx">
+      <DependentUpon>DropFiles.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DragDrop\FormDragDrop.resx">
+      <DependentUpon>FormDragDrop.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FlyoutPanel\FlyoutPanel.resx">
+      <DependentUpon>FlyoutPanel.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\inputBox\InputBoxAutocomplete.resx">
       <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
@@ -412,6 +442,9 @@
     <EmbeddedResource Include="Forms\inputBox\XtraDialogArgsTable.resx">
       <DependentUpon>XtraDialogArgsTable.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucFile.resx">
+      <DependentUpon>ucFile.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucManual.resx">
       <DependentUpon>ucManual.vb</DependentUpon>
     </EmbeddedResource>
@@ -463,6 +496,17 @@
     </None>
     <None Include="DataSets\dsRelationDepot.xss">
       <DependentUpon>dsRelationDepot.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\vwParameters.xsc">
+      <DependentUpon>vwParameters.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\vwParameters.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>vwParameters.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="DataSets\vwParameters.xss">
+      <DependentUpon>vwParameters.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -536,6 +580,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\NewFolder1\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

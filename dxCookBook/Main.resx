@@ -217,6 +217,24 @@
   <data name="ManualUIToolStripMenuItem.Text" xml:space="preserve">
     <value>Manual UI</value>
   </data>
+  <data name="FlyoutPanelToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="FlyoutPanelToolStripMenuItem.Text" xml:space="preserve">
+    <value>Flyout Panel</value>
+  </data>
+  <data name="DragDropToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="DragDropToolStripMenuItem.Text" xml:space="preserve">
+    <value>DragDrop</value>
+  </data>
+  <data name="UcDragDropToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>202, 22</value>
+  </data>
+  <data name="UcDragDropToolStripMenuItem.Text" xml:space="preserve">
+    <value>ucDragDrop</value>
+  </data>
   <data name="ToolStripDropDownButton1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
@@ -453,6 +471,30 @@
   <data name="&gt;&gt;UploadImageToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;ManualUIToolStripMenuItem.Name" xml:space="preserve">
+    <value>ManualUIToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ManualUIToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;FlyoutPanelToolStripMenuItem.Name" xml:space="preserve">
+    <value>FlyoutPanelToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;FlyoutPanelToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;DragDropToolStripMenuItem.Name" xml:space="preserve">
+    <value>DragDropToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;DragDropToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;UcDragDropToolStripMenuItem.Name" xml:space="preserve">
+    <value>UcDragDropToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;UcDragDropToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;ToolStripButton1.Name" xml:space="preserve">
     <value>ToolStripButton1</value>
   </data>
@@ -464,12 +506,6 @@
   </data>
   <data name="&gt;&gt;ToolStripButton2.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;ManualUIToolStripMenuItem.Name" xml:space="preserve">
-    <value>ManualUIToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;ManualUIToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Main</value>

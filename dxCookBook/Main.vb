@@ -27,9 +27,6 @@
         GridControlFooter.Show()
     End Sub
 
-    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 
     Private Sub ViewDataSetGridToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewDataSetGridToolStripMenuItem.Click
         Grid2Grid.Show()
@@ -78,5 +75,23 @@
     Private Sub ManualUIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManualUIToolStripMenuItem.Click
         Dim myControl As New ucManual()
         DevExpress.XtraEditors.XtraDialog.Show(myControl, "Manual", MessageBoxButtons.OK)
+    End Sub
+
+    Private Sub FlyoutPanelToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FlyoutPanelToolStripMenuItem.Click
+        FlyoutPanel.Show()
+    End Sub
+
+    Private Sub DragDropToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DragDropToolStripMenuItem.Click
+        FormDragDrop2.Show()
+    End Sub
+
+
+    Private Sub UcDragDropToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UcDragDropToolStripMenuItem.Click
+        Dim myControl As New ucFile(123456, "INWARDFILES")
+        DevExpress.XtraEditors.XtraDialog.Show(myControl, "Manual", MessageBoxButtons.OK)
+    End Sub
+
+    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 End Class

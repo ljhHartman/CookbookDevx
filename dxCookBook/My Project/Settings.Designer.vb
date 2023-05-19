@@ -57,11 +57,22 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=SQLCLUSTER01\BURANDO;Initial Catalog=SSLTEST;Integrated Security=True"& _ 
-            "")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=BurSRV016sql1\burando;Initial Catalog=SSLTEST;Integrated Security=Tru"& _ 
+            "e;Connect Timeout=30;Packet Size=4096")>  _
         Public ReadOnly Property conSsl() As String
             Get
                 Return CType(Me("conSsl"),String)
+            End Get
+        End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=BurSRV016sql1\burando;Initial Catalog=SSLTEST;Integrated Security=Tru"& _ 
+            "e")>  _
+        Public ReadOnly Property SSLTESTConnectionString() As String
+            Get
+                Return CType(Me("SSLTESTConnectionString"),String)
             End Get
         End Property
     End Class
