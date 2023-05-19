@@ -86,6 +86,10 @@
     <Reference Include="Microsoft.Data.Schema.UnitTesting, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTesting, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.Data.Tools.Schema.Sql.UnitTestingAdapter, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Office.Interop.Outlook, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Outlook.15.0.4797.1004\lib\net20\Microsoft.Office.Interop.Outlook.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
     <Reference Include="Microsoft.TeamFoundation.TestManagement.Client, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.TeamFoundation.TestManagement.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
@@ -213,10 +217,10 @@
     <Compile Include="Forms\uploadImage.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\userControl\ucSelectDepotCode.Designer.vb">
+    <Compile Include="UserControls\ucSelectDepotCode.Designer.vb">
       <DependentUpon>ucSelectDepotCode.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\userControl\ucSelectDepotCode.vb">
+    <Compile Include="UserControls\ucSelectDepotCode.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Forms\Util\DXError.Designer.vb">
@@ -408,7 +412,7 @@
     <EmbeddedResource Include="Forms\uploadImage.resx">
       <DependentUpon>uploadImage.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\userControl\ucSelectDepotCode.resx">
+    <EmbeddedResource Include="UserControls\ucSelectDepotCode.resx">
       <DependentUpon>ucSelectDepotCode.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Util\DXError.resx">
@@ -551,6 +555,7 @@
     <None Include="DataSets\SSLTESTDataSet2.xss">
       <DependentUpon>SSLTESTDataSet2.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="SSLTESTDataSet3.xsc">
       <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
     </None>
@@ -581,8 +586,6 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
