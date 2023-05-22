@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class ucFile
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,8 +20,9 @@ Partial Class ucFile
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ucFile))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.tlpIcons = New System.Windows.Forms.TableLayoutPanel()
@@ -37,11 +38,20 @@ Partial Class ucFile
         Me.columnCheck = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.columnGroup = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.columnImage = New DevExpress.XtraGrid.Columns.GridColumn()
+        Me.pmRightMouse = New DevExpress.XtraBars.PopupMenu(Me.components)
+        Me.bmRightMouse = New DevExpress.XtraBars.BarManager(Me.components)
+        Me.bbOpen = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbCopy = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbDelete = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbEmail = New DevExpress.XtraBars.BarButtonItem()
+        Me.bbProperties = New DevExpress.XtraBars.BarButtonItem()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.tlpIcons.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
         CType(Me.gcAttachments, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.WinExplorerView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.pmRightMouse, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.bmRightMouse, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TableLayoutPanel1
@@ -187,6 +197,9 @@ Partial Class ucFile
         Me.WinExplorerView1.GroupCount = 1
         Me.WinExplorerView1.Name = "WinExplorerView1"
         Me.WinExplorerView1.OptionsFind.AlwaysVisible = True
+        Me.WinExplorerView1.OptionsSelection.AllowMarqueeSelection = True
+        Me.WinExplorerView1.OptionsSelection.ItemSelectionMode = DevExpress.XtraGrid.Views.WinExplorer.IconItemSelectionMode.Click
+        Me.WinExplorerView1.OptionsSelection.MultiSelect = True
         Me.WinExplorerView1.SortInfo.AddRange(New DevExpress.XtraGrid.Columns.GridColumnSortInfo() {New DevExpress.XtraGrid.Columns.GridColumnSortInfo(Me.columnGroup, DevExpress.Data.ColumnSortOrder.Ascending)})
         '
         'columnName
@@ -229,6 +242,49 @@ Partial Class ucFile
         Me.columnImage.Visible = True
         Me.columnImage.VisibleIndex = 0
         '
+        'pmRightMouse
+        '
+        Me.pmRightMouse.LinksPersistInfo.AddRange(New DevExpress.XtraBars.LinkPersistInfo() {New DevExpress.XtraBars.LinkPersistInfo(Me.bbOpen), New DevExpress.XtraBars.LinkPersistInfo(Me.bbCopy), New DevExpress.XtraBars.LinkPersistInfo(Me.bbDelete), New DevExpress.XtraBars.LinkPersistInfo(Me.bbEmail), New DevExpress.XtraBars.LinkPersistInfo(Me.bbProperties)})
+        Me.pmRightMouse.Manager = Me.bmRightMouse
+        Me.pmRightMouse.Name = "pmRightMouse"
+        '
+        'bmRightMouse
+        '
+        Me.bmRightMouse.DockingEnabled = False
+        Me.bmRightMouse.Form = Me
+        Me.bmRightMouse.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbOpen, Me.bbCopy, Me.bbDelete, Me.bbEmail, Me.bbProperties})
+        Me.bmRightMouse.MaxItemId = 5
+        '
+        'bbOpen
+        '
+        Me.bbOpen.Caption = "Open"
+        Me.bbOpen.Id = 0
+        Me.bbOpen.Name = "bbOpen"
+        '
+        'bbCopy
+        '
+        Me.bbCopy.Caption = "Copy"
+        Me.bbCopy.Id = 1
+        Me.bbCopy.Name = "bbCopy"
+        '
+        'bbDelete
+        '
+        Me.bbDelete.Caption = "Delete"
+        Me.bbDelete.Id = 2
+        Me.bbDelete.Name = "bbDelete"
+        '
+        'bbEmail
+        '
+        Me.bbEmail.Caption = "Email"
+        Me.bbEmail.Id = 3
+        Me.bbEmail.Name = "bbEmail"
+        '
+        'bbProperties
+        '
+        Me.bbProperties.Caption = "Properties"
+        Me.bbProperties.Id = 4
+        Me.bbProperties.Name = "bbProperties"
+        '
         'ucFile
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -241,6 +297,8 @@ Partial Class ucFile
         Me.TableLayoutPanel2.ResumeLayout(False)
         CType(Me.gcAttachments, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.WinExplorerView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.pmRightMouse, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.bmRightMouse, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -259,4 +317,11 @@ Partial Class ucFile
     Friend WithEvents columnCheck As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents columnGroup As DevExpress.XtraGrid.Columns.GridColumn
     Friend WithEvents columnImage As DevExpress.XtraGrid.Columns.GridColumn
+    Friend WithEvents pmRightMouse As DevExpress.XtraBars.PopupMenu
+    Friend WithEvents bmRightMouse As DevExpress.XtraBars.BarManager
+    Friend WithEvents bbOpen As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbCopy As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbDelete As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbEmail As DevExpress.XtraBars.BarButtonItem
+    Friend WithEvents bbProperties As DevExpress.XtraBars.BarButtonItem
 End Class

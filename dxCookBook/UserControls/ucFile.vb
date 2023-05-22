@@ -1,15 +1,25 @@
-﻿Imports System.IO
+﻿Imports System.Collections.Specialized
+Imports System.IO
 Imports System.Reflection
 Imports System.Text.RegularExpressions
 Imports DevExpress.Utils.Helpers
+Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraBars
+Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraGrid.Menu
+Imports DevExpress.XtraGrid.Views.Grid
+Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraGrid.Views.WinExplorer
 
 Public Class ucFile
+    Implements IFileSystemNavigationSupports
+
     Dim PrimaryCode As Integer
     Dim MainDirectory As String
     Dim SubDirectory As String
     Dim ViewStyle As WinExplorerViewStyle
+
+
 
     Sub New(iPrimaryCode As Integer, strParameterName As String)
         ' Initialize Design
@@ -35,19 +45,99 @@ Public Class ucFile
         AddHandler Me.tbMedium.Click, AddressOf tbMedium_Click
         AddHandler Me.tbSmall.Click, AddressOf tbSmall_Click
         AddHandler Me.WinExplorerView1.DoubleClick, AddressOf WinExplorerView_OpenFile
+        AddHandler Me.gcAttachments.MouseDown, AddressOf GcAttachments_PopupMenu
+        AddHandler Me.bbOpen.ItemPress, AddressOf bbOpen_Click
+        AddHandler Me.bbCopy.ItemPress, AddressOf bbCopy_Click
+        AddHandler Me.bbDelete.ItemPress, AddressOf bbDelete_Click
+        AddHandler Me.bbEmail.ItemPress, AddressOf bbEmail_Click
+        AddHandler Me.bbProperties.ItemPress, AddressOf bbProperties_ItemClick
     End Sub
 
 
 
 #Region "Buttons"
 
-    Private Sub WinExplorerView_OpenFile(ByVal sender As Object, ByVal e As Object)
-        Debug.WriteLine(vbCrLf & $"--- Method : {MethodBase.GetCurrentMethod().Name} ---")
+    Private Sub bbProperties_ItemClick(sender As Object, e As ItemClickEventArgs)
+        Debug.WriteLine(vbCrLf & $"[METHOD] - {MethodBase.GetCurrentMethod().Name}")
+        Dim entries As IEnumerable(Of FileSystemEntry) = GetSelectedEntries()
+        For Each entry As FileSystemEntry In entries
+            entry.ShowProperties()
+        Next
+    End Sub
+
+    Private Sub bbEmail_Click(sender As Object, e As ItemClickEventArgs)
+        Debug.WriteLine(vbCrLf & $"[METHOD] - {MethodBase.GetCurrentMethod().Name}")
+        Dim paths As StringCollection = New StringCollection()
+
+        ' Iterate files in drectory
         For Each path As String In Directory.GetFiles(SubDirectory)
             Dim GetFileNameWithoutExtension = IO.Path.GetFileNameWithoutExtension(path)
+            If GetFileNameWithoutExtension = WinExplorerView1.GetFocusedValue Then paths.Add(path)
+        Next
+
+        Dim oApp As Microsoft.Office.Interop.Outlook.Application = New Microsoft.Office.Interop.Outlook.Application()
+        Dim oMail As Microsoft.Office.Interop.Outlook.MailItem = Nothing
+
+        Try
+            oMail = oApp.CreateItem(Microsoft.Office.Interop.Outlook.OlItemType.olMailItem)
+            For x As Integer = 0 To paths.Count - 1
+                oMail.Attachments.Add(paths(x))
+            Next
+            oMail.Save()
+            oMail.Display(False)
+        Catch ex As Exception
+            Console.WriteLine($"¯\_(-.-)_/¯ : I'm having trouble emailing the selected attachment" & vbCrLf & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub bbCopy_Click(ByVal sender As Object, ByVal e As Object)
+        Debug.WriteLine(vbCrLf & $"[METHOD] - {MethodBase.GetCurrentMethod().Name}")
+        Dim entries As IEnumerable(Of FileSystemEntry) = GetSelectedEntries()
+        Dim paths As StringCollection = New StringCollection()
+        For Each entry As FileSystemEntry In entries
+            paths.Add(entry.Path)
+            Clipboard.SetFileDropList(paths)
+        Next
+    End Sub
+
+    Private Sub bbDelete_Click(ByVal sender As Object, ByVal e As Object)
+        Debug.WriteLine(vbCrLf & $"[METHOD] - {MethodBase.GetCurrentMethod().Name}")
+        Dim entries As IEnumerable(Of FileSystemEntry) = GetSelectedEntries()
+        For Each entry As FileSystemEntry In entries
+            File.Delete(entry.Path)
+        Next
+        UpdateView()
+    End Sub
+
+    Private Sub bbOpen_Click(ByVal sender As Object, ByVal e As Object)
+        Debug.WriteLine(vbCrLf & $"[METHOD] - {MethodBase.GetCurrentMethod().Name}")
+        For Each entry As FileSystemEntry In GetSelectedEntries(True)
+            entry.DoAction(Me)
+        Next entry
+    End Sub
+
+    Private Sub GcAttachments_PopupMenu(sender As Object, e As MouseEventArgs)
+        ' When user click Right-Mouse Button, inside the View, a Popup Menu shows up 
+        Debug.WriteLine(vbCrLf & $"[METHOD] - {MethodBase.GetCurrentMethod().Name}")
+
+        ' Right MouseClick Activty 
+        If e.Button = MouseButtons.Right Then
+            pmRightMouse.ShowPopup(MousePosition)
+            Debug.WriteLine(vbCrLf & $"[INFO] - MouseButtons.Right Position: {MousePosition.ToString}")
+        End If
+    End Sub
+
+    Private Sub WinExplorerView_OpenFile(ByVal sender As Object, ByVal e As Object)
+        Debug.WriteLine(vbCrLf & $"[METHOD] - {MethodBase.GetCurrentMethod().Name}")
+
+        ' Iterate File in Drectory
+        For Each path As String In Directory.GetFiles(SubDirectory)
+            Dim GetFileNameWithoutExtension = IO.Path.GetFileNameWithoutExtension(path)
+            ' Find Selected File and open
             If GetFileNameWithoutExtension = WinExplorerView1.GetFocusedValue Then Process.Start(path)
         Next
     End Sub
+
 
     Private Sub tbExtraLarge_Click(sender As Object, e As EventArgs)
         Me.WinExplorerView1.OptionsView.Style = WinExplorerViewStyle.ExtraLarge
@@ -70,6 +160,22 @@ Public Class ucFile
 
 
 #Region "Methods"
+
+    Private Function GetSelectedEntries() As List(Of FileSystemEntry)
+        Return GetSelectedEntries(False)
+    End Function
+
+    Private Function GetSelectedEntries(ByVal sort As Boolean) As List(Of FileSystemEntry)
+        Dim list As New List(Of FileSystemEntry)()
+        Dim rows() As Integer = WinExplorerView1.GetSelectedRows()
+        For i As Integer = 0 To rows.Length - 1
+            list.Add(CType(WinExplorerView1.GetRow(rows(i)), FileSystemEntry))
+        Next i
+        If sort Then
+            list.Sort(New FileSytemEntryComparer())
+        End If
+        Return list
+    End Function
 
     Private Sub GridControl_DragEnter(sender As Object, e As DragEventArgs)
         ' Select Multiple files for the explorer and drag them to the GridControl
@@ -251,6 +357,16 @@ Public Class ucFile
         End If
         Return subject
     End Function
+
+    Public Sub UpdatePath(path As String) Implements IFileSystemNavigationSupports.UpdatePath
+        Throw New NotImplementedException()
+    End Sub
+
+    Public ReadOnly Property CurrentPath As String Implements IFileSystemNavigationSupports.CurrentPath
+        Get
+            Throw New NotImplementedException()
+        End Get
+    End Property
 
 #End Region
 
