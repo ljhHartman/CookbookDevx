@@ -320,10 +320,10 @@
       <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
     </Compile>
     <Compile Include="UnitTests\Tests.vb" />
-    <Compile Include="UserControls\ucFile.Designer.vb">
-      <DependentUpon>ucFile.vb</DependentUpon>
+    <Compile Include="UserControls\ucFileManager.Designer.vb">
+      <DependentUpon>ucFileManager.vb</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucFile.vb">
+    <Compile Include="UserControls\ucFileManager.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\ucManual.Designer.vb">
@@ -446,8 +446,8 @@
     <EmbeddedResource Include="Forms\inputBox\XtraDialogArgsTable.resx">
       <DependentUpon>XtraDialogArgsTable.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucFile.resx">
-      <DependentUpon>ucFile.vb</DependentUpon>
+    <EmbeddedResource Include="UserControls\ucFileManager.resx">
+      <DependentUpon>ucFileManager.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucManual.resx">
       <DependentUpon>ucManual.vb</DependentUpon>

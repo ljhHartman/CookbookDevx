@@ -3,22 +3,49 @@ Imports System.IO
 Imports System.Reflection
 Imports System.Text.RegularExpressions
 Imports DevExpress.Utils.Helpers
-Imports DevExpress.Utils.Menu
 Imports DevExpress.XtraBars
-Imports DevExpress.XtraGrid.Columns
-Imports DevExpress.XtraGrid.Menu
-Imports DevExpress.XtraGrid.Views.Grid
-Imports DevExpress.XtraGrid.Views.Grid.ViewInfo
 Imports DevExpress.XtraGrid.Views.WinExplorer
 
-Public Class ucFile
+'=====================================================
+'                       NOTES
+'=====================================================
+
+' DESCIPTION:   Initilaze a File Manager System inside a form.
+
+' PARAMETER 1:  Set the primary code, for example: Inward Code or Relation Code
+' PARAMETER 2:  Set the correct path (MainDirectory) to save the files to. See "Paratemer" table in the database
+
+' WARNING:      You can only store files, if the Form is saved beforehand. 
+'               If "Enable" Is set to True its posible to store file inside the SubDirectory, named after the "PrimaryCode"
+'               Use the SetPrimaryCode Method to update the PrimaryCode after a New Form Save.
+
+'-----------------------------------------------------
+'               EXAMPLE INITIALIZE USER CONTROL
+'-----------------------------------------------------
+
+' INSTANCE USER CONTROL EXAMPLE:
+' Dim uc As ucFileManager
+' uc = New ucFileManager(SHSFormIDs.iInwardNumber, "INWARDFILES")
+
+' ADD USER CONTROL TO LAYOUT:
+' tabName.Controls.Add(uc)
+
+'  RESET USER CONTROL AFTER FORM NEW SAVE
+' uc.SetPrimaryCode(SHSFormIDs.iInwardNumber)
+
+
+'=====================================================
+
+
+
+Public Class ucFileManager
     Implements IFileSystemNavigationSupports
 
     Dim PrimaryCode As Integer
     Dim MainDirectory As String
     Dim SubDirectory As String
     Dim ViewStyle As WinExplorerViewStyle
-
+    Dim Enable As Boolean
 
 
     Sub New(iPrimaryCode As Integer, strParameterName As String)
@@ -33,9 +60,10 @@ Public Class ucFile
         PrimaryCode = iPrimaryCode
         MainDirectory = GetParameter(strParameterName) ' "INWARDFILES"
         SubDirectory = $"{MainDirectory}{PrimaryCode}\"
+        Enable = If((PrimaryCode <> 0), True, False)
 
         ' View Files
-        UpdateView()
+        If Enable Then UpdateView()
 
         Me.gcAttachments.AllowDrop = True
         AddHandler gcAttachments.DragEnter, AddressOf GridControl_DragEnter
@@ -161,6 +189,22 @@ Public Class ucFile
 
 #Region "Methods"
 
+    Public Sub SetPrimaryCode(pPrimaryCode As Integer)
+        Debug.WriteLine($"[METHOD] - {MethodBase.GetCurrentMethod().Name}")
+
+        ' Update Class Variables
+        PrimaryCode = pPrimaryCode
+        Enable = If((PrimaryCode <> 0), True, False)
+        SubDirectory = $"{MainDirectory}{PrimaryCode}\"
+
+        Debug.WriteLine($"[INFO] - New PrimaryCode : {PrimaryCode}")
+        Debug.WriteLine($"[INFO] - New Enable : {Enable}")
+        Debug.WriteLine($"[INFO] - New SubDirectory : {SubDirectory}")
+
+        Me.Refresh()
+    End Sub
+
+
     Private Function GetSelectedEntries() As List(Of FileSystemEntry)
         Return GetSelectedEntries(False)
     End Function
@@ -189,36 +233,44 @@ Public Class ucFile
         ' Drop files into the GrindControl
         Debug.WriteLine($"[METHOD] - {MethodBase.GetCurrentMethod().Name}")
 
-        Try
-            If e.Data.GetDataPresent(DataFormats.FileDrop) Then
-                ' List of Dragged Files
-                Dim draggedFiles As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
+        If (Enable) Then
+            Try
+                If e.Data.GetDataPresent(DataFormats.FileDrop) Then
+                    ' List of Dragged Files
+                    Dim draggedFiles As String() = CType(e.Data.GetData(DataFormats.FileDrop), String())
 
-                ' Create sub directory
-                CreateSubDirecoty()
-                Debug.WriteLine($"[INFO] - Sub Directory Path: {SubDirectory}")
+                    ' Create sub directory
+                    CreateSubDirecoty()
+                    Debug.WriteLine($"[INFO] - Sub Directory Path: {SubDirectory}")
 
-                ' Iterate Dragged Files
-                For Each i As String In draggedFiles
-                    Debug.WriteLine($"[INFO] - Drop File : {i}")
+                    ' Iterate Dragged Files
+                    For Each i As String In draggedFiles
+                        Debug.WriteLine($"[INFO] - Drop File : {i}")
 
-                    ' Copy Files To sub directory
-                    File.Copy(i, $"{SubDirectory}{Path.GetFileName(i)}", True)
-                Next
-            ElseIf e.Data.GetDataPresent("FileGroupDescriptor") Then
-                DropEmail(sender, e)
-            End If
+                        ' Copy Files To sub directory
+                        File.Copy(i, $"{SubDirectory}{Path.GetFileName(i)}", True)
+                    Next
+                ElseIf e.Data.GetDataPresent("FileGroupDescriptor") Then
+                    DropEmail(sender, e)
+                End If
 
-        Catch ex As DirectoryNotFoundException
-            Console.WriteLine("¯\_(^,^)_/¯ : Can't find Directory" & vbCrLf & ex.Message)
-        Catch ex As NullReferenceException
-            Console.WriteLine("¯\_('v')_/¯ : I don't get this filetype" & vbCrLf & ex.Message)
-        Catch ex As Exception
-            Console.WriteLine("¯\_(-.-)_/¯ : I don't even know what this is" & vbCrLf & ex.Message)
-        End Try
+            Catch ex As DirectoryNotFoundException
+                Console.WriteLine("¯\_(^,^)_/¯ : Can't find Directory" & vbCrLf & ex.Message)
+            Catch ex As NullReferenceException
+                Console.WriteLine("¯\_('v')_/¯ : I don't get this filetype" & vbCrLf & ex.Message)
+            Catch ex As Exception
+                Console.WriteLine("¯\_(-.-)_/¯ : I don't even know what this is" & vbCrLf & ex.Message)
+            End Try
 
-        ' Update View
-        UpdateView()
+            ' Update View
+            UpdateView()
+        Else
+            MsgBox($"┌( ;･_･)┘ You can't store any files," & vbCrLf & "because the form has not yet been saved.")
+
+            ' Test !!!!!!!!!!!!!
+            'SetPrimaryCode(911)
+        End If
+
     End Sub
 
     Public Function GetParameter(ByVal strParameterName As String) As String
@@ -369,5 +421,7 @@ Public Class ucFile
     End Property
 
 #End Region
+
+
 
 End Class

@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class ucFile
+Partial Class ucFileManager
     Inherits System.Windows.Forms.UserControl
 
     'UserControl overrides dispose to clean up the component list.
@@ -23,7 +23,7 @@ Partial Class ucFile
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ucFile))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(ucFileManager))
         Me.TableLayoutPanel1 = New System.Windows.Forms.TableLayoutPanel()
         Me.tlpIcons = New System.Windows.Forms.TableLayoutPanel()
         Me.tbSmall = New DevExpress.XtraBars.Navigation.TileBar()
@@ -39,12 +39,12 @@ Partial Class ucFile
         Me.columnGroup = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.columnImage = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.pmRightMouse = New DevExpress.XtraBars.PopupMenu(Me.components)
-        Me.bmRightMouse = New DevExpress.XtraBars.BarManager(Me.components)
         Me.bbOpen = New DevExpress.XtraBars.BarButtonItem()
         Me.bbCopy = New DevExpress.XtraBars.BarButtonItem()
         Me.bbDelete = New DevExpress.XtraBars.BarButtonItem()
         Me.bbEmail = New DevExpress.XtraBars.BarButtonItem()
         Me.bbProperties = New DevExpress.XtraBars.BarButtonItem()
+        Me.bmRightMouse = New DevExpress.XtraBars.BarManager(Me.components)
         Me.TableLayoutPanel1.SuspendLayout()
         Me.tlpIcons.SuspendLayout()
         Me.TableLayoutPanel2.SuspendLayout()
@@ -248,13 +248,6 @@ Partial Class ucFile
         Me.pmRightMouse.Manager = Me.bmRightMouse
         Me.pmRightMouse.Name = "pmRightMouse"
         '
-        'bmRightMouse
-        '
-        Me.bmRightMouse.DockingEnabled = False
-        Me.bmRightMouse.Form = Me
-        Me.bmRightMouse.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbOpen, Me.bbCopy, Me.bbDelete, Me.bbEmail, Me.bbProperties})
-        Me.bmRightMouse.MaxItemId = 5
-        '
         'bbOpen
         '
         Me.bbOpen.Caption = "Open"
@@ -285,12 +278,19 @@ Partial Class ucFile
         Me.bbProperties.Id = 4
         Me.bbProperties.Name = "bbProperties"
         '
-        'ucFile
+        'bmRightMouse
+        '
+        Me.bmRightMouse.DockingEnabled = False
+        Me.bmRightMouse.Form = Me
+        Me.bmRightMouse.Items.AddRange(New DevExpress.XtraBars.BarItem() {Me.bbOpen, Me.bbCopy, Me.bbDelete, Me.bbEmail, Me.bbProperties})
+        Me.bmRightMouse.MaxItemId = 5
+        '
+        'ucFileManager
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.Controls.Add(Me.TableLayoutPanel1)
-        Me.Name = "ucFile"
+        Me.Name = "ucFileManager"
         Me.Size = New System.Drawing.Size(786, 438)
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.tlpIcons.ResumeLayout(False)

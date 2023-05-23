@@ -87,11 +87,8 @@
 
 
     Private Sub UcDragDropToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UcDragDropToolStripMenuItem.Click
-        Dim myControl As New ucFile(123456, "INWARDFILES")
-        DevExpress.XtraEditors.XtraDialog.Show(myControl, "Manual", MessageBoxButtons.OK)
+        Dim uc As New ucFileManager(0, "INWARDFILES")
+        DevExpress.XtraEditors.XtraDialog.Show(uc, "Manual", MessageBoxButtons.OK)
     End Sub
 
-    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 End Class
