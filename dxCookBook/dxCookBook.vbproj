@@ -139,6 +139,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsDepots.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSets\dsDocumentType.Designer.vb">
+      <DependentUpon>dsDocumentType.xsd</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="DataSets\dsDocumentType.vb">
+      <DependentUpon>dsDocumentType.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSets\dsIncomingInvoiceLines.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -163,6 +171,12 @@
     <Compile Include="Forms\chartControl\ChartForm.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\ComboBox\ComboBox.Designer.vb">
+      <DependentUpon>ComboBox.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ComboBox\ComboBox.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\DragDrop2\DropFiles.Designer.vb">
       <DependentUpon>DropFiles.vb</DependentUpon>
     </Compile>
@@ -181,6 +195,24 @@
     <Compile Include="Forms\FlyoutPanel\FlyoutPanel.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\getFromTab\frmCharlie.Designer.vb">
+      <DependentUpon>frmCharlie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\getFromTab\frmCharlie.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\getFromTab\frmDelta.Designer.vb">
+      <DependentUpon>frmDelta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\getFromTab\frmDelta.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\getFromTab\GetFromTab.Designer.vb">
+      <DependentUpon>GetFromTab.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\getFromTab\GetFromTab.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\inputBox\InputBoxAutocomplete.Designer.vb">
       <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
     </Compile>
@@ -191,6 +223,12 @@
       <DependentUpon>Manual.vb</DependentUpon>
     </Compile>
     <Compile Include="Forms\Manual\Manual.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\MoveFiles\MoveFiles.Designer.vb">
+      <DependentUpon>MoveFiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\MoveFiles\MoveFiles.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\newRow\AddRowDataGrid.Designer.vb">
@@ -216,6 +254,12 @@
     </Compile>
     <Compile Include="Forms\uploadImage.vb">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserControls\ucMoveToFolder.Designer.vb">
+      <DependentUpon>ucMoveToFolder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ucMoveToFolder.vb">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControls\ucSelectDepotCode.Designer.vb">
       <DependentUpon>ucSelectDepotCode.vb</DependentUpon>
@@ -314,7 +358,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet2.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SSLTESTDataSet3.Designer.vb">
+    <Compile Include="DataSets\SSLTESTDataSet3.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
@@ -367,6 +411,9 @@
     <EmbeddedResource Include="Forms\chartControl\ChartForm.resx">
       <DependentUpon>ChartForm.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ComboBox\ComboBox.resx">
+      <DependentUpon>ComboBox.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\DragDrop2\DropFiles.resx">
       <DependentUpon>DropFiles.vb</DependentUpon>
     </EmbeddedResource>
@@ -376,11 +423,23 @@
     <EmbeddedResource Include="Forms\FlyoutPanel\FlyoutPanel.resx">
       <DependentUpon>FlyoutPanel.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\getFromTab\frmCharlie.resx">
+      <DependentUpon>frmCharlie.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\getFromTab\frmDelta.resx">
+      <DependentUpon>frmDelta.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\getFromTab\GetFromTab.resx">
+      <DependentUpon>GetFromTab.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\inputBox\InputBoxAutocomplete.resx">
       <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Manual\Manual.resx">
       <DependentUpon>Manual.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\MoveFiles\MoveFiles.resx">
+      <DependentUpon>MoveFiles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\newRow\AddRowDataGrid.resx">
       <DependentUpon>AddRowDataGrid.vb</DependentUpon>
@@ -411,6 +470,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\uploadImage.resx">
       <DependentUpon>uploadImage.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\ucMoveToFolder.resx">
+      <DependentUpon>ucMoveToFolder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\ucSelectDepotCode.resx">
       <DependentUpon>ucSelectDepotCode.vb</DependentUpon>
@@ -478,6 +540,17 @@
     </None>
     <None Include="DataSets\dsDepots.xss">
       <DependentUpon>dsDepots.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsDocumentType.xsc">
+      <DependentUpon>dsDocumentType.xsd</DependentUpon>
+    </None>
+    <None Include="DataSets\dsDocumentType.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsDocumentType.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSets\dsDocumentType.xss">
+      <DependentUpon>dsDocumentType.xsd</DependentUpon>
     </None>
     <None Include="DataSets\dsIncomingInvoiceLines.xsc">
       <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
@@ -556,15 +629,15 @@
       <DependentUpon>SSLTESTDataSet2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="SSLTESTDataSet3.xsc">
+    <None Include="DataSets\SSLTESTDataSet3.xsc">
       <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
     </None>
-    <None Include="SSLTESTDataSet3.xsd">
+    <None Include="DataSets\SSLTESTDataSet3.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SSLTESTDataSet3.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="SSLTESTDataSet3.xss">
+    <None Include="DataSets\SSLTESTDataSet3.xss">
       <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
     </None>
   </ItemGroup>

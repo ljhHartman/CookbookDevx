@@ -7,6 +7,8 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "dxCookBook", "dxCookBook\dx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "sslDataTextBox", "sslDataTextBox\sslDataTextBox.csproj", "{CABDCBB5-0874-4539-81A2-8E74F777E4ED}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "sslDataGrid", "sslDataGrid\sslDataGrid.vbproj", "{F48F8A8B-9D08-4CD4-90F0-4ED559F3EE31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{CABDCBB5-0874-4539-81A2-8E74F777E4ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CABDCBB5-0874-4539-81A2-8E74F777E4ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CABDCBB5-0874-4539-81A2-8E74F777E4ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F48F8A8B-9D08-4CD4-90F0-4ED559F3EE31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F48F8A8B-9D08-4CD4-90F0-4ED559F3EE31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F48F8A8B-9D08-4CD4-90F0-4ED559F3EE31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F48F8A8B-9D08-4CD4-90F0-4ED559F3EE31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

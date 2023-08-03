@@ -19,6 +19,7 @@ Partial Class Grid2Grid
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Me.GridControl1 = New DevExpress.XtraGrid.GridControl()
         Me.GridView1 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colIFACTUURREGELNUMMER = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -39,7 +40,7 @@ Partial Class Grid2Grid
         Me.colPERIODE = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colGROOTBOEKNUMMER = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
-        Me.VwCostRevenueBindingSource = New System.Windows.Forms.BindingSource()
+        Me.VwCostRevenueBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DsCostRevenue = New dxCookBook.dsCostRevenue()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colKONUMMER = New DevExpress.XtraGrid.Columns.GridColumn()

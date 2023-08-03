@@ -99,4 +99,8 @@ Public Class Grid2Grid
         Property PERIODE As String
         Property GROOTBOEKNUMMER As String
     End Class
+
+    Private Sub Grid2Grid_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

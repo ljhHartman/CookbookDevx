@@ -44,9 +44,12 @@ Partial Class Main
         Me.FlyoutPanelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DragDropToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.UcDragDropToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ComboBoxToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GetFromTabToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
+        Me.MoveFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -60,7 +63,7 @@ Partial Class Main
         'ToolStripDropDownButton1
         '
         Me.ToolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem, Me.ViewDataSetGridToolStripMenuItem, Me.CloseTabControleActionToolStripMenuItem, Me.DXErrorToolStripMenuItem, Me.DXErrorNumberToolStripMenuItem, Me.MessageBoxErrorToolStripMenuItem, Me.InputBoxAutocompleteToolStripMenuItem, Me.ChartControlToolStripMenuItem, Me.RowClickToolStripMenuItem, Me.UploadImageToolStripMenuItem, Me.ManualUIToolStripMenuItem, Me.FlyoutPanelToolStripMenuItem, Me.DragDropToolStripMenuItem, Me.UcDragDropToolStripMenuItem})
+        Me.ToolStripDropDownButton1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.XtraDialogToolStripMenuItem, Me.GridControlToolStripMenuItem, Me.RibbonFromToolStripMenuItem, Me.XtraDialogArgsToolStripMenuItem, Me.XtraDialogReturnTableToolStripMenuItem, Me.GridControlFooterToolStripMenuItem, Me.ViewDataSetGridToolStripMenuItem, Me.CloseTabControleActionToolStripMenuItem, Me.DXErrorToolStripMenuItem, Me.DXErrorNumberToolStripMenuItem, Me.MessageBoxErrorToolStripMenuItem, Me.InputBoxAutocompleteToolStripMenuItem, Me.ChartControlToolStripMenuItem, Me.RowClickToolStripMenuItem, Me.UploadImageToolStripMenuItem, Me.ManualUIToolStripMenuItem, Me.FlyoutPanelToolStripMenuItem, Me.DragDropToolStripMenuItem, Me.UcDragDropToolStripMenuItem, Me.ComboBoxToolStripMenuItem, Me.GetFromTabToolStripMenuItem, Me.MoveFilesToolStripMenuItem})
         resources.ApplyResources(Me.ToolStripDropDownButton1, "ToolStripDropDownButton1")
         Me.ToolStripDropDownButton1.Name = "ToolStripDropDownButton1"
         '
@@ -159,6 +162,16 @@ Partial Class Main
         Me.UcDragDropToolStripMenuItem.Name = "UcDragDropToolStripMenuItem"
         resources.ApplyResources(Me.UcDragDropToolStripMenuItem, "UcDragDropToolStripMenuItem")
         '
+        'ComboBoxToolStripMenuItem
+        '
+        Me.ComboBoxToolStripMenuItem.Name = "ComboBoxToolStripMenuItem"
+        resources.ApplyResources(Me.ComboBoxToolStripMenuItem, "ComboBoxToolStripMenuItem")
+        '
+        'GetFromTabToolStripMenuItem
+        '
+        Me.GetFromTabToolStripMenuItem.Name = "GetFromTabToolStripMenuItem"
+        resources.ApplyResources(Me.GetFromTabToolStripMenuItem, "GetFromTabToolStripMenuItem")
+        '
         'ToolStripButton1
         '
         Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -176,6 +189,11 @@ Partial Class Main
         Me.ToolStrip2.ImageScalingSize = New System.Drawing.Size(20, 20)
         resources.ApplyResources(Me.ToolStrip2, "ToolStrip2")
         Me.ToolStrip2.Name = "ToolStrip2"
+        '
+        'MoveFilesToolStripMenuItem
+        '
+        Me.MoveFilesToolStripMenuItem.Name = "MoveFilesToolStripMenuItem"
+        resources.ApplyResources(Me.MoveFilesToolStripMenuItem, "MoveFilesToolStripMenuItem")
         '
         'Main
         '
@@ -215,4 +233,7 @@ Partial Class Main
     Friend WithEvents FlyoutPanelToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents DragDropToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents UcDragDropToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ComboBoxToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GetFromTabToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents MoveFilesToolStripMenuItem As ToolStripMenuItem
 End Class

@@ -91,4 +91,15 @@
         DevExpress.XtraEditors.XtraDialog.Show(uc, "Manual", MessageBoxButtons.OK)
     End Sub
 
+    Private Sub ComboBoxToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComboBoxToolStripMenuItem.Click
+        ComboBox.Show()
+    End Sub
+
+    Private Sub GetFromTabToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GetFromTabToolStripMenuItem.Click
+        GetFromTab.Show()
+    End Sub
+
+    Private Sub MoveFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MoveFilesToolStripMenuItem.Click
+        MoveFiles.Show()
+    End Sub
 End Class
