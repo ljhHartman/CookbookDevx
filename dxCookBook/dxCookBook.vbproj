@@ -237,6 +237,12 @@
     <Compile Include="Forms\newRow\AddRowDataGrid.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\renameFiles\RenameFiles.Designer.vb">
+      <DependentUpon>RenameFiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\renameFiles\RenameFiles.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\rowClick\ClickRow.Designer.vb">
       <DependentUpon>ClickRow.vb</DependentUpon>
     </Compile>
@@ -443,6 +449,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\newRow\AddRowDataGrid.resx">
       <DependentUpon>AddRowDataGrid.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\renameFiles\RenameFiles.resx">
+      <DependentUpon>RenameFiles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\rowClick\ClickRow.resx">
       <DependentUpon>ClickRow.vb</DependentUpon>

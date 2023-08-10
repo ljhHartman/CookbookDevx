@@ -102,4 +102,8 @@
     Private Sub MoveFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MoveFilesToolStripMenuItem.Click
         MoveFiles.Show()
     End Sub
+
+    Private Sub RenameFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameFileToolStripMenuItem.Click
+        RenameFiles.Show()
+    End Sub
 End Class
