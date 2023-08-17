@@ -47,17 +47,18 @@ Partial Class Main
         Me.ComboBoxToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GetFromTabToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MoveFilesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.RenameFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripButton1 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripButton2 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip2 = New System.Windows.Forms.ToolStrip()
-        Me.RenameFileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripButton3 = New System.Windows.Forms.ToolStripButton()
         Me.ToolStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'ToolStrip1
         '
         Me.ToolStrip1.ImageScalingSize = New System.Drawing.Size(20, 20)
-        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripButton1, Me.ToolStripButton2})
+        Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripDropDownButton1, Me.ToolStripButton1, Me.ToolStripButton2, Me.ToolStripButton3})
         resources.ApplyResources(Me.ToolStrip1, "ToolStrip1")
         Me.ToolStrip1.Name = "ToolStrip1"
         '
@@ -178,6 +179,11 @@ Partial Class Main
         Me.MoveFilesToolStripMenuItem.Name = "MoveFilesToolStripMenuItem"
         resources.ApplyResources(Me.MoveFilesToolStripMenuItem, "MoveFilesToolStripMenuItem")
         '
+        'RenameFileToolStripMenuItem
+        '
+        Me.RenameFileToolStripMenuItem.Name = "RenameFileToolStripMenuItem"
+        resources.ApplyResources(Me.RenameFileToolStripMenuItem, "RenameFileToolStripMenuItem")
+        '
         'ToolStripButton1
         '
         Me.ToolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
@@ -196,10 +202,11 @@ Partial Class Main
         resources.ApplyResources(Me.ToolStrip2, "ToolStrip2")
         Me.ToolStrip2.Name = "ToolStrip2"
         '
-        'RenameFileToolStripMenuItem
+        'ToolStripButton3
         '
-        Me.RenameFileToolStripMenuItem.Name = "RenameFileToolStripMenuItem"
-        resources.ApplyResources(Me.RenameFileToolStripMenuItem, "RenameFileToolStripMenuItem")
+        Me.ToolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        resources.ApplyResources(Me.ToolStripButton3, "ToolStripButton3")
+        Me.ToolStripButton3.Name = "ToolStripButton3"
         '
         'Main
         '
@@ -243,4 +250,5 @@ Partial Class Main
     Friend WithEvents GetFromTabToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MoveFilesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RenameFileToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripButton3 As ToolStripButton
 End Class

@@ -9,12 +9,12 @@ Public Class RenameFiles
 
 
     Private Sub RenameFiles_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        ' Load all Folder
+        ' Load all Folder in ListView
         For Each i In My.Computer.FileSystem.GetDirectories(path)
             ListView1.Items.Add(i.Substring(i.LastIndexOf("\") + 1), ImageList1.Images.Count() - 2)
         Next
 
-        ' Load all Files
+        ' Load all Files in ListView
         For Each i In My.Computer.FileSystem.GetFiles(path)
             ListView1.Items.Add(i.Substring(i.LastIndexOf("\") + 1), ImageList1.Images.Count() - 1)
         Next
@@ -23,17 +23,20 @@ Public Class RenameFiles
 
 
     Private Sub ListView1_MouseDown(sender As Object, e As MouseEventArgs) Handles ListView1.MouseDown
-        ' Right click handler
+        ' Right Mouse click handler
         If e.Button = MouseButtons.Right Then
+
+            ' Get selected item location
             listViewItem = ListView1.GetItemAt(e.X, e.Y)
 
-            ' If an item in the ListView was selected, show Pop-up menu
+            ' Check if a item is selected in ListView
             If listViewItem IsNot Nothing Then
 
                 ' Set instance variable
                 fileName = listViewItem.Text
-
                 Console.WriteLine($"[INFO] - Right Mouse Activty: {e.X},{e.Y}, {fileName}")
+
+                ' Open pop-up menu, on location
                 ContextMenuStrip1.Show(ListView1, e.Location)
             End If
         End If

@@ -106,4 +106,8 @@
     Private Sub RenameFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameFileToolStripMenuItem.Click
         RenameFiles.Show()
     End Sub
+
+    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
+        GridControlFiles.Show()
+    End Sub
 End Class

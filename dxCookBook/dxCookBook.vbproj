@@ -213,6 +213,12 @@
     <Compile Include="Forms\getFromTab\GetFromTab.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\gridControlFiles\GridControlFiles.Designer.vb">
+      <DependentUpon>GridControlFiles.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\gridControlFiles\GridControlFiles.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\inputBox\InputBoxAutocomplete.Designer.vb">
       <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
     </Compile>
@@ -437,6 +443,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\getFromTab\GetFromTab.resx">
       <DependentUpon>GetFromTab.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\gridControlFiles\GridControlFiles.resx">
+      <DependentUpon>GridControlFiles.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\inputBox\InputBoxAutocomplete.resx">
       <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
