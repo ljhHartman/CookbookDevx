@@ -12,8 +12,8 @@ Public Class GridControlFiles
     Sub New()
         InitializeComponent()
 
-        AddHandler Me.SslDataGrid1.Load, AddressOf SslDataGrid1_Load
-        AddHandler Me.SslGridView1.PopupMenuShowing, AddressOf SslGridView1_PopupMenuShowing
+        AddHandler Me.gcAttachments.Load, AddressOf SslDataGrid1_Load
+        AddHandler Me.winExplorerView.PopupMenuShowing, AddressOf SslGridView1_PopupMenuShowing
 
     End Sub
 
@@ -21,11 +21,11 @@ Public Class GridControlFiles
 
 #Region "UI"
 
-    Private Sub SslDataGrid1_Load(sender As Object, e As EventArgs) Handles SslDataGrid1.Load
+    Private Sub SslDataGrid1_Load(sender As Object, e As EventArgs) Handles gcAttachments.Load
         My.Application.Log.WriteEntry($"GridControl - loads directory: {directory.ToString}")
 
         Dim files() As FileInfo = directory.GetFiles()
-        SslDataGrid1.DataSource = files
+        gcAttachments.DataSource = files
     End Sub
 
     Private Sub SslGridView1_PopupMenuShowing(sender As Object, e As DevExpress.XtraGrid.Views.Grid.PopupMenuShowingEventArgs)
@@ -33,8 +33,8 @@ Public Class GridControlFiles
 
         ' Show pop-up menu if a row is selected
         If e.MenuType = DevExpress.XtraGrid.Views.Grid.GridMenuType.Row Then
-            selectedRowIndex = SslGridView1.GetSelectedRows(0)
-            selectedFilename = SslGridView1.GetRowCellValue(selectedRowIndex, "Name").ToString
+            selectedRowIndex = winExplorerView.GetSelectedRows(0)
+            selectedFilename = winExplorerView.GetRowCellValue(selectedRowIndex, "Name").ToString
 
             My.Application.Log.WriteEntry($"Right mouse click - Show pop-up menu on the selected filename: {selectedFilename}")
 

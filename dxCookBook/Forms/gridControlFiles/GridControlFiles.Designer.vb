@@ -22,44 +22,44 @@ Partial Class GridControlFiles
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Me.SslDataGrid1 = New sslDataGrid.sslDataGrid()
-        Me.SslGridView1 = New sslDataGrid.sslGridView()
-        CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.gcAttachments = New sslDataGrid.sslDataGrid()
+        Me.winExplorerView = New sslDataGrid.sslGridView()
+        CType(Me.gcAttachments, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.winExplorerView, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'SslDataGrid1
+        'gcAttachments
         '
-        Me.SslDataGrid1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SslDataGrid1.Location = New System.Drawing.Point(0, 0)
-        Me.SslDataGrid1.MainView = Me.SslGridView1
-        Me.SslDataGrid1.Name = "SslDataGrid1"
-        Me.SslDataGrid1.Size = New System.Drawing.Size(800, 450)
-        Me.SslDataGrid1.TabIndex = 0
-        Me.SslDataGrid1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SslGridView1})
+        Me.gcAttachments.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.gcAttachments.Location = New System.Drawing.Point(0, 0)
+        Me.gcAttachments.MainView = Me.winExplorerView
+        Me.gcAttachments.Name = "gcAttachments"
+        Me.gcAttachments.Size = New System.Drawing.Size(800, 450)
+        Me.gcAttachments.TabIndex = 0
+        Me.gcAttachments.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.winExplorerView})
         '
-        'SslGridView1
+        'winExplorerView
         '
-        Me.SslGridView1.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.[Default]
-        Me.SslGridView1.GridControl = Me.SslDataGrid1
-        Me.SslGridView1.Name = "SslGridView1"
-        Me.SslGridView1.OptionsBehavior.Editable = False
-        Me.SslGridView1.SimpleSearch = False
+        Me.winExplorerView.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.[Default]
+        Me.winExplorerView.GridControl = Me.gcAttachments
+        Me.winExplorerView.Name = "winExplorerView"
+        Me.winExplorerView.OptionsBehavior.Editable = False
+        Me.winExplorerView.SimpleSearch = False
         '
         'GridControlFiles
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.SslDataGrid1)
+        Me.Controls.Add(Me.gcAttachments)
         Me.Name = "GridControlFiles"
         Me.Text = "GridControlFiles"
-        CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.gcAttachments, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.winExplorerView, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
 
-    Friend WithEvents SslDataGrid1 As sslDataGrid.sslDataGrid
-    Friend WithEvents SslGridView1 As sslDataGrid.sslGridView
+    Friend WithEvents gcAttachments As sslDataGrid.sslDataGrid
+    Friend WithEvents winExplorerView As sslDataGrid.sslGridView
 End Class

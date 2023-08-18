@@ -165,6 +165,17 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>vwParameters.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormDetails\dsAlphaTable.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsAlphaTable.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDetails\FormDetails.Designer.vb">
+      <DependentUpon>FormDetails.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDetails\FormDetails.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\chartControl\ChartForm.Designer.vb">
       <DependentUpon>ChartForm.vb</DependentUpon>
     </Compile>
@@ -195,6 +206,7 @@
     <Compile Include="Forms\FlyoutPanel\FlyoutPanel.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Forms\FormDetails\Globals.vb" />
     <Compile Include="Forms\getFromTab\frmCharlie.Designer.vb">
       <DependentUpon>frmCharlie.vb</DependentUpon>
     </Compile>
@@ -420,6 +432,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\FormDetails\FormDetails.resx">
+      <DependentUpon>FormDetails.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\chartControl\ChartForm.resx">
       <DependentUpon>ChartForm.vb</DependentUpon>
     </EmbeddedResource>
@@ -602,6 +617,17 @@
     </None>
     <None Include="DataSets\vwParameters.xss">
       <DependentUpon>vwParameters.xsd</DependentUpon>
+    </None>
+    <None Include="Forms\FormDetails\dsAlphaTable.xsc">
+      <DependentUpon>dsAlphaTable.xsd</DependentUpon>
+    </None>
+    <None Include="Forms\FormDetails\dsAlphaTable.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsAlphaTable.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Forms\FormDetails\dsAlphaTable.xss">
+      <DependentUpon>dsAlphaTable.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
