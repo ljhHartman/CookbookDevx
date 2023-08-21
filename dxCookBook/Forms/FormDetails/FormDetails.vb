@@ -1,4 +1,5 @@
 ﻿Imports System.ComponentModel
+Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Views.Grid
 
 
@@ -9,8 +10,12 @@ Public Class FormDetails
     Dim formUser As String = Globals.formUser
     Dim formReadOnly As Boolean = Globals.formReadOnly
     Dim formLanguage As String = Globals.formLanguage
-    Dim gridcontrol1 As GridController1
+    Dim gridControlExample As GridController1
+    Dim fileSystemExample As FileSystem1
 
+
+
+#Region "Initializers"
 
     Sub New()
         InitializeComponent()
@@ -18,14 +23,14 @@ Public Class FormDetails
         InitializeAutocomplete()
         InitializeReadOnly()
         ItitializeViews()
+        InitializeTests()
 
-
-
+        AddHandler Me.btnAddRow.Click, AddressOf btnAddRow_Click
+        AddHandler Me.btnClearView.Click, AddressOf btnClearView_Click
+        AddHandler Me.btnInitializeView.Click, AddressOf btnInitializeView_Click
     End Sub
 
 
-
-#Region "Methods"
 
     Private Sub InitializeFormDetails()
         ' Define BindingList
@@ -50,10 +55,10 @@ Public Class FormDetails
         })
 
         ' BindingList to Textboxes
-        tbPersonID.DataBindings.Add("EditValue", bindingList, "PersonID")
-        tbLastName.DataBindings.Add("EditValue", bindingList, "LastName")
-        tbFirstName.DataBindings.Add("EditValue", bindingList, "FirstName")
-        tbCity.DataBindings.Add("EditValue", bindingList, "City")
+        tePersonID.DataBindings.Add("EditValue", bindingList, "PersonID")
+        teLastName.DataBindings.Add("EditValue", bindingList, "LastName")
+        teFirstName.DataBindings.Add("EditValue", bindingList, "FirstName")
+        teCity.DataBindings.Add("EditValue", bindingList, "City")
     End Sub
 
     Private Sub InitializeAutocomplete()
@@ -62,7 +67,7 @@ Public Class FormDetails
         Dim acAlphaTable As New AutoCompleteStringCollection
         tbaAlphaTable.Fill(dsAlphaTable.AlphaTable)
         dsAlphaTable.AlphaTable.Rows.Cast(Of DataRow).ToList.ForEach(Function(dr) acAlphaTable.Add(dr("LastName") & "    |    " & dr("PersonID")))
-        tbLastName.MaskBox.AutoCompleteCustomSource = acAlphaTable
+        teLastName.MaskBox.AutoCompleteCustomSource = acAlphaTable
 
         ' Add more Autocomplete
     End Sub
@@ -71,19 +76,52 @@ Public Class FormDetails
         If formReadOnly Then Console.WriteLine($"Run ReadOnlyAppUI(Me) method from BaseFrom")
     End Sub
 
+    Private Sub InitializeTests()
+        My.Application.Log.WriteEntry($" [TEST] Form ID:................{formID}")
+        My.Application.Log.WriteEntry($" [TEST] Form Language:..........{formLanguage}")
+        My.Application.Log.WriteEntry($" [TEST] Form Read Only:.........{formReadOnly}")
+        My.Application.Log.WriteEntry($" [TEST] Form User:..............{formUser}")
+        My.Application.Log.WriteEntry($" [TEST] GridControl1 RowCount:..{gridControlExample.RowCount()}")
+
+    End Sub
+
     Private Sub ItitializeViews()
-        gridcontrol1 = New GridController1(Me.SslDataGrid1, formID)
+        gridControlExample = New GridController1(Me.SslDataGrid1)
+        fileSystemExample = New FileSystem1(Me.SslDataGrid2)
     End Sub
 
 #End Region
 
 
+
+#Region "Controls"
+
+    Private Sub btnAddRow_Click(sender As Object, e As EventArgs)
+        gridControlExample.NewRow()
+    End Sub
+
+    Private Sub btnClearView_Click(sender As Object, e As EventArgs)
+        gridControlExample.ClearView()
+    End Sub
+
+    Private Sub btnInitializeView_Click(sender As Object, e As EventArgs)
+        gridControlExample.InitializeView()
+    End Sub
+#End Region
+
+
+
+#Region "Methods"
+
+
+
+#End Region
+
+
+
 #Region "Classes"
 
     Private Class Record
-        Public Sub New()
-        End Sub
-
         Public Property PersonID As Integer
         Public Property LastName As String
         Public Property FirstName As String
@@ -92,17 +130,24 @@ Public Class FormDetails
 
 
 
-    Private Class GridController1
-        Public Sub New(ByRef gridcontrol As sslDataGrid.sslDataGrid, id As Integer)
-            Dim ds As Object = New dsAlphaTable.AlphaTableDataTable()
-            Dim tba As Object = New dsAlphaTableTableAdapters.AlphaTableTableAdapter()
-            Dim dt As DataTable = New DataTable
-            Dim gv As GridView = gridcontrol.MainView
+    Class GridController1
+        Private gc As sslDataGrid.sslDataGrid
+        Private ds As Object
+        Private tba As Object
+        Private dt As DataTable
+        Private gv As GridView
 
-            ' Set datasource
-            tba.Fill(ds)
-            dt = ds
-            gridcontrol.DataSource = dt
+
+
+        Public Sub New(ByRef gridcontrol As sslDataGrid.sslDataGrid)
+            gc = gridcontrol
+            ds = New dsAlphaTable.AlphaTableDataTable()
+            tba = New dsAlphaTableTableAdapters.AlphaTableTableAdapter()
+            dt = New DataTable
+            gv = gridcontrol.MainView
+
+            ' Datasource
+            InitializeView()
 
             ' Settings
             gv.OptionsView.ColumnAutoWidth = False
@@ -112,9 +157,59 @@ Public Class FormDetails
             gv.OptionsFind.AllowFindPanel = True
             gv.OptionsFind.AlwaysVisible = True
             gv.OptionsView.ShowFooter = True
+
+            ' Handlers
+            AddHandler gc.DoubleClick, AddressOf gridcontrol_Click
+
+            ' Footer
+            gv.Columns("PersonID").Summary.Add(New GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PersonID", "Sum={0}"))
+
+        End Sub
+
+        Function RowCount()
+            Return gv.RowCount()
+        End Function
+
+        Sub InitializeView()
+            tba.Fill(ds)
+            dt = ds
+            gc.DataSource = dt
+        End Sub
+
+        Sub ClearView()
+            gc.BeginUpdate()
+            Try
+                gv.Columns.Clear()
+                gc.DataSource = Nothing
+            Finally
+                gc.EndUpdate()
+            End Try
+        End Sub
+
+        Sub NewRow()
+            With gv
+                .AddNewRow()
+                .SetRowCellValue(gc.NewItemRowHandle, gv.Columns("PersonID"), 4)
+                .SetRowCellValue(gc.NewItemRowHandle, gv.Columns("FirstName"), "Fry")
+                .SetRowCellValue(gc.NewItemRowHandle, gv.Columns("LastName"), "X")
+                .SetRowCellValue(gc.NewItemRowHandle, gv.Columns("City"), "New New York City")
+            End With
+        End Sub
+
+        Private Sub gridcontrol_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Dim dataRow As DataRow = gv.GetFocusedDataRow()
+            MsgBox($"Selected row id: {dataRow("PersonID")}")
         End Sub
 
     End Class
+
+
+    Private Class FileSystem1
+        Sub New(ByRef fileSystem As sslDataGrid.sslDataGrid)
+        End Sub
+
+    End Class
+
 
 #End Region
 

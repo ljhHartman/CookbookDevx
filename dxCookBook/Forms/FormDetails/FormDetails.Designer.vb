@@ -22,35 +22,30 @@ Partial Class FormDetails
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.tbPersonID = New sslDataTextBox.txtDataTextBox()
         Me.lblPersonID = New System.Windows.Forms.Label()
         Me.lblLastName = New System.Windows.Forms.Label()
-        Me.tbLastName = New sslDataTextBox.txtDataTextBox()
         Me.lblFirstName = New System.Windows.Forms.Label()
-        Me.tbFirstName = New sslDataTextBox.txtDataTextBox()
         Me.lblCity = New System.Windows.Forms.Label()
-        Me.tbCity = New sslDataTextBox.txtDataTextBox()
+        Me.tePersonID = New DevExpress.XtraEditors.TextEdit()
+        Me.teLastName = New DevExpress.XtraEditors.TextEdit()
+        Me.teFirstName = New DevExpress.XtraEditors.TextEdit()
+        Me.teCity = New DevExpress.XtraEditors.TextEdit()
+        Me.btnAddRow = New System.Windows.Forms.Button()
+        Me.btnClearView = New System.Windows.Forms.Button()
+        Me.btnInitializeView = New System.Windows.Forms.Button()
         Me.SslDataGrid1 = New sslDataGrid.sslDataGrid()
         Me.SslGridView1 = New sslDataGrid.sslGridView()
-        CType(Me.tbPersonID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbLastName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbFirstName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.tbCity.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SslDataGrid2 = New sslDataGrid.sslDataGrid()
+        Me.SslGridView2 = New sslDataGrid.sslGridView()
+        CType(Me.tePersonID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.teLastName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.teFirstName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.teCity.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SslDataGrid2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SslGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'tbPersonID
-        '
-        Me.tbPersonID.Location = New System.Drawing.Point(125, 41)
-        Me.tbPersonID.Name = "tbPersonID"
-        Me.tbPersonID.Properties.Appearance.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.tbPersonID.Properties.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.tbPersonID.Properties.Appearance.Options.UseBackColor = True
-        Me.tbPersonID.Properties.Appearance.Options.UseForeColor = True
-        Me.tbPersonID.ShowToolTips = False
-        Me.tbPersonID.Size = New System.Drawing.Size(100, 20)
-        Me.tbPersonID.TabIndex = 0
         '
         'lblPersonID
         '
@@ -70,18 +65,6 @@ Partial Class FormDetails
         Me.lblLastName.TabIndex = 3
         Me.lblLastName.Text = "LastName"
         '
-        'tbLastName
-        '
-        Me.tbLastName.Location = New System.Drawing.Point(125, 76)
-        Me.tbLastName.Name = "tbLastName"
-        Me.tbLastName.Properties.Appearance.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.tbLastName.Properties.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.tbLastName.Properties.Appearance.Options.UseBackColor = True
-        Me.tbLastName.Properties.Appearance.Options.UseForeColor = True
-        Me.tbLastName.ShowToolTips = False
-        Me.tbLastName.Size = New System.Drawing.Size(100, 20)
-        Me.tbLastName.TabIndex = 2
-        '
         'lblFirstName
         '
         Me.lblFirstName.AutoSize = True
@@ -90,18 +73,6 @@ Partial Class FormDetails
         Me.lblFirstName.Size = New System.Drawing.Size(54, 13)
         Me.lblFirstName.TabIndex = 5
         Me.lblFirstName.Text = "FirstName"
-        '
-        'tbFirstName
-        '
-        Me.tbFirstName.Location = New System.Drawing.Point(125, 112)
-        Me.tbFirstName.Name = "tbFirstName"
-        Me.tbFirstName.Properties.Appearance.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.tbFirstName.Properties.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.tbFirstName.Properties.Appearance.Options.UseBackColor = True
-        Me.tbFirstName.Properties.Appearance.Options.UseForeColor = True
-        Me.tbFirstName.ShowToolTips = False
-        Me.tbFirstName.Size = New System.Drawing.Size(100, 20)
-        Me.tbFirstName.TabIndex = 4
         '
         'lblCity
         '
@@ -112,25 +83,68 @@ Partial Class FormDetails
         Me.lblCity.TabIndex = 7
         Me.lblCity.Text = "City"
         '
-        'tbCity
+        'tePersonID
         '
-        Me.tbCity.Location = New System.Drawing.Point(125, 150)
-        Me.tbCity.Name = "tbCity"
-        Me.tbCity.Properties.Appearance.BackColor = System.Drawing.Color.LightSteelBlue
-        Me.tbCity.Properties.Appearance.ForeColor = System.Drawing.Color.Black
-        Me.tbCity.Properties.Appearance.Options.UseBackColor = True
-        Me.tbCity.Properties.Appearance.Options.UseForeColor = True
-        Me.tbCity.ShowToolTips = False
-        Me.tbCity.Size = New System.Drawing.Size(100, 20)
-        Me.tbCity.TabIndex = 6
+        Me.tePersonID.Location = New System.Drawing.Point(132, 45)
+        Me.tePersonID.Name = "tePersonID"
+        Me.tePersonID.Size = New System.Drawing.Size(100, 20)
+        Me.tePersonID.TabIndex = 9
+        '
+        'teLastName
+        '
+        Me.teLastName.Location = New System.Drawing.Point(132, 80)
+        Me.teLastName.Name = "teLastName"
+        Me.teLastName.Size = New System.Drawing.Size(100, 20)
+        Me.teLastName.TabIndex = 10
+        '
+        'teFirstName
+        '
+        Me.teFirstName.Location = New System.Drawing.Point(132, 116)
+        Me.teFirstName.Name = "teFirstName"
+        Me.teFirstName.Size = New System.Drawing.Size(100, 20)
+        Me.teFirstName.TabIndex = 11
+        '
+        'teCity
+        '
+        Me.teCity.Location = New System.Drawing.Point(132, 154)
+        Me.teCity.Name = "teCity"
+        Me.teCity.Size = New System.Drawing.Size(100, 20)
+        Me.teCity.TabIndex = 12
+        '
+        'btnAddRow
+        '
+        Me.btnAddRow.Location = New System.Drawing.Point(132, 194)
+        Me.btnAddRow.Name = "btnAddRow"
+        Me.btnAddRow.Size = New System.Drawing.Size(100, 23)
+        Me.btnAddRow.TabIndex = 13
+        Me.btnAddRow.Text = "Add Row"
+        Me.btnAddRow.UseVisualStyleBackColor = True
+        '
+        'btnClearView
+        '
+        Me.btnClearView.Location = New System.Drawing.Point(132, 236)
+        Me.btnClearView.Name = "btnClearView"
+        Me.btnClearView.Size = New System.Drawing.Size(100, 23)
+        Me.btnClearView.TabIndex = 14
+        Me.btnClearView.Text = "Clear View"
+        Me.btnClearView.UseVisualStyleBackColor = True
+        '
+        'btnInitializeView
+        '
+        Me.btnInitializeView.Location = New System.Drawing.Point(132, 281)
+        Me.btnInitializeView.Name = "btnInitializeView"
+        Me.btnInitializeView.Size = New System.Drawing.Size(100, 23)
+        Me.btnInitializeView.TabIndex = 15
+        Me.btnInitializeView.Text = "Initialize View"
+        Me.btnInitializeView.UseVisualStyleBackColor = True
         '
         'SslDataGrid1
         '
-        Me.SslDataGrid1.Location = New System.Drawing.Point(255, 44)
+        Me.SslDataGrid1.Location = New System.Drawing.Point(331, 17)
         Me.SslDataGrid1.MainView = Me.SslGridView1
         Me.SslDataGrid1.Name = "SslDataGrid1"
-        Me.SslDataGrid1.Size = New System.Drawing.Size(533, 394)
-        Me.SslDataGrid1.TabIndex = 8
+        Me.SslDataGrid1.Size = New System.Drawing.Size(400, 200)
+        Me.SslDataGrid1.TabIndex = 16
         Me.SslDataGrid1.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SslGridView1})
         '
         'SslGridView1
@@ -140,41 +154,67 @@ Partial Class FormDetails
         Me.SslGridView1.Name = "SslGridView1"
         Me.SslGridView1.SimpleSearch = False
         '
+        'SslDataGrid2
+        '
+        Me.SslDataGrid2.Location = New System.Drawing.Point(331, 236)
+        Me.SslDataGrid2.MainView = Me.SslGridView2
+        Me.SslDataGrid2.Name = "SslDataGrid2"
+        Me.SslDataGrid2.Size = New System.Drawing.Size(400, 200)
+        Me.SslDataGrid2.TabIndex = 17
+        Me.SslDataGrid2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SslGridView2})
+        '
+        'SslGridView2
+        '
+        Me.SslGridView2.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.[Default]
+        Me.SslGridView2.GridControl = Me.SslDataGrid2
+        Me.SslGridView2.Name = "SslGridView2"
+        Me.SslGridView2.SimpleSearch = False
+        '
         'FormDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.SslDataGrid2)
         Me.Controls.Add(Me.SslDataGrid1)
+        Me.Controls.Add(Me.btnInitializeView)
+        Me.Controls.Add(Me.btnClearView)
+        Me.Controls.Add(Me.btnAddRow)
+        Me.Controls.Add(Me.teCity)
+        Me.Controls.Add(Me.teFirstName)
+        Me.Controls.Add(Me.teLastName)
+        Me.Controls.Add(Me.tePersonID)
         Me.Controls.Add(Me.lblCity)
-        Me.Controls.Add(Me.tbCity)
         Me.Controls.Add(Me.lblFirstName)
-        Me.Controls.Add(Me.tbFirstName)
         Me.Controls.Add(Me.lblLastName)
-        Me.Controls.Add(Me.tbLastName)
         Me.Controls.Add(Me.lblPersonID)
-        Me.Controls.Add(Me.tbPersonID)
         Me.Name = "FormDetails"
         Me.Text = "BeindingList"
-        CType(Me.tbPersonID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbLastName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbFirstName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.tbCity.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.tePersonID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.teLastName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.teFirstName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.teCity.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SslDataGrid2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SslGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
-
-    Friend WithEvents tbPersonID As sslDataTextBox.txtDataTextBox
     Friend WithEvents lblPersonID As Label
     Friend WithEvents lblLastName As Label
-    Friend WithEvents tbLastName As sslDataTextBox.txtDataTextBox
     Friend WithEvents lblFirstName As Label
-    Friend WithEvents tbFirstName As sslDataTextBox.txtDataTextBox
     Friend WithEvents lblCity As Label
-    Friend WithEvents tbCity As sslDataTextBox.txtDataTextBox
+    Friend WithEvents tePersonID As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents teLastName As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents teFirstName As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents teCity As DevExpress.XtraEditors.TextEdit
+    Friend WithEvents btnAddRow As Button
+    Friend WithEvents btnClearView As Button
+    Friend WithEvents btnInitializeView As Button
     Friend WithEvents SslDataGrid1 As sslDataGrid.sslDataGrid
     Friend WithEvents SslGridView1 As sslDataGrid.sslGridView
+    Friend WithEvents SslDataGrid2 As sslDataGrid.sslDataGrid
+    Friend WithEvents SslGridView2 As sslDataGrid.sslGridView
 End Class

@@ -10,6 +10,7 @@ Imports DevExpress.Data.Helpers
 Imports DevExpress.Data.Filtering
 Imports System.Reflection
 Imports DevExpress.XtraGrid.Columns
+Imports sslDataGrid
 
 <ToolboxItem(True)>
 Public Class sslDataGrid
@@ -23,6 +24,14 @@ Public Class sslDataGrid
         MyBase.RegisterAvailableViewsCore(collection)
         collection.Add(New sslGridViewInfoRegistrator())
     End Sub
+
+    'Public Shared Widening Operator CType(v As Global.dxCookBook.FormDetails.GridController1) As sslDataGrid
+    '    Throw New NotImplementedException()
+    'End Operator
+
+    'Public Shared Widening Operator CType(v As Global.dxCookBook.FormDetails.GridController1) As sslDataGrid
+    '    Throw New NotImplementedException()
+    'End Operator
 End Class
 
 Public Class sslGridViewInfoRegistrator
