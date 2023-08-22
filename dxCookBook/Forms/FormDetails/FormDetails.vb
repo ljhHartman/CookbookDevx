@@ -2,6 +2,7 @@
 Imports System.IO
 Imports DevExpress.Utils.Drawing
 Imports DevExpress.Utils.Helpers
+Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Grid
@@ -206,13 +207,34 @@ Public Class FormDetails
     End Class
 
 
+
     Private Class FileManagerExample1
         Implements IFileSystemNavigationSupports
-        Private gc As sslDataGrid.sslDataGrid
-        Private wv As WinExplorerView = New WinExplorerView()
         Private root As String = "C:\Users\lucas.hartman\Downloads"
+        Private gc As sslDataGrid.sslDataGrid
+        Private WithEvents wv As WinExplorerView = New WinExplorerView()
+        Private cms As ContextMenuStrip = New ContextMenuStrip()
+        Private WithEvents cmsItemRename As New ToolStripMenuItem()
+        Private WithEvents cmsItemDetails As New ToolStripMenuItem()
+
+
 
         Sub New(ByRef fileSystem As sslDataGrid.sslDataGrid)
+            gc = fileSystem
+
+            InitializeWinExplorerView()
+            InitializeContextMenuStrip()
+
+            AddHandler Me.wv.Click, AddressOf WinExplorerView_RightClick
+            AddHandler Me.cmsItemRename.Click, AddressOf menuRename_Click
+            AddHandler Me.cmsItemDetails.Click, AddressOf menuDetails_Click
+        End Sub
+
+
+
+#Region "Initializers"
+
+        Private Sub InitializeWinExplorerView()
             Dim colName As New GridColumn() With {
                 .Caption = "columnName",
                 .Visible = True,
@@ -249,6 +271,7 @@ Public Class FormDetails
                 .Name = "columnImage"
             }
 
+            ' WinExplorerView Settings
             wv.Columns.Add(colName)
             wv.Columns.Add(colPath)
             wv.Columns.Add(colCheck)
@@ -271,22 +294,91 @@ Public Class FormDetails
             wv.OptionsView.Style = WinExplorerViewStyle.Medium
             wv.OptionsView.ShowViewCaption = True
 
-            gc = fileSystem
+            ' Set WinExplorerView as Mainview
             gc.MainView = wv
-
-            ' Settings
-            gc.AllowDrop = True
 
             ' Show Files
             Dim iconSizeType As WinExplorerViewStyle = wv.OptionsView.Style
             Dim iconSize As New Size(96, 96)
             gc.DataSource = FileSystemHelper.GetFileSystemEntries(root, GetItemSizeType(iconSizeType), GetItemSize(iconSizeType))
-
         End Sub
 
 
 
+        Private Sub InitializeContextMenuStrip()
+            ' Menu Items Settings
+            cmsItemRename.Name = "Rename"
+            cmsItemRename.Text = "Rename"
+            cmsItemRename.Width = 180
+            cmsItemRename.Height = 48
+
+            cmsItemDetails.Name = "Details"
+            cmsItemDetails.Text = "Details"
+            cmsItemDetails.Width = 180
+            cmsItemDetails.Height = 48
+
+            ' Add Menu items to ContextMenuStrip
+            cms.Items.Add(cmsItemRename)
+            cms.Items.Add(cmsItemDetails)
+        End Sub
+
+#End Region
+
+
+
+#Region "Handlers"
+
+        Private Sub WinExplorerView_RightClick(sender As Object, e As DevExpress.Utils.DXMouseEventArgs)
+            If e.Button = MouseButtons.Right Then cms.Show(MousePosition)
+        End Sub
+
+        Private Sub menuRename_Click(sender As Object, e As EventArgs)
+            Dim fileIndex As Integer = wv.FocusedRowHandle
+            Dim fileEntry As FileSystemEntry = CType(wv.GetRow(fileIndex), FileSystemEntry)
+            Dim filePath As String = fileEntry.Path
+            Dim fileName As String = fileEntry.Name
+            Dim fileExtension As String = Path.GetExtension(filePath)
+
+            Console.WriteLine($"[INFO] - filePath: {filePath}")
+            Console.WriteLine($"[INFO] - fileName: {fileName}")
+            Console.WriteLine($"[INFO] - fileExtension: {fileExtension}")
+
+            If File.Exists(filePath) Then
+                Try
+                    Dim newName As String = XtraInputBox.Show($"Rename {fileName}", Application.CompanyName, "")
+                    My.Computer.FileSystem.RenameFile(filePath, $"{newName}{fileExtension}")
+                Catch ex As IOException
+                    MsgBox("Filename Already exists")
+                Finally
+                    ClearView()
+                    InitializeWinExplorerView()
+                End Try
+            Else
+                MsgBox($"File '{filePath}' does not exists :(")
+            End If
+        End Sub
+
+        Private Sub menuDetails_Click(sender As Object, e As EventArgs)
+            MsgBox("Show Details")
+        End Sub
+
+
+#End Region
+
+
+
 #Region "Methods"
+
+        Sub ClearView()
+            gc.BeginUpdate()
+            Try
+                wv.Columns.Clear()
+                gc.DataSource = Nothing
+            Finally
+                gc.EndUpdate()
+            End Try
+        End Sub
+
         Private Function GetItemSizeType(ByVal viewStyle As WinExplorerViewStyle) As IconSizeType
             Select Case viewStyle
                 Case WinExplorerViewStyle.Large, WinExplorerViewStyle.ExtraLarge
