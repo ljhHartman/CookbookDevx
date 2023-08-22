@@ -1,17 +1,21 @@
 ﻿Imports System.ComponentModel
+Imports System.IO
+Imports DevExpress.Utils.Drawing
+Imports DevExpress.Utils.Helpers
 Imports DevExpress.XtraGrid
+Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Grid
-
-
+Imports DevExpress.XtraGrid.Views.WinExplorer
 
 Public Class FormDetails
-    Dim bindingList As BindingList(Of Record)
-    Dim formID As Integer = Globals.ID
-    Dim formUser As String = Globals.formUser
-    Dim formReadOnly As Boolean = Globals.formReadOnly
-    Dim formLanguage As String = Globals.formLanguage
-    Dim gridControlExample As GridController1
-    Dim fileSystemExample As FileSystem1
+    Private bindingList As BindingList(Of Record)
+    Private formID As Integer = Globals.ID
+    Private formUser As String = Globals.formUser
+    Private formReadOnly As Boolean = Globals.formReadOnly
+    Private formLanguage As String = Globals.formLanguage
+    Private gridControlExample As GridController1
+    Private fileManagerExample As FileManagerExample1
+
 
 
 
@@ -29,8 +33,6 @@ Public Class FormDetails
         AddHandler Me.btnClearView.Click, AddressOf btnClearView_Click
         AddHandler Me.btnInitializeView.Click, AddressOf btnInitializeView_Click
     End Sub
-
-
 
     Private Sub InitializeFormDetails()
         ' Define BindingList
@@ -87,7 +89,7 @@ Public Class FormDetails
 
     Private Sub ItitializeViews()
         gridControlExample = New GridController1(Me.SslDataGrid1)
-        fileSystemExample = New FileSystem1(Me.SslDataGrid2)
+        fileManagerExample = New FileManagerExample1(Me.SslDataGrid3)
     End Sub
 
 #End Region
@@ -204,12 +206,132 @@ Public Class FormDetails
     End Class
 
 
-    Private Class FileSystem1
+    Private Class FileManagerExample1
+        Implements IFileSystemNavigationSupports
+        Private gc As sslDataGrid.sslDataGrid
+        Private wv As WinExplorerView = New WinExplorerView()
+        Private root As String = "C:\Users\lucas.hartman\Downloads"
+
         Sub New(ByRef fileSystem As sslDataGrid.sslDataGrid)
+            Dim colName As New GridColumn() With {
+                .Caption = "columnName",
+                .Visible = True,
+                .VisibleIndex = 0,
+                .FieldName = "Name",
+                .Name = "columnName"
+            }
+            Dim colPath As New GridColumn() With {
+                .Caption = "columnPath",
+                .Visible = True,
+                .VisibleIndex = 0,
+                .FieldName = "Path",
+                .Name = "columnPath"
+            }
+            Dim colCheck As New GridColumn() With {
+                .Caption = "columnCheck",
+                .Visible = True,
+                .VisibleIndex = 0,
+                .FieldName = "IsCheck",
+                .Name = "columnCheck"
+            }
+            Dim colGroup As New GridColumn() With {
+                .Caption = "columnGroup",
+                .Visible = True,
+                .VisibleIndex = 0,
+                .FieldName = "Group",
+                .Name = "columnGroup"
+            }
+            Dim colImage As New GridColumn() With {
+                .Caption = "columnImage",
+                .Visible = True,
+                .VisibleIndex = 0,
+                .FieldName = "Image",
+                .Name = "columnImage"
+            }
+
+            wv.Columns.Add(colName)
+            wv.Columns.Add(colPath)
+            wv.Columns.Add(colCheck)
+            wv.Columns.Add(colGroup)
+            wv.Columns.Add(colImage)
+
+            wv.ColumnSet.CheckBoxColumn = colCheck
+            wv.ColumnSet.DescriptionColumn = colPath
+            wv.ColumnSet.ExtraLargeImageColumn = colImage
+            wv.ColumnSet.LargeImageColumn = colImage
+            wv.ColumnSet.MediumImageColumn = colImage
+            wv.ColumnSet.SmallImageColumn = colImage
+            wv.ColumnSet.TextColumn = colName
+
+            wv.OptionsSelection.AllowMarqueeSelection = True
+            wv.OptionsSelection.ItemSelectionMode = IconItemSelectionMode.Click
+            wv.OptionsSelection.MultiSelect = True
+
+            wv.OptionsView.ImageLayoutMode = ImageLayoutMode.Stretch
+            wv.OptionsView.Style = WinExplorerViewStyle.Medium
+            wv.OptionsView.ShowViewCaption = True
+
+            gc = fileSystem
+            gc.MainView = wv
+
+            ' Settings
+            gc.AllowDrop = True
+
+            ' Show Files
+            Dim iconSizeType As WinExplorerViewStyle = wv.OptionsView.Style
+            Dim iconSize As New Size(96, 96)
+            gc.DataSource = FileSystemHelper.GetFileSystemEntries(root, GetItemSizeType(iconSizeType), GetItemSize(iconSizeType))
+
         End Sub
 
-    End Class
 
+
+#Region "Methods"
+        Private Function GetItemSizeType(ByVal viewStyle As WinExplorerViewStyle) As IconSizeType
+            Select Case viewStyle
+                Case WinExplorerViewStyle.Large, WinExplorerViewStyle.ExtraLarge
+                    Return IconSizeType.ExtraLarge
+                Case WinExplorerViewStyle.List, WinExplorerViewStyle.Small
+                    Return IconSizeType.Small
+                Case WinExplorerViewStyle.Tiles, WinExplorerViewStyle.Medium, WinExplorerViewStyle.Content
+                    Return IconSizeType.Large
+                Case Else
+                    Return IconSizeType.ExtraLarge
+            End Select
+        End Function
+
+        Private Function GetItemSize(ByVal viewStyle As WinExplorerViewStyle) As Size
+            Select Case viewStyle
+                Case WinExplorerViewStyle.ExtraLarge
+                    Return New Size(256, 256)
+                Case WinExplorerViewStyle.Large
+                    Return New Size(96, 96)
+                Case WinExplorerViewStyle.Content
+                    Return New Size(32, 32)
+                Case WinExplorerViewStyle.Small
+                    Return New Size(16, 16)
+                Case Else
+                    Return New Size(96, 96)
+            End Select
+        End Function
+
+#End Region
+
+
+
+#Region "Implements"
+        Public ReadOnly Property CurrentPath As String Implements IFileSystemNavigationSupports.CurrentPath
+            Get
+                Throw New NotImplementedException()
+            End Get
+        End Property
+
+        Public Sub UpdatePath(path As String) Implements IFileSystemNavigationSupports.UpdatePath
+            Throw New NotImplementedException()
+        End Sub
+#End Region
+
+    End Class
 
 #End Region
 

@@ -39,13 +39,13 @@ Imports DevExpress.XtraGrid.Views.WinExplorer
 
 
 Public Class ucFileManager
-    Implements IFileSystemNavigationSupports
 
     Dim PrimaryCode As Integer
     Dim MainDirectory As String
     Dim SubDirectory As String
     Dim ViewStyle As WinExplorerViewStyle
     Dim Enable As Boolean
+
 
 
     Sub New(iPrimaryCode As Integer, strParameterName As String)
@@ -66,6 +66,7 @@ Public Class ucFileManager
         If Enable Then UpdateView()
 
         Me.gcAttachments.AllowDrop = True
+
         AddHandler gcAttachments.DragEnter, AddressOf GridControl_DragEnter
         AddHandler gcAttachments.DragDrop, AddressOf GridControl_DragDrop
         AddHandler Me.tbExtraLarge.Click, AddressOf tbExtraLarge_Click
@@ -410,15 +411,6 @@ Public Class ucFileManager
         Return subject
     End Function
 
-    Public Sub UpdatePath(path As String) Implements IFileSystemNavigationSupports.UpdatePath
-        Throw New NotImplementedException()
-    End Sub
-
-    Public ReadOnly Property CurrentPath As String Implements IFileSystemNavigationSupports.CurrentPath
-        Get
-            Throw New NotImplementedException()
-        End Get
-    End Property
 
 #End Region
 
