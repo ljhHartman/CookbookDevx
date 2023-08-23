@@ -165,6 +165,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>vwParameters.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormDetails\BaseForm.Designer.vb">
+      <DependentUpon>BaseForm.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDetails\BaseForm.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\FormDetails\dsAlphaTable.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -432,6 +438,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\FormDetails\BaseForm.resx">
+      <DependentUpon>BaseForm.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormDetails\FormDetails.resx">
       <DependentUpon>FormDetails.vb</DependentUpon>
     </EmbeddedResource>
