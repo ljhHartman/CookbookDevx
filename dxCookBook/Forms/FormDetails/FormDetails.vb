@@ -216,6 +216,11 @@ Public Class FormDetails
         Private cms As ContextMenuStrip = New ContextMenuStrip()
         Private WithEvents cmsItemRename As New ToolStripMenuItem()
         Private WithEvents cmsItemDetails As New ToolStripMenuItem()
+        Private WithEvents cmsItemSmall As New ToolStripMenuItem()
+        Private WithEvents cmsItemMedium As New ToolStripMenuItem()
+        Private WithEvents cmsItemLarge As New ToolStripMenuItem()
+        Private WithEvents cmsItemXL As New ToolStripMenuItem()
+        Private WithEvents cmsItemCopyTo As New ToolStripMenuItem()
 
 
 
@@ -226,8 +231,13 @@ Public Class FormDetails
             InitializeContextMenuStrip()
 
             AddHandler Me.wv.Click, AddressOf WinExplorerView_RightClick
-            AddHandler Me.cmsItemRename.Click, AddressOf menuRename_Click
-            AddHandler Me.cmsItemDetails.Click, AddressOf menuDetails_Click
+            AddHandler Me.cmsItemRename.Click, AddressOf cmsItemRename_Click
+            AddHandler Me.cmsItemDetails.Click, AddressOf cmsItemDetails_Click
+            AddHandler Me.cmsItemSmall.Click, AddressOf cmsItemSmall_Click
+            AddHandler Me.cmsItemMedium.Click, AddressOf cmsItemMedium_Click
+            AddHandler Me.cmsItemLarge.Click, AddressOf cmsItemLarge_Click
+            AddHandler Me.cmsItemXL.Click, AddressOf cmsItemXL_Click
+            AddHandler Me.cmsItemCopyTo.Click, AddressOf cmsItemCopyTo_Click
         End Sub
 
 
@@ -298,9 +308,7 @@ Public Class FormDetails
             gc.MainView = wv
 
             ' Show Files
-            Dim iconSizeType As WinExplorerViewStyle = wv.OptionsView.Style
-            Dim iconSize As New Size(96, 96)
-            gc.DataSource = FileSystemHelper.GetFileSystemEntries(root, GetItemSizeType(iconSizeType), GetItemSize(iconSizeType))
+            gc.DataSource = FileSystemHelper.GetFileSystemEntries(root, GetItemSizeType(wv.OptionsView.Style), GetItemSize(wv.OptionsView.Style))
         End Sub
 
 
@@ -309,17 +317,34 @@ Public Class FormDetails
             ' Menu Items Settings
             cmsItemRename.Name = "Rename"
             cmsItemRename.Text = "Rename"
-            cmsItemRename.Width = 180
-            cmsItemRename.Height = 48
 
             cmsItemDetails.Name = "Details"
             cmsItemDetails.Text = "Details"
-            cmsItemDetails.Width = 180
-            cmsItemDetails.Height = 48
+
+            cmsItemSmall.Name = "Small"
+            cmsItemSmall.Text = "Small"
+
+            cmsItemMedium.Name = "Medium"
+            cmsItemMedium.Text = "Medium"
+
+            cmsItemLarge.Name = "Large"
+            cmsItemLarge.Text = "Large"
+
+            cmsItemXL.Name = "ExtraLarge"
+            cmsItemXL.Text = "Extra Large"
+
+            cmsItemCopyTo.Name = "CopyTo"
+            cmsItemCopyTo.Text = "Copy to"
 
             ' Add Menu items to ContextMenuStrip
-            cms.Items.Add(cmsItemRename)
+            cms.Items.Add(cmsItemSmall)
+            cms.Items.Add(cmsItemMedium)
+            cms.Items.Add(cmsItemLarge)
+            cms.Items.Add(cmsItemXL)
             cms.Items.Add(cmsItemDetails)
+            cms.Items.Add(cmsItemCopyTo)
+            cms.Items.Add(cmsItemRename)
+
         End Sub
 
 #End Region
@@ -328,11 +353,47 @@ Public Class FormDetails
 
 #Region "Handlers"
 
-        Private Sub WinExplorerView_RightClick(sender As Object, e As DevExpress.Utils.DXMouseEventArgs)
-            If e.Button = MouseButtons.Right Then cms.Show(MousePosition)
+
+        Private Sub cmsItemCopyTo_Click(sender As Object, e As EventArgs)
+            Try
+                ' User Inputs target directory to move files to
+                Dim targetFolder As Integer = XtraInputBox.Show($"Copy files to", Application.CompanyName, "")
+                If Directory.Exists($"{root}\{targetFolder}") Then
+                    ' Copy Files
+                    CopySelectedFiles(targetFolder)
+                Else
+                    ' Create Directory & Copy Files
+                    Directory.CreateDirectory($"{root}\{targetFolder}")
+                    CopySelectedFiles(targetFolder)
+                End If
+            Catch ex As InvalidCastException
+                ' User has not input any value, or did not input an Integer
+                Console.WriteLine(ex)
+            End Try
         End Sub
 
-        Private Sub menuRename_Click(sender As Object, e As EventArgs)
+
+        Private Sub cmsItemXL_Click(sender As Object, e As EventArgs)
+            wv.OptionsView.Style = WinExplorerViewStyle.ExtraLarge
+            wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(256, 256)
+        End Sub
+
+        Private Sub cmsItemLarge_Click(sender As Object, e As EventArgs)
+            wv.OptionsView.Style = WinExplorerViewStyle.Large
+            wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(96, 96)
+        End Sub
+
+        Private Sub cmsItemMedium_Click(sender As Object, e As EventArgs)
+            wv.OptionsView.Style = WinExplorerViewStyle.Medium
+            wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(32, 32)
+        End Sub
+
+        Private Sub cmsItemSmall_Click(sender As Object, e As EventArgs)
+            wv.OptionsView.Style = WinExplorerViewStyle.Small
+            wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(16, 16)
+        End Sub
+
+        Private Sub cmsItemRename_Click(sender As Object, e As EventArgs)
             Dim fileIndex As Integer = wv.FocusedRowHandle
             Dim fileEntry As FileSystemEntry = CType(wv.GetRow(fileIndex), FileSystemEntry)
             Dim filePath As String = fileEntry.Path
@@ -358,16 +419,42 @@ Public Class FormDetails
             End If
         End Sub
 
-        Private Sub menuDetails_Click(sender As Object, e As EventArgs)
-            MsgBox("Show Details")
+        Private Sub cmsItemDetails_Click(sender As Object, e As EventArgs)
+            MsgBox("A \n" & "B \n" & "C \n")
         End Sub
 
+        Private Sub WinExplorerView_RightClick(sender As Object, e As DevExpress.Utils.DXMouseEventArgs)
+            If e.Button = MouseButtons.Right Then cms.Show(MousePosition)
+        End Sub
 
 #End Region
 
 
 
 #Region "Methods"
+
+        Sub CopySelectedFiles(ByVal targetFolder As String)
+            ' Get selected files from WinExplorerView
+            Dim selectedRows() As Integer = wv.GetSelectedRows()
+
+            ' Iterate selected files
+            For Each i As Integer In selectedRows
+                Dim fileEntry As FileSystemEntry = CType(wv.GetRow(i), FileSystemEntry)
+                Dim filePath As String = fileEntry.Path
+                Dim fileName As String = fileEntry.Name
+                Dim fileExtension As String = Path.GetExtension(filePath)
+
+                ' Copy non-folder file to target folder
+                If Not wv.IsGroupRow(i) Then
+                    Try
+                        File.Copy(filePath, $"{root}\{targetFolder}\{fileName}{fileExtension}", True)
+                    Catch ex As IOException
+                        ' current file is a folder
+                        Console.WriteLine(ex)
+                    End Try
+                End If
+            Next i
+        End Sub
 
         Sub ClearView()
             gc.BeginUpdate()
