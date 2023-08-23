@@ -36,8 +36,9 @@ Partial Class FormDetails
         Me.SslDataGrid1 = New sslDataGrid.sslDataGrid()
         Me.SslGridView1 = New sslDataGrid.sslGridView()
         Me.SslDataGrid3 = New sslDataGrid.sslDataGrid()
-        Me.SslGridView2 = New sslDataGrid.sslGridView()
         Me.WinExplorerView1 = New DevExpress.XtraGrid.Views.WinExplorer.WinExplorerView()
+        Me.SslGridView2 = New sslDataGrid.sslGridView()
+        Me.btnSave = New System.Windows.Forms.Button()
         CType(Me.tePersonID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.teLastName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.teFirstName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -45,8 +46,8 @@ Partial Class FormDetails
         CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SslDataGrid3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SslGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.WinExplorerView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SslGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'lblPersonID
@@ -163,7 +164,12 @@ Partial Class FormDetails
         Me.SslDataGrid3.Name = "SslDataGrid3"
         Me.SslDataGrid3.Size = New System.Drawing.Size(400, 200)
         Me.SslDataGrid3.TabIndex = 18
-        Me.SslDataGrid3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SslGridView2, Me.WinExplorerView1})
+        Me.SslDataGrid3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.WinExplorerView1, Me.SslGridView2})
+        '
+        'WinExplorerView1
+        '
+        Me.WinExplorerView1.GridControl = Me.SslDataGrid3
+        Me.WinExplorerView1.Name = "WinExplorerView1"
         '
         'SslGridView2
         '
@@ -172,16 +178,21 @@ Partial Class FormDetails
         Me.SslGridView2.Name = "SslGridView2"
         Me.SslGridView2.SimpleSearch = False
         '
-        'WinExplorerView1
+        'btnSave
         '
-        Me.WinExplorerView1.GridControl = Me.SslDataGrid3
-        Me.WinExplorerView1.Name = "WinExplorerView1"
+        Me.btnSave.Location = New System.Drawing.Point(132, 322)
+        Me.btnSave.Name = "btnSave"
+        Me.btnSave.Size = New System.Drawing.Size(100, 23)
+        Me.btnSave.TabIndex = 19
+        Me.btnSave.Text = "Save"
+        Me.btnSave.UseVisualStyleBackColor = True
         '
         'FormDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 641)
+        Me.Controls.Add(Me.btnSave)
         Me.Controls.Add(Me.SslDataGrid3)
         Me.Controls.Add(Me.SslDataGrid1)
         Me.Controls.Add(Me.btnInitializeView)
@@ -204,8 +215,8 @@ Partial Class FormDetails
         CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SslDataGrid3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SslGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.WinExplorerView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SslGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -226,4 +237,5 @@ Partial Class FormDetails
     Friend WithEvents SslDataGrid3 As sslDataGrid.sslDataGrid
     Friend WithEvents SslGridView2 As sslDataGrid.sslGridView
     Friend WithEvents WinExplorerView1 As DevExpress.XtraGrid.Views.WinExplorer.WinExplorerView
+    Friend WithEvents btnSave As Button
 End Class
