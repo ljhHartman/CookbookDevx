@@ -22,7 +22,7 @@ Public Class BaseForm
         Property GReadOnly As Boolean = Globals.gReadOnly
         Private ReadOnly GPath As String = Globals.gPath
         Private ReadOnly GLanguage As String = Globals.gLanguage
-        Private IconSize As Object = WinExplorerViewStyle.Medium
+        Private IconSize As WinExplorerViewStyle = WinExplorerViewStyle.Medium
         Private FormDir As String
         Private Gc As sslDataGrid.sslDataGrid
         Private WithEvents Wv As WinExplorerView = New WinExplorerView()
@@ -172,8 +172,8 @@ Public Class BaseForm
             CmsItemOpen.Name = "Open"
             CmsItemOpen.Text = "Open"
 
-            CmsItemEmail.Name = "Email"
-            CmsItemEmail.Text = "Email"
+            CmsItemEmail.Name = "Mail"
+            CmsItemEmail.Text = "Mail"
 
             CmsItemMove.Name = "Move"
             CmsItemMove.Text = "Move"
@@ -186,8 +186,8 @@ Public Class BaseForm
             Cms.Items.Add(CmsItemXL)
             Cms.Items.Add(CmsItemDelete)
             Cms.Items.Add(CmsItemMove)
-            Cms.Items.Add(CmsItemCopy)
             Cms.Items.Add(CmsItemEmail)
+            Cms.Items.Add(CmsItemCopy)
             Cms.Items.Add(CmsItemRename)
         End Sub
 
@@ -203,7 +203,7 @@ Public Class BaseForm
             If IsNothing(Id) Or Id <> 0 Then
 
                 ' Set for Directory
-                FormDir = $"{GPath}\{Id}"
+                FormDir = Path.Combine(GPath, Id)
 
                 ' Create directory
                 If Not Directory.Exists(FormDir) Then Directory.CreateDirectory(FormDir)
@@ -217,7 +217,7 @@ Public Class BaseForm
                         ' Copy file to form directory
                         For Each i As String In draggedFiles
 
-                            File.Copy(i, $"{FormDir}\{Path.GetFileName(i)}", True)
+                            File.Copy(i, Path.Combine(FormDir, Path.GetFileName(i)), True)
                         Next
 
                     ElseIf e.Data.GetDataPresent("FileGroupDescriptor") Then
@@ -494,12 +494,12 @@ Public Class BaseForm
                 Try
                     ' User Inputs target directory to move files to
                     Dim targetFolder As Integer = XtraInputBox.Show($"Copy files to", Application.CompanyName, "")
-                    If Directory.Exists($"{GPath}\{targetFolder}") Then
+                    If Directory.Exists(Path.Combine(GPath, targetFolder)) Then
                         ' Copy Files
                         CopySelectedFiles(targetFolder)
                     Else
                         ' Create Directory & Copy Files
-                        Directory.CreateDirectory($"{GPath}\{targetFolder}")
+                        Directory.CreateDirectory(Path.Combine(GPath, targetFolder))
                         CopySelectedFiles(targetFolder)
                     End If
                 Catch ex As InvalidCastException
@@ -537,7 +537,7 @@ Public Class BaseForm
         End Function
 
         Sub CopySelectedFiles(ByVal targetFolder As String)
-            Print("Copy files to {targetFolder} directory")
+            Print($"Copy files to {targetFolder} directory")
 
             ' Get selected files from WinExplorerView
             Dim selectedRows() As Integer = Wv.GetSelectedRows()
