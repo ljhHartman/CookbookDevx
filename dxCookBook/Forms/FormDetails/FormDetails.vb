@@ -10,7 +10,7 @@ Public Class FormDetails
     Private gReadOnly As Boolean = Globals.gReadOnly
     Private gLanguage As String = Globals.gLanguage
     Private gridControlExample As GridController1
-    Private fileManagerView As FileManagerView
+    Private fileManagerView1 As FileManagerView
 
     Sub New()
         InitializeComponent()
@@ -20,12 +20,12 @@ Public Class FormDetails
         InitializeInfo()
 
         gridControlExample = New GridController1(Me.SslDataGrid1)
-        fileManagerView = New FileManagerView(Me.SslDataGrid3, gReadOnly, Globals.ID)
+        fileManagerView1 = New FileManagerView(Me.SslDataGrid3, gReadOnly, Globals.ID)
 
-        AddHandler Me.btnAddRow.Click, AddressOf btnAddRow_Click
-        AddHandler Me.btnClearView.Click, AddressOf btnClearView_Click
-        AddHandler Me.btnInitializeView.Click, AddressOf btnInitializeView_Click
-        AddHandler Me.btnSave.Click, AddressOf btnSave_Click
+        AddHandler Me.btnAddRow.Click, AddressOf BtnAddRow_Click
+        AddHandler Me.btnClearView.Click, AddressOf BtnClearView_Click
+        AddHandler Me.btnInitializeView.Click, AddressOf BtnInitializeView_Click
+        AddHandler Me.btnSave.Click, AddressOf BtnSave_Click
     End Sub
 
 
@@ -92,23 +92,23 @@ Public Class FormDetails
 
 #Region "Handlers"
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs)
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs)
         ' Generated Filenumber
         Globals.ID = 123456
 
         ' Set Filenumber in view
-        fileManagerView.formID = Globals.ID
+        fileManagerView1.Id = Globals.ID
     End Sub
 
-    Private Sub btnAddRow_Click(sender As Object, e As EventArgs)
+    Private Sub BtnAddRow_Click(sender As Object, e As EventArgs)
         gridControlExample.NewRow()
     End Sub
 
-    Private Sub btnClearView_Click(sender As Object, e As EventArgs)
+    Private Sub BtnClearView_Click(sender As Object, e As EventArgs)
         gridControlExample.ClearView()
     End Sub
 
-    Private Sub btnInitializeView_Click(sender As Object, e As EventArgs)
+    Private Sub BtnInitializeView_Click(sender As Object, e As EventArgs)
         gridControlExample.InitializeView()
     End Sub
 #End Region
@@ -134,7 +134,7 @@ Public Class FormDetails
 
     Class GridController1
         Private gc As sslDataGrid.sslDataGrid
-        Private ds As Object
+        Private ReadOnly ds As Object
         Private tba As Object
         Private dt As DataTable
         Private gv As GridView
@@ -161,7 +161,7 @@ Public Class FormDetails
             gv.OptionsView.ShowFooter = True
 
             ' Handlers
-            AddHandler gc.DoubleClick, AddressOf gridcontrol_Click
+            AddHandler gc.DoubleClick, AddressOf Gridcontrol_Click
 
             ' Footer
             gv.Columns("PersonID").Summary.Add(New GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Sum, "PersonID", "Sum={0}"))
@@ -198,7 +198,7 @@ Public Class FormDetails
             End With
         End Sub
 
-        Private Sub gridcontrol_Click(ByVal sender As Object, ByVal e As EventArgs)
+        Private Sub Gridcontrol_Click(ByVal sender As Object, ByVal e As EventArgs)
             Dim dataRow As DataRow = gv.GetFocusedDataRow()
             MsgBox($"Selected row id: {dataRow("PersonID")}")
         End Sub

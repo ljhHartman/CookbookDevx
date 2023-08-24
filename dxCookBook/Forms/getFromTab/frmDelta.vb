@@ -5,7 +5,7 @@ Public Class frmDelta
 
 
 
-    Private Sub frmDelta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub FrmDelta_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         bindingList = New BindingList(Of Model)
 
         ' Build BindingList

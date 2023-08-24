@@ -1,7 +1,7 @@
 ﻿Imports DevExpress.XtraEditors.DXErrorProvider
 
 Public Class DXErrorNummers
-    Dim icon As Image = Image.FromFile("\\burandoholding.int\shares\UserData\lucas.hartman\My Documents\My Pictures\vomiting.png")
+    Dim icon1 As Image = Image.FromFile("\\burandoholding.int\shares\UserData\lucas.hartman\My Documents\My Pictures\vomiting.png")
 
 
 
@@ -13,7 +13,7 @@ Public Class DXErrorNummers
 
     ' Provide an error icon for the User1 error type.
     Private Sub DXErrorProvider_GetErrorIcon(ByVal e As GetErrorIconEventArgs)
-        If e.ErrorType = ErrorType.User1 Then e.ErrorIcon = icon
+        If e.ErrorType = ErrorType.User1 Then e.ErrorIcon = icon1
     End Sub
 
 

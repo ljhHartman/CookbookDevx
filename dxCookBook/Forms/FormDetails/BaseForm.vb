@@ -17,45 +17,45 @@ Public Class BaseForm
 
     Class FileManagerView
         Implements IFileSystemNavigationSupports
-        Property formID As Integer
-        Property gReadOnly As Boolean = Globals.gReadOnly
-        Private gPath As String = Globals.gPath
-        Private gLanguage As String = Globals.gLanguage
-        Private formDirectory
-        Private gc As sslDataGrid.sslDataGrid
-        Private WithEvents wv As WinExplorerView = New WinExplorerView()
-        Private cms As ContextMenuStrip = New ContextMenuStrip()
-        Private WithEvents cmsItemRename As New ToolStripMenuItem()
-        Private WithEvents cmsItemSmall As New ToolStripMenuItem()
-        Private WithEvents cmsItemMedium As New ToolStripMenuItem()
-        Private WithEvents cmsItemLarge As New ToolStripMenuItem()
-        Private WithEvents cmsItemXL As New ToolStripMenuItem()
-        Private WithEvents cmsItemCopyTo As New ToolStripMenuItem()
-        Private WithEvents cmsItemOpen As New ToolStripMenuItem()
-        Private WithEvents cmsItemDelete As New ToolStripMenuItem()
+        Property Id As Integer
+        Property GReadOnly As Boolean = Globals.gReadOnly
+        Private ReadOnly GPath As String = Globals.gPath
+        Private ReadOnly GLanguage As String = Globals.gLanguage
+        Private FormDir
+        Private Gc As sslDataGrid.sslDataGrid
+        Private WithEvents Wv As WinExplorerView = New WinExplorerView()
+        Private Cms As ContextMenuStrip = New ContextMenuStrip()
+        Private WithEvents CmsItemRename As New ToolStripMenuItem()
+        Private WithEvents CmsItemSmall As New ToolStripMenuItem()
+        Private WithEvents CmsItemMedium As New ToolStripMenuItem()
+        Private WithEvents CmsItemLarge As New ToolStripMenuItem()
+        Private WithEvents CmsItemXL As New ToolStripMenuItem()
+        Private WithEvents CmsItemCopyTo As New ToolStripMenuItem()
+        Private WithEvents CmsItemOpen As New ToolStripMenuItem()
+        Private WithEvents CmsItemDelete As New ToolStripMenuItem()
 
         Sub New(ByRef pFileSystem As sslDataGrid.sslDataGrid, ByRef pReadOnly As Boolean, Optional ByVal pID As Integer = Nothing)
-            gc = pFileSystem
-            formId = pID
-            gReadOnly = pReadOnly
-            formDirectory = $"{gPath}\{formID}"
+            Gc = pFileSystem
+            Id = pID
+            GReadOnly = pReadOnly
+            FormDir = Path.Combine(GPath, Id) '$"{GPath}\{Id}"
 
             InitializeWinExplorerView()
-            InitializeContextMenuStrip()
+            InitializeCmsStrip()
 
-            AddHandler Me.gc.DragEnter, AddressOf GridControl_DragEnter
-            AddHandler Me.gc.DragDrop, AddressOf GridControl_DragDrop
-            AddHandler Me.wv.Click, AddressOf WinExplorerView_RightClick
-            AddHandler Me.wv.DoubleClick, AddressOf cmsItemOpen_Click
-            AddHandler Me.wv.KeyDown, AddressOf Handler_KeyDown
-            AddHandler Me.cmsItemRename.Click, AddressOf cmsItemRename_Click
-            AddHandler Me.cmsItemSmall.Click, AddressOf cmsItemSmall_Click
-            AddHandler Me.cmsItemMedium.Click, AddressOf cmsItemMedium_Click
-            AddHandler Me.cmsItemLarge.Click, AddressOf cmsItemLarge_Click
-            AddHandler Me.cmsItemXL.Click, AddressOf cmsItemXL_Click
-            AddHandler Me.cmsItemCopyTo.Click, AddressOf cmsItemCopyTo_Click
-            AddHandler Me.cmsItemOpen.Click, AddressOf cmsItemOpen_Click
-            AddHandler Me.cmsItemDelete.Click, AddressOf cmsItemDelete_Click
+            AddHandler Me.Gc.DragEnter, AddressOf Gc_DragEnter
+            AddHandler Me.Gc.DragDrop, AddressOf Gc_DragDrop
+            AddHandler Me.Wv.Click, AddressOf WinExplorerView_RightClick
+            AddHandler Me.Wv.DoubleClick, AddressOf CmsItemOpen_Click
+            AddHandler Me.Wv.KeyDown, AddressOf Handler_KeyDown
+            AddHandler Me.CmsItemRename.Click, AddressOf CmsItemRename_Click
+            AddHandler Me.CmsItemSmall.Click, AddressOf CmsItemSmall_Click
+            AddHandler Me.CmsItemMedium.Click, AddressOf CmsItemMedium_Click
+            AddHandler Me.CmsItemLarge.Click, AddressOf CmsItemLarge_Click
+            AddHandler Me.CmsItemXL.Click, AddressOf CmsItemXL_Click
+            AddHandler Me.CmsItemCopyTo.Click, AddressOf CmsItemCopyTo_Click
+            AddHandler Me.CmsItemOpen.Click, AddressOf CmsItemOpen_Click
+            AddHandler Me.CmsItemDelete.Click, AddressOf CmsItemDelete_Click
         End Sub
 
 
@@ -104,75 +104,77 @@ Public Class BaseForm
             }
 
             ' WinExplorerView settings
-            wv.Columns.Add(colName)
-            wv.Columns.Add(colPath)
-            wv.Columns.Add(colCheck)
-            wv.Columns.Add(colGroup)
-            wv.Columns.Add(colImage)
+            Wv.Columns.Add(colName)
+            Wv.Columns.Add(colPath)
+            Wv.Columns.Add(colCheck)
+            Wv.Columns.Add(colGroup)
+            Wv.Columns.Add(colImage)
 
-            wv.ColumnSet.CheckBoxColumn = colCheck
-            wv.ColumnSet.DescriptionColumn = colPath
-            wv.ColumnSet.ExtraLargeImageColumn = colImage
-            wv.ColumnSet.LargeImageColumn = colImage
-            wv.ColumnSet.MediumImageColumn = colImage
-            wv.ColumnSet.SmallImageColumn = colImage
-            wv.ColumnSet.TextColumn = colName
+            Wv.ColumnSet.CheckBoxColumn = colCheck
+            Wv.ColumnSet.DescriptionColumn = colPath
+            Wv.ColumnSet.ExtraLargeImageColumn = colImage
+            Wv.ColumnSet.LargeImageColumn = colImage
+            Wv.ColumnSet.MediumImageColumn = colImage
+            Wv.ColumnSet.SmallImageColumn = colImage
+            Wv.ColumnSet.TextColumn = colName
 
-            wv.OptionsSelection.AllowMarqueeSelection = True
-            wv.OptionsSelection.ItemSelectionMode = IconItemSelectionMode.Click
-            wv.OptionsSelection.MultiSelect = True
+            Wv.OptionsSelection.AllowMarqueeSelection = True
+            Wv.OptionsSelection.ItemSelectionMode = IconItemSelectionMode.Click
+            Wv.OptionsSelection.MultiSelect = True
 
-            wv.OptionsView.ImageLayoutMode = ImageLayoutMode.Stretch
-            wv.OptionsView.Style = WinExplorerViewStyle.Small
-            wv.OptionsView.ShowViewCaption = True
+            Wv.OptionsView.ImageLayoutMode = ImageLayoutMode.Stretch
+            Wv.OptionsView.Style = WinExplorerViewStyle.Small
+            Wv.OptionsView.ShowViewCaption = True
+
+            Wv.OptionsFind.AlwaysVisible = True
 
             ' GridControl settings
-            gc.MainView = wv
-            gc.AllowDrop = Not gReadOnly
+            Gc.MainView = Wv
+            Gc.AllowDrop = Not GReadOnly
 
-            If Not IsNothing(formID) And Directory.Exists(formDirectory) Then
+            If Not IsNothing(Id) And Directory.Exists(FormDir) Then
                 Print($"Get Files from Directory")
-                gc.DataSource = FileSystemHelper.GetFileSystemEntries(formDirectory, GetItemSizeType(wv.OptionsView.Style), GetItemSize(wv.OptionsView.Style))
+                Gc.DataSource = FileSystemHelper.GetFileSystemEntries(FormDir, GetItemSizeType(Wv.OptionsView.Style), GetItemSize(Wv.OptionsView.Style))
             End If
         End Sub
 
-        Private Sub InitializeContextMenuStrip()
+        Private Sub InitializeCmsStrip()
             Print($"Build & add menu items")
 
             ' Menu Items Settings
-            cmsItemRename.Name = "Rename"
-            cmsItemRename.Text = "Rename"
+            CmsItemRename.Name = "Rename"
+            CmsItemRename.Text = "Rename"
 
-            cmsItemSmall.Name = "Small"
-            cmsItemSmall.Text = "Small"
+            CmsItemSmall.Name = "Small"
+            CmsItemSmall.Text = "Small"
 
-            cmsItemMedium.Name = "Medium"
-            cmsItemMedium.Text = "Medium"
+            CmsItemMedium.Name = "Medium"
+            CmsItemMedium.Text = "Medium"
 
-            cmsItemLarge.Name = "Large"
-            cmsItemLarge.Text = "Large"
+            CmsItemLarge.Name = "Large"
+            CmsItemLarge.Text = "Large"
 
-            cmsItemXL.Name = "ExtraLarge"
-            cmsItemXL.Text = "Extra Large"
+            CmsItemXL.Name = "ExtraLarge"
+            CmsItemXL.Text = "Extra Large"
 
-            cmsItemCopyTo.Name = "CopyTo"
-            cmsItemCopyTo.Text = "Copy to"
+            CmsItemCopyTo.Name = "CopyTo"
+            CmsItemCopyTo.Text = "Copy to"
 
-            cmsItemDelete.Name = "Delete"
-            cmsItemDelete.Text = "Delete"
+            CmsItemDelete.Name = "Delete"
+            CmsItemDelete.Text = "Delete"
 
-            cmsItemOpen.Name = "Open"
-            cmsItemOpen.Text = "Open"
+            CmsItemOpen.Name = "Open"
+            CmsItemOpen.Text = "Open"
 
-            ' Add Menu items to ContextMenuStrip
-            cms.Items.Add(cmsItemOpen)
-            cms.Items.Add(cmsItemSmall)
-            cms.Items.Add(cmsItemMedium)
-            cms.Items.Add(cmsItemLarge)
-            cms.Items.Add(cmsItemXL)
-            cms.Items.Add(cmsItemDelete)
-            cms.Items.Add(cmsItemCopyTo)
-            cms.Items.Add(cmsItemRename)
+            ' Add Menu items to CmsStrip
+            Cms.Items.Add(CmsItemOpen)
+            Cms.Items.Add(CmsItemSmall)
+            Cms.Items.Add(CmsItemMedium)
+            Cms.Items.Add(CmsItemLarge)
+            Cms.Items.Add(CmsItemXL)
+            Cms.Items.Add(CmsItemDelete)
+            Cms.Items.Add(CmsItemCopyTo)
+            Cms.Items.Add(CmsItemRename)
         End Sub
 
 #End Region
@@ -181,16 +183,16 @@ Public Class BaseForm
 
 #Region "Handlers"
 
-        Private Sub GridControl_DragDrop(sender As Object, e As DragEventArgs)
+        Private Sub Gc_DragDrop(sender As Object, e As DragEventArgs)
             Print($"Drag and drop handler")
 
-            If IsNothing(formID) Or formID <> 0 Then
+            If IsNothing(Id) Or Id <> 0 Then
 
                 ' Set for Directory
-                formDirectory = $"{gPath}\{formID}"
+                FormDir = $"{GPath}\{Id}"
 
                 ' Create directory
-                If Not Directory.Exists(formDirectory) Then Directory.CreateDirectory(formDirectory)
+                If Not Directory.Exists(FormDir) Then Directory.CreateDirectory(FormDir)
 
                 ' Drop File into WinExplorerView
                 Try
@@ -201,7 +203,7 @@ Public Class BaseForm
                         ' Copy file to form directory
                         For Each i As String In draggedFiles
 
-                            File.Copy(i, $"{formDirectory}\{Path.GetFileName(i)}", True)
+                            File.Copy(i, $"{FormDir}\{Path.GetFileName(i)}", True)
                         Next
 
                     ElseIf e.Data.GetDataPresent("FileGroupDescriptor") Then
@@ -263,11 +265,11 @@ Public Class BaseForm
                     & objMI.ReceivedTime.Minute & "-" & objMI.ReceivedTime.Second
 
                     Dim strFile As String =
-                            IO.Path.Combine(formDirectory, (fnEmailSubject(objMI.Subject) + "_" + dt + ".msg").Replace(":", ""))
+                            IO.Path.Combine(FormDir, (FnEmailSubject(objMI.Subject) + "_" + dt + ".msg").Replace(":", ""))
                     objMI.SaveAs(strFile)
                 Next
             Else
-                Dim theFile As String = formDirectory & DateTime.Now.ToString("yyyyMMdd_HHmmss") & "_" & fnames(0).ToString()
+                Dim theFile As String = FormDir & DateTime.Now.ToString("yyyyMMdd_HHmmss") & "_" & fnames(0).ToString()
 
                 ' get the actual raw file into memory
                 Dim ms As MemoryStream = CType(e.Data.GetData("FileContents"), MemoryStream)
@@ -288,8 +290,8 @@ Public Class BaseForm
             End If
         End Sub
 
-        Private Sub GridControl_DragEnter(sender As Object, e As DragEventArgs)
-            If Not gReadOnly Then
+        Private Sub Gc_DragEnter(sender As Object, e As DragEventArgs)
+            If Not GReadOnly Then
                 Print($"Drag Enter handler")
                 e.Effect = DragDropEffects.All
             Else
@@ -298,15 +300,15 @@ Public Class BaseForm
             End If
         End Sub
 
-        Private Sub cmsItemDelete_Click(sender As Object, e As EventArgs)
-            If Not gReadOnly Then
+        Private Sub CmsItemDelete_Click(sender As Object, e As EventArgs)
+            If Not GReadOnly Then
                 Print($"Delete selected files handler")
                 ' Get selected files from WinExplorerView
-                Dim selectedRows() As Integer = wv.GetSelectedRows()
+                Dim selectedRows() As Integer = Wv.GetSelectedRows()
 
                 ' Iterate selected files
                 For Each i As Integer In selectedRows
-                    Dim fileEntry As FileSystemEntry = CType(wv.GetRow(i), FileSystemEntry)
+                    Dim fileEntry As FileSystemEntry = CType(Wv.GetRow(i), FileSystemEntry)
                     Try
                         ' Delete File
                         File.Delete(fileEntry.Path)
@@ -326,14 +328,14 @@ Public Class BaseForm
 
         Private Sub Handler_KeyDown(sender As Object, e As KeyEventArgs)
             If e.KeyCode = Keys.Delete Then
-                If Not gReadOnly Then
+                If Not GReadOnly Then
                     Print("Delete file with KeyDown handler")
                     ' Get selected files from WinExplorerView
-                    Dim selectedRows() As Integer = wv.GetSelectedRows()
+                    Dim selectedRows() As Integer = Wv.GetSelectedRows()
 
                     ' Iterate selected files
                     For Each i As Integer In selectedRows
-                        Dim fileEntry As FileSystemEntry = CType(wv.GetRow(i), FileSystemEntry)
+                        Dim fileEntry As FileSystemEntry = CType(Wv.GetRow(i), FileSystemEntry)
                         Try
                             ' Delete File
                             File.Delete(fileEntry.Path)
@@ -352,15 +354,15 @@ Public Class BaseForm
             End If
         End Sub
 
-        Private Sub cmsItemOpen_Click(sender As Object, e As EventArgs)
+        Private Sub CmsItemOpen_Click(sender As Object, e As EventArgs)
             Print($"Open selected files handler")
 
             ' Get selected files from WinExplorerView
-            Dim selectedRows() As Integer = wv.GetSelectedRows()
+            Dim selectedRows() As Integer = Wv.GetSelectedRows()
 
             ' Iterate selected files
             For Each i As Integer In selectedRows
-                Dim fileEntry As FileSystemEntry = CType(wv.GetRow(i), FileSystemEntry)
+                Dim fileEntry As FileSystemEntry = CType(Wv.GetRow(i), FileSystemEntry)
                 Try
                     ' Open File
                     fileEntry.DoAction(Me)
@@ -370,18 +372,18 @@ Public Class BaseForm
             Next
         End Sub
 
-        Private Sub cmsItemCopyTo_Click(sender As Object, e As EventArgs)
-            If Not gReadOnly Then
+        Private Sub CmsItemCopyTo_Click(sender As Object, e As EventArgs)
+            If Not GReadOnly Then
                 Print($"Copy file to a different directory")
                 Try
                     ' User Inputs target directory to move files to
                     Dim targetFolder As Integer = XtraInputBox.Show($"Copy files to", Application.CompanyName, "")
-                    If Directory.Exists($"{gPath}\{targetFolder}") Then
+                    If Directory.Exists($"{GPath}\{targetFolder}") Then
                         ' Copy Files
                         CopySelectedFiles(targetFolder)
                     Else
                         ' Create Directory & Copy Files
-                        Directory.CreateDirectory($"{gPath}\{targetFolder}")
+                        Directory.CreateDirectory($"{GPath}\{targetFolder}")
                         CopySelectedFiles(targetFolder)
                     End If
                 Catch ex As InvalidCastException
@@ -393,35 +395,35 @@ Public Class BaseForm
             End If
         End Sub
 
-        Private Sub cmsItemXL_Click(sender As Object, e As EventArgs)
+        Private Sub CmsItemXL_Click(sender As Object, e As EventArgs)
             Print($"Set Icon XL size handler")
-            wv.OptionsView.Style = WinExplorerViewStyle.ExtraLarge
-            wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(256, 256)
+            Wv.OptionsView.Style = WinExplorerViewStyle.ExtraLarge
+            Wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(256, 256)
         End Sub
 
-        Private Sub cmsItemLarge_Click(sender As Object, e As EventArgs)
+        Private Sub CmsItemLarge_Click(sender As Object, e As EventArgs)
             Print($"Set Icon Large size handler")
-            wv.OptionsView.Style = WinExplorerViewStyle.Large
-            wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(96, 96)
+            Wv.OptionsView.Style = WinExplorerViewStyle.Large
+            Wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(96, 96)
         End Sub
 
-        Private Sub cmsItemMedium_Click(sender As Object, e As EventArgs)
+        Private Sub CmsItemMedium_Click(sender As Object, e As EventArgs)
             Print($"Set Icon Medium size handler")
-            wv.OptionsView.Style = WinExplorerViewStyle.Medium
-            wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(32, 32)
+            Wv.OptionsView.Style = WinExplorerViewStyle.Medium
+            Wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(32, 32)
         End Sub
 
-        Private Sub cmsItemSmall_Click(sender As Object, e As EventArgs)
+        Private Sub CmsItemSmall_Click(sender As Object, e As EventArgs)
             Print($"Set Icon Small size handler")
-            wv.OptionsView.Style = WinExplorerViewStyle.Small
-            wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(16, 16)
+            Wv.OptionsView.Style = WinExplorerViewStyle.Small
+            Wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(16, 16)
         End Sub
 
-        Private Sub cmsItemRename_Click(sender As Object, e As EventArgs)
-            If Not gReadOnly Then
+        Private Sub CmsItemRename_Click(sender As Object, e As EventArgs)
+            If Not GReadOnly Then
                 Print("Rename file handler")
-                Dim fileIndex As Integer = wv.FocusedRowHandle
-                Dim fileEntry As FileSystemEntry = CType(wv.GetRow(fileIndex), FileSystemEntry)
+                Dim fileIndex As Integer = Wv.FocusedRowHandle
+                Dim fileEntry As FileSystemEntry = CType(Wv.GetRow(fileIndex), FileSystemEntry)
                 Dim filePath As String = fileEntry.Path
                 Dim fileName As String = fileEntry.Name
                 Dim fileExtension As String = Path.GetExtension(filePath)
@@ -450,7 +452,7 @@ Public Class BaseForm
 
         Private Sub WinExplorerView_RightClick(sender As Object, e As DevExpress.Utils.DXMouseEventArgs)
             Print("Right mouse click handler, show popup-menu ")
-            If e.Button = MouseButtons.Right Then cms.Show(MousePosition)
+            If e.Button = MouseButtons.Right Then Cms.Show(MousePosition)
         End Sub
 
 #End Region
@@ -459,7 +461,7 @@ Public Class BaseForm
 
 #Region "Methods"
 
-        Public Function fnEmailSubject(ByVal subject As String) As String
+        Public Function FnEmailSubject(ByVal subject As String) As String
             Print("")
             If subject = Nothing Then
                 subject = "EMPTY SUBJECT"
@@ -477,19 +479,19 @@ Public Class BaseForm
             Print("Copy files to {targetFolder} directory")
 
             ' Get selected files from WinExplorerView
-            Dim selectedRows() As Integer = wv.GetSelectedRows()
+            Dim selectedRows() As Integer = Wv.GetSelectedRows()
 
             ' Iterate selected files
             For Each i As Integer In selectedRows
-                Dim fileEntry As FileSystemEntry = CType(wv.GetRow(i), FileSystemEntry)
+                Dim fileEntry As FileSystemEntry = CType(Wv.GetRow(i), FileSystemEntry)
                 Dim filePath As String = fileEntry.Path
                 Dim fileName As String = fileEntry.Name
                 Dim fileExtension As String = Path.GetExtension(filePath)
 
                 ' Copy non-folder file to target folder
-                If Not wv.IsGroupRow(i) Then
+                If Not Wv.IsGroupRow(i) Then
                     Try
-                        File.Copy(filePath, $"{gPath}\{targetFolder}\{fileName}{fileExtension}", True)
+                        File.Copy(filePath, $"{GPath}\{targetFolder}\{fileName}{fileExtension}", True)
                     Catch ex As IOException
                         ' current file is a folder
                         Print(ex.ToString)
@@ -500,12 +502,12 @@ Public Class BaseForm
 
         Sub ClearView()
             Print("Clear WinExplorerView MainView")
-            gc.BeginUpdate()
+            Gc.BeginUpdate()
             Try
-                wv.Columns.Clear()
-                gc.DataSource = Nothing
+                Wv.Columns.Clear()
+                Gc.DataSource = Nothing
             Finally
-                gc.EndUpdate()
+                Gc.EndUpdate()
             End Try
         End Sub
 
@@ -555,17 +557,17 @@ Public Class BaseForm
             ' Select Messeage type
             Select Case type
                 Case "input"
-                    description = If(gLanguage = "ENGLISH", EN, NL)
+                    description = If(GLanguage = "ENGLISH", EN, NL)
                 Case "save"
-                    description = If(gLanguage = "ENGLISH",
+                    description = If(GLanguage = "ENGLISH",
                         "Save the form before you can execute this action.",
                         "Sla het formulier op voordat u deze handeling kunt uitvoeren.")
                 Case "readOnly"
-                    description = If(gLanguage = "ENGLISH",
+                    description = If(GLanguage = "ENGLISH",
                         "This form Is already opened by another user, therefore it's not possible to make any modifications.",
                         "Dit formulier is al door een andere gebruiker geopend, het is daarom niet mogelijk om wijzigingen aan te brengen")
                 Case Else
-                    description = If(gLanguage = "ENGLISH", "Null", "null")
+                    description = If(GLanguage = "ENGLISH", "Null", "null")
             End Select
 
             ' Show warning message
@@ -584,7 +586,7 @@ Public Class BaseForm
                 Catch ex As NotImplementedException
                     Print($"User can't access folder: {ex}")
                 End Try
-
+                Return Nothing
             End Get
         End Property
 
