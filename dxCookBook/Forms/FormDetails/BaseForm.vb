@@ -1,13 +1,10 @@
-﻿Imports System.ComponentModel
-Imports System.IO
+﻿Imports System.IO
 Imports System.Reflection
 Imports System.Text.RegularExpressions
 Imports DevExpress.Utils.Drawing
 Imports DevExpress.Utils.Helpers
 Imports DevExpress.XtraEditors
-Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Columns
-Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.WinExplorer
 
 
@@ -18,12 +15,12 @@ Public Class BaseForm
 
 #Region " Classes"
 
-
     Class FileManagerView
         Implements IFileSystemNavigationSupports
         Property formID As Integer
-        Property formReadOnly As Boolean = True
-        Private root As String = "C:\Users\lucas.hartman\Downloads"
+        Property gReadOnly As Boolean = Globals.gReadOnly
+        Private gPath As String = Globals.gPath
+        Private gLanguage As String = Globals.gLanguage
         Private formDirectory
         Private gc As sslDataGrid.sslDataGrid
         Private WithEvents wv As WinExplorerView = New WinExplorerView()
@@ -35,17 +32,22 @@ Public Class BaseForm
         Private WithEvents cmsItemXL As New ToolStripMenuItem()
         Private WithEvents cmsItemCopyTo As New ToolStripMenuItem()
         Private WithEvents cmsItemOpen As New ToolStripMenuItem()
+        Private WithEvents cmsItemDelete As New ToolStripMenuItem()
 
         Sub New(ByRef pFileSystem As sslDataGrid.sslDataGrid, ByRef pReadOnly As Boolean, Optional ByVal pID As Integer = Nothing)
             gc = pFileSystem
-            formID = pID
-            formReadOnly = pReadOnly
-            formDirectory = $"{root}\{formID}"
+            formId = pID
+            gReadOnly = pReadOnly
+            formDirectory = $"{gPath}\{formID}"
 
             InitializeWinExplorerView()
             InitializeContextMenuStrip()
 
+            AddHandler Me.gc.DragEnter, AddressOf GridControl_DragEnter
+            AddHandler Me.gc.DragDrop, AddressOf GridControl_DragDrop
             AddHandler Me.wv.Click, AddressOf WinExplorerView_RightClick
+            AddHandler Me.wv.DoubleClick, AddressOf cmsItemOpen_Click
+            AddHandler Me.wv.KeyDown, AddressOf Handler_KeyDown
             AddHandler Me.cmsItemRename.Click, AddressOf cmsItemRename_Click
             AddHandler Me.cmsItemSmall.Click, AddressOf cmsItemSmall_Click
             AddHandler Me.cmsItemMedium.Click, AddressOf cmsItemMedium_Click
@@ -53,17 +55,16 @@ Public Class BaseForm
             AddHandler Me.cmsItemXL.Click, AddressOf cmsItemXL_Click
             AddHandler Me.cmsItemCopyTo.Click, AddressOf cmsItemCopyTo_Click
             AddHandler Me.cmsItemOpen.Click, AddressOf cmsItemOpen_Click
-            AddHandler Me.wv.DoubleClick, AddressOf cmsItemOpen_Click
-            AddHandler Me.gc.DragEnter, AddressOf GridControl_DragEnter
-            AddHandler Me.gc.DragDrop, AddressOf GridControl_DragDrop
+            AddHandler Me.cmsItemDelete.Click, AddressOf cmsItemDelete_Click
         End Sub
+
 
 
 
 #Region "Initializers"
 
         Private Sub InitializeWinExplorerView()
-            Print($"Declare Columns and Setting,")
+            Print($"Declare columns and setting")
 
             ' Declare Columns
             Dim colName As New GridColumn() With {
@@ -127,7 +128,7 @@ Public Class BaseForm
 
             ' GridControl settings
             gc.MainView = wv
-            gc.AllowDrop = formReadOnly
+            gc.AllowDrop = Not gReadOnly
 
             If Not IsNothing(formID) And Directory.Exists(formDirectory) Then
                 Print($"Get Files from Directory")
@@ -157,6 +158,9 @@ Public Class BaseForm
             cmsItemCopyTo.Name = "CopyTo"
             cmsItemCopyTo.Text = "Copy to"
 
+            cmsItemDelete.Name = "Delete"
+            cmsItemDelete.Text = "Delete"
+
             cmsItemOpen.Name = "Open"
             cmsItemOpen.Text = "Open"
 
@@ -166,6 +170,7 @@ Public Class BaseForm
             cms.Items.Add(cmsItemMedium)
             cms.Items.Add(cmsItemLarge)
             cms.Items.Add(cmsItemXL)
+            cms.Items.Add(cmsItemDelete)
             cms.Items.Add(cmsItemCopyTo)
             cms.Items.Add(cmsItemRename)
         End Sub
@@ -182,7 +187,7 @@ Public Class BaseForm
             If IsNothing(formID) Or formID <> 0 Then
 
                 ' Set for Directory
-                formDirectory = $"{root}\{formID}"
+                formDirectory = $"{gPath}\{formID}"
 
                 ' Create directory
                 If Not Directory.Exists(formDirectory) Then Directory.CreateDirectory(formDirectory)
@@ -215,7 +220,7 @@ Public Class BaseForm
                 ClearView()
                 InitializeWinExplorerView()
             Else
-                MsgBox($"Form must be saved, before you can drop any files.")
+                WarningMessageBox("save")
             End If
         End Sub
 
@@ -284,16 +289,72 @@ Public Class BaseForm
         End Sub
 
         Private Sub GridControl_DragEnter(sender As Object, e As DragEventArgs)
-            If formReadOnly Then
+            If Not gReadOnly Then
                 Print($"Drag Enter handler")
                 e.Effect = DragDropEffects.All
             Else
-                MsgBox("WARNING: can't drag files when in read only mode")
+                WarningMessageBox("readOnly")
+
+            End If
+        End Sub
+
+        Private Sub cmsItemDelete_Click(sender As Object, e As EventArgs)
+            If Not gReadOnly Then
+                Print($"Delete selected files handler")
+                ' Get selected files from WinExplorerView
+                Dim selectedRows() As Integer = wv.GetSelectedRows()
+
+                ' Iterate selected files
+                For Each i As Integer In selectedRows
+                    Dim fileEntry As FileSystemEntry = CType(wv.GetRow(i), FileSystemEntry)
+                    Try
+                        ' Delete File
+                        File.Delete(fileEntry.Path)
+
+                        ' Refesh View
+                        ClearView()
+                        InitializeWinExplorerView()
+
+                    Catch ex As Exception
+                        Print($"User can't delete file: {ex}")
+                    End Try
+                Next
+            Else
+                WarningMessageBox("readOnly")
+            End If
+        End Sub
+
+        Private Sub Handler_KeyDown(sender As Object, e As KeyEventArgs)
+            If e.KeyCode = Keys.Delete Then
+                If Not gReadOnly Then
+                    Print("Delete file with KeyDown handler")
+                    ' Get selected files from WinExplorerView
+                    Dim selectedRows() As Integer = wv.GetSelectedRows()
+
+                    ' Iterate selected files
+                    For Each i As Integer In selectedRows
+                        Dim fileEntry As FileSystemEntry = CType(wv.GetRow(i), FileSystemEntry)
+                        Try
+                            ' Delete File
+                            File.Delete(fileEntry.Path)
+
+                            ' Refesh View
+                            ClearView()
+                            InitializeWinExplorerView()
+
+                        Catch ex As Exception
+                            Print($"User can't delete file: {ex}")
+                        End Try
+                    Next
+                Else
+                    WarningMessageBox("readOnly")
+                End If
             End If
         End Sub
 
         Private Sub cmsItemOpen_Click(sender As Object, e As EventArgs)
-            Print($"Open file handler")
+            Print($"Open selected files handler")
+
             ' Get selected files from WinExplorerView
             Dim selectedRows() As Integer = wv.GetSelectedRows()
 
@@ -304,23 +365,23 @@ Public Class BaseForm
                     ' Open File
                     fileEntry.DoAction(Me)
                 Catch ex As ArgumentNullException
-                    Console.WriteLine("User can't access folder")
+                    Print($"User can't access folder: {ex}")
                 End Try
             Next
         End Sub
 
         Private Sub cmsItemCopyTo_Click(sender As Object, e As EventArgs)
-            If formReadOnly Then
+            If Not gReadOnly Then
                 Print($"Copy file to a different directory")
                 Try
                     ' User Inputs target directory to move files to
                     Dim targetFolder As Integer = XtraInputBox.Show($"Copy files to", Application.CompanyName, "")
-                    If Directory.Exists($"{root}\{targetFolder}") Then
+                    If Directory.Exists($"{gPath}\{targetFolder}") Then
                         ' Copy Files
                         CopySelectedFiles(targetFolder)
                     Else
                         ' Create Directory & Copy Files
-                        Directory.CreateDirectory($"{root}\{targetFolder}")
+                        Directory.CreateDirectory($"{gPath}\{targetFolder}")
                         CopySelectedFiles(targetFolder)
                     End If
                 Catch ex As InvalidCastException
@@ -328,7 +389,7 @@ Public Class BaseForm
                     Console.WriteLine(ex)
                 End Try
             Else
-                MsgBox("WARNING: can't copy files when in read only mode")
+                WarningMessageBox("readOnly")
             End If
         End Sub
 
@@ -357,7 +418,7 @@ Public Class BaseForm
         End Sub
 
         Private Sub cmsItemRename_Click(sender As Object, e As EventArgs)
-            If formReadOnly Then
+            If Not gReadOnly Then
                 Print("Rename file handler")
                 Dim fileIndex As Integer = wv.FocusedRowHandle
                 Dim fileEntry As FileSystemEntry = CType(wv.GetRow(fileIndex), FileSystemEntry)
@@ -374,16 +435,16 @@ Public Class BaseForm
                         Dim newName As String = XtraInputBox.Show($"Rename {fileName}", Application.CompanyName, "")
                         My.Computer.FileSystem.RenameFile(filePath, $"{newName}{fileExtension}")
                     Catch ex As IOException
-                        MsgBox("Filename Already exists")
+                        WarningMessageBox("The file name already exists.", "De opgegeven bestandsnaam bestaat al.")
                     Finally
                         ClearView()
                         InitializeWinExplorerView()
                     End Try
                 Else
-                    MsgBox($"File '{filePath}' does not exists :(")
+                    Print($"File '{filePath}' does not exists :(")
                 End If
             Else
-                MsgBox("WARNING: can't rename file when in read only mode")
+                WarningMessageBox("readOnly")
             End If
         End Sub
 
@@ -428,10 +489,10 @@ Public Class BaseForm
                 ' Copy non-folder file to target folder
                 If Not wv.IsGroupRow(i) Then
                     Try
-                        File.Copy(filePath, $"{root}\{targetFolder}\{fileName}{fileExtension}", True)
+                        File.Copy(filePath, $"{gPath}\{targetFolder}\{fileName}{fileExtension}", True)
                     Catch ex As IOException
                         ' current file is a folder
-                        Console.WriteLine(ex)
+                        Print(ex.ToString)
                     End Try
                 End If
             Next i
@@ -487,6 +548,30 @@ Public Class BaseForm
             Debug.WriteLine($"[INFO] : {parentMethod.Name} - {description}")
         End Sub
 
+        Private Sub WarningMessageBox(Optional ByVal type As String = Nothing, Optional ByVal EN As String = Nothing, Optional ByVal NL As String = Nothing)
+            Print("Select Warning Message")
+            Dim description As String
+
+            ' Select Messeage type
+            Select Case type
+                Case "input"
+                    description = If(gLanguage = "ENGLISH", EN, NL)
+                Case "save"
+                    description = If(gLanguage = "ENGLISH",
+                        "Save the form before you can execute this action.",
+                        "Sla het formulier op voordat u deze handeling kunt uitvoeren.")
+                Case "readOnly"
+                    description = If(gLanguage = "ENGLISH",
+                        "This form Is already opened by another user, therefore it's not possible to make any modifications.",
+                        "Dit formulier is al door een andere gebruiker geopend, het is daarom niet mogelijk om wijzigingen aan te brengen")
+                Case Else
+                    description = If(gLanguage = "ENGLISH", "Null", "null")
+            End Select
+
+            ' Show warning message
+            XtraMessageBox.Show(description, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+        End Sub
+
 #End Region
 
 
@@ -497,7 +582,7 @@ Public Class BaseForm
                 Try
                     Throw New NotImplementedException()
                 Catch ex As NotImplementedException
-                    Console.WriteLine("User can't access folder")
+                    Print($"User can't access folder: {ex}")
                 End Try
 
             End Get

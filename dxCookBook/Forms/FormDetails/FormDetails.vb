@@ -1,22 +1,14 @@
 ﻿Imports System.ComponentModel
-Imports System.IO
-Imports System.Reflection
-Imports System.Text.RegularExpressions
-Imports DevExpress.Utils.Drawing
-Imports DevExpress.Utils.Helpers
-Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid
-Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Grid
-Imports DevExpress.XtraGrid.Views.WinExplorer
 
 Public Class FormDetails
     Inherits BaseForm
     Private bindingList As BindingList(Of Record)
     Private formID As Integer = Globals.ID
-    Private formUser As String = Globals.formUser
-    Private formReadOnly As Boolean = Globals.formReadOnly
-    Private formLanguage As String = Globals.formLanguage
+    Private gUser As String = Globals.gUser
+    Private gReadOnly As Boolean = Globals.gReadOnly
+    Private gLanguage As String = Globals.gLanguage
     Private gridControlExample As GridController1
     Private fileManagerView As FileManagerView
 
@@ -28,7 +20,7 @@ Public Class FormDetails
         InitializeInfo()
 
         gridControlExample = New GridController1(Me.SslDataGrid1)
-        fileManagerView = New FileManagerView(Me.SslDataGrid3, formReadOnly)
+        fileManagerView = New FileManagerView(Me.SslDataGrid3, gReadOnly, Globals.ID)
 
         AddHandler Me.btnAddRow.Click, AddressOf btnAddRow_Click
         AddHandler Me.btnClearView.Click, AddressOf btnClearView_Click
@@ -40,32 +32,36 @@ Public Class FormDetails
 #Region "Initializers"
 
     Private Sub InitializeFormDetails()
-        ' Define BindingList
-        bindingList = New BindingList(Of Record)
+        Try
+            ' Define BindingList
+            bindingList = New BindingList(Of Record)
 
-        ' Build Dataset
-        Dim ds As Object = New dsAlphaTable.AlphaTableDataTable()
-        Dim tba As Object = New dsAlphaTableTableAdapters.AlphaTableTableAdapter()
-        tba.FillBy(ds, formID)
+            ' Build Dataset
+            Dim ds As Object = New dsAlphaTable.AlphaTableDataTable()
+            Dim tba As Object = New dsAlphaTableTableAdapters.AlphaTableTableAdapter()
+            tba.FillBy(ds, formID)
 
-        ' Print Dataset
-        For Each row As Object In ds.Rows
-            Console.WriteLine($"[INFO] - {Reflection.MethodBase.GetCurrentMethod().Name} - Dataset Row Id: {row("PersonID")}")
-        Next
+            ' Print Dataset
+            For Each row As Object In ds.Rows
+                Console.WriteLine($"[INFO] - {Reflection.MethodBase.GetCurrentMethod().Name} - Dataset Row Id: {row("PersonID")}")
+            Next
 
-        ' Dataset to BindingList
-        bindingList.Add(New Record() With {
-            .PersonID = If(IsDBNull(ds.Rows(0)("PersonID")), "", ds.Rows(0)("PersonID")),
-            .FirstName = If(IsDBNull(ds.Rows(0)("FirstName")), "", ds.Rows(0)("FirstName")),
-            .LastName = If(IsDBNull(ds.Rows(0)("LastName")), "", ds.Rows(0)("LastName")),
-            .City = If(IsDBNull(ds.Rows(0)("City")), "", ds.Rows(0)("City"))
-        })
+            ' Dataset to BindingList
+            bindingList.Add(New Record() With {
+                .PersonID = If(IsDBNull(ds.Rows(0)("PersonID")), "", ds.Rows(0)("PersonID")),
+                .FirstName = If(IsDBNull(ds.Rows(0)("FirstName")), "", ds.Rows(0)("FirstName")),
+                .LastName = If(IsDBNull(ds.Rows(0)("LastName")), "", ds.Rows(0)("LastName")),
+                .City = If(IsDBNull(ds.Rows(0)("City")), "", ds.Rows(0)("City"))
+            })
 
-        ' BindingList to Textboxes
-        tePersonID.DataBindings.Add("EditValue", bindingList, "PersonID")
-        teLastName.DataBindings.Add("EditValue", bindingList, "LastName")
-        teFirstName.DataBindings.Add("EditValue", bindingList, "FirstName")
-        teCity.DataBindings.Add("EditValue", bindingList, "City")
+            ' BindingList to Textboxes
+            tePersonID.DataBindings.Add("EditValue", bindingList, "PersonID")
+            teLastName.DataBindings.Add("EditValue", bindingList, "LastName")
+            teFirstName.DataBindings.Add("EditValue", bindingList, "FirstName")
+            teCity.DataBindings.Add("EditValue", bindingList, "City")
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub InitializeAutocomplete()
@@ -80,14 +76,14 @@ Public Class FormDetails
     End Sub
 
     Private Sub InitializeReadOnly()
-        If formReadOnly Then Console.WriteLine($"Run ReadOnlyAppUI(Me) method from BaseFrom")
+        If gReadOnly Then Console.WriteLine($"This form is set to Read only")
     End Sub
 
     Private Sub InitializeInfo()
         My.Application.Log.WriteEntry($" [TEST] Form ID:................{formID}")
-        My.Application.Log.WriteEntry($" [TEST] Form Language:..........{formLanguage}")
-        My.Application.Log.WriteEntry($" [TEST] Form Read Only:.........{formReadOnly}")
-        My.Application.Log.WriteEntry($" [TEST] Form User:..............{formUser}")
+        My.Application.Log.WriteEntry($" [TEST] Form Language:..........{gLanguage}")
+        My.Application.Log.WriteEntry($" [TEST] Form Read Only:.........{gReadOnly}")
+        My.Application.Log.WriteEntry($" [TEST] Form User:..............{gUser}")
     End Sub
 
 #End Region
@@ -97,7 +93,11 @@ Public Class FormDetails
 #Region "Handlers"
 
     Private Sub btnSave_Click(sender As Object, e As EventArgs)
-        fileManagerView.formID = 113
+        ' Generated Filenumber
+        Globals.ID = 123456
+
+        ' Set Filenumber in view
+        fileManagerView.formID = Globals.ID
     End Sub
 
     Private Sub btnAddRow_Click(sender As Object, e As EventArgs)
