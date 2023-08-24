@@ -1,4 +1,5 @@
-﻿Imports System.IO
+﻿Imports System.Collections.Specialized
+Imports System.IO
 Imports System.Reflection
 Imports System.Text.RegularExpressions
 Imports DevExpress.Utils.Drawing
@@ -6,7 +7,7 @@ Imports DevExpress.Utils.Helpers
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.WinExplorer
-
+Imports Microsoft.Office.Interop
 
 Public Class BaseForm
     Private Sub BaseForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -21,7 +22,8 @@ Public Class BaseForm
         Property GReadOnly As Boolean = Globals.gReadOnly
         Private ReadOnly GPath As String = Globals.gPath
         Private ReadOnly GLanguage As String = Globals.gLanguage
-        Private FormDir
+        Private IconSize As Object = WinExplorerViewStyle.Medium
+        Private FormDir As String
         Private Gc As sslDataGrid.sslDataGrid
         Private WithEvents Wv As WinExplorerView = New WinExplorerView()
         Private Cms As ContextMenuStrip = New ContextMenuStrip()
@@ -30,18 +32,20 @@ Public Class BaseForm
         Private WithEvents CmsItemMedium As New ToolStripMenuItem()
         Private WithEvents CmsItemLarge As New ToolStripMenuItem()
         Private WithEvents CmsItemXL As New ToolStripMenuItem()
-        Private WithEvents CmsItemCopyTo As New ToolStripMenuItem()
+        Private WithEvents CmsItemCopy As New ToolStripMenuItem()
         Private WithEvents CmsItemOpen As New ToolStripMenuItem()
         Private WithEvents CmsItemDelete As New ToolStripMenuItem()
+        Private WithEvents CmsItemEmail As New ToolStripMenuItem()
+        Private WithEvents CmsItemMove As New ToolStripMenuItem()
 
         Sub New(ByRef pFileSystem As sslDataGrid.sslDataGrid, ByRef pReadOnly As Boolean, Optional ByVal pID As Integer = Nothing)
             Gc = pFileSystem
             Id = pID
             GReadOnly = pReadOnly
-            FormDir = Path.Combine(GPath, Id) '$"{GPath}\{Id}"
+            FormDir = Path.Combine(GPath, Id)
 
             InitializeWinExplorerView()
-            InitializeCmsStrip()
+            InitializeContextMenuStrip()
 
             AddHandler Me.Gc.DragEnter, AddressOf Gc_DragEnter
             AddHandler Me.Gc.DragDrop, AddressOf Gc_DragDrop
@@ -53,9 +57,11 @@ Public Class BaseForm
             AddHandler Me.CmsItemMedium.Click, AddressOf CmsItemMedium_Click
             AddHandler Me.CmsItemLarge.Click, AddressOf CmsItemLarge_Click
             AddHandler Me.CmsItemXL.Click, AddressOf CmsItemXL_Click
-            AddHandler Me.CmsItemCopyTo.Click, AddressOf CmsItemCopyTo_Click
+            AddHandler Me.CmsItemCopy.Click, AddressOf CmsItemCopy_Click
             AddHandler Me.CmsItemOpen.Click, AddressOf CmsItemOpen_Click
             AddHandler Me.CmsItemDelete.Click, AddressOf CmsItemDelete_Click
+            AddHandler Me.CmsItemEmail.Click, AddressOf CmsItemEmail_Click
+            AddHandler Me.CmsItemMove.Click, AddressOf CmsItemMove_Click
         End Sub
 
 
@@ -64,7 +70,7 @@ Public Class BaseForm
 #Region "Initializers"
 
         Private Sub InitializeWinExplorerView()
-            Print($"Declare columns and setting")
+            Print($"Declare columns and settings")
 
             ' Declare Columns
             Dim colName As New GridColumn() With {
@@ -123,7 +129,7 @@ Public Class BaseForm
             Wv.OptionsSelection.MultiSelect = True
 
             Wv.OptionsView.ImageLayoutMode = ImageLayoutMode.Stretch
-            Wv.OptionsView.Style = WinExplorerViewStyle.Small
+            Wv.OptionsView.Style = IconSize
             Wv.OptionsView.ShowViewCaption = True
 
             Wv.OptionsFind.AlwaysVisible = True
@@ -133,12 +139,12 @@ Public Class BaseForm
             Gc.AllowDrop = Not GReadOnly
 
             If Not IsNothing(Id) And Directory.Exists(FormDir) Then
-                Print($"Get Files from Directory")
+                Print($"Show Files from Directory")
                 Gc.DataSource = FileSystemHelper.GetFileSystemEntries(FormDir, GetItemSizeType(Wv.OptionsView.Style), GetItemSize(Wv.OptionsView.Style))
             End If
         End Sub
 
-        Private Sub InitializeCmsStrip()
+        Private Sub InitializeContextMenuStrip()
             Print($"Build & add menu items")
 
             ' Menu Items Settings
@@ -157,8 +163,8 @@ Public Class BaseForm
             CmsItemXL.Name = "ExtraLarge"
             CmsItemXL.Text = "Extra Large"
 
-            CmsItemCopyTo.Name = "CopyTo"
-            CmsItemCopyTo.Text = "Copy to"
+            CmsItemCopy.Name = "Copy"
+            CmsItemCopy.Text = "Copy"
 
             CmsItemDelete.Name = "Delete"
             CmsItemDelete.Text = "Delete"
@@ -166,14 +172,22 @@ Public Class BaseForm
             CmsItemOpen.Name = "Open"
             CmsItemOpen.Text = "Open"
 
-            ' Add Menu items to CmsStrip
+            CmsItemEmail.Name = "Email"
+            CmsItemEmail.Text = "Email"
+
+            CmsItemMove.Name = "Move"
+            CmsItemMove.Text = "Move"
+
+            ' Add Menu items to ContextMenuStrip
             Cms.Items.Add(CmsItemOpen)
             Cms.Items.Add(CmsItemSmall)
             Cms.Items.Add(CmsItemMedium)
             Cms.Items.Add(CmsItemLarge)
             Cms.Items.Add(CmsItemXL)
             Cms.Items.Add(CmsItemDelete)
-            Cms.Items.Add(CmsItemCopyTo)
+            Cms.Items.Add(CmsItemMove)
+            Cms.Items.Add(CmsItemCopy)
+            Cms.Items.Add(CmsItemEmail)
             Cms.Items.Add(CmsItemRename)
         End Sub
 
@@ -250,7 +264,7 @@ Public Class BaseForm
 
             Dim sType As String = fnames(0).ToString()
 
-            If Microsoft.VisualBasic.Strings.Right(sType, 4).ToUpper() = ".MSG" Then
+            If Strings.Right(sType, 4).ToUpper() = ".MSG" Then
                 'supports a drop of a Outlook message
 
                 ' Int Outlook Application
@@ -281,7 +295,7 @@ Public Class BaseForm
                 ms.Position = 0
                 ms.Read(fileBytes, 0, ms.Length)
 
-                ' create a file And save the raw zip file to it
+                ' create a file and save the raw zip file to it
                 Dim fs As FileStream = New FileStream(theFile, FileMode.Create)
                 fs.Write(fileBytes, 0, fileBytes.Length)
 
@@ -296,7 +310,6 @@ Public Class BaseForm
                 e.Effect = DragDropEffects.All
             Else
                 WarningMessageBox("readOnly")
-
             End If
         End Sub
 
@@ -330,6 +343,7 @@ Public Class BaseForm
             If e.KeyCode = Keys.Delete Then
                 If Not GReadOnly Then
                     Print("Delete file with KeyDown handler")
+
                     ' Get selected files from WinExplorerView
                     Dim selectedRows() As Integer = Wv.GetSelectedRows()
 
@@ -372,50 +386,50 @@ Public Class BaseForm
             Next
         End Sub
 
-        Private Sub CmsItemCopyTo_Click(sender As Object, e As EventArgs)
-            If Not GReadOnly Then
-                Print($"Copy file to a different directory")
-                Try
-                    ' User Inputs target directory to move files to
-                    Dim targetFolder As Integer = XtraInputBox.Show($"Copy files to", Application.CompanyName, "")
-                    If Directory.Exists($"{GPath}\{targetFolder}") Then
-                        ' Copy Files
-                        CopySelectedFiles(targetFolder)
-                    Else
-                        ' Create Directory & Copy Files
-                        Directory.CreateDirectory($"{GPath}\{targetFolder}")
-                        CopySelectedFiles(targetFolder)
-                    End If
-                Catch ex As InvalidCastException
-                    ' User has not input any value, or did not input an Integer
-                    Console.WriteLine(ex)
-                End Try
-            Else
-                WarningMessageBox("readOnly")
-            End If
+        Private Sub CmsItemCopy_Click(sender As Object, e As EventArgs)
+            Print($"Copy files to Clipboard handler")
+
+            ' Get selected files from WinExplorerView
+            Dim selectedRows() As Integer = Wv.GetSelectedRows()
+
+            ' List all selected file paths
+            Dim sc As StringCollection = New StringCollection()
+            For Each i As Integer In selectedRows
+                Dim fileEntry As FileSystemEntry = CType(Wv.GetRow(i), FileSystemEntry)
+                sc.Add(fileEntry.Path)
+            Next
+
+            ' Add filepaths to clipboard
+            Dim dataObj As New DataObject()
+            dataObj.SetFileDropList(sc)
+            Clipboard.SetDataObject(dataObj, True)
         End Sub
 
         Private Sub CmsItemXL_Click(sender As Object, e As EventArgs)
             Print($"Set Icon XL size handler")
-            Wv.OptionsView.Style = WinExplorerViewStyle.ExtraLarge
+            IconSize = WinExplorerViewStyle.ExtraLarge
+            Wv.OptionsView.Style = IconSize
             Wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(256, 256)
         End Sub
 
         Private Sub CmsItemLarge_Click(sender As Object, e As EventArgs)
             Print($"Set Icon Large size handler")
-            Wv.OptionsView.Style = WinExplorerViewStyle.Large
+            IconSize = WinExplorerViewStyle.Large
+            Wv.OptionsView.Style = IconSize
             Wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(96, 96)
         End Sub
 
         Private Sub CmsItemMedium_Click(sender As Object, e As EventArgs)
             Print($"Set Icon Medium size handler")
-            Wv.OptionsView.Style = WinExplorerViewStyle.Medium
+            IconSize = WinExplorerViewStyle.Medium
+            Wv.OptionsView.Style = IconSize
             Wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(32, 32)
         End Sub
 
         Private Sub CmsItemSmall_Click(sender As Object, e As EventArgs)
             Print($"Set Icon Small size handler")
-            Wv.OptionsView.Style = WinExplorerViewStyle.Small
+            IconSize = WinExplorerViewStyle.Small
+            Wv.OptionsView.Style = IconSize
             Wv.OptionsViewStyles.ExtraLarge.ImageSize = New Size(16, 16)
         End Sub
 
@@ -445,6 +459,53 @@ Public Class BaseForm
                 Else
                     Print($"File '{filePath}' does not exists :(")
                 End If
+            Else
+                WarningMessageBox("readOnly")
+            End If
+        End Sub
+
+        Private Sub CmsItemEmail_Click(sender As Object, e As EventArgs)
+            Print($"Email files handler")
+
+            ' Get selected files from WinExplorerView
+            Dim selectedRows() As Integer = Wv.GetSelectedRows()
+
+            ' Build Email
+            Dim outlookApp As New Outlook.Application()
+            Dim mailItem As Outlook.MailItem = outlookApp.CreateItem(Outlook.OlItemType.olMailItem)
+            mailItem.Subject = If(GLanguage = "ENGLISH",
+                $"Attachments - Filenumber: {Id}",
+                $"Bestanden - Dossier: {Id} - ")
+
+            ' Iterate selected files
+            For Each i As Integer In selectedRows
+                Dim fileEntry As FileSystemEntry = CType(Wv.GetRow(i), FileSystemEntry)
+
+                ' Add file to mail
+                mailItem.Attachments.Add(fileEntry.Path)
+                mailItem.Display(False)
+            Next
+        End Sub
+
+        Private Sub CmsItemMove_Click(sender As Object, e As EventArgs)
+
+            If Not GReadOnly Then
+                Print($"Move file('s) to a different directory")
+                Try
+                    ' User Inputs target directory to move files to
+                    Dim targetFolder As Integer = XtraInputBox.Show($"Copy files to", Application.CompanyName, "")
+                    If Directory.Exists($"{GPath}\{targetFolder}") Then
+                        ' Copy Files
+                        CopySelectedFiles(targetFolder)
+                    Else
+                        ' Create Directory & Copy Files
+                        Directory.CreateDirectory($"{GPath}\{targetFolder}")
+                        CopySelectedFiles(targetFolder)
+                    End If
+                Catch ex As InvalidCastException
+                    ' User has not input any value, or did not input an Integer
+                    Console.WriteLine(ex)
+                End Try
             Else
                 WarningMessageBox("readOnly")
             End If
@@ -561,7 +622,7 @@ Public Class BaseForm
                 Case "save"
                     description = If(GLanguage = "ENGLISH",
                         "Save the form before you can execute this action.",
-                        "Sla het formulier op voordat u deze handeling kunt uitvoeren.")
+                        "Deze handeling kunt u pas uitvoeren na het opslaan van het formulier.")
                 Case "readOnly"
                     description = If(GLanguage = "ENGLISH",
                         "This form Is already opened by another user, therefore it's not possible to make any modifications.",
@@ -593,6 +654,39 @@ Public Class BaseForm
         Public Sub UpdatePath(path As String) Implements IFileSystemNavigationSupports.UpdatePath
             Throw New NotImplementedException()
         End Sub
+
+#End Region
+
+
+
+#Region "Guide"
+
+        '-----------------------------------------------
+        '           Setup File Manager View
+        '-----------------------------------------------
+
+        ' 1. Copy this Sub Class to the Parent From (BaseFrom)
+        ' 2. In the Form Design, place a sslDataGrid
+        ' 3. In the Child From declare Class Variable
+
+        '   Private fileManagerView1 As FileManagerView
+
+        '4. Initialize Class Variable in the constructor.
+
+        '   fileManagerView1 = New FileManagerView(Me.SslDataGrid2, gReadOnly, Globals.ID)
+
+        ' The FileManagerView contructer takes 3 parameters.
+        '   - First is the name of the SslDataGrid
+        '   - Second is a Boolean value for giving permission to the user, to modify files inside the FileMangerView
+        '   - Third is the form id, this value does not need to be initiated in the construction stage.
+
+        '5. Create a Save button handler if you don't already have one and place an id setter.
+
+        '   fileManagerView1.Id = Globals.ID
+
+        '   When the form id is available at "save new from" you can set it for the File Manager View
+
+
 #End Region
 
     End Class

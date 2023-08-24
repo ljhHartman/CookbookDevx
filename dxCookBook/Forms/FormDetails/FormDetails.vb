@@ -20,7 +20,9 @@ Public Class FormDetails
         InitializeInfo()
 
         gridControlExample = New GridController1(Me.SslDataGrid1)
-        fileManagerView1 = New FileManagerView(Me.SslDataGrid3, gReadOnly, Globals.ID)
+        fileManagerView1 = New FileManagerView(Me.SslDataGrid2, gReadOnly, Globals.ID)
+
+
 
         AddHandler Me.btnAddRow.Click, AddressOf BtnAddRow_Click
         AddHandler Me.btnClearView.Click, AddressOf BtnClearView_Click

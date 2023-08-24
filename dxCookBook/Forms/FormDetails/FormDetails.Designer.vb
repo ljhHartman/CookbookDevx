@@ -3,7 +3,7 @@ Partial Class FormDetails
     Inherits BaseForm
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class FormDetails
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.lblPersonID = New System.Windows.Forms.Label()
         Me.lblLastName = New System.Windows.Forms.Label()
@@ -35,18 +35,16 @@ Partial Class FormDetails
         Me.btnInitializeView = New System.Windows.Forms.Button()
         Me.SslDataGrid1 = New sslDataGrid.sslDataGrid()
         Me.SslGridView1 = New sslDataGrid.sslGridView()
-        Me.SslDataGrid3 = New sslDataGrid.sslDataGrid()
-        Me.WinExplorerView1 = New DevExpress.XtraGrid.Views.WinExplorer.WinExplorerView()
-        Me.SslGridView2 = New sslDataGrid.sslGridView()
         Me.btnSave = New System.Windows.Forms.Button()
+        Me.SslDataGrid2 = New sslDataGrid.sslDataGrid()
+        Me.SslGridView2 = New sslDataGrid.sslGridView()
         CType(Me.tePersonID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.teLastName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.teFirstName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.teCity.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SslDataGrid3, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.WinExplorerView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.SslDataGrid2, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SslGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -157,27 +155,6 @@ Partial Class FormDetails
         Me.SslGridView1.Name = "SslGridView1"
         Me.SslGridView1.SimpleSearch = False
         '
-        'SslDataGrid3
-        '
-        Me.SslDataGrid3.Location = New System.Drawing.Point(331, 236)
-        Me.SslDataGrid3.MainView = Me.WinExplorerView1
-        Me.SslDataGrid3.Name = "SslDataGrid3"
-        Me.SslDataGrid3.Size = New System.Drawing.Size(400, 200)
-        Me.SslDataGrid3.TabIndex = 18
-        Me.SslDataGrid3.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.WinExplorerView1, Me.SslGridView2})
-        '
-        'WinExplorerView1
-        '
-        Me.WinExplorerView1.GridControl = Me.SslDataGrid3
-        Me.WinExplorerView1.Name = "WinExplorerView1"
-        '
-        'SslGridView2
-        '
-        Me.SslGridView2.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.[Default]
-        Me.SslGridView2.GridControl = Me.SslDataGrid3
-        Me.SslGridView2.Name = "SslGridView2"
-        Me.SslGridView2.SimpleSearch = False
-        '
         'btnSave
         '
         Me.btnSave.Location = New System.Drawing.Point(132, 322)
@@ -187,13 +164,29 @@ Partial Class FormDetails
         Me.btnSave.Text = "Save"
         Me.btnSave.UseVisualStyleBackColor = True
         '
+        'SslDataGrid2
+        '
+        Me.SslDataGrid2.Location = New System.Drawing.Point(331, 236)
+        Me.SslDataGrid2.MainView = Me.SslGridView2
+        Me.SslDataGrid2.Name = "SslDataGrid2"
+        Me.SslDataGrid2.Size = New System.Drawing.Size(400, 364)
+        Me.SslDataGrid2.TabIndex = 20
+        Me.SslDataGrid2.ViewCollection.AddRange(New DevExpress.XtraGrid.Views.Base.BaseView() {Me.SslGridView2})
+        '
+        'SslGridView2
+        '
+        Me.SslGridView2.AutoFilterCondition = DevExpress.XtraGrid.Columns.AutoFilterCondition.[Default]
+        Me.SslGridView2.GridControl = Me.SslDataGrid2
+        Me.SslGridView2.Name = "SslGridView2"
+        Me.SslGridView2.SimpleSearch = False
+        '
         'FormDetails
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 641)
+        Me.Controls.Add(Me.SslDataGrid2)
         Me.Controls.Add(Me.btnSave)
-        Me.Controls.Add(Me.SslDataGrid3)
         Me.Controls.Add(Me.SslDataGrid1)
         Me.Controls.Add(Me.btnInitializeView)
         Me.Controls.Add(Me.btnClearView)
@@ -214,8 +207,7 @@ Partial Class FormDetails
         CType(Me.teCity.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SslDataGrid3, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.WinExplorerView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.SslDataGrid2, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SslGridView2, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -234,8 +226,7 @@ Partial Class FormDetails
     Friend WithEvents btnInitializeView As Button
     Friend WithEvents SslDataGrid1 As sslDataGrid.sslDataGrid
     Friend WithEvents SslGridView1 As sslDataGrid.sslGridView
-    Friend WithEvents SslDataGrid3 As sslDataGrid.sslDataGrid
-    Friend WithEvents SslGridView2 As sslDataGrid.sslGridView
-    Friend WithEvents WinExplorerView1 As DevExpress.XtraGrid.Views.WinExplorer.WinExplorerView
     Friend WithEvents btnSave As Button
+    Friend WithEvents SslDataGrid2 As sslDataGrid.sslDataGrid
+    Friend WithEvents SslGridView2 As sslDataGrid.sslGridView
 End Class
