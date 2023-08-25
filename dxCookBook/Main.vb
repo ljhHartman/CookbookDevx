@@ -1,117 +1,289 @@
 ﻿Public Class Main
 
+    Sub New()
+        InitializeComponent()
 
+        ' Open form inside the Main form
+        Me.IsMdiContainer = True
 
-    Private Sub GridControlToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GridControlToolStripMenuItem.Click
-        GridConrolForm.Show()
-    End Sub
+        'Build top Menubar
+        Me.Menu = New MainMenu()
 
-    Private Sub RibbonFromToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RibbonFromToolStripMenuItem.Click
-        RibbonForm2.Show()
-    End Sub
+        ' Menu Item : Base From
+        Dim item = New MenuItem("Form")
+        Me.Menu.MenuItems.Add(item)
+        item.MenuItems.Add("Base Form", New EventHandler(AddressOf BaseForm_Click))
+        item.MenuItems.Add("Inherit Base Form", New EventHandler(AddressOf InheritBaseForm_Click))
+        item.MenuItems.Add("Setup Detail Form", New EventHandler(AddressOf SetupDetailForm_Click))
+        item.MenuItems.Add("Simple Form Layout", New EventHandler(AddressOf SimpleFormLayout_Click))
 
+        ' Menu Item : Grid Control
+        item = New MenuItem("GridControl")
+        Me.Menu.MenuItems.Add(item)
+        item.MenuItems.Add("Select Rows By Checkbox", New EventHandler(AddressOf SelectRowsByCheckbox_Click))
+        item.MenuItems.Add("GridControl Footer Sum", New EventHandler(AddressOf GridControlFooterSum_Click))
+        item.MenuItems.Add("Grid 2 Grid", New EventHandler(AddressOf Grid2Grid_Click))
+        item.MenuItems.Add("Files Viewer", New EventHandler(AddressOf FilesViewer_Click))
+        item.MenuItems.Add("Double Click Row", New EventHandler(AddressOf ClickRow_Click))
+        item.MenuItems.Add("Add Row", New EventHandler(AddressOf AddRow_Click))
 
-    Private Sub XtraDialogArgsToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles XtraDialogArgsToolStripMenuItem.Click
-        XtraDialogArgs1.Show()
-    End Sub
+        ' Menu Item : Tabs
+        item = New MenuItem("Tabs")
+        Me.Menu.MenuItems.Add(item)
+        item.MenuItems.Add("Move data Tab 2 Tab", New EventHandler(AddressOf CloseTabs_Click))
+        item.MenuItems.Add("Close Tabs", New EventHandler(AddressOf DataTab2Tab_Click))
 
-    Private Sub XtraDialogToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles XtraDialogToolStripMenuItem.Click
-        XtraDialog2.Show()
-    End Sub
+        ' Menu Item : Components
+        item = New MenuItem("Components")
+        Me.Menu.MenuItems.Add(item)
+        item.MenuItems.Add("Chartview", New EventHandler(AddressOf Chartview_Click))
+        item.MenuItems.Add("ComboBox", New EventHandler(AddressOf ComboBox_Click))
+        item.MenuItems.Add("FlyoutPanel", New EventHandler(AddressOf FlyoutPanel_Click))
+        item.MenuItems.Add("RibbonForm", New EventHandler(AddressOf RibbonForm_Click))
+        item.MenuItems.Add("Erroricon TextBox", New EventHandler(AddressOf ErrorIconTextBox_Click))
+        item.MenuItems.Add("Upload Image", New EventHandler(AddressOf UploadImage_Click))
+        item.MenuItems.Add("Manualview", New EventHandler(AddressOf Manualview_Click))
+        item.MenuItems.Add("Autocomplete", New EventHandler(AddressOf Autocomplete_Click))
 
-    Private Sub XtraDialogReturnTableToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles XtraDialogReturnTableToolStripMenuItem.Click
-        XtraDialogArgsTable.Show()
-    End Sub
+        ' Menu Item : MessageBox
+        item = New MenuItem("MessageBox")
+        Me.Menu.MenuItems.Add(item)
+        item.MenuItems.Add("Input Box", New EventHandler(AddressOf InputBox_Click))
+        item.MenuItems.Add("Table Box", New EventHandler(AddressOf TableMessageBox_Click))
 
-    Private Sub GridControlFooterToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GridControlFooterToolStripMenuItem.Click
-        GridControlFooter.Show()
-    End Sub
-
-
-    Private Sub ViewDataSetGridToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ViewDataSetGridToolStripMenuItem.Click
-        Grid2Grid.Show()
-    End Sub
-
-    Private Sub CloseTabControleActionToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CloseTabControleActionToolStripMenuItem.Click
-        CloseTabControleAction.Show()
-    End Sub
-
-    Private Sub DXErrorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DXErrorToolStripMenuItem.Click
-        DXError.Show()
-    End Sub
-
-    Private Sub DXErrorNumberToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DXErrorNumberToolStripMenuItem.Click
-        DXErrorNummers.Show()
-    End Sub
-
-    Private Sub MessageBoxErrorToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MessageBoxErrorToolStripMenuItem.Click
-        MessageBoxError.Show()
-    End Sub
-
-    Private Sub InputBoxAutocompleteToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles InputBoxAutocompleteToolStripMenuItem.Click
-        InputBoxAutocomplete.Show()
-    End Sub
-
-    Private Sub ChartControlToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ChartControlToolStripMenuItem.Click
-        ChartForm.Show()
-    End Sub
-
-    Private Sub RowClickToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RowClickToolStripMenuItem.Click
-        ClickRow.Show()
-    End Sub
-
-    Private Sub UploadImageToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UploadImageToolStripMenuItem.Click
-        uploadImage.Show()
-    End Sub
-
-    Private Sub ToolStripDropDownButton1_Click(sender As Object, e As EventArgs) Handles ToolStripDropDownButton1.Click
+        ' Menu Item : Remainder
+        item = New MenuItem("Remainder")
+        Me.Menu.MenuItems.Add(item)
+        item.MenuItems.Add("Blank", New EventHandler(AddressOf Blank_Click))
 
     End Sub
 
-    Private Sub ToolStripButton2_Click(sender As Object, e As EventArgs) Handles ToolStripButton2.Click
-        AddRowDataGrid.Show()
-    End Sub
 
-    Private Sub ManualUIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ManualUIToolStripMenuItem.Click
-        Dim myControl As New ucManual()
-        DevExpress.XtraEditors.XtraDialog.Show(myControl, "Manual", MessageBoxButtons.OK)
-    End Sub
 
-    Private Sub FlyoutPanelToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles FlyoutPanelToolStripMenuItem.Click
-        FlyoutPanel.Show()
-    End Sub
+#Region "Remainder"
 
-    Private Sub DragDropToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DragDropToolStripMenuItem.Click
-        FormDragDrop2.Show()
+    Private Sub Blank_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New Autocomplete()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
     End Sub
 
 
-    Private Sub UcDragDropToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles UcDragDropToolStripMenuItem.Click
-        Dim uc As New ucFileManager(0, "INWARDFILES")
-        DevExpress.XtraEditors.XtraDialog.Show(uc, "Manual", MessageBoxButtons.OK)
+
+#End Region
+
+
+
+#Region " MessageBox"
+
+    Private Sub InputBox_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New InputBox()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
     End Sub
 
-    Private Sub ComboBoxToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ComboBoxToolStripMenuItem.Click
-        ComboBox.Show()
+    Private Sub TableMessageBox_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New TableMessageBox()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
     End Sub
 
-    Private Sub GetFromTabToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GetFromTabToolStripMenuItem.Click
-        GetFromTab.Show()
+#End Region
+
+
+
+#Region "Components"
+
+    Private Sub Chartview_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New Chartview()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
     End Sub
 
-    Private Sub MoveFilesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles MoveFilesToolStripMenuItem.Click
-        MoveFiles.Show()
+    Private Sub ComboBox_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New ComboBox()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
     End Sub
 
-    Private Sub RenameFileToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles RenameFileToolStripMenuItem.Click
-        RenameFiles.Show()
+    Private Sub FlyoutPanel_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New FlyoutPanel()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
     End Sub
 
-    Private Sub ToolStripButton3_Click(sender As Object, e As EventArgs) Handles ToolStripButton3.Click
-        GridControlFiles.Show()
+    Private Sub RibbonForm_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New RibbonControl()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
     End Sub
 
-    Private Sub ToolStripButton5_Click(sender As Object, e As EventArgs) Handles ToolStripButton5.Click
-        FormDetails.Show()
+    Private Sub ErrorIconTextBox_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New ErrorIconTextBox()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
     End Sub
+
+    Private Sub UploadImage_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New uploadImage()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub Manualview_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New Manualview()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub Autocomplete_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New Autocomplete()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+
+#End Region
+
+
+
+#Region "Tabs"
+
+    Private Sub DataTab2Tab_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New dataTab2Tab()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub CloseTabs_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New CloseTabs()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+#End Region
+
+
+
+#Region " Grid Control"
+
+    Private Sub SelectRowsByCheckbox_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New SelectRowsByCheckbox()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub GridControlFooterSum_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New GridControlFooterSum()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub Grid2Grid_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New Grid2Grid()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub FilesViewer_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New FilesViewer()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub ClickRow_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New ClickRow()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub AddRow_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New AddRowDataGrid()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+#End Region
+
+
+
+#Region "Form"
+
+    Private Sub BaseForm_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New BaseForm()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub InheritBaseForm_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New InheritBaseForm()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub SetupDetailForm_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New FormDetails()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub SimpleFormLayout_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New SimpleFormLayout()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
+    End Sub
+
+    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+#End Region
+
+
 End Class
