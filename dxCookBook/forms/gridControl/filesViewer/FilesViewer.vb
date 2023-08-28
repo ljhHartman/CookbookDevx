@@ -10,4 +10,7 @@
         GileManagerView1 = New FileManagerView(Me.SslDataGrid1, GReadOnly, ID)
     End Sub
 
+    Private Sub FilesViewer_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 End Class

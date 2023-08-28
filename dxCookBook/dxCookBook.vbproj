@@ -11,7 +11,7 @@
     <AssemblyName>dxCookBook</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <PublishUrl>publish\</PublishUrl>
@@ -29,6 +29,7 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -126,78 +127,84 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSets\dsCostRevenue.Designer.vb">
+    <Compile Include="datasets\dsCostRevenue.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsCostRevenue.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsCostRevenue.vb">
+    <Compile Include="datasets\dsCostRevenue.vb">
       <DependentUpon>dsCostRevenue.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsDepots.Designer.vb">
+    <Compile Include="datasets\dsDepots.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsDepots.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsDocumentType.Designer.vb">
+    <Compile Include="datasets\dsDocumentType.Designer.vb">
       <DependentUpon>dsDocumentType.xsd</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="DataSets\dsDocumentType.vb">
+    <Compile Include="datasets\dsDocumentType.vb">
       <DependentUpon>dsDocumentType.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsIncomingInvoiceLines.Designer.vb">
+    <Compile Include="datasets\dsIncomingInvoiceLines.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsRelationDepot.Designer.vb">
+    <Compile Include="datasets\dsRelationDepot.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsRelationDepot.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\dsRelationDepot.vb">
+    <Compile Include="datasets\dsRelationDepot.vb">
       <DependentUpon>dsRelationDepot.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\vwParameters.Designer.vb">
+    <Compile Include="datasets\vwParameters.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>vwParameters.xsd</DependentUpon>
     </Compile>
-    <Compile Include="aaa\baseForm\baseFrom\BaseForm.Designer.vb">
+    <Compile Include="forms\baseForm\baseFrom\BaseForm.Designer.vb">
       <DependentUpon>BaseForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\baseForm\baseFrom\BaseForm.vb">
+    <Compile Include="forms\baseForm\baseFrom\BaseForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\baseForm\inheritBaseForm\InheritBaseForm.Designer.vb">
+    <Compile Include="forms\baseForm\inheritBaseForm\InheritBaseForm.Designer.vb">
       <DependentUpon>InheritBaseForm.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\baseForm\inheritBaseForm\InheritBaseForm.vb">
+    <Compile Include="forms\baseForm\inheritBaseForm\InheritBaseForm.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\baseForm\setupFormDetails\dsAlphaTable.Designer.vb">
+    <Compile Include="forms\baseForm\setupFormDetails\dsAlphaTable.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsAlphaTable.xsd</DependentUpon>
     </Compile>
-    <Compile Include="aaa\baseForm\setupFormDetails\FormDetails.Designer.vb">
+    <Compile Include="forms\baseForm\setupFormDetails\FormDetails.Designer.vb">
       <DependentUpon>FormDetails.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\baseForm\setupFormDetails\FormDetails.vb">
+    <Compile Include="forms\baseForm\setupFormDetails\FormDetails.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\components\chartview\Chartview.Designer.vb">
+    <Compile Include="forms\baseForm\TimerTick\TimerTick.Designer.vb">
+      <DependentUpon>TimerTick.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\baseForm\TimerTick\TimerTick.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\components\chartview\Chartview.Designer.vb">
       <DependentUpon>Chartview.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\components\chartview\Chartview.vb">
+    <Compile Include="forms\components\chartview\Chartview.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\components\comboBox\ComboBox.Designer.vb">
+    <Compile Include="forms\components\comboBox\ComboBox.Designer.vb">
       <DependentUpon>ComboBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\components\comboBox\ComboBox.vb">
+    <Compile Include="forms\components\comboBox\ComboBox.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="old\DragDrop2\DropFiles.Designer.vb">
@@ -206,29 +213,29 @@
     <Compile Include="old\DragDrop2\DropFiles.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\components\flyoutPanel\FlyoutPanel.Designer.vb">
+    <Compile Include="forms\components\flyoutPanel\FlyoutPanel.Designer.vb">
       <DependentUpon>FlyoutPanel.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\components\flyoutPanel\FlyoutPanel.vb">
+    <Compile Include="forms\components\flyoutPanel\FlyoutPanel.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\baseForm\setupFormDetails\Globals.vb" />
-    <Compile Include="aaa\tabs\dataTab2Tab\frmCharlie.Designer.vb">
+    <Compile Include="forms\baseForm\setupFormDetails\Globals.vb" />
+    <Compile Include="forms\tabs\dataTab2Tab\frmCharlie.Designer.vb">
       <DependentUpon>frmCharlie.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\tabs\dataTab2Tab\frmCharlie.vb">
+    <Compile Include="forms\tabs\dataTab2Tab\frmCharlie.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\tabs\dataTab2Tab\frmDelta.Designer.vb">
+    <Compile Include="forms\tabs\dataTab2Tab\frmDelta.Designer.vb">
       <DependentUpon>frmDelta.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\tabs\dataTab2Tab\frmDelta.vb">
+    <Compile Include="forms\tabs\dataTab2Tab\frmDelta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\tabs\dataTab2Tab\DataTab2Tab.Designer.vb">
+    <Compile Include="forms\tabs\dataTab2Tab\DataTab2Tab.Designer.vb">
       <DependentUpon>DataTab2Tab.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\tabs\dataTab2Tab\DataTab2Tab.vb">
+    <Compile Include="forms\tabs\dataTab2Tab\DataTab2Tab.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="old\gridControlFiles\GridControlFiles.Designer.vb">
@@ -237,22 +244,22 @@
     <Compile Include="old\gridControlFiles\GridControlFiles.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\gridControl\filesViewer\FilesViewer.Designer.vb">
+    <Compile Include="forms\gridControl\filesViewer\FilesViewer.Designer.vb">
       <DependentUpon>FilesViewer.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\gridControl\filesViewer\FilesViewer.vb">
+    <Compile Include="forms\gridControl\filesViewer\FilesViewer.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\inputBox\InputBoxAutocomplete.Designer.vb">
-      <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
+    <Compile Include="forms\components\autocomplete\Autocomplete.Designer.vb">
+      <DependentUpon>Autocomplete.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\inputBox\InputBoxAutocomplete.vb">
+    <Compile Include="forms\components\autocomplete\Autocomplete.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\components\manualview\Manualview.Designer.vb">
+    <Compile Include="forms\components\manualview\Manualview.Designer.vb">
       <DependentUpon>Manualview.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\components\manualview\Manualview.vb">
+    <Compile Include="forms\components\manualview\Manualview.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="old\MoveFiles\MoveFiles.Designer.vb">
@@ -261,10 +268,10 @@
     <Compile Include="old\MoveFiles\MoveFiles.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\gridControl\newRow\NewRow.Designer.vb">
+    <Compile Include="forms\gridControl\newRow\NewRow.Designer.vb">
       <DependentUpon>NewRow.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\gridControl\newRow\NewRow.vb">
+    <Compile Include="forms\gridControl\newRow\NewRow.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="old\renameFiles\RenameFiles.Designer.vb">
@@ -273,34 +280,34 @@
     <Compile Include="old\renameFiles\RenameFiles.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\gridControl\clickRow\ClickRow.Designer.vb">
+    <Compile Include="forms\gridControl\clickRow\ClickRow.Designer.vb">
       <DependentUpon>ClickRow.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\gridControl\clickRow\ClickRow.vb">
+    <Compile Include="forms\gridControl\clickRow\ClickRow.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\tabs\closeTabs\CloseTabs.Designer.vb">
+    <Compile Include="forms\tabs\closeTabs\CloseTabs.Designer.vb">
       <DependentUpon>CloseTabs.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\tabs\closeTabs\CloseTabs.vb">
+    <Compile Include="forms\tabs\closeTabs\CloseTabs.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\components\uploadImage\UploadImage.Designer.vb">
+    <Compile Include="forms\components\uploadImage\UploadImage.Designer.vb">
       <DependentUpon>UploadImage.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\components\uploadImage\UploadImage.vb">
+    <Compile Include="forms\components\uploadImage\UploadImage.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserControls\ucMoveToFolder.Designer.vb">
+    <Compile Include="userconrols\ucMoveToFolder.Designer.vb">
       <DependentUpon>ucMoveToFolder.vb</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucMoveToFolder.vb">
+    <Compile Include="userconrols\ucMoveToFolder.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ucSelectDepotCode.Designer.vb">
+    <Compile Include="userconrols\ucSelectDepotCode.Designer.vb">
       <DependentUpon>ucSelectDepotCode.vb</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucSelectDepotCode.vb">
+    <Compile Include="userconrols\ucSelectDepotCode.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="old\DXError.Designer.vb">
@@ -309,40 +316,40 @@
     <Compile Include="old\DXError.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\gridControl\grid2Grid\Grid2Grid.Designer.vb">
+    <Compile Include="forms\gridControl\grid2Grid\Grid2Grid.Designer.vb">
       <DependentUpon>Grid2Grid.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\gridControl\grid2Grid\Grid2Grid.vb">
+    <Compile Include="forms\gridControl\grid2Grid\Grid2Grid.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\components\ribbonControl\RibbonControl.Designer.vb">
+    <Compile Include="forms\components\ribbonControl\RibbonControl.Designer.vb">
       <DependentUpon>RibbonControl.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\components\ribbonControl\RibbonControl.vb">
+    <Compile Include="forms\components\ribbonControl\RibbonControl.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\baseForm\simpleFormLaytout\SimpleFormLayout.Designer.vb">
+    <Compile Include="forms\baseForm\simpleFormLaytout\SimpleFormLayout.Designer.vb">
       <DependentUpon>SimpleFormLayout.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\baseForm\simpleFormLaytout\SimpleFormLayout.vb">
+    <Compile Include="forms\baseForm\simpleFormLaytout\SimpleFormLayout.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\MessageBox\inputBox\InputBox.Designer.vb">
+    <Compile Include="forms\MessageBox\inputBox\InputBox.Designer.vb">
       <DependentUpon>InputBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\MessageBox\inputBox\InputBox.vb">
+    <Compile Include="forms\MessageBox\inputBox\InputBox.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\gridControl\gridControlFooterSum\GridControlFooterSum.Designer.vb">
+    <Compile Include="forms\gridControl\gridControlFooterSum\GridControlFooterSum.Designer.vb">
       <DependentUpon>GridControlFooterSum.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\gridControl\gridControlFooterSum\GridControlFooterSum.vb">
+    <Compile Include="forms\gridControl\gridControlFooterSum\GridControlFooterSum.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\components\errorIconTextBox\ErrorIconTextBox.Designer.vb">
+    <Compile Include="forms\components\errorIconTextBox\ErrorIconTextBox.Designer.vb">
       <DependentUpon>ErrorIconTextBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\components\errorIconTextBox\ErrorIconTextBox.vb">
+    <Compile Include="forms\components\errorIconTextBox\ErrorIconTextBox.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="old\MessageBoxError.Designer.vb">
@@ -358,16 +365,17 @@
       <DependentUpon>Main.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\gridControl\selectRowByCheckbox\SelectRowsByCheckbox.Designer.vb">
+    <Compile Include="forms\gridControl\selectRowByCheckbox\SelectRowsByCheckbox.Designer.vb">
       <DependentUpon>SelectRowsByCheckbox.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\gridControl\selectRowByCheckbox\SelectRowsByCheckbox.vb">
+    <Compile Include="forms\gridControl\selectRowByCheckbox\SelectRowsByCheckbox.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
       <DependentUpon>Application.myapp</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -379,55 +387,55 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="DataSets\SSLTESTDataSet.Designer.vb">
+    <Compile Include="datasets\SSLTESTDataSet.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\SSLTESTDataSet11.Designer.vb">
+    <Compile Include="datasets\SSLTESTDataSet11.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet11.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\SSLTESTDataSet2.Designer.vb">
+    <Compile Include="datasets\SSLTESTDataSet2.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet2.xsd</DependentUpon>
     </Compile>
-    <Compile Include="DataSets\SSLTESTDataSet3.Designer.vb">
+    <Compile Include="datasets\SSLTESTDataSet3.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
     </Compile>
-    <Compile Include="UnitTests\Tests.vb" />
-    <Compile Include="UserControls\ucFileManager.Designer.vb">
+    <Compile Include="testing\Tests.vb" />
+    <Compile Include="userconrols\ucFileManager.Designer.vb">
       <DependentUpon>ucFileManager.vb</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucFileManager.vb">
+    <Compile Include="userconrols\ucFileManager.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ucManual.Designer.vb">
+    <Compile Include="userconrols\ucManual.Designer.vb">
       <DependentUpon>ucManual.vb</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucManual.vb">
+    <Compile Include="userconrols\ucManual.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ucTableReturn.Designer.vb">
+    <Compile Include="userconrols\ucTableReturn.Designer.vb">
       <DependentUpon>ucTableReturn.vb</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucTableReturn.vb">
+    <Compile Include="userconrols\ucTableReturn.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ucArg.Designer.vb">
+    <Compile Include="userconrols\ucArg.Designer.vb">
       <DependentUpon>ucArg.vb</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucArg.vb">
+    <Compile Include="userconrols\ucArg.vb">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControls\ucExample.Designer.vb">
+    <Compile Include="userconrols\ucExample.Designer.vb">
       <DependentUpon>ucExample.vb</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\ucExample.vb">
+    <Compile Include="userconrols\ucExample.vb">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="old\XtraDialog2.Designer.vb">
@@ -436,102 +444,105 @@
     <Compile Include="old\XtraDialog2.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="aaa\MessageBox\TableMessageBox\TableMessageBox.Designer.vb">
+    <Compile Include="forms\MessageBox\TableMessageBox\TableMessageBox.Designer.vb">
       <DependentUpon>TableMessageBox.vb</DependentUpon>
     </Compile>
-    <Compile Include="aaa\MessageBox\TableMessageBox\TableMessageBox.vb">
+    <Compile Include="forms\MessageBox\TableMessageBox\TableMessageBox.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="aaa\baseForm\baseFrom\BaseForm.resx">
+    <EmbeddedResource Include="forms\baseForm\baseFrom\BaseForm.resx">
       <DependentUpon>BaseForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\baseForm\inheritBaseForm\InheritBaseForm.resx">
+    <EmbeddedResource Include="forms\baseForm\inheritBaseForm\InheritBaseForm.resx">
       <DependentUpon>InheritBaseForm.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\baseForm\setupFormDetails\FormDetails.resx">
+    <EmbeddedResource Include="forms\baseForm\setupFormDetails\FormDetails.resx">
       <DependentUpon>FormDetails.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\components\chartview\Chartview.resx">
+    <EmbeddedResource Include="forms\baseForm\TimerTick\TimerTick.resx">
+      <DependentUpon>TimerTick.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\components\chartview\Chartview.resx">
       <DependentUpon>Chartview.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\components\comboBox\ComboBox.resx">
+    <EmbeddedResource Include="forms\components\comboBox\ComboBox.resx">
       <DependentUpon>ComboBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="old\DragDrop2\DropFiles.resx">
       <DependentUpon>DropFiles.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\components\flyoutPanel\FlyoutPanel.resx">
+    <EmbeddedResource Include="forms\components\flyoutPanel\FlyoutPanel.resx">
       <DependentUpon>FlyoutPanel.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\tabs\dataTab2Tab\frmCharlie.resx">
+    <EmbeddedResource Include="forms\tabs\dataTab2Tab\frmCharlie.resx">
       <DependentUpon>frmCharlie.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\tabs\dataTab2Tab\frmDelta.resx">
+    <EmbeddedResource Include="forms\tabs\dataTab2Tab\frmDelta.resx">
       <DependentUpon>frmDelta.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\tabs\dataTab2Tab\DataTab2Tab.resx">
+    <EmbeddedResource Include="forms\tabs\dataTab2Tab\DataTab2Tab.resx">
       <DependentUpon>DataTab2Tab.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="old\gridControlFiles\GridControlFiles.resx">
       <DependentUpon>GridControlFiles.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\gridControl\filesViewer\FilesViewer.resx">
+    <EmbeddedResource Include="forms\gridControl\filesViewer\FilesViewer.resx">
       <DependentUpon>FilesViewer.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\inputBox\InputBoxAutocomplete.resx">
-      <DependentUpon>InputBoxAutocomplete.vb</DependentUpon>
+    <EmbeddedResource Include="forms\components\autocomplete\Autocomplete.resx">
+      <DependentUpon>Autocomplete.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\components\manualview\Manualview.resx">
+    <EmbeddedResource Include="forms\components\manualview\Manualview.resx">
       <DependentUpon>Manualview.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="old\MoveFiles\MoveFiles.resx">
       <DependentUpon>MoveFiles.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\gridControl\newRow\NewRow.resx">
+    <EmbeddedResource Include="forms\gridControl\newRow\NewRow.resx">
       <DependentUpon>NewRow.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="old\renameFiles\RenameFiles.resx">
       <DependentUpon>RenameFiles.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\gridControl\clickRow\ClickRow.resx">
+    <EmbeddedResource Include="forms\gridControl\clickRow\ClickRow.resx">
       <DependentUpon>ClickRow.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\tabs\closeTabs\CloseTabs.resx">
+    <EmbeddedResource Include="forms\tabs\closeTabs\CloseTabs.resx">
       <DependentUpon>CloseTabs.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\gridControl\grid2Grid\Grid2Grid.resx">
+    <EmbeddedResource Include="forms\gridControl\grid2Grid\Grid2Grid.resx">
       <DependentUpon>Grid2Grid.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\gridControl\selectRowByCheckbox\SelectRowsByCheckbox.resx">
+    <EmbeddedResource Include="forms\gridControl\selectRowByCheckbox\SelectRowsByCheckbox.resx">
       <DependentUpon>SelectRowsByCheckbox.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\components\ribbonControl\RibbonControl.resx">
+    <EmbeddedResource Include="forms\components\ribbonControl\RibbonControl.resx">
       <DependentUpon>RibbonControl.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\baseForm\simpleFormLaytout\SimpleFormLayout.resx">
+    <EmbeddedResource Include="forms\baseForm\simpleFormLaytout\SimpleFormLayout.resx">
       <DependentUpon>SimpleFormLayout.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\MessageBox\inputBox\InputBox.resx">
+    <EmbeddedResource Include="forms\MessageBox\inputBox\InputBox.resx">
       <DependentUpon>InputBox.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\gridControl\gridControlFooterSum\GridControlFooterSum.resx">
+    <EmbeddedResource Include="forms\gridControl\gridControlFooterSum\GridControlFooterSum.resx">
       <DependentUpon>GridControlFooterSum.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\components\uploadImage\UploadImage.resx">
+    <EmbeddedResource Include="forms\components\uploadImage\UploadImage.resx">
       <DependentUpon>UploadImage.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucMoveToFolder.resx">
+    <EmbeddedResource Include="userconrols\ucMoveToFolder.resx">
       <DependentUpon>ucMoveToFolder.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucSelectDepotCode.resx">
+    <EmbeddedResource Include="userconrols\ucSelectDepotCode.resx">
       <DependentUpon>ucSelectDepotCode.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="old\DXError.resx">
       <DependentUpon>DXError.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\components\errorIconTextBox\ErrorIconTextBox.resx">
+    <EmbeddedResource Include="forms\components\errorIconTextBox\ErrorIconTextBox.resx">
       <DependentUpon>ErrorIconTextBox.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="old\MessageBoxError.resx">
@@ -547,104 +558,104 @@
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucArg.resx">
+    <EmbeddedResource Include="userconrols\ucArg.resx">
       <DependentUpon>ucArg.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucExample.resx">
+    <EmbeddedResource Include="userconrols\ucExample.resx">
       <DependentUpon>ucExample.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="old\XtraDialog2.resx">
       <DependentUpon>XtraDialog2.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="aaa\MessageBox\TableMessageBox\TableMessageBox.resx">
+    <EmbeddedResource Include="forms\MessageBox\TableMessageBox\TableMessageBox.resx">
       <DependentUpon>TableMessageBox.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucFileManager.resx">
+    <EmbeddedResource Include="userconrols\ucFileManager.resx">
       <DependentUpon>ucFileManager.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucManual.resx">
+    <EmbeddedResource Include="userconrols\ucManual.resx">
       <DependentUpon>ucManual.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControls\ucTableReturn.resx">
+    <EmbeddedResource Include="userconrols\ucTableReturn.resx">
       <DependentUpon>ucTableReturn.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="DataSets\dsCostRevenue.xsc">
+    <None Include="datasets\dsCostRevenue.xsc">
       <DependentUpon>dsCostRevenue.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsCostRevenue.xsd">
+    <None Include="datasets\dsCostRevenue.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsCostRevenue.Designer.vb</LastGenOutput>
     </None>
-    <None Include="DataSets\dsCostRevenue.xss">
+    <None Include="datasets\dsCostRevenue.xss">
       <DependentUpon>dsCostRevenue.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsDepots.xsc">
+    <None Include="datasets\dsDepots.xsc">
       <DependentUpon>dsDepots.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsDepots.xsd">
+    <None Include="datasets\dsDepots.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsDepots.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSets\dsDepots.xss">
+    <None Include="datasets\dsDepots.xss">
       <DependentUpon>dsDepots.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsDocumentType.xsc">
+    <None Include="datasets\dsDocumentType.xsc">
       <DependentUpon>dsDocumentType.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsDocumentType.xsd">
+    <None Include="datasets\dsDocumentType.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsDocumentType.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSets\dsDocumentType.xss">
+    <None Include="datasets\dsDocumentType.xss">
       <DependentUpon>dsDocumentType.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsIncomingInvoiceLines.xsc">
+    <None Include="datasets\dsIncomingInvoiceLines.xsc">
       <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsIncomingInvoiceLines.xsd">
+    <None Include="datasets\dsIncomingInvoiceLines.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsIncomingInvoiceLines.Designer.vb</LastGenOutput>
     </None>
-    <None Include="DataSets\dsIncomingInvoiceLines.xss">
+    <None Include="datasets\dsIncomingInvoiceLines.xss">
       <DependentUpon>dsIncomingInvoiceLines.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsRelationDepot.xsc">
+    <None Include="datasets\dsRelationDepot.xsc">
       <DependentUpon>dsRelationDepot.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\dsRelationDepot.xsd">
+    <None Include="datasets\dsRelationDepot.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsRelationDepot.Designer.vb</LastGenOutput>
     </None>
-    <None Include="DataSets\dsRelationDepot.xss">
+    <None Include="datasets\dsRelationDepot.xss">
       <DependentUpon>dsRelationDepot.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\vwParameters.xsc">
+    <None Include="datasets\vwParameters.xsc">
       <DependentUpon>vwParameters.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\vwParameters.xsd">
+    <None Include="datasets\vwParameters.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>vwParameters.Designer.vb</LastGenOutput>
     </None>
-    <None Include="DataSets\vwParameters.xss">
+    <None Include="datasets\vwParameters.xss">
       <DependentUpon>vwParameters.xsd</DependentUpon>
     </None>
-    <None Include="aaa\baseForm\setupFormDetails\dsAlphaTable.xsc">
+    <None Include="forms\baseForm\setupFormDetails\dsAlphaTable.xsc">
       <DependentUpon>dsAlphaTable.xsd</DependentUpon>
     </None>
-    <None Include="aaa\baseForm\setupFormDetails\dsAlphaTable.xsd">
+    <None Include="forms\baseForm\setupFormDetails\dsAlphaTable.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsAlphaTable.Designer.vb</LastGenOutput>
     </None>
-    <None Include="aaa\baseForm\setupFormDetails\dsAlphaTable.xss">
+    <None Include="forms\baseForm\setupFormDetails\dsAlphaTable.xss">
       <DependentUpon>dsAlphaTable.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
@@ -657,49 +668,49 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="DataSets\SSLTESTDataSet.xsc">
+    <None Include="datasets\SSLTESTDataSet.xsc">
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\SSLTESTDataSet.xsd">
+    <None Include="datasets\SSLTESTDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SSLTESTDataSet.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSets\SSLTESTDataSet.xss">
+    <None Include="datasets\SSLTESTDataSet.xss">
       <DependentUpon>SSLTESTDataSet.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\SSLTESTDataSet11.xsc">
+    <None Include="datasets\SSLTESTDataSet11.xsc">
       <DependentUpon>SSLTESTDataSet11.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\SSLTESTDataSet11.xsd">
+    <None Include="datasets\SSLTESTDataSet11.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SSLTESTDataSet11.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSets\SSLTESTDataSet11.xss">
+    <None Include="datasets\SSLTESTDataSet11.xss">
       <DependentUpon>SSLTESTDataSet11.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\SSLTESTDataSet2.xsc">
+    <None Include="datasets\SSLTESTDataSet2.xsc">
       <DependentUpon>SSLTESTDataSet2.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\SSLTESTDataSet2.xsd">
+    <None Include="datasets\SSLTESTDataSet2.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SSLTESTDataSet2.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSets\SSLTESTDataSet2.xss">
+    <None Include="datasets\SSLTESTDataSet2.xss">
       <DependentUpon>SSLTESTDataSet2.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
-    <None Include="DataSets\SSLTESTDataSet3.xsc">
+    <None Include="datasets\SSLTESTDataSet3.xsc">
       <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
     </None>
-    <None Include="DataSets\SSLTESTDataSet3.xsd">
+    <None Include="datasets\SSLTESTDataSet3.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>SSLTESTDataSet3.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="DataSets\SSLTESTDataSet3.xss">
+    <None Include="datasets\SSLTESTDataSet3.xss">
       <DependentUpon>SSLTESTDataSet3.xsd</DependentUpon>
     </None>
   </ItemGroup>
@@ -722,7 +733,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="aaa\remainder\" />
+    <Folder Include="forms\remainder\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

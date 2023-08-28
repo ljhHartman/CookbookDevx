@@ -45,13 +45,13 @@ Partial Class FilesViewer
         Me.SslGridView1.Name = "SslGridView1"
         Me.SslGridView1.SimpleSearch = False
         '
-        'filerViewer
+        'FilesViewer
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.SslDataGrid1)
-        Me.Name = "filerViewer"
+        Me.Name = "FilesViewer"
         Me.Text = "filerViewer"
         CType(Me.SslDataGrid1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SslGridView1, System.ComponentModel.ISupportInitialize).EndInit()

@@ -16,14 +16,15 @@
         item.MenuItems.Add("Inherit Base Form", New EventHandler(AddressOf InheritBaseForm_Click))
         item.MenuItems.Add("Setup Detail Form", New EventHandler(AddressOf SetupDetailForm_Click))
         item.MenuItems.Add("Simple Form Layout", New EventHandler(AddressOf SimpleFormLayout_Click))
+        item.MenuItems.Add("Timer Tick", New EventHandler(AddressOf TimerTick_Click))
 
         ' Menu Item : Grid Control
         item = New MenuItem("GridControl")
         Me.Menu.MenuItems.Add(item)
+        item.MenuItems.Add("Files Viewer", New EventHandler(AddressOf FilesViewer_Click))
         item.MenuItems.Add("Select Rows By Checkbox", New EventHandler(AddressOf SelectRowsByCheckbox_Click))
         item.MenuItems.Add("GridControl Footer Sum", New EventHandler(AddressOf GridControlFooterSum_Click))
         item.MenuItems.Add("Grid 2 Grid", New EventHandler(AddressOf Grid2Grid_Click))
-        item.MenuItems.Add("Files Viewer", New EventHandler(AddressOf FilesViewer_Click))
         item.MenuItems.Add("Double Click Row", New EventHandler(AddressOf ClickRow_Click))
         item.MenuItems.Add("Add Row", New EventHandler(AddressOf AddRow_Click))
 
@@ -142,7 +143,7 @@
 
     Private Sub UploadImage_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New uploadImage()
+        Dim childForm As New UploadImage()
         childForm.MdiParent = Me
         childForm.WindowState = FormWindowState.Maximized
         childForm.Show()
@@ -173,7 +174,7 @@
 
     Private Sub DataTab2Tab_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New dataTab2Tab()
+        Dim childForm As New DataTab2Tab()
         childForm.MdiParent = Me
         childForm.WindowState = FormWindowState.Maximized
         childForm.Show()
@@ -191,7 +192,7 @@
 
 
 
-#Region " Grid Control"
+#Region "Grid Control"
 
     Private Sub SelectRowsByCheckbox_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
@@ -279,8 +280,12 @@
         childForm.Show()
     End Sub
 
-    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub TimerTick_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New TimerTick()
+        childForm.MdiParent = Me
+        childForm.WindowState = FormWindowState.Maximized
+        childForm.Show()
     End Sub
 
 #End Region

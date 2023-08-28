@@ -1,7 +1,7 @@
 ﻿Imports DevExpress.XtraTab
 Imports dxCookBook
 
-Public Class dataTab2Tab
+Public Class DataTab2Tab
     Private Sub GetFromTab_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Create tab with form content
         LoadForm(New frmCharlie(), "page_charie")

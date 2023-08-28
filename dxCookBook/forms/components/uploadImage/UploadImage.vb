@@ -1,7 +1,7 @@
 ﻿Imports System.IO
 Imports System.IO.Compression
 
-Public Class uploadImage
+Public Class UploadImage
     Private fileType As String
 
 

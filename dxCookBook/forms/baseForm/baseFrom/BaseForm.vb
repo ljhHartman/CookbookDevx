@@ -484,6 +484,7 @@ Public Class BaseForm
                 Dim fileName As String = fileEntry.Name
                 Dim fileExtension As String = Path.GetExtension(filePath)
 
+                Print($"GetRow: {Wv.GetRow(fileIndex)}")
                 Print($"filePath: {filePath}")
                 Print($"fileName: {fileName}")
                 Print($"fileExtension: {fileExtension}")
