@@ -25,7 +25,7 @@ Option Explicit On
 Partial Public Class dsCostRevenue
     Inherits Global.System.Data.DataSet
     
-    Private tablevwCostRevenue As vwCostRevenueDataTable
+    Private tablespCostRevenue As spCostRevenueDataTable
     
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
@@ -56,8 +56,8 @@ Partial Public Class dsCostRevenue
         If (Me.DetermineSchemaSerializationMode(info, context) = Global.System.Data.SchemaSerializationMode.IncludeSchema) Then
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXmlSchema(New Global.System.Xml.XmlTextReader(New Global.System.IO.StringReader(strSchema)))
-            If (Not (ds.Tables("vwCostRevenue")) Is Nothing) Then
-                MyBase.Tables.Add(New vwCostRevenueDataTable(ds.Tables("vwCostRevenue")))
+            If (Not (ds.Tables("spCostRevenue")) Is Nothing) Then
+                MyBase.Tables.Add(New spCostRevenueDataTable(ds.Tables("spCostRevenue")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -80,9 +80,9 @@ Partial Public Class dsCostRevenue
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
      Global.System.ComponentModel.Browsable(false),  _
      Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
-    Public ReadOnly Property vwCostRevenue() As vwCostRevenueDataTable
+    Public ReadOnly Property spCostRevenue() As spCostRevenueDataTable
         Get
-            Return Me.tablevwCostRevenue
+            Return Me.tablespCostRevenue
         End Get
     End Property
     
@@ -153,8 +153,8 @@ Partial Public Class dsCostRevenue
             Me.Reset
             Dim ds As Global.System.Data.DataSet = New Global.System.Data.DataSet()
             ds.ReadXml(reader)
-            If (Not (ds.Tables("vwCostRevenue")) Is Nothing) Then
-                MyBase.Tables.Add(New vwCostRevenueDataTable(ds.Tables("vwCostRevenue")))
+            If (Not (ds.Tables("spCostRevenue")) Is Nothing) Then
+                MyBase.Tables.Add(New spCostRevenueDataTable(ds.Tables("spCostRevenue")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -188,10 +188,10 @@ Partial Public Class dsCostRevenue
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
     Friend Overloads Sub InitVars(ByVal initTable As Boolean)
-        Me.tablevwCostRevenue = CType(MyBase.Tables("vwCostRevenue"),vwCostRevenueDataTable)
+        Me.tablespCostRevenue = CType(MyBase.Tables("spCostRevenue"),spCostRevenueDataTable)
         If (initTable = true) Then
-            If (Not (Me.tablevwCostRevenue) Is Nothing) Then
-                Me.tablevwCostRevenue.InitVars
+            If (Not (Me.tablespCostRevenue) Is Nothing) Then
+                Me.tablespCostRevenue.InitVars
             End If
         End If
     End Sub
@@ -204,13 +204,13 @@ Partial Public Class dsCostRevenue
         Me.Namespace = "http://tempuri.org/dsCostRevenue.xsd"
         Me.EnforceConstraints = true
         Me.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
-        Me.tablevwCostRevenue = New vwCostRevenueDataTable()
-        MyBase.Tables.Add(Me.tablevwCostRevenue)
+        Me.tablespCostRevenue = New spCostRevenueDataTable()
+        MyBase.Tables.Add(Me.tablespCostRevenue)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Private Function ShouldSerializevwCostRevenue() As Boolean
+    Private Function ShouldSerializespCostRevenue() As Boolean
         Return false
     End Function
     
@@ -273,25 +273,17 @@ Partial Public Class dsCostRevenue
     End Function
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Delegate Sub vwCostRevenueRowChangeEventHandler(ByVal sender As Object, ByVal e As vwCostRevenueRowChangeEvent)
+    Public Delegate Sub spCostRevenueRowChangeEventHandler(ByVal sender As Object, ByVal e As spCostRevenueRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
     '''</summary>
     <Global.System.Serializable(),  _
      Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
-    Partial Public Class vwCostRevenueDataTable
-        Inherits Global.System.Data.TypedTableBase(Of vwCostRevenueRow)
+    Partial Public Class spCostRevenueDataTable
+        Inherits Global.System.Data.TypedTableBase(Of spCostRevenueRow)
         
         Private columnKONUMMER As Global.System.Data.DataColumn
-        
-        Private columnOPBRENGSTBTWBEDRAG As Global.System.Data.DataColumn
-        
-        Private columnKOSTBTWBEDRAG As Global.System.Data.DataColumn
-        
-        Private columnKOSTBTWCODE As Global.System.Data.DataColumn
-        
-        Private columnOPBRENGSTBTWCODE As Global.System.Data.DataColumn
         
         Private columnDOSSIERNUMMER As Global.System.Data.DataColumn
         
@@ -309,6 +301,10 @@ Partial Public Class dsCostRevenue
         
         Private columnKOSTVALUTA As Global.System.Data.DataColumn
         
+        Private columnKOSTBTWCODE As Global.System.Data.DataColumn
+        
+        Private columnKOSTBTWBEDRAG As Global.System.Data.DataColumn
+        
         Private columnKOSTRELATIE As Global.System.Data.DataColumn
         
         Private columnKOSTOMSCHRIJVING As Global.System.Data.DataColumn
@@ -321,9 +317,17 @@ Partial Public Class dsCostRevenue
         
         Private columnOPBRENGSTVALUTA As Global.System.Data.DataColumn
         
+        Private columnOPBRENGSTBTWCODE As Global.System.Data.DataColumn
+        
+        Private columnOPBRENGSTBTWBEDRAG As Global.System.Data.DataColumn
+        
         Private columnOPBRENGSTRELATIE As Global.System.Data.DataColumn
         
         Private columnOPBRENGSTOMSCHRIJVING As Global.System.Data.DataColumn
+        
+        Private columnIFACTUURREGELNUMMER As Global.System.Data.DataColumn
+        
+        Private columnUFACTUURREGELNUMMER As Global.System.Data.DataColumn
         
         Private columnMEDEWERKER As Global.System.Data.DataColumn
         
@@ -331,25 +335,35 @@ Partial Public Class dsCostRevenue
         
         Private columnIFACTUURNUMMER As Global.System.Data.DataColumn
         
-        Private columnUFACTUURREGELNUMMER As Global.System.Data.DataColumn
-        
-        Private columnIFACTUURREGELNUMMER As Global.System.Data.DataColumn
-        
         Private columnUFACTUURREGELPRINTEN As Global.System.Data.DataColumn
         
         Private columnDATUM As Global.System.Data.DataColumn
         
         Private columnFACTUREREN As Global.System.Data.DataColumn
         
+        Private columnVOLGORDE As Global.System.Data.DataColumn
+        
+        Private columnOPBRENGSTWISSELKOERS As Global.System.Data.DataColumn
+        
+        Private columnOPBRENGSTBEDRAGEURO As Global.System.Data.DataColumn
+        
         Private columnKOSTWISSELKOERS As Global.System.Data.DataColumn
         
         Private columnKOSTBEDRAGEURO As Global.System.Data.DataColumn
+        
+        Private columnROWOPEN As Global.System.Data.DataColumn
+        
+        Private columnROWOPENBY As Global.System.Data.DataColumn
+        
+        Private columnBTWREGEL As Global.System.Data.DataColumn
+        
+        Private columnCREDITCRNUMBER As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
             MyBase.New
-            Me.TableName = "vwCostRevenue"
+            Me.TableName = "spCostRevenue"
             Me.BeginInit
             Me.InitClass
             Me.EndInit
@@ -385,38 +399,6 @@ Partial Public Class dsCostRevenue
         Public ReadOnly Property KONUMMERColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnKONUMMER
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property OPBRENGSTBTWBEDRAGColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnOPBRENGSTBTWBEDRAG
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property KOSTBTWBEDRAGColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnKOSTBTWBEDRAG
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property KOSTBTWCODEColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnKOSTBTWCODE
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property OPBRENGSTBTWCODEColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnOPBRENGSTBTWCODE
             End Get
         End Property
         
@@ -486,6 +468,22 @@ Partial Public Class dsCostRevenue
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property KOSTBTWCODEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnKOSTBTWCODE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property KOSTBTWBEDRAGColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnKOSTBTWBEDRAG
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property KOSTRELATIEColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnKOSTRELATIE
@@ -534,6 +532,22 @@ Partial Public Class dsCostRevenue
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property OPBRENGSTBTWCODEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOPBRENGSTBTWCODE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property OPBRENGSTBTWBEDRAGColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOPBRENGSTBTWBEDRAG
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property OPBRENGSTRELATIEColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnOPBRENGSTRELATIE
@@ -545,6 +559,22 @@ Partial Public Class dsCostRevenue
         Public ReadOnly Property OPBRENGSTOMSCHRIJVINGColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnOPBRENGSTOMSCHRIJVING
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property IFACTUURREGELNUMMERColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIFACTUURREGELNUMMER
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property UFACTUURREGELNUMMERColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnUFACTUURREGELNUMMER
             End Get
         End Property
         
@@ -574,22 +604,6 @@ Partial Public Class dsCostRevenue
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property UFACTUURREGELNUMMERColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnUFACTUURREGELNUMMER
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property IFACTUURREGELNUMMERColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnIFACTUURREGELNUMMER
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property UFACTUURREGELPRINTENColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnUFACTUURREGELPRINTEN
@@ -614,6 +628,30 @@ Partial Public Class dsCostRevenue
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property VOLGORDEColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnVOLGORDE
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property OPBRENGSTWISSELKOERSColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOPBRENGSTWISSELKOERS
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property OPBRENGSTBEDRAGEUROColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnOPBRENGSTBEDRAGEURO
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public ReadOnly Property KOSTWISSELKOERSColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnKOSTWISSELKOERS
@@ -629,6 +667,38 @@ Partial Public Class dsCostRevenue
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property ROWOPENColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnROWOPEN
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property ROWOPENBYColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnROWOPENBY
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property BTWREGELColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnBTWREGEL
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CREDITCRNUMBERColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCREDITCRNUMBER
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -639,37 +709,33 @@ Partial Public Class dsCostRevenue
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Default ReadOnly Property Item(ByVal index As Integer) As vwCostRevenueRow
+        Public Default ReadOnly Property Item(ByVal index As Integer) As spCostRevenueRow
             Get
-                Return CType(Me.Rows(index),vwCostRevenueRow)
+                Return CType(Me.Rows(index),spCostRevenueRow)
             End Get
         End Property
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event vwCostRevenueRowChanging As vwCostRevenueRowChangeEventHandler
+        Public Event spCostRevenueRowChanging As spCostRevenueRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event vwCostRevenueRowChanged As vwCostRevenueRowChangeEventHandler
+        Public Event spCostRevenueRowChanged As spCostRevenueRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event vwCostRevenueRowDeleting As vwCostRevenueRowChangeEventHandler
+        Public Event spCostRevenueRowDeleting As spCostRevenueRowChangeEventHandler
         
         <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Event vwCostRevenueRowDeleted As vwCostRevenueRowChangeEventHandler
+        Public Event spCostRevenueRowDeleted As spCostRevenueRowChangeEventHandler
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Sub AddvwCostRevenueRow(ByVal row As vwCostRevenueRow)
+        Public Overloads Sub AddspCostRevenueRow(ByVal row As spCostRevenueRow)
             Me.Rows.Add(row)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddvwCostRevenueRow( _
-                    ByVal OPBRENGSTBTWBEDRAG As Decimal,  _
-                    ByVal KOSTBTWBEDRAG As Decimal,  _
-                    ByVal KOSTBTWCODE As Integer,  _
-                    ByVal OPBRENGSTBTWCODE As Integer,  _
+        Public Overloads Function AddspCostRevenueRow( _
                     ByVal DOSSIERNUMMER As Integer,  _
                     ByVal KOSTCODE As String,  _
                     ByVal OMSCHRIJVING As String,  _
@@ -678,41 +744,52 @@ Partial Public Class dsCostRevenue
                     ByVal KOSTAANTAL As Decimal,  _
                     ByVal KOSTBEDRAG As Decimal,  _
                     ByVal KOSTVALUTA As String,  _
+                    ByVal KOSTBTWCODE As Integer,  _
+                    ByVal KOSTBTWBEDRAG As Decimal,  _
                     ByVal KOSTRELATIE As String,  _
                     ByVal KOSTOMSCHRIJVING As String,  _
                     ByVal OPBRENGSTPRIJS As Decimal,  _
                     ByVal OPBRENGSTAANTAL As Decimal,  _
                     ByVal OPBRENGSTBEDRAG As Decimal,  _
                     ByVal OPBRENGSTVALUTA As String,  _
+                    ByVal OPBRENGSTBTWCODE As Integer,  _
+                    ByVal OPBRENGSTBTWBEDRAG As Decimal,  _
                     ByVal OPBRENGSTRELATIE As String,  _
                     ByVal OPBRENGSTOMSCHRIJVING As String,  _
+                    ByVal IFACTUURREGELNUMMER As Integer,  _
+                    ByVal UFACTUURREGELNUMMER As Integer,  _
                     ByVal MEDEWERKER As String,  _
                     ByVal UFACTUURNUMMER As Integer,  _
                     ByVal IFACTUURNUMMER As Integer,  _
-                    ByVal UFACTUURREGELNUMMER As Integer,  _
-                    ByVal IFACTUURREGELNUMMER As Integer,  _
                     ByVal UFACTUURREGELPRINTEN As Boolean,  _
                     ByVal DATUM As Date,  _
                     ByVal FACTUREREN As Boolean,  _
+                    ByVal VOLGORDE As Integer,  _
+                    ByVal OPBRENGSTWISSELKOERS As Decimal,  _
+                    ByVal OPBRENGSTBEDRAGEURO As Decimal,  _
                     ByVal KOSTWISSELKOERS As Decimal,  _
-                    ByVal KOSTBEDRAGEURO As Decimal) As vwCostRevenueRow
-            Dim rowvwCostRevenueRow As vwCostRevenueRow = CType(Me.NewRow,vwCostRevenueRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, OPBRENGSTBTWBEDRAG, KOSTBTWBEDRAG, KOSTBTWCODE, OPBRENGSTBTWCODE, DOSSIERNUMMER, KOSTCODE, OMSCHRIJVING, FACTUURVALUTA, KOSTPRIJS, KOSTAANTAL, KOSTBEDRAG, KOSTVALUTA, KOSTRELATIE, KOSTOMSCHRIJVING, OPBRENGSTPRIJS, OPBRENGSTAANTAL, OPBRENGSTBEDRAG, OPBRENGSTVALUTA, OPBRENGSTRELATIE, OPBRENGSTOMSCHRIJVING, MEDEWERKER, UFACTUURNUMMER, IFACTUURNUMMER, UFACTUURREGELNUMMER, IFACTUURREGELNUMMER, UFACTUURREGELPRINTEN, DATUM, FACTUREREN, KOSTWISSELKOERS, KOSTBEDRAGEURO}
-            rowvwCostRevenueRow.ItemArray = columnValuesArray
-            Me.Rows.Add(rowvwCostRevenueRow)
-            Return rowvwCostRevenueRow
+                    ByVal KOSTBEDRAGEURO As Decimal,  _
+                    ByVal ROWOPEN As Boolean,  _
+                    ByVal ROWOPENBY As String,  _
+                    ByVal BTWREGEL As Boolean,  _
+                    ByVal CREDITCRNUMBER As Integer) As spCostRevenueRow
+            Dim rowspCostRevenueRow As spCostRevenueRow = CType(Me.NewRow,spCostRevenueRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, DOSSIERNUMMER, KOSTCODE, OMSCHRIJVING, FACTUURVALUTA, KOSTPRIJS, KOSTAANTAL, KOSTBEDRAG, KOSTVALUTA, KOSTBTWCODE, KOSTBTWBEDRAG, KOSTRELATIE, KOSTOMSCHRIJVING, OPBRENGSTPRIJS, OPBRENGSTAANTAL, OPBRENGSTBEDRAG, OPBRENGSTVALUTA, OPBRENGSTBTWCODE, OPBRENGSTBTWBEDRAG, OPBRENGSTRELATIE, OPBRENGSTOMSCHRIJVING, IFACTUURREGELNUMMER, UFACTUURREGELNUMMER, MEDEWERKER, UFACTUURNUMMER, IFACTUURNUMMER, UFACTUURREGELPRINTEN, DATUM, FACTUREREN, VOLGORDE, OPBRENGSTWISSELKOERS, OPBRENGSTBEDRAGEURO, KOSTWISSELKOERS, KOSTBEDRAGEURO, ROWOPEN, ROWOPENBY, BTWREGEL, CREDITCRNUMBER}
+            rowspCostRevenueRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowspCostRevenueRow)
+            Return rowspCostRevenueRow
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function FindByKONUMMER(ByVal KONUMMER As Integer) As vwCostRevenueRow
-            Return CType(Me.Rows.Find(New Object() {KONUMMER}),vwCostRevenueRow)
+        Public Function FindByKONUMMER(ByVal KONUMMER As Integer) As spCostRevenueRow
+            Return CType(Me.Rows.Find(New Object() {KONUMMER}),spCostRevenueRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Overrides Function Clone() As Global.System.Data.DataTable
-            Dim cln As vwCostRevenueDataTable = CType(MyBase.Clone,vwCostRevenueDataTable)
+            Dim cln As spCostRevenueDataTable = CType(MyBase.Clone,spCostRevenueDataTable)
             cln.InitVars
             Return cln
         End Function
@@ -720,17 +797,13 @@ Partial Public Class dsCostRevenue
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
-            Return New vwCostRevenueDataTable()
+            Return New spCostRevenueDataTable()
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub InitVars()
             Me.columnKONUMMER = MyBase.Columns("KONUMMER")
-            Me.columnOPBRENGSTBTWBEDRAG = MyBase.Columns("OPBRENGSTBTWBEDRAG")
-            Me.columnKOSTBTWBEDRAG = MyBase.Columns("KOSTBTWBEDRAG")
-            Me.columnKOSTBTWCODE = MyBase.Columns("KOSTBTWCODE")
-            Me.columnOPBRENGSTBTWCODE = MyBase.Columns("OPBRENGSTBTWCODE")
             Me.columnDOSSIERNUMMER = MyBase.Columns("DOSSIERNUMMER")
             Me.columnKOSTCODE = MyBase.Columns("KOSTCODE")
             Me.columnOMSCHRIJVING = MyBase.Columns("OMSCHRIJVING")
@@ -739,24 +812,35 @@ Partial Public Class dsCostRevenue
             Me.columnKOSTAANTAL = MyBase.Columns("KOSTAANTAL")
             Me.columnKOSTBEDRAG = MyBase.Columns("KOSTBEDRAG")
             Me.columnKOSTVALUTA = MyBase.Columns("KOSTVALUTA")
+            Me.columnKOSTBTWCODE = MyBase.Columns("KOSTBTWCODE")
+            Me.columnKOSTBTWBEDRAG = MyBase.Columns("KOSTBTWBEDRAG")
             Me.columnKOSTRELATIE = MyBase.Columns("KOSTRELATIE")
             Me.columnKOSTOMSCHRIJVING = MyBase.Columns("KOSTOMSCHRIJVING")
             Me.columnOPBRENGSTPRIJS = MyBase.Columns("OPBRENGSTPRIJS")
             Me.columnOPBRENGSTAANTAL = MyBase.Columns("OPBRENGSTAANTAL")
             Me.columnOPBRENGSTBEDRAG = MyBase.Columns("OPBRENGSTBEDRAG")
             Me.columnOPBRENGSTVALUTA = MyBase.Columns("OPBRENGSTVALUTA")
+            Me.columnOPBRENGSTBTWCODE = MyBase.Columns("OPBRENGSTBTWCODE")
+            Me.columnOPBRENGSTBTWBEDRAG = MyBase.Columns("OPBRENGSTBTWBEDRAG")
             Me.columnOPBRENGSTRELATIE = MyBase.Columns("OPBRENGSTRELATIE")
             Me.columnOPBRENGSTOMSCHRIJVING = MyBase.Columns("OPBRENGSTOMSCHRIJVING")
+            Me.columnIFACTUURREGELNUMMER = MyBase.Columns("IFACTUURREGELNUMMER")
+            Me.columnUFACTUURREGELNUMMER = MyBase.Columns("UFACTUURREGELNUMMER")
             Me.columnMEDEWERKER = MyBase.Columns("MEDEWERKER")
             Me.columnUFACTUURNUMMER = MyBase.Columns("UFACTUURNUMMER")
             Me.columnIFACTUURNUMMER = MyBase.Columns("IFACTUURNUMMER")
-            Me.columnUFACTUURREGELNUMMER = MyBase.Columns("UFACTUURREGELNUMMER")
-            Me.columnIFACTUURREGELNUMMER = MyBase.Columns("IFACTUURREGELNUMMER")
             Me.columnUFACTUURREGELPRINTEN = MyBase.Columns("UFACTUURREGELPRINTEN")
             Me.columnDATUM = MyBase.Columns("DATUM")
             Me.columnFACTUREREN = MyBase.Columns("FACTUREREN")
+            Me.columnVOLGORDE = MyBase.Columns("VOLGORDE")
+            Me.columnOPBRENGSTWISSELKOERS = MyBase.Columns("OPBRENGSTWISSELKOERS")
+            Me.columnOPBRENGSTBEDRAGEURO = MyBase.Columns("OPBRENGSTBEDRAGEURO")
             Me.columnKOSTWISSELKOERS = MyBase.Columns("KOSTWISSELKOERS")
             Me.columnKOSTBEDRAGEURO = MyBase.Columns("KOSTBEDRAGEURO")
+            Me.columnROWOPEN = MyBase.Columns("ROWOPEN")
+            Me.columnROWOPENBY = MyBase.Columns("ROWOPENBY")
+            Me.columnBTWREGEL = MyBase.Columns("BTWREGEL")
+            Me.columnCREDITCRNUMBER = MyBase.Columns("CREDITCRNUMBER")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -764,14 +848,6 @@ Partial Public Class dsCostRevenue
         Private Sub InitClass()
             Me.columnKONUMMER = New Global.System.Data.DataColumn("KONUMMER", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnKONUMMER)
-            Me.columnOPBRENGSTBTWBEDRAG = New Global.System.Data.DataColumn("OPBRENGSTBTWBEDRAG", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnOPBRENGSTBTWBEDRAG)
-            Me.columnKOSTBTWBEDRAG = New Global.System.Data.DataColumn("KOSTBTWBEDRAG", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnKOSTBTWBEDRAG)
-            Me.columnKOSTBTWCODE = New Global.System.Data.DataColumn("KOSTBTWCODE", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnKOSTBTWCODE)
-            Me.columnOPBRENGSTBTWCODE = New Global.System.Data.DataColumn("OPBRENGSTBTWCODE", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnOPBRENGSTBTWCODE)
             Me.columnDOSSIERNUMMER = New Global.System.Data.DataColumn("DOSSIERNUMMER", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDOSSIERNUMMER)
             Me.columnKOSTCODE = New Global.System.Data.DataColumn("KOSTCODE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -788,6 +864,10 @@ Partial Public Class dsCostRevenue
             MyBase.Columns.Add(Me.columnKOSTBEDRAG)
             Me.columnKOSTVALUTA = New Global.System.Data.DataColumn("KOSTVALUTA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnKOSTVALUTA)
+            Me.columnKOSTBTWCODE = New Global.System.Data.DataColumn("KOSTBTWCODE", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnKOSTBTWCODE)
+            Me.columnKOSTBTWBEDRAG = New Global.System.Data.DataColumn("KOSTBTWBEDRAG", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnKOSTBTWBEDRAG)
             Me.columnKOSTRELATIE = New Global.System.Data.DataColumn("KOSTRELATIE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnKOSTRELATIE)
             Me.columnKOSTOMSCHRIJVING = New Global.System.Data.DataColumn("KOSTOMSCHRIJVING", GetType(String), Nothing, Global.System.Data.MappingType.Element)
@@ -800,34 +880,50 @@ Partial Public Class dsCostRevenue
             MyBase.Columns.Add(Me.columnOPBRENGSTBEDRAG)
             Me.columnOPBRENGSTVALUTA = New Global.System.Data.DataColumn("OPBRENGSTVALUTA", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOPBRENGSTVALUTA)
+            Me.columnOPBRENGSTBTWCODE = New Global.System.Data.DataColumn("OPBRENGSTBTWCODE", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOPBRENGSTBTWCODE)
+            Me.columnOPBRENGSTBTWBEDRAG = New Global.System.Data.DataColumn("OPBRENGSTBTWBEDRAG", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOPBRENGSTBTWBEDRAG)
             Me.columnOPBRENGSTRELATIE = New Global.System.Data.DataColumn("OPBRENGSTRELATIE", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOPBRENGSTRELATIE)
             Me.columnOPBRENGSTOMSCHRIJVING = New Global.System.Data.DataColumn("OPBRENGSTOMSCHRIJVING", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOPBRENGSTOMSCHRIJVING)
+            Me.columnIFACTUURREGELNUMMER = New Global.System.Data.DataColumn("IFACTUURREGELNUMMER", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIFACTUURREGELNUMMER)
+            Me.columnUFACTUURREGELNUMMER = New Global.System.Data.DataColumn("UFACTUURREGELNUMMER", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnUFACTUURREGELNUMMER)
             Me.columnMEDEWERKER = New Global.System.Data.DataColumn("MEDEWERKER", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnMEDEWERKER)
             Me.columnUFACTUURNUMMER = New Global.System.Data.DataColumn("UFACTUURNUMMER", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUFACTUURNUMMER)
             Me.columnIFACTUURNUMMER = New Global.System.Data.DataColumn("IFACTUURNUMMER", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnIFACTUURNUMMER)
-            Me.columnUFACTUURREGELNUMMER = New Global.System.Data.DataColumn("UFACTUURREGELNUMMER", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnUFACTUURREGELNUMMER)
-            Me.columnIFACTUURREGELNUMMER = New Global.System.Data.DataColumn("IFACTUURREGELNUMMER", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnIFACTUURREGELNUMMER)
             Me.columnUFACTUURREGELPRINTEN = New Global.System.Data.DataColumn("UFACTUURREGELPRINTEN", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnUFACTUURREGELPRINTEN)
             Me.columnDATUM = New Global.System.Data.DataColumn("DATUM", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnDATUM)
             Me.columnFACTUREREN = New Global.System.Data.DataColumn("FACTUREREN", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnFACTUREREN)
+            Me.columnVOLGORDE = New Global.System.Data.DataColumn("VOLGORDE", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnVOLGORDE)
+            Me.columnOPBRENGSTWISSELKOERS = New Global.System.Data.DataColumn("OPBRENGSTWISSELKOERS", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOPBRENGSTWISSELKOERS)
+            Me.columnOPBRENGSTBEDRAGEURO = New Global.System.Data.DataColumn("OPBRENGSTBEDRAGEURO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnOPBRENGSTBEDRAGEURO)
             Me.columnKOSTWISSELKOERS = New Global.System.Data.DataColumn("KOSTWISSELKOERS", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnKOSTWISSELKOERS)
             Me.columnKOSTBEDRAGEURO = New Global.System.Data.DataColumn("KOSTBEDRAGEURO", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnKOSTBEDRAGEURO)
+            Me.columnROWOPEN = New Global.System.Data.DataColumn("ROWOPEN", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnROWOPEN)
+            Me.columnROWOPENBY = New Global.System.Data.DataColumn("ROWOPENBY", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnROWOPENBY)
+            Me.columnBTWREGEL = New Global.System.Data.DataColumn("BTWREGEL", GetType(Boolean), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnBTWREGEL)
+            Me.columnCREDITCRNUMBER = New Global.System.Data.DataColumn("CREDITCRNUMBER", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCREDITCRNUMBER)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnKONUMMER}, true))
             Me.columnKONUMMER.AutoIncrement = true
-            Me.columnKONUMMER.AutoIncrementSeed = -1
-            Me.columnKONUMMER.AutoIncrementStep = -1
             Me.columnKONUMMER.AllowDBNull = false
             Me.columnKONUMMER.ReadOnly = true
             Me.columnKONUMMER.Unique = true
@@ -841,32 +937,33 @@ Partial Public Class dsCostRevenue
             Me.columnOPBRENGSTRELATIE.MaxLength = 8
             Me.columnOPBRENGSTOMSCHRIJVING.MaxLength = 2147483647
             Me.columnMEDEWERKER.MaxLength = 50
+            Me.columnROWOPENBY.MaxLength = 50
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function NewvwCostRevenueRow() As vwCostRevenueRow
-            Return CType(Me.NewRow,vwCostRevenueRow)
+        Public Function NewspCostRevenueRow() As spCostRevenueRow
+            Return CType(Me.NewRow,spCostRevenueRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
-            Return New vwCostRevenueRow(builder)
+            Return New spCostRevenueRow(builder)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Function GetRowType() As Global.System.Type
-            Return GetType(vwCostRevenueRow)
+            Return GetType(spCostRevenueRow)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanged(e)
-            If (Not (Me.vwCostRevenueRowChangedEvent) Is Nothing) Then
-                RaiseEvent vwCostRevenueRowChanged(Me, New vwCostRevenueRowChangeEvent(CType(e.Row,vwCostRevenueRow), e.Action))
+            If (Not (Me.spCostRevenueRowChangedEvent) Is Nothing) Then
+                RaiseEvent spCostRevenueRowChanged(Me, New spCostRevenueRowChangeEvent(CType(e.Row,spCostRevenueRow), e.Action))
             End If
         End Sub
         
@@ -874,8 +971,8 @@ Partial Public Class dsCostRevenue
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowChanging(e)
-            If (Not (Me.vwCostRevenueRowChangingEvent) Is Nothing) Then
-                RaiseEvent vwCostRevenueRowChanging(Me, New vwCostRevenueRowChangeEvent(CType(e.Row,vwCostRevenueRow), e.Action))
+            If (Not (Me.spCostRevenueRowChangingEvent) Is Nothing) Then
+                RaiseEvent spCostRevenueRowChanging(Me, New spCostRevenueRowChangeEvent(CType(e.Row,spCostRevenueRow), e.Action))
             End If
         End Sub
         
@@ -883,8 +980,8 @@ Partial Public Class dsCostRevenue
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleted(e)
-            If (Not (Me.vwCostRevenueRowDeletedEvent) Is Nothing) Then
-                RaiseEvent vwCostRevenueRowDeleted(Me, New vwCostRevenueRowChangeEvent(CType(e.Row,vwCostRevenueRow), e.Action))
+            If (Not (Me.spCostRevenueRowDeletedEvent) Is Nothing) Then
+                RaiseEvent spCostRevenueRowDeleted(Me, New spCostRevenueRowChangeEvent(CType(e.Row,spCostRevenueRow), e.Action))
             End If
         End Sub
         
@@ -892,14 +989,14 @@ Partial Public Class dsCostRevenue
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
             MyBase.OnRowDeleting(e)
-            If (Not (Me.vwCostRevenueRowDeletingEvent) Is Nothing) Then
-                RaiseEvent vwCostRevenueRowDeleting(Me, New vwCostRevenueRowChangeEvent(CType(e.Row,vwCostRevenueRow), e.Action))
+            If (Not (Me.spCostRevenueRowDeletingEvent) Is Nothing) Then
+                RaiseEvent spCostRevenueRowDeleting(Me, New spCostRevenueRowChangeEvent(CType(e.Row,spCostRevenueRow), e.Action))
             End If
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub RemovevwCostRevenueRow(ByVal row As vwCostRevenueRow)
+        Public Sub RemovespCostRevenueRow(ByVal row As spCostRevenueRow)
             Me.Rows.Remove(row)
         End Sub
         
@@ -926,7 +1023,7 @@ Partial Public Class dsCostRevenue
             type.Attributes.Add(attribute1)
             Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
             attribute2.Name = "tableTypeName"
-            attribute2.FixedValue = "vwCostRevenueDataTable"
+            attribute2.FixedValue = "spCostRevenueDataTable"
             type.Attributes.Add(attribute2)
             type.Particle = sequence
             Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
@@ -973,86 +1070,26 @@ Partial Public Class dsCostRevenue
     '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
-    Partial Public Class vwCostRevenueRow
+    Partial Public Class spCostRevenueRow
         Inherits Global.System.Data.DataRow
         
-        Private tablevwCostRevenue As vwCostRevenueDataTable
+        Private tablespCostRevenue As spCostRevenueDataTable
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
             MyBase.New(rb)
-            Me.tablevwCostRevenue = CType(Me.Table,vwCostRevenueDataTable)
+            Me.tablespCostRevenue = CType(Me.Table,spCostRevenueDataTable)
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Property KONUMMER() As Integer
             Get
-                Return CType(Me(Me.tablevwCostRevenue.KONUMMERColumn),Integer)
+                Return CType(Me(Me.tablespCostRevenue.KONUMMERColumn),Integer)
             End Get
             Set
-                Me(Me.tablevwCostRevenue.KONUMMERColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property OPBRENGSTBTWBEDRAG() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablevwCostRevenue.OPBRENGSTBTWBEDRAGColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTBTWBEDRAG' in table 'vwCostRevenue' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevwCostRevenue.OPBRENGSTBTWBEDRAGColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property KOSTBTWBEDRAG() As Decimal
-            Get
-                Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTBTWBEDRAGColumn),Decimal)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTBTWBEDRAG' in table 'vwCostRevenue' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevwCostRevenue.KOSTBTWBEDRAGColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property KOSTBTWCODE() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTBTWCODEColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTBTWCODE' in table 'vwCostRevenue' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevwCostRevenue.KOSTBTWCODEColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property OPBRENGSTBTWCODE() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tablevwCostRevenue.OPBRENGSTBTWCODEColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTBTWCODE' in table 'vwCostRevenue' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevwCostRevenue.OPBRENGSTBTWCODEColumn) = value
+                Me(Me.tablespCostRevenue.KONUMMERColumn) = value
             End Set
         End Property
         
@@ -1061,13 +1098,13 @@ Partial Public Class dsCostRevenue
         Public Property DOSSIERNUMMER() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.DOSSIERNUMMERColumn),Integer)
+                    Return CType(Me(Me.tablespCostRevenue.DOSSIERNUMMERColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DOSSIERNUMMER' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DOSSIERNUMMER' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.DOSSIERNUMMERColumn) = value
+                Me(Me.tablespCostRevenue.DOSSIERNUMMERColumn) = value
             End Set
         End Property
         
@@ -1076,13 +1113,13 @@ Partial Public Class dsCostRevenue
         Public Property KOSTCODE() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTCODEColumn),String)
+                    Return CType(Me(Me.tablespCostRevenue.KOSTCODEColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTCODE' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTCODE' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.KOSTCODEColumn) = value
+                Me(Me.tablespCostRevenue.KOSTCODEColumn) = value
             End Set
         End Property
         
@@ -1091,13 +1128,13 @@ Partial Public Class dsCostRevenue
         Public Property OMSCHRIJVING() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.OMSCHRIJVINGColumn),String)
+                    Return CType(Me(Me.tablespCostRevenue.OMSCHRIJVINGColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OMSCHRIJVING' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OMSCHRIJVING' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.OMSCHRIJVINGColumn) = value
+                Me(Me.tablespCostRevenue.OMSCHRIJVINGColumn) = value
             End Set
         End Property
         
@@ -1106,13 +1143,13 @@ Partial Public Class dsCostRevenue
         Public Property FACTUURVALUTA() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.FACTUURVALUTAColumn),String)
+                    Return CType(Me(Me.tablespCostRevenue.FACTUURVALUTAColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'FACTUURVALUTA' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FACTUURVALUTA' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.FACTUURVALUTAColumn) = value
+                Me(Me.tablespCostRevenue.FACTUURVALUTAColumn) = value
             End Set
         End Property
         
@@ -1121,13 +1158,13 @@ Partial Public Class dsCostRevenue
         Public Property KOSTPRIJS() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTPRIJSColumn),Decimal)
+                    Return CType(Me(Me.tablespCostRevenue.KOSTPRIJSColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTPRIJS' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTPRIJS' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.KOSTPRIJSColumn) = value
+                Me(Me.tablespCostRevenue.KOSTPRIJSColumn) = value
             End Set
         End Property
         
@@ -1136,13 +1173,13 @@ Partial Public Class dsCostRevenue
         Public Property KOSTAANTAL() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTAANTALColumn),Decimal)
+                    Return CType(Me(Me.tablespCostRevenue.KOSTAANTALColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTAANTAL' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTAANTAL' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.KOSTAANTALColumn) = value
+                Me(Me.tablespCostRevenue.KOSTAANTALColumn) = value
             End Set
         End Property
         
@@ -1151,13 +1188,13 @@ Partial Public Class dsCostRevenue
         Public Property KOSTBEDRAG() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTBEDRAGColumn),Decimal)
+                    Return CType(Me(Me.tablespCostRevenue.KOSTBEDRAGColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTBEDRAG' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTBEDRAG' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.KOSTBEDRAGColumn) = value
+                Me(Me.tablespCostRevenue.KOSTBEDRAGColumn) = value
             End Set
         End Property
         
@@ -1166,13 +1203,43 @@ Partial Public Class dsCostRevenue
         Public Property KOSTVALUTA() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTVALUTAColumn),String)
+                    Return CType(Me(Me.tablespCostRevenue.KOSTVALUTAColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTVALUTA' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTVALUTA' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.KOSTVALUTAColumn) = value
+                Me(Me.tablespCostRevenue.KOSTVALUTAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property KOSTBTWCODE() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.KOSTBTWCODEColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTBTWCODE' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.KOSTBTWCODEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property KOSTBTWBEDRAG() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.KOSTBTWBEDRAGColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTBTWBEDRAG' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.KOSTBTWBEDRAGColumn) = value
             End Set
         End Property
         
@@ -1181,13 +1248,13 @@ Partial Public Class dsCostRevenue
         Public Property KOSTRELATIE() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTRELATIEColumn),String)
+                    Return CType(Me(Me.tablespCostRevenue.KOSTRELATIEColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTRELATIE' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTRELATIE' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.KOSTRELATIEColumn) = value
+                Me(Me.tablespCostRevenue.KOSTRELATIEColumn) = value
             End Set
         End Property
         
@@ -1196,13 +1263,13 @@ Partial Public Class dsCostRevenue
         Public Property KOSTOMSCHRIJVING() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTOMSCHRIJVINGColumn),String)
+                    Return CType(Me(Me.tablespCostRevenue.KOSTOMSCHRIJVINGColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTOMSCHRIJVING' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTOMSCHRIJVING' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.KOSTOMSCHRIJVINGColumn) = value
+                Me(Me.tablespCostRevenue.KOSTOMSCHRIJVINGColumn) = value
             End Set
         End Property
         
@@ -1211,13 +1278,13 @@ Partial Public Class dsCostRevenue
         Public Property OPBRENGSTPRIJS() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.OPBRENGSTPRIJSColumn),Decimal)
+                    Return CType(Me(Me.tablespCostRevenue.OPBRENGSTPRIJSColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTPRIJS' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTPRIJS' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.OPBRENGSTPRIJSColumn) = value
+                Me(Me.tablespCostRevenue.OPBRENGSTPRIJSColumn) = value
             End Set
         End Property
         
@@ -1226,13 +1293,13 @@ Partial Public Class dsCostRevenue
         Public Property OPBRENGSTAANTAL() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.OPBRENGSTAANTALColumn),Decimal)
+                    Return CType(Me(Me.tablespCostRevenue.OPBRENGSTAANTALColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTAANTAL' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTAANTAL' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.OPBRENGSTAANTALColumn) = value
+                Me(Me.tablespCostRevenue.OPBRENGSTAANTALColumn) = value
             End Set
         End Property
         
@@ -1241,13 +1308,13 @@ Partial Public Class dsCostRevenue
         Public Property OPBRENGSTBEDRAG() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.OPBRENGSTBEDRAGColumn),Decimal)
+                    Return CType(Me(Me.tablespCostRevenue.OPBRENGSTBEDRAGColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTBEDRAG' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTBEDRAG' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.OPBRENGSTBEDRAGColumn) = value
+                Me(Me.tablespCostRevenue.OPBRENGSTBEDRAGColumn) = value
             End Set
         End Property
         
@@ -1256,13 +1323,43 @@ Partial Public Class dsCostRevenue
         Public Property OPBRENGSTVALUTA() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.OPBRENGSTVALUTAColumn),String)
+                    Return CType(Me(Me.tablespCostRevenue.OPBRENGSTVALUTAColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTVALUTA' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTVALUTA' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.OPBRENGSTVALUTAColumn) = value
+                Me(Me.tablespCostRevenue.OPBRENGSTVALUTAColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property OPBRENGSTBTWCODE() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.OPBRENGSTBTWCODEColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTBTWCODE' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.OPBRENGSTBTWCODEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property OPBRENGSTBTWBEDRAG() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.OPBRENGSTBTWBEDRAGColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTBTWBEDRAG' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.OPBRENGSTBTWBEDRAGColumn) = value
             End Set
         End Property
         
@@ -1271,13 +1368,13 @@ Partial Public Class dsCostRevenue
         Public Property OPBRENGSTRELATIE() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.OPBRENGSTRELATIEColumn),String)
+                    Return CType(Me(Me.tablespCostRevenue.OPBRENGSTRELATIEColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTRELATIE' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTRELATIE' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.OPBRENGSTRELATIEColumn) = value
+                Me(Me.tablespCostRevenue.OPBRENGSTRELATIEColumn) = value
             End Set
         End Property
         
@@ -1286,73 +1383,13 @@ Partial Public Class dsCostRevenue
         Public Property OPBRENGSTOMSCHRIJVING() As String
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.OPBRENGSTOMSCHRIJVINGColumn),String)
+                    Return CType(Me(Me.tablespCostRevenue.OPBRENGSTOMSCHRIJVINGColumn),String)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTOMSCHRIJVING' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTOMSCHRIJVING' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.OPBRENGSTOMSCHRIJVINGColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property MEDEWERKER() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tablevwCostRevenue.MEDEWERKERColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'MEDEWERKER' in table 'vwCostRevenue' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevwCostRevenue.MEDEWERKERColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property UFACTUURNUMMER() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tablevwCostRevenue.UFACTUURNUMMERColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'UFACTUURNUMMER' in table 'vwCostRevenue' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevwCostRevenue.UFACTUURNUMMERColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property IFACTUURNUMMER() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tablevwCostRevenue.IFACTUURNUMMERColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'IFACTUURNUMMER' in table 'vwCostRevenue' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevwCostRevenue.IFACTUURNUMMERColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Property UFACTUURREGELNUMMER() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tablevwCostRevenue.UFACTUURREGELNUMMERColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'UFACTUURREGELNUMMER' in table 'vwCostRevenue' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tablevwCostRevenue.UFACTUURREGELNUMMERColumn) = value
+                Me(Me.tablespCostRevenue.OPBRENGSTOMSCHRIJVINGColumn) = value
             End Set
         End Property
         
@@ -1361,13 +1398,73 @@ Partial Public Class dsCostRevenue
         Public Property IFACTUURREGELNUMMER() As Integer
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.IFACTUURREGELNUMMERColumn),Integer)
+                    Return CType(Me(Me.tablespCostRevenue.IFACTUURREGELNUMMERColumn),Integer)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'IFACTUURREGELNUMMER' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IFACTUURREGELNUMMER' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.IFACTUURREGELNUMMERColumn) = value
+                Me(Me.tablespCostRevenue.IFACTUURREGELNUMMERColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property UFACTUURREGELNUMMER() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.UFACTUURREGELNUMMERColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'UFACTUURREGELNUMMER' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.UFACTUURREGELNUMMERColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property MEDEWERKER() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.MEDEWERKERColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'MEDEWERKER' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.MEDEWERKERColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property UFACTUURNUMMER() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.UFACTUURNUMMERColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'UFACTUURNUMMER' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.UFACTUURNUMMERColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property IFACTUURNUMMER() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.IFACTUURNUMMERColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IFACTUURNUMMER' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.IFACTUURNUMMERColumn) = value
             End Set
         End Property
         
@@ -1376,13 +1473,13 @@ Partial Public Class dsCostRevenue
         Public Property UFACTUURREGELPRINTEN() As Boolean
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.UFACTUURREGELPRINTENColumn),Boolean)
+                    Return CType(Me(Me.tablespCostRevenue.UFACTUURREGELPRINTENColumn),Boolean)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'UFACTUURREGELPRINTEN' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'UFACTUURREGELPRINTEN' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.UFACTUURREGELPRINTENColumn) = value
+                Me(Me.tablespCostRevenue.UFACTUURREGELPRINTENColumn) = value
             End Set
         End Property
         
@@ -1391,13 +1488,13 @@ Partial Public Class dsCostRevenue
         Public Property DATUM() As Date
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.DATUMColumn),Date)
+                    Return CType(Me(Me.tablespCostRevenue.DATUMColumn),Date)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'DATUM' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'DATUM' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.DATUMColumn) = value
+                Me(Me.tablespCostRevenue.DATUMColumn) = value
             End Set
         End Property
         
@@ -1406,13 +1503,58 @@ Partial Public Class dsCostRevenue
         Public Property FACTUREREN() As Boolean
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.FACTURERENColumn),Boolean)
+                    Return CType(Me(Me.tablespCostRevenue.FACTURERENColumn),Boolean)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'FACTUREREN' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'FACTUREREN' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.FACTURERENColumn) = value
+                Me(Me.tablespCostRevenue.FACTURERENColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property VOLGORDE() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.VOLGORDEColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'VOLGORDE' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.VOLGORDEColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property OPBRENGSTWISSELKOERS() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.OPBRENGSTWISSELKOERSColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTWISSELKOERS' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.OPBRENGSTWISSELKOERSColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property OPBRENGSTBEDRAGEURO() As Decimal
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.OPBRENGSTBEDRAGEUROColumn),Decimal)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'OPBRENGSTBEDRAGEURO' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.OPBRENGSTBEDRAGEUROColumn) = value
             End Set
         End Property
         
@@ -1421,13 +1563,13 @@ Partial Public Class dsCostRevenue
         Public Property KOSTWISSELKOERS() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTWISSELKOERSColumn),Decimal)
+                    Return CType(Me(Me.tablespCostRevenue.KOSTWISSELKOERSColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTWISSELKOERS' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTWISSELKOERS' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.KOSTWISSELKOERSColumn) = value
+                Me(Me.tablespCostRevenue.KOSTWISSELKOERSColumn) = value
             End Set
         End Property
         
@@ -1436,374 +1578,518 @@ Partial Public Class dsCostRevenue
         Public Property KOSTBEDRAGEURO() As Decimal
             Get
                 Try 
-                    Return CType(Me(Me.tablevwCostRevenue.KOSTBEDRAGEUROColumn),Decimal)
+                    Return CType(Me(Me.tablespCostRevenue.KOSTBEDRAGEUROColumn),Decimal)
                 Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTBEDRAGEURO' in table 'vwCostRevenue' is DBNull.", e)
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'KOSTBEDRAGEURO' in table 'spCostRevenue' is DBNull.", e)
                 End Try
             End Get
             Set
-                Me(Me.tablevwCostRevenue.KOSTBEDRAGEUROColumn) = value
+                Me(Me.tablespCostRevenue.KOSTBEDRAGEUROColumn) = value
             End Set
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsOPBRENGSTBTWBEDRAGNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.OPBRENGSTBTWBEDRAGColumn)
-        End Function
+        Public Property ROWOPEN() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.ROWOPENColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ROWOPEN' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.ROWOPENColumn) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetOPBRENGSTBTWBEDRAGNull()
-            Me(Me.tablevwCostRevenue.OPBRENGSTBTWBEDRAGColumn) = Global.System.Convert.DBNull
-        End Sub
+        Public Property ROWOPENBY() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.ROWOPENBYColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ROWOPENBY' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.ROWOPENBYColumn) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsKOSTBTWBEDRAGNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTBTWBEDRAGColumn)
-        End Function
+        Public Property BTWREGEL() As Boolean
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.BTWREGELColumn),Boolean)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'BTWREGEL' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.BTWREGELColumn) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetKOSTBTWBEDRAGNull()
-            Me(Me.tablevwCostRevenue.KOSTBTWBEDRAGColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsKOSTBTWCODENull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTBTWCODEColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetKOSTBTWCODENull()
-            Me(Me.tablevwCostRevenue.KOSTBTWCODEColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsOPBRENGSTBTWCODENull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.OPBRENGSTBTWCODEColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetOPBRENGSTBTWCODENull()
-            Me(Me.tablevwCostRevenue.OPBRENGSTBTWCODEColumn) = Global.System.Convert.DBNull
-        End Sub
+        Public Property CREDITCRNUMBER() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tablespCostRevenue.CREDITCRNUMBERColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'CREDITCRNUMBER' in table 'spCostRevenue' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tablespCostRevenue.CREDITCRNUMBERColumn) = value
+            End Set
+        End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsDOSSIERNUMMERNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.DOSSIERNUMMERColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.DOSSIERNUMMERColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetDOSSIERNUMMERNull()
-            Me(Me.tablevwCostRevenue.DOSSIERNUMMERColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.DOSSIERNUMMERColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsKOSTCODENull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTCODEColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTCODEColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetKOSTCODENull()
-            Me(Me.tablevwCostRevenue.KOSTCODEColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.KOSTCODEColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsOMSCHRIJVINGNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.OMSCHRIJVINGColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.OMSCHRIJVINGColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetOMSCHRIJVINGNull()
-            Me(Me.tablevwCostRevenue.OMSCHRIJVINGColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.OMSCHRIJVINGColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsFACTUURVALUTANull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.FACTUURVALUTAColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.FACTUURVALUTAColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetFACTUURVALUTANull()
-            Me(Me.tablevwCostRevenue.FACTUURVALUTAColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.FACTUURVALUTAColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsKOSTPRIJSNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTPRIJSColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTPRIJSColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetKOSTPRIJSNull()
-            Me(Me.tablevwCostRevenue.KOSTPRIJSColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.KOSTPRIJSColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsKOSTAANTALNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTAANTALColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTAANTALColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetKOSTAANTALNull()
-            Me(Me.tablevwCostRevenue.KOSTAANTALColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.KOSTAANTALColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsKOSTBEDRAGNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTBEDRAGColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTBEDRAGColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetKOSTBEDRAGNull()
-            Me(Me.tablevwCostRevenue.KOSTBEDRAGColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.KOSTBEDRAGColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsKOSTVALUTANull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTVALUTAColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTVALUTAColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetKOSTVALUTANull()
-            Me(Me.tablevwCostRevenue.KOSTVALUTAColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.KOSTVALUTAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsKOSTBTWCODENull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTBTWCODEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetKOSTBTWCODENull()
+            Me(Me.tablespCostRevenue.KOSTBTWCODEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsKOSTBTWBEDRAGNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTBTWBEDRAGColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetKOSTBTWBEDRAGNull()
+            Me(Me.tablespCostRevenue.KOSTBTWBEDRAGColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsKOSTRELATIENull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTRELATIEColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTRELATIEColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetKOSTRELATIENull()
-            Me(Me.tablevwCostRevenue.KOSTRELATIEColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.KOSTRELATIEColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsKOSTOMSCHRIJVINGNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTOMSCHRIJVINGColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTOMSCHRIJVINGColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetKOSTOMSCHRIJVINGNull()
-            Me(Me.tablevwCostRevenue.KOSTOMSCHRIJVINGColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.KOSTOMSCHRIJVINGColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsOPBRENGSTPRIJSNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.OPBRENGSTPRIJSColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.OPBRENGSTPRIJSColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetOPBRENGSTPRIJSNull()
-            Me(Me.tablevwCostRevenue.OPBRENGSTPRIJSColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.OPBRENGSTPRIJSColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsOPBRENGSTAANTALNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.OPBRENGSTAANTALColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.OPBRENGSTAANTALColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetOPBRENGSTAANTALNull()
-            Me(Me.tablevwCostRevenue.OPBRENGSTAANTALColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.OPBRENGSTAANTALColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsOPBRENGSTBEDRAGNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.OPBRENGSTBEDRAGColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.OPBRENGSTBEDRAGColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetOPBRENGSTBEDRAGNull()
-            Me(Me.tablevwCostRevenue.OPBRENGSTBEDRAGColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.OPBRENGSTBEDRAGColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsOPBRENGSTVALUTANull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.OPBRENGSTVALUTAColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.OPBRENGSTVALUTAColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetOPBRENGSTVALUTANull()
-            Me(Me.tablevwCostRevenue.OPBRENGSTVALUTAColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.OPBRENGSTVALUTAColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsOPBRENGSTBTWCODENull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.OPBRENGSTBTWCODEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetOPBRENGSTBTWCODENull()
+            Me(Me.tablespCostRevenue.OPBRENGSTBTWCODEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsOPBRENGSTBTWBEDRAGNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.OPBRENGSTBTWBEDRAGColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetOPBRENGSTBTWBEDRAGNull()
+            Me(Me.tablespCostRevenue.OPBRENGSTBTWBEDRAGColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsOPBRENGSTRELATIENull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.OPBRENGSTRELATIEColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.OPBRENGSTRELATIEColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetOPBRENGSTRELATIENull()
-            Me(Me.tablevwCostRevenue.OPBRENGSTRELATIEColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.OPBRENGSTRELATIEColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsOPBRENGSTOMSCHRIJVINGNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.OPBRENGSTOMSCHRIJVINGColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.OPBRENGSTOMSCHRIJVINGColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetOPBRENGSTOMSCHRIJVINGNull()
-            Me(Me.tablevwCostRevenue.OPBRENGSTOMSCHRIJVINGColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsMEDEWERKERNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.MEDEWERKERColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetMEDEWERKERNull()
-            Me(Me.tablevwCostRevenue.MEDEWERKERColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsUFACTUURNUMMERNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.UFACTUURNUMMERColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetUFACTUURNUMMERNull()
-            Me(Me.tablevwCostRevenue.UFACTUURNUMMERColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsIFACTUURNUMMERNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.IFACTUURNUMMERColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetIFACTUURNUMMERNull()
-            Me(Me.tablevwCostRevenue.IFACTUURNUMMERColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Function IsUFACTUURREGELNUMMERNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.UFACTUURREGELNUMMERColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub SetUFACTUURREGELNUMMERNull()
-            Me(Me.tablevwCostRevenue.UFACTUURREGELNUMMERColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.OPBRENGSTOMSCHRIJVINGColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsIFACTUURREGELNUMMERNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.IFACTUURREGELNUMMERColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.IFACTUURREGELNUMMERColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetIFACTUURREGELNUMMERNull()
-            Me(Me.tablevwCostRevenue.IFACTUURREGELNUMMERColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.IFACTUURREGELNUMMERColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsUFACTUURREGELNUMMERNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.UFACTUURREGELNUMMERColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetUFACTUURREGELNUMMERNull()
+            Me(Me.tablespCostRevenue.UFACTUURREGELNUMMERColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsMEDEWERKERNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.MEDEWERKERColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetMEDEWERKERNull()
+            Me(Me.tablespCostRevenue.MEDEWERKERColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsUFACTUURNUMMERNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.UFACTUURNUMMERColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetUFACTUURNUMMERNull()
+            Me(Me.tablespCostRevenue.UFACTUURNUMMERColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsIFACTUURNUMMERNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.IFACTUURNUMMERColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetIFACTUURNUMMERNull()
+            Me(Me.tablespCostRevenue.IFACTUURNUMMERColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsUFACTUURREGELPRINTENNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.UFACTUURREGELPRINTENColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.UFACTUURREGELPRINTENColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetUFACTUURREGELPRINTENNull()
-            Me(Me.tablevwCostRevenue.UFACTUURREGELPRINTENColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.UFACTUURREGELPRINTENColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsDATUMNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.DATUMColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.DATUMColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetDATUMNull()
-            Me(Me.tablevwCostRevenue.DATUMColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.DATUMColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsFACTURERENNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.FACTURERENColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.FACTURERENColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetFACTURERENNull()
-            Me(Me.tablevwCostRevenue.FACTURERENColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.FACTURERENColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsVOLGORDENull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.VOLGORDEColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetVOLGORDENull()
+            Me(Me.tablespCostRevenue.VOLGORDEColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsOPBRENGSTWISSELKOERSNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.OPBRENGSTWISSELKOERSColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetOPBRENGSTWISSELKOERSNull()
+            Me(Me.tablespCostRevenue.OPBRENGSTWISSELKOERSColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsOPBRENGSTBEDRAGEURONull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.OPBRENGSTBEDRAGEUROColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetOPBRENGSTBEDRAGEURONull()
+            Me(Me.tablespCostRevenue.OPBRENGSTBEDRAGEUROColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsKOSTWISSELKOERSNull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTWISSELKOERSColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTWISSELKOERSColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetKOSTWISSELKOERSNull()
-            Me(Me.tablevwCostRevenue.KOSTWISSELKOERSColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.KOSTWISSELKOERSColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsKOSTBEDRAGEURONull() As Boolean
-            Return Me.IsNull(Me.tablevwCostRevenue.KOSTBEDRAGEUROColumn)
+            Return Me.IsNull(Me.tablespCostRevenue.KOSTBEDRAGEUROColumn)
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetKOSTBEDRAGEURONull()
-            Me(Me.tablevwCostRevenue.KOSTBEDRAGEUROColumn) = Global.System.Convert.DBNull
+            Me(Me.tablespCostRevenue.KOSTBEDRAGEUROColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsROWOPENNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.ROWOPENColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetROWOPENNull()
+            Me(Me.tablespCostRevenue.ROWOPENColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsROWOPENBYNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.ROWOPENBYColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetROWOPENBYNull()
+            Me(Me.tablespCostRevenue.ROWOPENBYColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsBTWREGELNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.BTWREGELColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetBTWREGELNull()
+            Me(Me.tablespCostRevenue.BTWREGELColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsCREDITCRNUMBERNull() As Boolean
+            Return Me.IsNull(Me.tablespCostRevenue.CREDITCRNUMBERColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetCREDITCRNUMBERNull()
+            Me(Me.tablespCostRevenue.CREDITCRNUMBERColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1811,16 +2097,16 @@ Partial Public Class dsCostRevenue
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-    Public Class vwCostRevenueRowChangeEvent
+    Public Class spCostRevenueRowChangeEvent
         Inherits Global.System.EventArgs
         
-        Private eventRow As vwCostRevenueRow
+        Private eventRow As spCostRevenueRow
         
         Private eventAction As Global.System.Data.DataRowAction
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Sub New(ByVal row As vwCostRevenueRow, ByVal action As Global.System.Data.DataRowAction)
+        Public Sub New(ByVal row As spCostRevenueRow, ByVal action As Global.System.Data.DataRowAction)
             MyBase.New
             Me.eventRow = row
             Me.eventAction = action
@@ -1828,7 +2114,7 @@ Partial Public Class dsCostRevenue
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public ReadOnly Property Row() As vwCostRevenueRow
+        Public ReadOnly Property Row() As spCostRevenueRow
             Get
                 Return Me.eventRow
             End Get
@@ -1855,7 +2141,7 @@ Namespace dsCostRevenueTableAdapters
      Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
      Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
-    Partial Public Class vwCostRevenueTableAdapter
+    Partial Public Class spCostRevenueTableAdapter
         Inherits Global.System.ComponentModel.Component
         
         Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
@@ -1972,12 +2258,8 @@ Namespace dsCostRevenueTableAdapters
             Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
             Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
             tableMapping.SourceTable = "Table"
-            tableMapping.DataSetTable = "vwCostRevenue"
+            tableMapping.DataSetTable = "spCostRevenue"
             tableMapping.ColumnMappings.Add("KONUMMER", "KONUMMER")
-            tableMapping.ColumnMappings.Add("OPBRENGSTBTWBEDRAG", "OPBRENGSTBTWBEDRAG")
-            tableMapping.ColumnMappings.Add("KOSTBTWBEDRAG", "KOSTBTWBEDRAG")
-            tableMapping.ColumnMappings.Add("KOSTBTWCODE", "KOSTBTWCODE")
-            tableMapping.ColumnMappings.Add("OPBRENGSTBTWCODE", "OPBRENGSTBTWCODE")
             tableMapping.ColumnMappings.Add("DOSSIERNUMMER", "DOSSIERNUMMER")
             tableMapping.ColumnMappings.Add("KOSTCODE", "KOSTCODE")
             tableMapping.ColumnMappings.Add("OMSCHRIJVING", "OMSCHRIJVING")
@@ -1986,24 +2268,35 @@ Namespace dsCostRevenueTableAdapters
             tableMapping.ColumnMappings.Add("KOSTAANTAL", "KOSTAANTAL")
             tableMapping.ColumnMappings.Add("KOSTBEDRAG", "KOSTBEDRAG")
             tableMapping.ColumnMappings.Add("KOSTVALUTA", "KOSTVALUTA")
+            tableMapping.ColumnMappings.Add("KOSTBTWCODE", "KOSTBTWCODE")
+            tableMapping.ColumnMappings.Add("KOSTBTWBEDRAG", "KOSTBTWBEDRAG")
             tableMapping.ColumnMappings.Add("KOSTRELATIE", "KOSTRELATIE")
             tableMapping.ColumnMappings.Add("KOSTOMSCHRIJVING", "KOSTOMSCHRIJVING")
             tableMapping.ColumnMappings.Add("OPBRENGSTPRIJS", "OPBRENGSTPRIJS")
             tableMapping.ColumnMappings.Add("OPBRENGSTAANTAL", "OPBRENGSTAANTAL")
             tableMapping.ColumnMappings.Add("OPBRENGSTBEDRAG", "OPBRENGSTBEDRAG")
             tableMapping.ColumnMappings.Add("OPBRENGSTVALUTA", "OPBRENGSTVALUTA")
+            tableMapping.ColumnMappings.Add("OPBRENGSTBTWCODE", "OPBRENGSTBTWCODE")
+            tableMapping.ColumnMappings.Add("OPBRENGSTBTWBEDRAG", "OPBRENGSTBTWBEDRAG")
             tableMapping.ColumnMappings.Add("OPBRENGSTRELATIE", "OPBRENGSTRELATIE")
             tableMapping.ColumnMappings.Add("OPBRENGSTOMSCHRIJVING", "OPBRENGSTOMSCHRIJVING")
+            tableMapping.ColumnMappings.Add("IFACTUURREGELNUMMER", "IFACTUURREGELNUMMER")
+            tableMapping.ColumnMappings.Add("UFACTUURREGELNUMMER", "UFACTUURREGELNUMMER")
             tableMapping.ColumnMappings.Add("MEDEWERKER", "MEDEWERKER")
             tableMapping.ColumnMappings.Add("UFACTUURNUMMER", "UFACTUURNUMMER")
             tableMapping.ColumnMappings.Add("IFACTUURNUMMER", "IFACTUURNUMMER")
-            tableMapping.ColumnMappings.Add("UFACTUURREGELNUMMER", "UFACTUURREGELNUMMER")
-            tableMapping.ColumnMappings.Add("IFACTUURREGELNUMMER", "IFACTUURREGELNUMMER")
             tableMapping.ColumnMappings.Add("UFACTUURREGELPRINTEN", "UFACTUURREGELPRINTEN")
             tableMapping.ColumnMappings.Add("DATUM", "DATUM")
             tableMapping.ColumnMappings.Add("FACTUREREN", "FACTUREREN")
+            tableMapping.ColumnMappings.Add("VOLGORDE", "VOLGORDE")
+            tableMapping.ColumnMappings.Add("OPBRENGSTWISSELKOERS", "OPBRENGSTWISSELKOERS")
+            tableMapping.ColumnMappings.Add("OPBRENGSTBEDRAGEURO", "OPBRENGSTBEDRAGEURO")
             tableMapping.ColumnMappings.Add("KOSTWISSELKOERS", "KOSTWISSELKOERS")
             tableMapping.ColumnMappings.Add("KOSTBEDRAGEURO", "KOSTBEDRAGEURO")
+            tableMapping.ColumnMappings.Add("ROWOPEN", "ROWOPEN")
+            tableMapping.ColumnMappings.Add("ROWOPENBY", "ROWOPENBY")
+            tableMapping.ColumnMappings.Add("BTWREGEL", "BTWREGEL")
+            tableMapping.ColumnMappings.Add("CREDITCRNUMBER", "CREDITCRNUMBER")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -2011,7 +2304,7 @@ Namespace dsCostRevenueTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.dxCookBook.My.MySettings.Default.conSsl
+            Me._connection.ConnectionString = Global.dxCookBook.My.MySettings.Default.SSLTESTConnectionString1
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2020,22 +2313,23 @@ Namespace dsCostRevenueTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT KONUMMER, OPBRENGSTBTWBEDRAG, KOSTBTWBEDRAG, KOSTBTWCODE, OPBRENGSTBTWCODE"& _ 
-                ", DOSSIERNUMMER, KOSTCODE, OMSCHRIJVING, FACTUURVALUTA, KOSTPRIJS, KOSTAANTAL, K"& _ 
-                "OSTBEDRAG, KOSTVALUTA, KOSTRELATIE, KOSTOMSCHRIJVING, OPBRENGSTPRIJS, OPBRENGSTA"& _ 
-                "ANTAL, OPBRENGSTBEDRAG, OPBRENGSTVALUTA, OPBRENGSTRELATIE, OPBRENGSTOMSCHRIJVING"& _ 
-                ", MEDEWERKER, UFACTUURNUMMER, IFACTUURNUMMER, UFACTUURREGELNUMMER, IFACTUURREGEL"& _ 
-                "NUMMER, UFACTUURREGELPRINTEN, DATUM, FACTUREREN, KOSTWISSELKOERS, KOSTBEDRAGEURO"& _ 
-                " FROM dbo.vwCostRevenue"
-            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).CommandText = "dbo.spCostRevenue"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.StoredProcedure
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@RETURN_VALUE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.ReturnValue, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@CRCODE", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 10, 0, Nothing, Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As dsCostRevenue.vwCostRevenueDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As dsCostRevenue.spCostRevenueDataTable, ByVal CRCODE As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (CRCODE.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(CRCODE.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -2047,9 +2341,14 @@ Namespace dsCostRevenueTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As dsCostRevenue.vwCostRevenueDataTable
+        Public Overloads Overridable Function GetData(ByVal CRCODE As Global.System.Nullable(Of Integer)) As dsCostRevenue.spCostRevenueDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
-            Dim dataTable As dsCostRevenue.vwCostRevenueDataTable = New dsCostRevenue.vwCostRevenueDataTable()
+            If (CRCODE.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(CRCODE.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            End If
+            Dim dataTable As dsCostRevenue.spCostRevenueDataTable = New dsCostRevenue.spCostRevenueDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function

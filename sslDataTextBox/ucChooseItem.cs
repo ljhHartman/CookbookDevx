@@ -29,17 +29,17 @@ namespace sslDataTextBox
             /// On double click on the gridview get selected value and return to textbox
             GridView view = (GridView)sender;
             string strItem = view.FocusedValue.ToString();
-            clGridItems.strReturnValue = strItem;
+            ClGridItems.StrReturnValue = strItem;
             this.HideBeakForm();
         }
 
         private void UcChooseItem_Showing(object sender, FlyoutPanelEventArgs e)
         {
             /// On load/showing set the datasource for the gridview retrieved from the textbox class
-            gcItems.DataSource = clGridItems.blItems;
+            gcItems.DataSource = ClGridItems.BlItems;
         }
 
-        private void btnOk_Click(object sender, EventArgs e)
+        private void BtnOk_Click(object sender, EventArgs e)
         {
             /// On click get selected value and return to textbox
             if (gridView1.RowCount > 0)
@@ -47,20 +47,20 @@ namespace sslDataTextBox
                 int[] iRows = gridView1.GetSelectedRows();
                 int iRow = iRows[0];
                 gridView1.FocusedRowHandle = gridView1.GetVisibleRowHandle(iRow);
-                clGridItems.strReturnValue = gridView1.FocusedValue.ToString();
+                ClGridItems.StrReturnValue = gridView1.FocusedValue.ToString();
                 this.HideBeakForm();
             }
             else
             {
-                clGridItems.strReturnValue = null;
+                ClGridItems.StrReturnValue = null;
                 this.HideBeakForm();
             }
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
+        private void BtnCancel_Click(object sender, EventArgs e)
         {
             /// Return to textbox without a value
-            clGridItems.strReturnValue = null;
+            ClGridItems.StrReturnValue = null;
             this.HideBeakForm();
         }
     }

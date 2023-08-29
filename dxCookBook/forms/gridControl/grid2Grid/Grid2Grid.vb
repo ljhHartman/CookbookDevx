@@ -30,7 +30,7 @@ Public Class Grid2Grid
 
     Public Sub New()
         InitializeComponent()
-        Me.VwCostRevenueTableAdapter.Fill(Me.DsCostRevenue.vwCostRevenue) 'Fill GridView - CostRevenue 
+        'Me.CostRevenueTableAdapter.Fill(Me.DsCostRevenue.vwCostRevenue) 'Fill GridView - CostRevenue 
         Dim table1 As DataTable = GetCostRevenueTable() ' Fill Table1
         Dim bl As BindingList(Of NewIncomingInvoiceLine) = Table2Bindlist(table1) ' Fill BindingList 
         GridControl1.DataSource = bl ' Fill GriedView
@@ -40,12 +40,12 @@ Public Class Grid2Grid
 
     Private Function GetCostRevenueTable() As DataTable
         ' This Method, gets Database.Table: KostenOpbrengsten and fill into a table 
-        Dim sda As New SqlDataAdapter
-        Dim tb As DataTable = New DataTable()
+        Dim unused As New SqlDataAdapter
+        Dim tb As New DataTable()
         Dim con As New SqlConnection("Server=SQLCluster01\Burando; Database=SSLTEST; Trusted_Connection=True")
         Dim strSql = "Select * from vwCostRevenue WHERE DOSSIERNUMMER = 81732"
         con.Open()
-        sda = New SqlDataAdapter(strSql, con)
+        Dim sda As New SqlDataAdapter(strSql, con)
         sda.Fill(tb)
         Return tb
     End Function
@@ -54,7 +54,7 @@ Public Class Grid2Grid
 
     Private Function Table2Bindlist(tb As DataTable) As Object
         ' Fill GridView(New Incoming Invoice)  with the data from CostRevenue 
-        Dim bl As BindingList(Of NewIncomingInvoiceLine) = New BindingList(Of NewIncomingInvoiceLine)
+        Dim bl As New BindingList(Of NewIncomingInvoiceLine)
         For i As Integer = 1 To tb.Rows.Count - 1
             bl.Add(New NewIncomingInvoiceLine With {
             .IFACTUURREGELNUMMER = tb.Rows(0)("IFACTUURREGELNUMMER"),

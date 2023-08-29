@@ -2,6 +2,7 @@
 Imports System.IO
 Imports System.Reflection
 Imports System.Text.RegularExpressions
+Imports System.Timers
 Imports DevExpress.Utils.Drawing
 Imports DevExpress.Utils.Helpers
 Imports DevExpress.XtraEditors
@@ -10,10 +11,11 @@ Imports DevExpress.XtraGrid.Views.WinExplorer
 Imports Microsoft.Office.Interop
 
 Public Class BaseForm
-    Private Sub BaseForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
+    Public aTimer As Timer = New Timer() With {
+            .Interval = 1000,
+            .AutoReset = True,
+            .Enabled = True
+        }
 
 
 #Region "Utils"
@@ -51,6 +53,15 @@ Public Class BaseForm
         XtraMessageBox.Show(description, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
     End Sub
 
+    Sub OnTimedEvent(ByVal source As Object, ByVal e As ElapsedEventArgs)
+        ' Get current time
+        Print($"Pulse event: {e.SignalTime}")
+
+        ' Get new current form size
+        Dim formWidth As Integer = Me.Width
+        Dim formHeight As Integer = Me.Height
+        Print($"Current formsize: {formWidth}, {formHeight}")
+    End Sub
 
 #End Region
 
@@ -733,6 +744,10 @@ Public Class BaseForm
 #End Region
 
     End Class
+
+    Private Sub BaseForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 
 #End Region
 

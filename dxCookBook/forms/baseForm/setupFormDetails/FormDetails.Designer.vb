@@ -38,6 +38,7 @@ Partial Class FormDetails
         Me.btnSave = New System.Windows.Forms.Button()
         Me.SslDataGrid2 = New sslDataGrid.sslDataGrid()
         Me.SslGridView2 = New sslDataGrid.sslGridView()
+        CType(Me.aTimer, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.tePersonID.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.teLastName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.teFirstName.Properties, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -201,6 +202,7 @@ Partial Class FormDetails
         Me.Controls.Add(Me.lblPersonID)
         Me.Name = "FormDetails"
         Me.Text = "BeindingList"
+        CType(Me.aTimer, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.tePersonID.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.teLastName.Properties, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.teFirstName.Properties, System.ComponentModel.ISupportInitialize).EndInit()

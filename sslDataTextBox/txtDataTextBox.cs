@@ -11,9 +11,9 @@ using System.Windows.Forms;
 
 namespace sslDataTextBox
 {
-    public class txtDataTextBox : TextEdit
+    public class TxtDataTextBox : TextEdit
     {
-        public txtDataTextBox()
+        public TxtDataTextBox()
         {
             /// Set textbox settings and color
             this.Enabled = true;
@@ -120,10 +120,10 @@ namespace sslDataTextBox
         private void Fp_Hiding(object sender, FlyoutPanelEventArgs e)
         {
             /// On hiding the user control set the selected text
-            if (clGridItems.strReturnValue != null)
+            if (ClGridItems.StrReturnValue != null)
             {
-                this.Text = clGridItems.strReturnValue;
-                clGridItems.strReturnValue = null;
+                this.Text = ClGridItems.StrReturnValue;
+                ClGridItems.StrReturnValue = null;
             }
         }
 
@@ -260,8 +260,8 @@ namespace sslDataTextBox
             {
                 /// On key down (arrow key) iterate throug custom source downwards
                 bool bFound = false;
-                char[] chrSeparator = new char[] { '|' };
-                string[] strSeparator = new string[] { "Tag:" };
+                //char[] chrSeparator = new char[] { '|' };
+                //string[] strSeparator = new string[] { "Tag:" };
 
                 foreach (String item in this.MaskBox.AutoCompleteCustomSource)
                 {
@@ -349,9 +349,11 @@ namespace sslDataTextBox
             else if (e.KeyCode == System.Windows.Forms.Keys.F3)
             {
                 /// Show user control with information about the field and data
-                ucDataInformation fp = new ucDataInformation();
-                fp.OwnerControl = this;
-                fp.ParentForm = this.FindForm();
+                ucDataInformation fp = new ucDataInformation
+                {
+                    OwnerControl = this,
+                    ParentForm = this.FindForm()
+                };
                 fp.OptionsBeakPanel.CloseOnOuterClick = true;
                 fp.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Right;
                 fp.Options.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade;
@@ -380,11 +382,13 @@ namespace sslDataTextBox
         private void ShowDataList()
         {
             /// Set user control Flyout Panel
-            ucChooseItem fp = new ucChooseItem();
-            fp.Width = 650;
-            fp.Height = 500;
-            fp.OwnerControl = this;
-            fp.ParentForm = this.FindForm();
+            ucChooseItem fp = new ucChooseItem
+            {
+                Width = 650,
+                Height = 500,
+                OwnerControl = this,
+                ParentForm = this.FindForm()
+            };
             fp.OptionsBeakPanel.CloseOnOuterClick = true;
             fp.Options.AnchorType = DevExpress.Utils.Win.PopupToolWindowAnchor.Center;
             fp.Options.AnimationType = DevExpress.Utils.Win.PopupToolWindowAnimation.Fade;
@@ -398,7 +402,7 @@ namespace sslDataTextBox
             }
 
             /// Set global bindinglist for passing to user control
-            clGridItems.blItems = blItemsList;
+            ClGridItems.BlItems = blItemsList;
 
             /// Add event handler for hiding the control
             fp.Hiding += Fp_Hiding;

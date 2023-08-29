@@ -135,15 +135,15 @@ Public Class FormDetails
     End Class
 
     Class GridController1
-        Private gc As sslDataGrid.sslDataGrid
+        Private ReadOnly gc As sslDataGrid.SslDataGrid
         Private ReadOnly ds As Object
-        Private tba As Object
+        Private ReadOnly tba As Object
         Private dt As DataTable
-        Private gv As GridView
+        Private ReadOnly gv As GridView
 
 
 
-        Public Sub New(ByRef gridcontrol As sslDataGrid.sslDataGrid)
+        Public Sub New(ByRef gridcontrol As sslDataGrid.SslDataGrid)
             gc = gridcontrol
             ds = New dsAlphaTable.AlphaTableDataTable()
             tba = New dsAlphaTableTableAdapters.AlphaTableTableAdapter()
@@ -206,7 +206,6 @@ Public Class FormDetails
         End Sub
 
     End Class
-
 
 #End Region
 

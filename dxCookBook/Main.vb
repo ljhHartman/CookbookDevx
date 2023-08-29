@@ -27,6 +27,7 @@
         item.MenuItems.Add("Grid 2 Grid", New EventHandler(AddressOf Grid2Grid_Click))
         item.MenuItems.Add("Double Click Row", New EventHandler(AddressOf ClickRow_Click))
         item.MenuItems.Add("Add Row", New EventHandler(AddressOf AddRow_Click))
+        item.MenuItems.Add(" Cost & Revenue View", New EventHandler(AddressOf CostRevenueView_Click))
 
         ' Menu Item : Tabs
         item = New MenuItem("Tabs")
@@ -65,9 +66,10 @@
 
     Private Sub Blank_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New Autocomplete()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New Autocomplete With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
@@ -81,17 +83,19 @@
 
     Private Sub InputBox_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New InputBox()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New InputBox With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub TableMessageBox_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New TableMessageBox()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New TableMessageBox With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
@@ -103,65 +107,73 @@
 
     Private Sub Chartview_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New Chartview()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New Chartview With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub ComboBox_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New ComboBox()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New ComboBox With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub FlyoutPanel_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New FlyoutPanel()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New FlyoutPanel With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub RibbonForm_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New RibbonControl()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New RibbonControl With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub ErrorIconTextBox_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New ErrorIconTextBox()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New ErrorIconTextBox With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub UploadImage_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New UploadImage()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New UploadImage With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub Manualview_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New Manualview()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New Manualview With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub Autocomplete_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New Autocomplete()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New Autocomplete With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
@@ -174,17 +186,19 @@
 
     Private Sub DataTab2Tab_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New DataTab2Tab()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New DataTab2Tab With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub CloseTabs_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New CloseTabs()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New CloseTabs With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
@@ -196,51 +210,67 @@
 
     Private Sub SelectRowsByCheckbox_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New SelectRowsByCheckbox()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New SelectRowsByCheckbox With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub GridControlFooterSum_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New GridControlFooterSum()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New GridControlFooterSum With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub Grid2Grid_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New Grid2Grid()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New Grid2Grid With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub FilesViewer_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New FilesViewer()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New FilesViewer With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub ClickRow_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New ClickRow()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New ClickRow With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub AddRow_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New AddRowDataGrid()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New AddRowDataGrid With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
+
+    Private Sub CostRevenueView_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New CostRevenueView With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
+        childForm.Show()
+    End Sub
+
 
 #End Region
 
@@ -250,43 +280,49 @@
 
     Private Sub BaseForm_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New BaseForm()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New BaseForm With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub InheritBaseForm_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New InheritBaseForm()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New InheritBaseForm With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub SetupDetailForm_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New FormDetails()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New FormDetails With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub SimpleFormLayout_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New SimpleFormLayout()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New SimpleFormLayout With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
 
     Private Sub TimerTick_Click(sender As Object, e As EventArgs)
         ' Set Form Constructor
-        Dim childForm As New TimerTick()
-        childForm.MdiParent = Me
-        childForm.WindowState = FormWindowState.Maximized
+        Dim childForm As New TimerTick With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
         childForm.Show()
     End Sub
+
 
 #End Region
 

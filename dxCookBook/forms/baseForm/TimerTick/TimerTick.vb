@@ -2,8 +2,6 @@
 
 Public Class TimerTick
     Private aTimer As Timer
-    Private formWidth As Integer = Me.Width
-    Private formHeight As Integer = Me.Height
 
 
 
@@ -26,8 +24,8 @@ Public Class TimerTick
         Console.WriteLine($"The Elapsed event was raised at {e.SignalTime}")
 
         ' Get new current form size
-        formWidth = Me.Width
-        formHeight = Me.Height
+        Dim formWidth As Integer = Me.Width
+        Dim formHeight As Integer = Me.Height
         Console.WriteLine($"Current from size: {formWidth}, {formHeight}")
     End Sub
 

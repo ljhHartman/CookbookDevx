@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace sslDataTextBox
 {
-    class clGridItems
+    class ClGridItems
     {
-        public static string strReturnValue { get; set; }
+        public static string StrReturnValue { get; set; }
 
-        public static BindingList<SelectItems> blItems { get; set; }
+        public static BindingList<SelectItems> BlItems { get; set; }
     }
 
     public class SelectItems

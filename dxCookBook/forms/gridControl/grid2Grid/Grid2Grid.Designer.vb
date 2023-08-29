@@ -41,7 +41,7 @@ Partial Class Grid2Grid
         Me.colGROOTBOEKNUMMER = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.GridControl2 = New DevExpress.XtraGrid.GridControl()
         Me.VwCostRevenueBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DsCostRevenue = New dxCookBook.dsCostRevenue()
+        'Me.DsCostRevenue = New dxCookBook.dsCostRevenue()
         Me.GridView2 = New DevExpress.XtraGrid.Views.Grid.GridView()
         Me.colKONUMMER = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.colOPBRENGSTBTWBEDRAG = New DevExpress.XtraGrid.Columns.GridColumn()
@@ -76,7 +76,7 @@ Partial Class Grid2Grid
         Me.colKOSTBEDRAGEURO = New DevExpress.XtraGrid.Columns.GridColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.VwCostRevenueTableAdapter = New dxCookBook.dsCostRevenueTableAdapters.vwCostRevenueTableAdapter()
+        'Me.VwCostRevenueTableAdapter = New dxCookBook.dsCostRevenueTableAdapters.vwCostRevenueTableAdapter()
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GridControl2, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -494,7 +494,7 @@ Partial Class Grid2Grid
         '
         'VwCostRevenueTableAdapter
         '
-        Me.VwCostRevenueTableAdapter.ClearBeforeFill = True
+        ' Me.VwCostRevenueTableAdapter.ClearBeforeFill = True
         '
         'Grid2Grid
         '
@@ -574,5 +574,5 @@ Partial Class Grid2Grid
     Friend WithEvents Label2 As Label
     Friend WithEvents DsCostRevenue As dsCostRevenue
     Friend WithEvents VwCostRevenueBindingSource As BindingSource
-    Friend WithEvents VwCostRevenueTableAdapter As dsCostRevenueTableAdapters.vwCostRevenueTableAdapter
+    'Friend WithEvents VwCostRevenueTableAdapter As dsCostRevenueTableAdapters.vwCostRevenueTa 'dsCostRevenueTableAdapters.vwCostRevenueTableAdapter
 End Class

@@ -90,7 +90,7 @@ Public Class ucFileManager
         Debug.WriteLine(vbCrLf & $"[METHOD] - {MethodBase.GetCurrentMethod().Name}")
         Dim entries As IEnumerable(Of FileSystemEntry) = GetSelectedEntries()
         For Each entry As FileSystemEntry In entries
-            entry.ShowProperties()
+            'entry.ShowProperties()
         Next
     End Sub
 

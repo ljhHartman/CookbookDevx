@@ -24,6 +24,7 @@ Partial Class InheritBaseForm
     Private Sub InitializeComponent()
         Me.btnWarningMessageBox = New System.Windows.Forms.Button()
         Me.btnPrint = New System.Windows.Forms.Button()
+        CType(Me.aTimer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'btnWarningMessageBox
@@ -53,6 +54,7 @@ Partial Class InheritBaseForm
         Me.Controls.Add(Me.btnWarningMessageBox)
         Me.Name = "InheritBaseForm"
         Me.Text = "InheritBaseForm"
+        CType(Me.aTimer, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
