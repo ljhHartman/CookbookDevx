@@ -1,9 +1,9 @@
 ﻿Imports System.Data.SqlClient
 Imports System.Reflection
 Imports DevExpress.XtraEditors
-Imports System.Web.Services
-Imports DevExpress.XtraExport.Helpers
 Imports DevExpress.XtraGrid.Views.Grid
+
+
 
 Public Class CostRevenueView
     Inherits BaseForm
@@ -19,7 +19,6 @@ Public Class CostRevenueView
 #Region "Classes"
 
     Public Class CostRevenueView1
-        Private ReadOnly CrCode As Integer = 1950 ' a.k.a Konummer
         Private bReadOnly As Boolean = False
         Private WithEvents Gc As sslDataGrid.sslDataGrid
         Private ReadOnly Dt As DataTable
@@ -42,7 +41,7 @@ Public Class CostRevenueView
             Dt = New DataTable
 
             ' Fill table details
-            Tba.Fill(Ds, CrCode)
+            Tba.Fill(Ds, 1950) ' a.k.a Konummer
             Dt = Ds
             Gc.DataSource = Dt
 
@@ -164,6 +163,7 @@ Public Class CostRevenueView
 #End Region ' Notes
 
     End Class
+
 
 #End Region ' Classes
 

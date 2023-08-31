@@ -17,6 +17,7 @@
         item.MenuItems.Add("Setup Detail Form", New EventHandler(AddressOf SetupDetailForm_Click))
         item.MenuItems.Add("Simple Form Layout", New EventHandler(AddressOf SimpleFormLayout_Click))
         item.MenuItems.Add("Timer Tick", New EventHandler(AddressOf TimerTick_Click))
+        item.MenuItems.Add("Inherit GridControl", New EventHandler(AddressOf InheritGridControl_Click))
 
         ' Menu Item : Grid Control
         item = New MenuItem("GridControl")
@@ -323,6 +324,14 @@
         childForm.Show()
     End Sub
 
+    Private Sub InheritGridControl_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New InheritGridControl With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
+        childForm.Show()
+    End Sub
 
 #End Region
 

@@ -44,13 +44,13 @@ Partial Class GridControlFooterSum
         Me.GridView1.OptionsView.ShowFooter = True
         Me.GridView1.OptionsView.ShowGroupPanel = False
         '
-        'GridControlFooter
+        'GridControlFooterSum
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(842, 519)
         Me.Controls.Add(Me.GridControl1)
-        Me.Name = "GridControlFooter"
+        Me.Name = "GridControlFooterSum"
         Me.Text = "GridControlFooter"
         CType(Me.GridControl1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GridView1, System.ComponentModel.ISupportInitialize).EndInit()

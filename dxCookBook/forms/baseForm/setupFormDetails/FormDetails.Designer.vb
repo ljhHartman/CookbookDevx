@@ -49,6 +49,10 @@ Partial Class FormDetails
         CType(Me.SslGridView2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
+        'aTimer
+        '
+        Me.aTimer.Enabled = False
+        '
         'lblPersonID
         '
         Me.lblPersonID.AutoSize = True

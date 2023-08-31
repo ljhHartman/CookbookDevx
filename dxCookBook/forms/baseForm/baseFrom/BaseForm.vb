@@ -1,4 +1,5 @@
 ﻿Imports System.Collections.Specialized
+Imports System.Data.SqlClient
 Imports System.IO
 Imports System.Reflection
 Imports System.Text.RegularExpressions
@@ -7,8 +8,11 @@ Imports DevExpress.Utils.Drawing
 Imports DevExpress.Utils.Helpers
 Imports DevExpress.XtraEditors
 Imports DevExpress.XtraGrid.Columns
+Imports DevExpress.XtraGrid.Views.Grid
 Imports DevExpress.XtraGrid.Views.WinExplorer
 Imports Microsoft.Office.Interop
+
+
 
 Public Class BaseForm
     Public aTimer As Timer = New Timer() With {
@@ -68,6 +72,156 @@ Public Class BaseForm
 
 
 #Region " Classes"
+
+    Class BaseGridControl
+        Property Gc As sslDataGrid.sslDataGrid
+        Property Ds As Object
+        Property Ta As Object
+        Property Gv As GridView
+        Private ReadOnly Dt As DataTable
+
+        Private ReadOnly Cms As New ContextMenuStrip()
+        Private WithEvents CmsItemOpen As New ToolStripMenuItem()
+        Private WithEvents CmsItemNew As New ToolStripMenuItem()
+        Private WithEvents CmsItemSort As New ToolStripMenuItem()
+        Private WithEvents CmsItemDelete As New ToolStripMenuItem()
+
+        Sub New(gc As sslDataGrid.sslDataGrid, ds As Object, ta As Object)
+            Me.Gc = gc
+            Me.Ds = ds
+            Me.Ta = ta
+            Gv = gc.MainView
+
+            ' Fill Table
+            Me.Ta.Fill(ds)
+            Dt = Me.Ds
+            Me.Gc.DataSource = Dt
+
+            ' Grid Control Settings
+            Gv.OptionsView.ColumnAutoWidth = False
+            Gv.HorzScrollVisibility = True
+            Gv.OptionsBehavior.Editable = False
+            Gv.OptionsView.ShowGroupPanel = False
+            Gv.OptionsFind.AllowFindPanel = True
+            Gv.OptionsFind.AlwaysVisible = True
+            Gv.OptionsView.ShowFooter = True
+
+            ' ContextMenuStrip Settings
+            CmsItemOpen.Name = "Open"
+            CmsItemOpen.Text = "Open"
+            CmsItemNew.Name = "New"
+            CmsItemNew.Text = "New"
+            CmsItemDelete.Name = "Delete"
+            CmsItemDelete.Text = "Delete"
+            Cms.Items.Add(CmsItemOpen)
+            Cms.Items.Add(CmsItemNew)
+            Cms.Items.Add(CmsItemDelete)
+
+            ' Handlers
+            AddHandler gc.DoubleClick, AddressOf CmsItemOpen_Click
+            AddHandler Gv.Click, AddressOf ShowContextMenuStrip_RightClick
+            AddHandler CmsItemOpen.Click, AddressOf CmsItemOpen_Click
+            AddHandler CmsItemNew.Click, AddressOf CmsItemNew_Click
+            AddHandler CmsItemDelete.Click, AddressOf CmsItemDelete_Click
+        End Sub
+
+
+
+#Region "Handlers"
+
+        Private Sub ShowContextMenuStrip_RightClick(sender As Object, e As DevExpress.Utils.DXMouseEventArgs)
+            Print("Right mouse click handler, show popup-menu")
+            Dim dataRow As DataRow = Gv.GetFocusedDataRow()
+            Try
+                If e.Button = MouseButtons.Right And dataRow("konummer") > 0 Then Cms.Show(MousePosition)
+            Catch ex As NullReferenceException
+                Print($"No row was selected: {ex.Message}")
+            End Try
+        End Sub
+
+        Private Sub CmsItemOpen_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Dim dataRow As DataRow = Gv.GetFocusedDataRow()
+            MsgBox($"Selected row id: {dataRow("Konummer")}")
+            ' GridView3_DoubleClick
+        End Sub
+
+        Private Sub CmsItemNew_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Dim dataRow As DataRow = Gv.GetFocusedDataRow()
+            MsgBox($"New Row")
+            ' BtnNewCostRevenue_Click
+        End Sub
+
+        Private Sub CmsItemSort_Click(ByVal sender As Object, ByVal e As EventArgs)
+            Dim dataRow As DataRow = Gv.GetFocusedDataRow()
+            MsgBox($"Sort")
+        End Sub
+
+        Private Sub CmsItemDelete_Click(sender As Object, e As EventArgs)
+            ' Get Selected Row
+            Dim dataRow As DataRow = Gv.GetFocusedDataRow()
+
+            ' Exectue StoredProcedure
+            Dim con As New SqlConnection(My.Settings.conSsl)
+            Dim cmd As New SqlCommand("spDeleteCostRevenue", con) With {
+                .CommandType = CommandType.StoredProcedure
+            }
+            cmd.Parameters.AddWithValue("@CRCODE", dataRow("Konummer"))
+            con.Open()
+            cmd.ExecuteNonQuery()
+
+            ' Check if Execute Query was successful
+            If cmd.ExecuteNonQuery() > 0 Then
+                dataRow.Delete()
+            Else
+                XtraMessageBox.Show("Delete row was not successful", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            End If
+            con.Close()
+        End Sub
+
+#End Region ' Handlers
+
+
+
+#Region "Methods"
+
+        Private Sub Print(ByVal description As String)
+            ' Get parent method
+            Dim sf As New StackFrame(1, True)
+            Dim parentMethod As MethodBase = sf.GetMethod()
+            Dim dots As String = New String(".", 50 - parentMethod.Name.Count())
+            ' Print
+            Debug.WriteLine($"[INFO]...{parentMethod.Name}:{dots}{description}")
+        End Sub
+
+#End Region ' Methods
+
+
+
+#Region "Notes"
+
+        '---------------------------------------
+        'Initialize Class Example
+        '---------------------------------------
+        'BaseGridControlExmaple = New BaseGridControl(
+        '   SslDataGrid1,
+        '   New dsAlphaTable.AlphaTableDataTable(),
+        '   New dsAlphaTableTableAdapters.AlphaTableTableAdapter()
+        '   )
+
+        '---------------------------------------
+        ' Modify GridView Settings in Child Class
+        '---------------------------------------
+        'BaseGridControlExmaple. Gv.OptionsView.ColumnAutoWidth = False
+        'BaseGridControlExmaple.Gv.HorzScrollVisibility = True
+        'BaseGridControlExmaple.Gv.OptionsBehavior.Editable = False
+        'BaseGridControlExmaple.Gv.OptionsView.ShowGroupPanel = False
+        'BaseGridControlExmaple.Gv.OptionsFind.AllowFindPanel = True
+        'BaseGridControlExmapleGv.OptionsFind.AlwaysVisible = True
+        'BaseGridControlExmaple.Gv.OptionsView.ShowFooter = True
+
+#End Region
+    End Class
+
 
     Class FileManagerView
         Implements IFileSystemNavigationSupports
@@ -744,10 +898,6 @@ Public Class BaseForm
 #End Region
 
     End Class
-
-    Private Sub BaseForm_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
 
 #End Region
 

@@ -1,5 +1,6 @@
 ﻿Imports System.ComponentModel
 Imports DevExpress.Data
+Imports DevExpress.XtraGrid
 Imports DevExpress.XtraGrid.Columns
 Imports DevExpress.XtraGrid.Views.Grid
 
@@ -35,11 +36,19 @@ Public Class GridControlFooterSum
 
         ' Enable Footer
         GridView1.OptionsView.ShowFooter = True
-        Dim column As GridColumn = GridView1.Columns("Cost")
-        column.SummaryItem.SummaryType = SummaryItemType.Custom
+        'Dim column As GridColumn = GridView1.Columns("Cost")
+        'column.SummaryItem.SummaryType = SummaryItemType.Custom
 
-        'Events
-        AddHandler GridView1.SelectionChanged, AddressOf GridView1_SelectionChanged
+        ''Events
+        'AddHandler GridView1.SelectionChanged, AddressOf GridView1_SelectionChanged
+        'AddHandler GridView1.CustomSummaryCalculate, AddressOf GridView1_CustomSummaryCalculate
+
+        Dim sumCostRevenue As New GridColumnSummaryItem With {
+           .SummaryType = SummaryItemType.Custom,
+           .Tag = "1"
+       }
+        GridView1.Columns("COST").Summary.Add(sumCostRevenue)
+
         AddHandler GridView1.CustomSummaryCalculate, AddressOf GridView1_CustomSummaryCalculate
 
     End Sub
@@ -63,15 +72,27 @@ Public Class GridControlFooterSum
 
 
     Private Sub GridView1_CustomSummaryCalculate(sender As Object, e As DevExpress.Data.CustomSummaryEventArgs)
-        'This Event, select the condition of the CustomSummaryProcess and update the TotalValue
-        Select Case e.SummaryProcess
-            Case DevExpress.Data.CustomSummaryProcess.Start
-                e.TotalValue = 0
-            Case DevExpress.Data.CustomSummaryProcess.Calculate
-                e.TotalValue = $"{SelectedRows} Selected, Total Cost: {SUMSelection}"
-            Case DevExpress.Data.CustomSummaryProcess.Finalize
-                e.TotalValueReady = True
-        End Select
+        ''This Event, select the condition of the CustomSummaryProcess and update the TotalValue
+        'Select Case e.SummaryProcess
+        '    Case DevExpress.Data.CustomSummaryProcess.Start
+        '        e.TotalValue = 0
+        '    Case DevExpress.Data.CustomSummaryProcess.Calculate
+        '        e.TotalValue = $"{SelectedRows} Selected, Total Cost: {SUMSelection}"
+        '    Case DevExpress.Data.CustomSummaryProcess.Finalize
+        '        e.TotalValueReady = True
+        'End Select
+        Dim view As Views.Grid.GridView = TryCast(sender, Views.Grid.GridView)
+        Dim item As GridColumnSummaryItem = TryCast(e.Item, GridColumnSummaryItem)
+
+
+
+        If item.Tag.ToString() = "1" Then
+            e.TotalValue = Integer.Parse(view.Columns("colKOSTAANTAL").SummaryText)
+        Else
+            e.TotalValue = Integer.Parse(view.Columns(0).SummaryText)
+        End If
+
+        view.UpdateSummary()
     End Sub
 
 End Class
