@@ -207,6 +207,10 @@ Public Class FormDetails
 
     End Class
 
+    Private Sub FormDetails_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
 #End Region
 
 End Class

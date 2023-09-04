@@ -28,7 +28,8 @@
         item.MenuItems.Add("Grid 2 Grid", New EventHandler(AddressOf Grid2Grid_Click))
         item.MenuItems.Add("Double Click Row", New EventHandler(AddressOf ClickRow_Click))
         item.MenuItems.Add("Add Row", New EventHandler(AddressOf AddRow_Click))
-        item.MenuItems.Add(" Cost & Revenue View", New EventHandler(AddressOf CostRevenueView_Click))
+        item.MenuItems.Add("Cost & Revenue View", New EventHandler(AddressOf CostRevenueView_Click))
+        item.MenuItems.Add("Show icon infromt on row", New EventHandler(AddressOf RowIcon_Click))
 
         ' Menu Item : Tabs
         item = New MenuItem("Tabs")
@@ -59,7 +60,51 @@
         Me.Menu.MenuItems.Add(item)
         item.MenuItems.Add("Blank", New EventHandler(AddressOf Blank_Click))
 
+        ' Menu Item : MSSMS
+        item = New MenuItem("MSSMS")
+        Me.Menu.MenuItems.Add(item)
+        item.MenuItems.Add("Sql Command", New EventHandler(AddressOf SqlCommand_Click))
+        item.MenuItems.Add("Sql Stored Procedure", New EventHandler(AddressOf SqlStoredProcedure_Click))
+        item.MenuItems.Add("Sql Stored View", New EventHandler(AddressOf SqlView_Click))
+
     End Sub
+
+
+
+#Region "mssms"
+
+    Private Sub SqlView_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New SqlView With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
+        childForm.Show()
+    End Sub
+
+
+
+    Private Sub SqlStoredProcedure_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New SqlStoredProcedure With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
+        childForm.Show()
+    End Sub
+
+
+
+    Private Sub SqlCommand_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New SqlCommand With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
+        childForm.Show()
+    End Sub
+
+#End Region
 
 
 
@@ -272,6 +317,15 @@
         childForm.Show()
     End Sub
 
+    '
+    Private Sub RowIcon_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New RowIcon With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
+        childForm.Show()
+    End Sub
 
 #End Region
 
@@ -332,6 +386,8 @@
         }
         childForm.Show()
     End Sub
+
+
 
 #End Region
 

@@ -73,16 +73,16 @@ Public Class ucSelectDepotCode
             ' Save RelationCode and Code into Relatie... Table
             Dim con As SqlConnection = New SqlConnection(My.Settings.conSsl)
             con.Open()
-            Dim cmd As SqlCommand = New SqlCommand("spRelationDepot", con)
-            cmd.CommandType = CommandType.StoredProcedure
-            cmd.Parameters.Add(New SqlParameter("@SELECT", SqlDbType.NVarChar))
-            cmd.Parameters.Add(New SqlParameter("@RELATIECODE", SqlDbType.NVarChar))
-            cmd.Parameters.Add(New SqlParameter("@CODE", SqlDbType.NVarChar))
-            cmd.Parameters(0).Value = "Depot" 'Depot, Agent, Location
-            cmd.Parameters(1).Value = relationCode.ToString
-            cmd.Parameters(2).Value = code.ToString 'DataTextBox selection
+            'Dim cmd As SqlCommand = New SqlCommand("spRelationDepot", con)
+            'cmd.CommandType = CommandType.StoredProcedure
+            'cmd.Parameters.Add(New SqlParameter("@SELECT", SqlDbType.NVarChar))
+            'cmd.Parameters.Add(New SqlParameter("@RELATIECODE", SqlDbType.NVarChar))
+            'cmd.Parameters.Add(New SqlParameter("@CODE", SqlDbType.NVarChar))
+            'cmd.Parameters(0).Value = "Depot" 'Depot, Agent, Location
+            'cmd.Parameters(1).Value = relationCode.ToString
+            'cmd.Parameters(2).Value = code.ToString 'DataTextBox selection
 
-            cmd.ExecuteNonQuery()
+            'cmd.ExecuteNonQuery()
 
             dtbValue.Text = Nothing
         End If

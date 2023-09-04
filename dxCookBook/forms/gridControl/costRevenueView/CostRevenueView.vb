@@ -110,21 +110,21 @@ Public Class CostRevenueView
                 Dim dataRow As DataRow = Gv.GetFocusedDataRow()
 
                 ' Exectue StoredProcedure
-                Dim con As New SqlConnection(My.Settings.conSsl)
-                Dim cmd As New SqlCommand("spDeleteCostRevenue", con) With {
-                    .CommandType = CommandType.StoredProcedure
-                }
-                cmd.Parameters.AddWithValue("@CRCODE", dataRow("Konummer"))
-                con.Open()
-                cmd.ExecuteNonQuery()
+                'Dim con As New SqlConnection(My.Settings.conSsl)
+                'Dim cmd As New SqlCommand("spDeleteCostRevenue", con) With {
+                '    .CommandType = CommandType.StoredProcedure
+                '}
+                'cmd.Parameters.AddWithValue("@CRCODE", dataRow("Konummer"))
+                'con.Open()
+                'cmd.ExecuteNonQuery()
 
-                ' Check if Execute Query was successful
-                If cmd.ExecuteNonQuery() > 0 Then
-                    dataRow.Delete()
-                Else
-                    XtraMessageBox.Show("Delete row was not successful", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                End If
-                con.Close()
+                '' Check if Execute Query was successful
+                'If cmd.ExecuteNonQuery() > 0 Then
+                '    dataRow.Delete()
+                'Else
+                '    XtraMessageBox.Show("Delete row was not successful", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                'End If
+                'con.Close()
             End If
         End Sub
 
@@ -163,6 +163,10 @@ Public Class CostRevenueView
 #End Region ' Notes
 
     End Class
+
+    Private Sub CostRevenueView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
 
 
 #End Region ' Classes

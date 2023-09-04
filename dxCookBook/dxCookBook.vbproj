@@ -232,6 +232,30 @@
     <Compile Include="forms\gridControl\costRevenueView\dsCostRevenue.vb">
       <DependentUpon>dsCostRevenue.xsd</DependentUpon>
     </Compile>
+    <Compile Include="forms\gridControl\rowIcon\RowIcon.Designer.vb">
+      <DependentUpon>RowIcon.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\gridControl\rowIcon\RowIcon.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\mssms\SqlCommand.Designer.vb">
+      <DependentUpon>SqlCommand.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\mssms\SqlCommand.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\mssms\SqlStoredProcedure.Designer.vb">
+      <DependentUpon>SqlStoredProcedure.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\mssms\SqlStoredProcedure.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\mssms\SqlView.Designer.vb">
+      <DependentUpon>SqlView.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\mssms\SqlView.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="old\DragDrop2\DropFiles.Designer.vb">
       <DependentUpon>DropFiles.vb</DependentUpon>
     </Compile>
@@ -500,6 +524,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\gridControl\costRevenueView\CostRevenueView.resx">
       <DependentUpon>CostRevenueView.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\gridControl\rowIcon\RowIcon.resx">
+      <DependentUpon>RowIcon.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\mssms\SqlCommand.resx">
+      <DependentUpon>SqlCommand.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\mssms\SqlStoredProcedure.resx">
+      <DependentUpon>SqlStoredProcedure.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\mssms\SqlView.resx">
+      <DependentUpon>SqlView.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="old\DragDrop2\DropFiles.resx">
       <DependentUpon>DropFiles.vb</DependentUpon>

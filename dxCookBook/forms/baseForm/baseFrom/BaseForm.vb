@@ -160,22 +160,22 @@ Public Class BaseForm
             ' Get Selected Row
             Dim dataRow As DataRow = Gv.GetFocusedDataRow()
 
-            ' Exectue StoredProcedure
-            Dim con As New SqlConnection(My.Settings.conSsl)
-            Dim cmd As New SqlCommand("spDeleteCostRevenue", con) With {
-                .CommandType = CommandType.StoredProcedure
-            }
-            cmd.Parameters.AddWithValue("@CRCODE", dataRow("Konummer"))
-            con.Open()
-            cmd.ExecuteNonQuery()
+            '' Exectue StoredProcedure
+            'Dim con As New SqlConnection(My.Settings.conSsl)
+            'Dim cmd As New SqlCommand("spDeleteCostRevenue", con) With {
+            '    .CommandType = CommandType.StoredProcedure
+            '}
+            'cmd.Parameters.AddWithValue("@CRCODE", dataRow("Konummer"))
+            'con.Open()
+            'cmd.ExecuteNonQuery()
 
-            ' Check if Execute Query was successful
-            If cmd.ExecuteNonQuery() > 0 Then
-                dataRow.Delete()
-            Else
-                XtraMessageBox.Show("Delete row was not successful", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-            End If
-            con.Close()
+            '' Check if Execute Query was successful
+            'If cmd.ExecuteNonQuery() > 0 Then
+            '    dataRow.Delete()
+            'Else
+            '    XtraMessageBox.Show("Delete row was not successful", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            'End If
+            'con.Close()
         End Sub
 
 #End Region ' Handlers
