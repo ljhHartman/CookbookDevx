@@ -238,10 +238,21 @@
     <Compile Include="forms\gridControl\rowIcon\RowIcon.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\mssms\ds\dsPersons.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsPersons.xsd</DependentUpon>
+    </Compile>
     <Compile Include="forms\mssms\SqlCommand.Designer.vb">
       <DependentUpon>SqlCommand.vb</DependentUpon>
     </Compile>
     <Compile Include="forms\mssms\SqlCommand.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\mssms\SqlDataset.Designer.vb">
+      <DependentUpon>SqlDataset.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\mssms\SqlDataset.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\mssms\SqlStoredProcedure.Designer.vb">
@@ -531,6 +542,9 @@
     <EmbeddedResource Include="forms\mssms\SqlCommand.resx">
       <DependentUpon>SqlCommand.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\mssms\SqlDataset.resx">
+      <DependentUpon>SqlDataset.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\mssms\SqlStoredProcedure.resx">
       <DependentUpon>SqlStoredProcedure.vb</DependentUpon>
     </EmbeddedResource>
@@ -735,6 +749,17 @@
     </None>
     <None Include="forms\gridControl\costRevenueView\dsCostRevenue.xss">
       <DependentUpon>dsCostRevenue.xsd</DependentUpon>
+    </None>
+    <None Include="forms\mssms\ds\dsPersons.xsc">
+      <DependentUpon>dsPersons.xsd</DependentUpon>
+    </None>
+    <None Include="forms\mssms\ds\dsPersons.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsPersons.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="forms\mssms\ds\dsPersons.xss">
+      <DependentUpon>dsPersons.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

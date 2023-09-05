@@ -29,8 +29,14 @@ Public Class SqlStoredProcedure
         ' open connections
         con.Open()
 
-        ' execute procedure
-        cmd.ExecuteNonQuery()
+        Try
+            ' execute procedure
+            cmd.ExecuteNonQuery()
+        Catch ex As SqlException
+            Print($"SqlException: {ex}")
+        Catch ex As Exception
+            Print($"Exception: {ex}")
+        End Try
 
         ' close connection
         con.Close()
@@ -55,12 +61,17 @@ Public Class SqlStoredProcedure
         ' open connections
         con.Open()
 
-        ' execute procedure
-        cmd.ExecuteNonQuery()
+        Try
+            ' execute procedure
+            cmd.ExecuteNonQuery()
+        Catch ex As SqlException
+            Print($"SqlException: {ex}")
+        Catch ex As Exception
+            Print($"Exception: {ex}")
+        End Try
 
         ' close connection
         con.Close()
-
     End Sub
 
 
@@ -82,16 +93,17 @@ Public Class SqlStoredProcedure
         ' open connections
         con.Open()
 
-        ' execute procedure
         Try
+            ' execute procedure
             cmd.ExecuteNonQuery()
         Catch ex As SqlException
-            Print("Cannot insert duplicate key")
+            Print($"SqlException: {ex}")
+        Catch ex As Exception
+            Print($"Exception: {ex}")
         End Try
 
         ' close connection
         con.Close()
-
     End Sub
 
 
@@ -113,37 +125,49 @@ Public Class SqlStoredProcedure
         ' open connection
         con.Open()
 
-        ' execute queary
-        Dim reader As SqlDataReader = cmd.ExecuteReader()
-        While reader.Read()
-            Dim column1 As Integer = reader.GetInt64(0)
-            Dim column2 As String = reader.GetString(1)
-            Dim column3 As String = reader.GetString(2)
+        Try
+            ' execute queary
+            Dim reader As SqlDataReader = cmd.ExecuteReader()
+            While reader.Read()
+                Dim column1 As Integer = reader.GetInt64(0)
+                Dim column2 As String = reader.GetString(1)
+                Dim column3 As String = reader.GetString(2)
 
-            Print($"{column1}, {column2}, {column3}")
-        End While
+                Print($"{column1}, {column2}, {column3}")
+            End While
+        Catch ex As SqlException
+            Print($"SqlException: {ex}")
+        Catch ex As Exception
+            Print($"Exception: {ex}")
+        End Try
 
         ' close connection
         con.Close()
 
         ' OPTIONS 2 ########################################
 
-        ' store reqeust data
-        Dim adapter As New SqlDataAdapter With {
+        Try
+            ' store reqeust data
+            Dim adapter As New SqlDataAdapter With {
             .SelectCommand = cmd
-        }
+            }
 
-        ' create dataset
-        Dim ds As New DataSet
+            ' create dataset
+            Dim ds As New DataSet
 
-        ' fill dataset
-        adapter.Fill(ds)
+            ' fill dataset
+            adapter.Fill(ds)
 
-        ' print dataset
-        For Each row As DataRow In ds.Tables(0).Rows
-            Print($"{row(0)}, {row(1)}, {row(2)}")
-        Next
+            ' print dataset
+            For Each row As DataRow In ds.Tables(0).Rows
+                Print($"{row(0)}, {row(1)}, {row(2)}")
+            Next
 
+        Catch ex As SqlException
+            Print($"SqlException: {ex}")
+        Catch ex As Exception
+            Print($"Exception: {ex}")
+        End Try
     End Sub
 
 

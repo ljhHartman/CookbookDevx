@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class SqlView
+Partial Class SqlDataset
     Inherits BaseForm
 
     'Form overrides dispose to clean up the component list.
@@ -27,7 +27,6 @@ Partial Class SqlView
         Me.btnUpdateStatement = New System.Windows.Forms.Button()
         Me.btnInsertStatement = New System.Windows.Forms.Button()
         Me.btnReadStatement = New System.Windows.Forms.Button()
-        CType(Me.aTimer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -55,7 +54,7 @@ Partial Class SqlView
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel1.RowStyles.Add(New System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.0!))
         Me.TableLayoutPanel1.Size = New System.Drawing.Size(800, 450)
-        Me.TableLayoutPanel1.TabIndex = 2
+        Me.TableLayoutPanel1.TabIndex = 1
         '
         'btnDeleteStatement
         '
@@ -93,15 +92,14 @@ Partial Class SqlView
         Me.btnReadStatement.Text = "Read Statement"
         Me.btnReadStatement.UseVisualStyleBackColor = True
         '
-        'SqlView
+        'SqlDataset
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
         Me.Controls.Add(Me.TableLayoutPanel1)
-        Me.Name = "SqlView"
-        Me.Text = "SqlView"
-        CType(Me.aTimer, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Name = "SqlDataset"
+        Me.Text = "SqlDataset"
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 

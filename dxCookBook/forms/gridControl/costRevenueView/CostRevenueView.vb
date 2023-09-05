@@ -164,10 +164,6 @@ Public Class CostRevenueView
 
     End Class
 
-    Private Sub CostRevenueView_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-    End Sub
-
 
 #End Region ' Classes
 
