@@ -20,7 +20,7 @@ Public Class SqlView
         ' connect to database
         Dim con As New SqlConnection(My.Settings.conSsl)
 
-        ' set query
+        ' set command
         Dim cmd = con.CreateCommand
         cmd.CommandText = "INSERT INTO vwPersons(id,first_name,last_name,name,radius) VALUES(@value1, @value2, @value3, @value4, @value5)"
         cmd.Parameters.AddWithValue("@value1", 69)
@@ -36,7 +36,7 @@ Public Class SqlView
             ' Exectue query
             cmd.ExecuteNonQuery()
         Catch ex As SqlException
-            Print($"SqlException: {ex}")
+            Print($"SqlException: ITS NOT POSSIBLE TO UPDATE A VIEW, ITS READ ONLY!!!")
         Catch ex As Exception
             Print($"Exception: {ex}")
         End Try
@@ -55,10 +55,7 @@ Public Class SqlView
 
         ' set query
         Dim cmd = con.CreateCommand
-        cmd.CommandText = "SELECT * FROM vwPersons" 'WHERE id=1"
-
-        ' open connection
-        con.Open()
+        cmd.CommandText = "SELECT * FROM vwPersons"
 
         Try
             ' store reqeust data
@@ -86,7 +83,6 @@ Public Class SqlView
 
 
 End Class
-
 
 ' ----------------------------------------
 '               Create View

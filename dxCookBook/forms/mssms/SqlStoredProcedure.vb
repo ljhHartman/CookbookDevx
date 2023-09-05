@@ -120,32 +120,6 @@ Public Class SqlStoredProcedure
         cmd.CommandText = "spPersonsSelect"
         cmd.Parameters.AddWithValue("@ID", 1)
 
-        ' OPTIONS 1 ########################################
-
-        ' open connection
-        con.Open()
-
-        Try
-            ' execute queary
-            Dim reader As SqlDataReader = cmd.ExecuteReader()
-            While reader.Read()
-                Dim column1 As Integer = reader.GetInt64(0)
-                Dim column2 As String = reader.GetString(1)
-                Dim column3 As String = reader.GetString(2)
-
-                Print($"{column1}, {column2}, {column3}")
-            End While
-        Catch ex As SqlException
-            Print($"SqlException: {ex}")
-        Catch ex As Exception
-            Print($"Exception: {ex}")
-        End Try
-
-        ' close connection
-        con.Close()
-
-        ' OPTIONS 2 ########################################
-
         Try
             ' store reqeust data
             Dim adapter As New SqlDataAdapter With {
@@ -173,8 +147,6 @@ Public Class SqlStoredProcedure
 
 
 End Class
-
-
 
 ' ----------------------------------------
 '       Create Stored Procedure

@@ -65,7 +65,7 @@
         Me.Menu.MenuItems.Add(item)
         item.MenuItems.Add("Sql Command", New EventHandler(AddressOf SqlCommand_Click))
         item.MenuItems.Add("Sql Stored Procedure", New EventHandler(AddressOf SqlStoredProcedure_Click))
-        item.MenuItems.Add("Sql Stored View", New EventHandler(AddressOf SqlView_Click))
+        item.MenuItems.Add("Sql View", New EventHandler(AddressOf SqlView_Click))
         item.MenuItems.Add("Sql Dataset", New EventHandler(AddressOf SqlDataset_Click))
 
     End Sub
@@ -399,6 +399,10 @@
             .WindowState = FormWindowState.Maximized
         }
         childForm.Show()
+    End Sub
+
+    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
     End Sub
 
 

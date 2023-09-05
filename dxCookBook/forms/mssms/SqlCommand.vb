@@ -20,7 +20,7 @@ Public Class SqlCommand
         ' connect to database
         Dim con As New SqlConnection(My.Settings.conSsl)
 
-        ' set query
+        ' set command
         Dim cmd = con.CreateCommand
         cmd.CommandText = "Delete FROM persons WHERE id=@value1"
         cmd.Parameters.AddWithValue("@value1", 5)
@@ -82,7 +82,7 @@ Public Class SqlCommand
         ' connect to database
         Dim con As New SqlConnection(My.Settings.conSsl)
 
-        ' set query
+        ' set command
         Dim cmd = con.CreateCommand
         cmd.CommandText = "INSERT INTO persons(id, first_name, last_name) VALUES (@value1, @value2, @value3)"
         cmd.Parameters.AddWithValue("@value1", 11)
@@ -118,23 +118,6 @@ Public Class SqlCommand
         Dim cmd = con.CreateCommand
         cmd.CommandText = "SELECT * FROM persons"
 
-        ' open connection
-        con.Open()
-
-        ' OPTIONS 1 ########################################
-
-        '' execute queary
-        'Dim reader As SqlDataReader = cmd.ExecuteReader()
-        'While reader.Read()
-        '    Dim column1 As Integer = reader.GetInt64(0)
-        '    Dim column2 As String = reader.GetString(1)
-        '    Dim column3 As String = reader.GetString(2)
-
-        '    Console.WriteLine($"{column1}, {column2}, {column3}")
-        'End While
-
-        ' OPTIONS 2 ########################################
-
         Try
             ' store reqeust data
             Dim adapter As New SqlDataAdapter With {
@@ -157,8 +140,28 @@ Public Class SqlCommand
             Print($"Exception: {ex}")
         End Try
 
-        ' close connection
-        con.Close()
+        ' OPTIONS 2 ########################################
+
+        ' open connection
+        'con.Open()
+
+        '' execute queary
+        'Dim reader As SqlDataReader = cmd.ExecuteReader()
+        'While reader.Read()
+        '    Dim column1 As Integer = reader.GetInt64(0)
+        '    Dim column2 As String = reader.GetString(1)
+        '    Dim column3 As String = reader.GetString(2)
+
+        '    Console.WriteLine($"{column1}, {column2}, {column3}")
+        'End While
+        'Catch ex As SqlException
+        '    Print($"SqlException: {ex}")
+        'Catch ex As Exception
+        '    Print($"Exception: {ex}")
+        'End Try
+
+        '' close connection
+        'con.Close()
     End Sub
 
 

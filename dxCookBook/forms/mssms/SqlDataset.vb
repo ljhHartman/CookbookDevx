@@ -101,15 +101,21 @@ Public Class SqlDataset
 
 End Class
 
-
-
-
 ' ----------------------------------------
 '           Create Dataset
 ' ----------------------------------------
-' 1. Solution Explorer > New File > Dataset
-' 2. Open Server Explorer
-' 3. Select, Table, Stored Procedure or View
+'Dasteset.xsd > TableAdapter > Rigth Click > Add > New
+
+'    Use SQL statement > [query type]
+
+'    Modify query
+
+'Select Case id, first_name, last_name, name, radius FROM dbo.vwPersons WHERE id=@id
+
+'    Test query: Query Builder > Execute Query
+
+'    Next > Next > Finish
+
 
 
 ' ----------------------------------------
