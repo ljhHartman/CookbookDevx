@@ -255,6 +255,12 @@
     <Compile Include="forms\mssms\SqlDataset.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\mssms\SqlDatasetProcedure.Designer.vb">
+      <DependentUpon>SqlDatasetProcedure.vb</DependentUpon>
+    </Compile>
+    <Compile Include="forms\mssms\SqlDatasetProcedure.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\mssms\SqlStoredProcedure.Designer.vb">
       <DependentUpon>SqlStoredProcedure.vb</DependentUpon>
     </Compile>
@@ -544,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\mssms\SqlDataset.resx">
       <DependentUpon>SqlDataset.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\mssms\SqlDatasetProcedure.resx">
+      <DependentUpon>SqlDatasetProcedure.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\mssms\SqlStoredProcedure.resx">
       <DependentUpon>SqlStoredProcedure.vb</DependentUpon>

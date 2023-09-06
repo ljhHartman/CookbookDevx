@@ -27,6 +27,7 @@ Partial Class SqlStoredProcedure
         Me.btnUpdateStatement = New System.Windows.Forms.Button()
         Me.btnInsertStatement = New System.Windows.Forms.Button()
         Me.btnReadStatement = New System.Windows.Forms.Button()
+        CType(Me.aTimer, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TableLayoutPanel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -100,6 +101,7 @@ Partial Class SqlStoredProcedure
         Me.Controls.Add(Me.TableLayoutPanel1)
         Me.Name = "SqlStoredProcedure"
         Me.Text = "SqlStoredProcedure"
+        CType(Me.aTimer, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TableLayoutPanel1.ResumeLayout(False)
         Me.ResumeLayout(False)
 

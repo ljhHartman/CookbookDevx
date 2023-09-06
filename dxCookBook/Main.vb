@@ -67,12 +67,24 @@
         item.MenuItems.Add("Sql Stored Procedure", New EventHandler(AddressOf SqlStoredProcedure_Click))
         item.MenuItems.Add("Sql View", New EventHandler(AddressOf SqlView_Click))
         item.MenuItems.Add("Sql Dataset", New EventHandler(AddressOf SqlDataset_Click))
+        item.MenuItems.Add("Sql Dataset Procedure", New EventHandler(AddressOf SqlDatasetProcedure_Click))
 
     End Sub
 
 
 
 #Region "mssms"
+
+
+    Private Sub SqlDatasetProcedure_Click(sender As Object, e As EventArgs)
+        ' Set Form Constructor
+        Dim childForm As New SqlDatasetProcedure With {
+            .MdiParent = Me,
+            .WindowState = FormWindowState.Maximized
+        }
+        childForm.Show()
+    End Sub
+
 
 
 
@@ -399,10 +411,6 @@
             .WindowState = FormWindowState.Maximized
         }
         childForm.Show()
-    End Sub
-
-    Private Sub Main_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
     End Sub
 
 

@@ -149,6 +149,16 @@ Public Class SqlStoredProcedure
 End Class
 
 ' ----------------------------------------
+'       Create Stored Procedure 2
+' ----------------------------------------
+' This is a alternative way to generate a Stored Procedure
+' 1. VS2022 > Create Dataset
+' 2. Add > Query > Create New Stored Procedure
+' This will create a Stored Prodeure in the database
+
+
+
+' ----------------------------------------
 '       Create Stored Procedure
 ' ----------------------------------------
 ' 1. MSSMS > Database > SSLTEST > Programmability > Stored Procedures > Right Click > New > stored procedure
@@ -181,3 +191,6 @@ End Class
 ' ----------------------------------------
 '1. Select stored procedure > Right click > Execute Stored Procedure
 '2. Input Value
+
+
+

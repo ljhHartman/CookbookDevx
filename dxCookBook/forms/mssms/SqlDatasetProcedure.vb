@@ -1,6 +1,6 @@
 ﻿Imports System.Data.SqlClient
 
-Public Class SqlDataset
+Public Class SqlDatasetProcedure
     Inherits BaseForm
 
 
@@ -17,7 +17,7 @@ Public Class SqlDataset
 
 
     Private Sub DeleteDataset_Click(sender As Object, e As EventArgs)
-        Print("Delete data with a Dataset")
+        Print("Delete data with an Existing Stored Procedure, through the Dataset")
 
         ' define adapter
         Dim ds As New dsPersons.vwPersonsDataTable
@@ -25,7 +25,7 @@ Public Class SqlDataset
 
         Try
             ' execute query
-            tba.DeleteQuery(12)
+            tba.spDeleteQuery(13)
         Catch ex As SqlException
             Print($"SqlException: {ex}")
         Catch ex As Exception
@@ -36,7 +36,7 @@ Public Class SqlDataset
 
 
     Private Sub UpdateDataset_Click(sender As Object, e As EventArgs)
-        Print("Update data with a Dataset")
+        Print("Update data with an Existing Stored Procedure, through the Dataset")
 
         ' define adapter
         Dim ds As New dsPersons.vwPersonsDataTable
@@ -44,7 +44,7 @@ Public Class SqlDataset
 
         Try
             ' execute query
-            tba.UpdateQuery(12, "Sonny", "Boy", 12)
+            tba.spUpdateQuery(13, "Sonny", "Boy")
         Catch ex As SqlException
             Print($"SqlException: {ex}")
         Catch ex As Exception
@@ -55,7 +55,7 @@ Public Class SqlDataset
 
 
     Private Sub InstertDataset_Click(sender As Object, e As EventArgs)
-        Print("Insert data with a Dataset")
+        Print("Insert data with an Existing Stored Procedure, through the Dataset")
 
         ' define adapter
         Dim ds As New dsPersons.vwPersonsDataTable
@@ -63,7 +63,7 @@ Public Class SqlDataset
 
         Try
             ' execute query
-            tba.InsertQuery(12, "Jim", "Button")
+            tba.spInsertQuery(13, "Jim", "Button")
         Catch ex As SqlException
             Print($"SqlException: {ex}")
         Catch ex As Exception
@@ -74,7 +74,7 @@ Public Class SqlDataset
 
 
     Private Sub ReadDataset_Click(sender As Object, e As EventArgs)
-        Print("Read data with a Dataset")
+        Print("Read data with a Existing Stored Procedure, through the Dataset")
 
         ' define adapter
         Dim ds As New dsPersons.vwPersonsDataTable
@@ -82,8 +82,7 @@ Public Class SqlDataset
 
         Try
             ' fill dataset
-            tba.Fill(ds)
-            tba.FillBy(ds, 1)
+            tba.spFillBy(ds, 1)
 
             ' print dataset
             For Each row As DataRow In ds.Rows
@@ -99,32 +98,3 @@ Public Class SqlDataset
 
 
 End Class
-
-' ----------------------------------------
-'           Create Dataset
-' ----------------------------------------
-'Dasteset.xsd > TableAdapter > Rigth Click > Add > New
-
-'    Use SQL statement > [query type]
-
-'    Modify query
-
-'Select Case id, first_name, last_name, name, radius FROM dbo.vwPersons WHERE id=@id
-
-'    Test query: Query Builder > Execute Query
-
-'    Next > Next > Finish
-
-
-
-' ----------------------------------------
-'           Create Query
-' ----------------------------------------
-'1. Dasteset.xsd > TableAdapter > Rigth Click > Add > New
-'2. Use SQL statement > [query type]
-'3. Modify query 
-
-'    Select Case id, first_name, last_name, name, radius FROM dbo.vwPersons WHERE id=@id
-
-'4. Test query: Query Builder > Execute Query
-'5. Next > Next > Finish

@@ -3,6 +3,8 @@
 Public Class SqlCommand
     Inherits BaseForm
 
+
+
     Sub New()
         InitializeComponent()
 
